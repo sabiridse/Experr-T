@@ -21,7 +21,7 @@ public class Bonus {
 	
 	
 	int size_arr_bonus;
-	String numb_term_bonus = "101483";//yyyyyyy
+	String numb_term_bonus = "101483";//qq
 			Row row;
 			Cell cell0;
 		 	static Sheet bpt_sheet;
