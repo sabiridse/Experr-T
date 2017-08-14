@@ -4,7 +4,7 @@ import java.io.File;
 
 public class Files_check {
 	
-	String dir = System.getProperty("user.home");//узнаю текущую попку даунлоадов*****************************				
+	String dir = System.getProperty("user.home");//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ*****************************				
 	File export_errors = new File(dir + "\\Downloads\\export_errors.csv");
 	File terminal_monitoring = new File(dir + "\\Downloads\\terminal_monitoring.xls");
 	File points_info = new File(dir + "\\Downloads\\points_info.xls");
@@ -17,16 +17,16 @@ public class Files_check {
 			int triger = 0;
 				
 			
-			Boolean e_e = export_errors.exists();//есть или нет файл			
-			Boolean t_m = terminal_monitoring.exists();//есть или нет файл			
-			Boolean p_i = points_info.exists();//есть или нет файл
+			Boolean e_e = export_errors.exists();//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ			
+			Boolean t_m = terminal_monitoring.exists();//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ			
+			Boolean p_i = points_info.exists();//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			
 			
 			if (e_e == true) { export_errors.delete();}
 			
-			if (t_m == false) {String txt = "<html><center>Нет файла terminal_monitoring</html>";triger = 1;Experr.btnNewButton_1.setEnabled(true); gui1.Gui0(txt);}
+			if (t_m == false) {String txt = "<html><center>РЅРµС‚ С„Р°Р№Р»Р° РћРЎРњРџ</html>";triger = 1;Experr.btnNewButton_1.setEnabled(true); gui1.Gui0(txt);}
 			
-			if (p_i == false) {String txt = "<html><center>Нет файла points_info</html>";triger = 1;Experr.btnNewButton_1.setEnabled(true); gui1.Gui0(txt);}
+			if (p_i == false) {String txt = "<html><center>РЅРµС‚ С„Р°Р№Р»Р° Р›РёРґРµСЂР°</html>";triger = 1;Experr.btnNewButton_1.setEnabled(true); gui1.Gui0(txt);}
 
 			
 			if (triger == 0){

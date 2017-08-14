@@ -54,15 +54,17 @@ public class BD_write {
 		
 		 conn = null;
 		 Xml_read xml = new Xml_read();
+		 String User = xml.read()[2];
+		 String Password = xml.read()[3];
 
 		try {
 	        
 			Properties properties=new Properties();
-			properties.setProperty("user","root");
-			properties.setProperty("password","8simvolov");
+			properties.setProperty("user", User);
+			properties.setProperty("password", Password);
 			properties.setProperty("useUnicode","true");
-			properties.setProperty("characterEncoding","UTF-8");
-			properties.put("charSet", "UTF-8");
+			properties.setProperty("characterEncoding","UTF8");
+			properties.put("charSet", "UTF8");
 	        
 	        	switch (Experr.DBtriger) {
 	        	
@@ -71,7 +73,7 @@ public class BD_write {
 
 				        break;
 	        	case 1 :Class.forName (xml.read()[0]).newInstance ();
-	        			conn = DriverManager.getConnection(xml.read()[1],xml.read()[2], xml.read()[3]);//, properties);
+	        			conn = DriverManager.getConnection(xml.read()[1], properties);//,xml.read()[2], xml.read()[3]
 	        			break;
 	        	}
 
@@ -136,7 +138,7 @@ public class BD_write {
 																	String [] row = {
 																			result.getString("id_term"),
 																			result.getString("name_term"),
-																			(result.getString("signal")).substring(0, 16),
+																			(result.getString("heart_bit")).substring(0, 16),
 																			(result.getString("pay")).substring(0, 16),
 																			result.getString("cash"),
 																			result.getString("print"),
@@ -192,7 +194,7 @@ public class BD_write {
 							
 							switch(trig){
 									case 1://������� �������
-										char[] substring_time_sig = (result.getString("signal")).substring(0, 16).toCharArray();
+										char[] substring_time_sig = (result.getString("heart_bit")).substring(0, 16).toCharArray();
 										char[] arr_char_time_sig = 
 											   {substring_time_sig[8],substring_time_sig[9],'.',//����
 												substring_time_sig[5],substring_time_sig[6],'.',//�����
@@ -277,7 +279,7 @@ public class BD_write {
 																	
 																switch(trig){
 																case 1://������� �������
-																	char[] substring_time_sig = (result.getString("signal")).substring(0, 16).toCharArray();
+																	char[] substring_time_sig = (result.getString("heart_bit")).substring(0, 16).toCharArray();
 																	char[] arr_char_time_sig = 
 																		   {substring_time_sig[8],substring_time_sig[9],'.',//����
 																			substring_time_sig[5],substring_time_sig[6],'.',//�����
@@ -362,7 +364,7 @@ public class BD_write {
 																			
 																		switch(trig){
 																		case 1://������� �������
-																			char[] substring_time_sig = (result.getString("signal")).substring(0, 16).toCharArray();
+																			char[] substring_time_sig = (result.getString("heart_bit")).substring(0, 16).toCharArray();
 																			char[] arr_char_time_sig = 
 																				   {substring_time_sig[8],substring_time_sig[9],'.',//����
 																					substring_time_sig[5],substring_time_sig[6],'.',//�����
@@ -780,7 +782,7 @@ public class BD_write {
 //********������ ���������� ������ ����� ( 1 - ���������� � ������ 0 -� �� ���������6�) ��� ��������� ��������			
 													public  int[] reqest_in_distrs (String distr) throws ClassNotFoundException {
 														this.connect();
-														String query = "select SpbLo, Spb, Lo, Regions from distrs "
+														String query = "select spb_lo, spb, lo, regions from distrs "
 																	  +"where name_distr = '" + distr + "'";
 														int [] groups = new int [4];								        
 														Statement stmt;				
@@ -789,10 +791,10 @@ public class BD_write {
 																ResultSet result;
 																result = stmt.executeQuery(query);				
 																			while (result.next()) {
-																					groups [0] =result.getInt("SpbLo");
-																					groups [1] =result.getInt("Spb");
-																					groups [2] =result.getInt("Lo");
-																					groups [3] =result.getInt("Regions");
+																					groups [0] =result.getInt("spb_lo");
+																					groups [1] =result.getInt("spb");
+																					groups [2] =result.getInt("lo");
+																					groups [3] =result.getInt("regions");
 																			}
 																			result.close();							
 														}	catch (SQLException e)	{System.out.println("2 " +e);}
@@ -919,7 +921,7 @@ public class BD_write {
 //************************������ ������ ���������� ������� ������� ���������� �� ����������� ������****************			
 			public String get_MAX_time_lost_term (String id_term)  {
 	
-				String query = "select max(signal)  from errors_save where id_term = '" + id_term + "'";
+				String query = "select max(heart_bit)  from errors_save where id_term = '" + id_term + "'";
 				String max_time_lost_term = "";   
 				Statement stmt;				
 					try {		
@@ -928,7 +930,7 @@ public class BD_write {
 							result = stmt.executeQuery(query);					
 										while (result.next()) {
 												
-											max_time_lost_term =result.getString("max(signal)");											
+											max_time_lost_term =result.getString("max(heart_bit)");											
 												
 										}	
 							
@@ -964,10 +966,10 @@ public class BD_write {
 
 												this.connect();												
 		String query1 = "UPDATE terminals SET " + pole_for_editable + " = '" + editable
-				       +"' , SpbLo = "+ groups[0]
-				       +", Spb = "+ groups[1]
-				       +", Lo = "+ groups[2]
-				       +", Regions = "+ groups[3]
+				       +"' , spb_lo = "+ groups[0]
+				       +", spb = "+ groups[1]
+				       +", lo = "+ groups[2]
+				       +", regions = "+ groups[3]
 				       +" WHERE id_term = '" + id_term + "'";
 		
 
@@ -1017,11 +1019,11 @@ public class BD_write {
 			
 			if ( Experr.history == 0) {
 			
-					String query_main_for_table = "select errors33.id_term, terminals.name_term, errors33.signal, errors33.pay, errors33.cash,"
+					String query_main_for_table = "select errors33.id_term, terminals.name_term, errors33.heart_bit, errors33.pay, errors33.cash,"
 							 + " errors33.print, errors33.tach, terminals.other, terminals.name_distr, errors33.curtime"
 							 + " from errors33"
 							 + " left join terminals on errors33.id_term = terminals.id_term"					 					 
-							 + " where (signal < '" + StringDateTime_sign + "' or"
+							 + " where (heart_bit < '" + StringDateTime_sign + "' or"
 							 + " pay < '" + StringDateTime_pay + "' or"
 							 + " cash != 'OK' or terminals.other != ''" + Experr.select_checkbox_print + ") and "
 							 +   Experr.query_group
@@ -1033,7 +1035,7 @@ public class BD_write {
 		
 				if ( Experr.history == 1) {
 					
-					String query_main_for_table = "select errors_save.id_term, terminals.name_term, errors_save.signal, "
+					String query_main_for_table = "select errors_save.id_term, terminals.name_term, errors_save.heart_bit, "
 							                     +"errors_save.pay, errors_save.cash, errors_save.print, errors_save.tach, "
 							                     +"errors_save.others, terminals.name_distr, errors_save.curtime "
 							                     +"from errors_save "

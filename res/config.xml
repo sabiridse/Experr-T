@@ -4,18 +4,19 @@
 	<host1>jdbc:derby:</host1>
 	<host11>\\Dropbox\\workspace\\MyDB</host11>-->
 
-				<Driver>com.mysql.jdbc.Driver</Driver>
-				<host>jdbc:mysql://78.140.200.115:3306/it_monitoring</host>
-				<user>monitoring_admin</user>
-				<pass>monitoring_admin</pass>
+				<Driver>com.mysql.jdbc.Driver</Driver>				
 				<path_repo>C:\Users\ывожпл\Downloads</path_repo>
 				<path_inkass>C:\Users\ывожпл\Downloads</path_inkass>
 				
-				<!--<Driver>com.mysql.jdbc.Driver</Driver>
-				<host>jdbc:mysql://127.0.0.1:3306/developer_test</host>
+				
+				<!-- <host>jdbc:mysql://78.140.200.115:3306/it_monitoring</host>
+				<user>monitoring_admin</user>
+				<pass>monitoring_admin</pass> -->
+				
+				
+				<host>jdbc:mysql://127.0.0.1:3306/test</host>
 				<user>root</user>
 				<pass>8simvolov</pass>
-				<path_repo>C:\Users\ывожпл\Downloads</path_repo>
-				<path_inkass>C:\Users\ывожпл\Downloads</path_inkass>-->
+				
 
 </configuration>

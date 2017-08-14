@@ -76,7 +76,7 @@ public class TextFild {
 								BD_write bdw = new BD_write();
 								int [] groups = bdw.reqest_in_distrs (distr_term);
 								
-				String query = "insert into terminals (id_term, name_term, name_distr, SpbLo, Spb, Lo, Regions, other, except_term) "
+				String query = "insert into terminals (id_term, name_term, name_distr, spb_lo, spb, lo, regions, other, except_term) "
 							  +"values (" + number_term  + ", '" + name_term  + "', '" + distr_term 
 							  +"', " + groups[0] + "," + groups[1] + "," + groups[2] + "," + groups[3]  + ",'новая установка'"+ ",0)";
 								

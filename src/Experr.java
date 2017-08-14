@@ -101,7 +101,6 @@ import javax.swing.SpinnerListModel;
 public class Experr {
 
 	
-	
 ///******insert some text into subbranch for comments 9:39*******
 //********************************************************	
 	public static int DBtriger = 1;//**1-Sql, 0-Derby
@@ -449,13 +448,13 @@ public class Experr {
 					
 					find_terminal = textField_8.getText();	
 					
-					String query_find = "select errors33.id_term, terminals.name_term, errors33.signal, errors33.pay, errors33.cash,"
+					String query_find = "select errors33.id_term, terminals.name_term, errors33.heart_bit, errors33.pay, errors33.cash,"// my first hardcode ;)
 							+ " errors33.print, errors33.tach, terminals.other, terminals.name_distr, errors33.curtime"
 							+ " from errors33"
 							+ " left join terminals on errors33.id_term = terminals.id_term "   															
 							+ " where errors33.id_term = '" + find_terminal + "'"
 							+ " union "
-							+ " select errors33.id_term, terminals.name_term, errors33.signal, errors33.pay, errors33.cash,"
+							+ " select errors33.id_term, terminals.name_term, errors33.heart_bit, errors33.pay, errors33.cash,"
 							+ " errors33.print, errors33.tach, terminals.other, terminals.name_distr, errors33.curtime"
 							+ " from errors33"
 							+ " left join terminals on errors33.id_term = terminals.id_term "   															
@@ -739,13 +738,13 @@ public class Experr {
 			    			  
 			    			  switch (groupp) {
 			    			  
-			    			  case "СПб и ЛО" : query_group = " terminals.SpbLo = 1 and "; break;
+			    			  case "СПб и ЛО" : query_group = " terminals.spb_lo = 1 and "; break;
 			    			  
-			    			  case "Регионы" : query_group  = " terminals.Regions = 1 and "; break;
+			    			  case "Регионы" : query_group  = " terminals.regions = 1 and "; break;
 			    			  
-			    			  case "СПб" :	query_group =   " terminals.Spb = 1 and "; break;
+			    			  case "СПб" :	query_group =   " terminals.spb = 1 and "; break;
 			    			  
-			    			  case "ЛО" :   query_group   =  " terminals.Lo = 1 and "; break;
+			    			  case "ЛО" :   query_group   =  " terminals.lo = 1 and "; break;
 			    			  
 			    			  }
 			    		  }

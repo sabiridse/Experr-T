@@ -111,12 +111,12 @@ public  class OSMP  {
 			
 //*********копирую предыдущие ТОЛЬКО ОШИБКИ ( примерно 200-250 шт, а не всё что считалось 2000шт) в таблицу хранилище*************					
 			String query_copy = "insert into errors_save "
-					+ "select errors33.id_term, errors33.signal, errors33.pay, errors33.cash, "
+					+ "select errors33.id_term, errors33.heart_bit, errors33.pay, errors33.cash, "//my first shiiiiiiiiiitCode ;)
 					+ "errors33.print, errors33.tach, errors33.curtime, terminals.other "
 					+ "from errors33 "
 					+ "left join terminals on errors33.id_term = terminals.id_term "
 					+"where terminals.except_term = 0 and "                      //***терем не в исключениях
-					+"(signal < (DATE_SUB(errors33.curtime,Interval 2 HOUR)) or "//***сигнал 2более 2 часов
+					+"(heart_bit < (DATE_SUB(errors33.curtime,Interval 2 HOUR)) or "//***сигнал 2более 2 часов
 					+"pay < (DATE_SUB(errors33.curtime,Interval 2 DAY)) or "//***платеджи более 2 дней
 					+"cash != 'OK' or "                                     //***ошибка купюра
 					+"terminals.other != '' or "                            //***есть запись в примечаниях
