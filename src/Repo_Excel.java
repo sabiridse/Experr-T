@@ -335,6 +335,8 @@ public class Repo_Excel {
 				      5 //last column (0-based)
 				      ));
 
+			
+			 
 			 Row row_reg = sheet_repo.createRow(BD_write.List_spb.size()+BD_write.List_lo.size()+11);
 			 row_reg.setHeight((short) 400);
 		      Cell cellreg0 = row_reg.createCell(0);
