@@ -2,7 +2,6 @@ package Osmp_Osmp;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Iterator;
@@ -27,12 +26,10 @@ public class FileOperation {
 				return rows_in_osmp_import;
 			}
 		
-			public Sheet OpenFile(String file_name) throws IOException{
-				
-				
+			
+			public Sheet OpenFile(String file_name) throws IOException{								
 				dir = System.getProperty("user.home");//узнаю текущую попку даунлоадов*****************************
-				
-				
+								
 				Osmp_import = new FileInputStream(dir + "\\Downloads\\"+file_name);
 				wb_osmp_import = new HSSFWorkbook(Osmp_import);
 				Sheet sheet_osmp_import = wb_osmp_import.getSheetAt(0);
@@ -43,26 +40,24 @@ public class FileOperation {
 			            iterator_osmp_import.next();
 			            rows_in_osmp_import++;        // эта переменная и будет кол-вом строк после полного цикла
 			        }
-				
-			        
-			        
+							        
 			        return sheet_osmp_import;
 			        
 			}
 			
-			private void CloseFile(String file_name){
-					
-				
-				
-				}
 			
 			public void SaveFile() throws IOException{
 				
-				FileOutputStream out = new FileOutputStream(new File(dir + "\\Downloads\\"+"OSMP.xls"));
+				FileOutputStream out = new FileOutputStream(new File(dir + "\\Downloads\\"+"terminal_monitoring.xls"));
 				wb_osmp_import.write(out);
 			}
 			
-			private void DeleteFile(String file_name){
+			public void DeleteFiles(){
+				
+				File terminal_monitoring = new File(dir + "\\Downloads\\terminal_monitoring.xls");
+				File terminal_monitoring1 = new File(dir + "\\Downloads\\terminal_monitoring (1).xls");
+				terminal_monitoring.delete();
+				terminal_monitoring1.delete();
 				
 			}
 	

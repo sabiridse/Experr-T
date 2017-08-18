@@ -10,25 +10,42 @@ public class Service {
 	Row rows_in_first_file;
 	Row rows_in_second_file;
 	Sheet sheet;
-
+	Sheet sheet1;
+	FileOperation fileOp;
+	FileOperation fileOp1;
 	
 	public void two_in_one() throws IOException {
 		
-		FileOperation fileOp = new FileOperation();
-		sheet = fileOp.OpenFile("terminal_monitoring.xls");
-		rows_in_first_file = sheet.getRow(fileOp.getRows_in_osmp_import()-1);		
-		sheet.removeMergedRegion(1);
+		fileOp = new FileOperation();
+		sheet = fileOp.OpenFile("terminal_monitoring.xls");//work sheet in file
+		rows_in_first_file = sheet.getRow(fileOp.getRows_in_osmp_import()-1);//	last row
+		sheet.removeMergedRegion(0);//delete merge columns
+		sheet.removeRow(rows_in_first_file);
 		
-		System.out.println(sheet.getNumMergedRegions());
+		fileOp1 = new FileOperation();
+		sheet1 = fileOp1.OpenFile("terminal_monitoring (1).xls");//work sheet in file
+		rows_in_second_file = sheet1.getRow(fileOp1.getRows_in_osmp_import()-1);//last row
 		
 		
-		FileOperation fileOp1 = new FileOperation();	
-		rows_in_second_file = fileOp1.OpenFile("terminal_monitoring (1).xls").getRow(fileOp1.getRows_in_osmp_import()-1);
+	   for ( int i = 1; i < fileOp1.getRows_in_osmp_import()-1; i++){
+	    		 this.copyRow(i);  //copy rows osmp to osmp
+	   }  
 		
-		
+		fileOp.DeleteFiles();
 
 		fileOp.SaveFile();
 		
 	}
+	
+	private void copyRow(int i){
+		
+		Row row = sheet.createRow(fileOp.getRows_in_osmp_import()-2+i);
+		
+		for (int q =0; q<10; q++){
+			row.createCell(q).setCellValue(sheet1.getRow(i).getCell(q).getStringCellValue());
+		}
+	
+	}
+	
 	
 }
