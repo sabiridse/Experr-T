@@ -72,6 +72,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import Osmp_Osmp.Service;
+
 import java.awt.Component;
 import java.awt.Dimension;
 
@@ -1626,6 +1628,29 @@ public class Experr {
 			        txtFild_color_mailto2.setColumns(10);
 			        txtFild_color_mailto2.setBounds(470, 388, 86, 20);
 			        panel.add(txtFild_color_mailto2);
+			      
+			        
+ //***************************************************************************************			        
+			        
+			        JButton btnNewButton = new JButton("OSMP 2 in 1");
+			        btnNewButton.setBounds(470, 494, 112, 91);
+			        panel.add(btnNewButton);
+			        
+			        btnNewButton.addActionListener(new ActionListener() {
+	     	        	   public void actionPerformed(ActionEvent e) {
+	     	        		  
+	     	        		  Service service = new Service();
+	     	        			try {
+									service.two_in_one();
+								} catch (IOException e1) {
+									
+									e1.printStackTrace();
+								}
+	     	        		      
+	     	        	   }
+			        });
+			        
+			        
 //***************************************************************************************
 			        
 			        CheckBox_history.addItemListener(new ItemListener() {

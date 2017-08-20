@@ -36,24 +36,24 @@ public class SendReport {
                 return new PasswordAuthentication(username, password);
             }
         });
-        System.out.println("Пошла рассылка");
+        System.out.println("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         try {
         	
        	
             Message message = new MimeMessage(session);
-            //от кого
+            //пїЅпїЅ пїЅпїЅпїЅпїЅ
             message.setFrom(new InternetAddress(fromEmail));
-            //кому
+            //пїЅпїЅпїЅпїЅ
             message.setRecipients(Message.RecipientType.TO, toEmails);
-            //Заголовок письма
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             message.setSubject(subject);
-            //Содержимое
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             message.setContent(text, "text/html;charset=\"UTF-8\"");
 
-            //Отправляем сообщение
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             Transport.send(message, toEmails);
         } catch (MessagingException e) {Loging log = new Loging();
-			 							log.log(e," Рассылаю отчёт: ");
+			 							log.log(e," пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: ");
         }
        
     }

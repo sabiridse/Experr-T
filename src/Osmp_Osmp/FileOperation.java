@@ -50,6 +50,7 @@ public class FileOperation {
 				
 				FileOutputStream out = new FileOutputStream(new File(dir + "\\Downloads\\"+"terminal_monitoring.xls"));
 				wb_osmp_import.write(out);
+				out.close();
 			}
 			
 			public void DeleteFiles(){

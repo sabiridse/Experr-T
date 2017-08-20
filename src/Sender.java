@@ -64,7 +64,7 @@ public class Sender {
         props = new Properties();
      // props.put("mail.smtp.auth", "true");
      // props.put("mail.smtp.starttls.enable", "true");
-       props.put("mail.smtp.ssl.trust", "192.168.8.100");
+       props.put("mail.smtp.ssl.trust", "192.168.64.16");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", port);
     }

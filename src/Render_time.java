@@ -20,7 +20,7 @@ public class Render_time extends JLabel implements TableCellRenderer
           Object value, boolean isSelected, boolean hasFocus, int row, int column)
   {
 	   	
-	    long curTime = System.currentTimeMillis();//получаю системное впемя в миллисекундах
+	    long curTime = System.currentTimeMillis();//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		long time_st = 0;
 	    
 	    String uu = value.toString();

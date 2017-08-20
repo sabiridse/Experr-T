@@ -3080,3 +3080,131 @@ java.io.FileNotFoundException: C:\Users\ывожпл\Downloads\Последня�
 2017-08-14T21:13:17.665 :  Старт программы ******************************************************************************
 2017-08-14T21:18:14.067 :  Старт программы ******************************************************************************
 2017-08-14T21:18:59.768 :  ����� �� ��������� 
+2017-08-16T14:29:14.875 :  Старт программы ******************************************************************************
+2017-08-16T14:29:25.381 :  Собираю данные об ошибках 
+
+2017-08-16T14:30:32.725:  Открываю инкассации: 
+java.io.FileNotFoundException: C:\Users\ывожпл\Downloads\ПоследняяИнкассация.xls (Не удается найти указанный файл)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at Last_incass.output_inkass(Last_incass.java:50)
+	at OSMP.Input_Data(OSMP.java:314)
+	at NewThread_one.lambda$0(NewThread_one.java:12)
+	at java.lang.Thread.run(Thread.java:745)
+2017-08-16T14:35:01.320 :  Делаю рассылку. 
+
+2017-08-16T14:35:01.990:  Рассылаю ошибки: 
+javax.mail.MessagingException: Could not connect to SMTP host: 192.168.8.100, port: 25;
+  nested exception is:
+	java.net.SocketException: Permission denied: connect
+	at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:1972)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:642)
+	at javax.mail.Service.connect(Service.java:295)
+	at javax.mail.Service.connect(Service.java:176)
+	at javax.mail.Service.connect(Service.java:125)
+	at javax.mail.Transport.send0(Transport.java:194)
+	at javax.mail.Transport.send(Transport.java:124)
+	at Sender.send(Sender.java:93)
+	at SendMail.resiv_mail(SendMail.java:44)
+	at SendMail.engin_mail(SendMail.java:189)
+	at SendMail.data_for_send_mails(SendMail.java:218)
+	at Experr$11.actionPerformed(Experr.java:717)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.AWTEventMulticaster.mouseReleased(AWTEventMulticaster.java:289)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: java.net.SocketException: Permission denied: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at com.sun.mail.util.SocketFetcher.createSocket(SocketFetcher.java:319)
+	at com.sun.mail.util.SocketFetcher.getSocket(SocketFetcher.java:233)
+	at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:1938)
+	... 48 more
+2017-08-16T14:35:40.985 :  Собираю данные об ошибках 
+
+2017-08-16T14:36:45.331:  Открываю инкассации: 
+java.io.FileNotFoundException: C:\Users\ывожпл\Downloads\ПоследняяИнкассация.xls (Не удается найти указанный файл)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at Last_incass.output_inkass(Last_incass.java:50)
+	at OSMP.Input_Data(OSMP.java:314)
+	at NewThread_one.lambda$0(NewThread_one.java:12)
+	at java.lang.Thread.run(Thread.java:745)
+2017-08-16T14:42:08.255 :  ����� �� ��������� 
+2017-08-19T19:34:02.069 :  Старт программы ******************************************************************************
+2017-08-19T19:34:45.882 :  Старт программы ******************************************************************************
+2017-08-19T19:34:53.458 :  Собираю данные об ошибках 
+
+2017-08-19T19:36:05.469:  Открываю инкассации: 
+java.io.FileNotFoundException: C:\Users\ывожпл\Downloads\ПоследняяИнкассация.xls (Не удается найти указанный файл)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at Last_incass.output_inkass(Last_incass.java:50)
+	at OSMP.Input_Data(OSMP.java:314)
+	at NewThread_one.lambda$0(NewThread_one.java:12)
+	at java.lang.Thread.run(Thread.java:745)
+2017-08-19T19:37:19.416 :  ����� �� ��������� 
+2017-08-20T13:00:56.959 :  Старт программы ******************************************************************************
+2017-08-20T13:01:13.449 :  Старт программы ******************************************************************************
+2017-08-20T13:02:44.942 :  Старт программы ******************************************************************************
+2017-08-20T13:33:21.322 :  Старт программы ******************************************************************************
+2017-08-20T13:35:13.273 :  Собираю данные об ошибках 
+
+2017-08-20T13:37:09.117:  Открываю инкассации: 
+java.io.FileNotFoundException: C:\Users\ывожпл\Downloads\ПоследняяИнкассация.xls (Не удается найти указанный файл)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at Last_incass.output_inkass(Last_incass.java:50)
+	at OSMP.Input_Data(OSMP.java:314)
+	at NewThread_one.lambda$0(NewThread_one.java:12)
+	at java.lang.Thread.run(Thread.java:745)
+2017-08-20T13:59:32.329 :  Старт программы ******************************************************************************
+2017-08-20T14:16:28.059 :  Старт программы ******************************************************************************

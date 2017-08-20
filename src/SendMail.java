@@ -19,7 +19,7 @@ public class SendMail {
 	public void open_socket() {
 	
 	
-		this.sender = new Sender("192.168.8.100",                     //�192.168.8.100���� SMTP �������
+		this.sender = new Sender("192.168.64.16",                     //�192.168.8.100���� SMTP �������
 				   "25",                                //����  SMTP �������
 				   "",                //tm\point_errors����� ������ ��� �����������
 				   "");	                     //Po666nT������ ������ ��� �����������

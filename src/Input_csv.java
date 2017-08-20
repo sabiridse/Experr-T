@@ -34,11 +34,11 @@ public class Input_csv {
 	
 	public void write_array (String number_term) throws Exception {
 	
-		int except_term = bdw.get_except_term(number_term);//***получаю статус исключения терема
+		int except_term = bdw.get_except_term(number_term);//***пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	
 		if (except_term == 0){
 		
-				String time_lost_term = bdw.get_MAX_time_lost_term(number_term);//***получаю последее время сигнала пропавшего терема		
+				String time_lost_term = bdw.get_MAX_time_lost_term(number_term);//***пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ		
 				bdw.inser_table_error33(number_term, 
 						time_lost_term, 
 						time_lost_term, 
@@ -64,28 +64,28 @@ public class Input_csv {
 		 OSMP osmp = new OSMP();
 		 Magic_Osmp magic_osmp = new Magic_Osmp();
 		
-		FileInputStream points_info = new FileInputStream(file);//для чтения
+		FileInputStream points_info = new FileInputStream(file);//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		Workbook wb_poi_inf = new HSSFWorkbook(points_info);
 		sheet_poi_inf = wb_poi_inf.getSheetAt(0);
 	
 		Iterator<Row> iterator_points_info = sheet_poi_inf.iterator();
         while (iterator_points_info.hasNext()) {
             Row row_poi_info = iterator_points_info.next();
-            rows_in_points_info++;        // эта переменная и будет кол-вом строк после полного цикла
+            rows_in_points_info++;        // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         }
 		
 
         
 		for (int i = 1; i < rows_in_points_info-1; i++) {
 	
-					Row row_imp = sheet_poi_inf.getRow(i);//строка для чтения		
+					Row row_imp = sheet_poi_inf.getRow(i);//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ		
 					
 					
 								try {	
-										number_terminal = row_imp.getCell(0).getStringCellValue();//читаю данные из ячейки
+										number_terminal = row_imp.getCell(0).getStringCellValue();//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 										
 //*****************************************************************************************************										
-										number_term_errors_arr.add(number_terminal);	//пишу в массив			
+										number_term_errors_arr.add(number_terminal);	//пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ			
 //*****************************************************************************************************								
 								
 								} catch (NullPointerException e) {number_terminal = "";}
@@ -94,25 +94,25 @@ public class Input_csv {
 		//***************************************************************************************************	
 								try {
 									
-									time_signal = row_imp.getCell(1).getStringCellValue();//читаю данные из ячейки
+									time_signal = row_imp.getCell(1).getStringCellValue();//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 								
 								} catch (NullPointerException e) {time_signal = "01.11.2016 12:00";}		
 				
 		    //*************************************************************************************************		
 								try {
 									
-									time_pay = row_imp.getCell(2).getStringCellValue();//читаю данные из ячейки
+									time_pay = row_imp.getCell(2).getStringCellValue();//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 								
 								} catch (NullPointerException e) {time_pay = "01.11.2016 12:00";}
 			//****************************************************************************************************					
 								try {
 									
-									status_cash = row_imp.getCell(3).getStringCellValue();//читаю данные из ячейки
+									status_cash = row_imp.getCell(3).getStringCellValue();//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 								} catch (NullPointerException e) {status_cash = "";}
 									
 								try {	
 									
-									status_print = row_imp.getCell(4).getStringCellValue();//читаю данные из ячейки
+									status_print = row_imp.getCell(4).getStringCellValue();//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			
 								} catch (NullPointerException e) {status_print = "";}	
 								
