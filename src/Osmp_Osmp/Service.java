@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
+import all_classes.Gui1;
+
 public class Service {
 	
 	Row rows_in_first_file;
