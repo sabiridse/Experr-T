@@ -14,8 +14,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 public class FileOperation {
 	private int rows_in_osmp_import = 0;
 	private FileInputStream Osmp_import;
-	private String dir;
-	private Workbook wb_osmp_import;
+	private Workbook curientWB_open;
 		
 	
 			public void setRows_in_osmp_import(int rows_in_osmp_import) {
@@ -27,12 +26,18 @@ public class FileOperation {
 			}
 		
 			
+			public String getDir() {
+				return System.getProperty("user.home")+"\\Downloads\\";
+			}
+			
+			public Workbook getCurientWB_open() {
+				return curientWB_open;
+			}
+			
 			public Sheet OpenFile(String file_name) throws IOException{								
-				dir = System.getProperty("user.home");//узнаю текущую попку даунлоадов*****************************
-								
-				Osmp_import = new FileInputStream(dir + "\\Downloads\\"+file_name);
-				wb_osmp_import = new HSSFWorkbook(Osmp_import);
-				Sheet sheet_osmp_import = wb_osmp_import.getSheetAt(0);
+				Osmp_import = new FileInputStream(this.getDir()+file_name);
+				curientWB_open = new HSSFWorkbook(Osmp_import);
+				Sheet sheet_osmp_import = curientWB_open.getSheetAt(0);
 				  		
 				//******вычисляю кол-во нормальных строк ( последняя "ВСЕ" объеденённая не нужна) в terminal_monitoring
 				Iterator<Row> iterator_osmp_import = sheet_osmp_import.iterator();
@@ -46,20 +51,20 @@ public class FileOperation {
 			}
 			
 			
-			public void SaveFile() throws IOException{
+			public void SaveFile(Workbook curientWB, String curientFileName) throws IOException{
 				
-				FileOutputStream out = new FileOutputStream(new File(dir + "\\Downloads\\"+"terminal_monitoring.xls"));
-				wb_osmp_import.write(out);
+				FileOutputStream out = new FileOutputStream(new File(this.getDir()+curientFileName));
+				curientWB.write(out);
 				out.close();
 			}
 			
-			public void DeleteFiles(){
+			public void DeleteFiles(String fileName){
 				
-				File terminal_monitoring = new File(dir + "\\Downloads\\terminal_monitoring.xls");
-				File terminal_monitoring1 = new File(dir + "\\Downloads\\terminal_monitoring (1).xls");
-				terminal_monitoring.delete();
-				terminal_monitoring1.delete();
+				new File(this.getDir()+fileName).delete();
 				
 			}
-	
+
+			
+
+			
 }

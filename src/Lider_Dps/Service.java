@@ -1,31 +1,31 @@
 package Lider_Dps;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Osmp_Osmp.FileOperation;
 
 public class Service {
-	private Sheet sheetLid;
-	private Sheet sheetPPS;
-//*******************************************************************************************************************	
-			private void openLiderAndPPS(){
+	private XSSFSheet sheetPPS;
+	//*******************************************************************************************************************	
+			@SuppressWarnings("resource")
+			private void openLiderAndPPS() throws FileNotFoundException, IOException{
 				
-				FileOperation fileOperationLid = new FileOperation();
-				try {
-					sheetLid = fileOperationLid.OpenFile("points_info.xls");
-				} catch (IOException e) {			
-					e.printStackTrace();
-				}
-				
-				FileOperation fileOperationPPS = new FileOperation();
-				try {
-					sheetPPS = fileOperationPPS.OpenFile("Терминалы.xls");
-				} catch (IOException e) {			
-					e.printStackTrace();
-				}
+				String dir = new FileOperation().getDir();				
+				JFileChooser fileopen = new JFileChooser(dir);
+							 fileopen.setFileFilter(new FileNameExtensionFilter("xlsx","xlsx"));
+							 fileopen.showDialog(null, "Выбрать файл");
+				sheetPPS = new XSSFWorkbook(new FileInputStream(dir + fileopen.getSelectedFile().getName()))
+							.getSheet("Данные");		
 				
 			}
 	
@@ -33,9 +33,13 @@ public class Service {
 						private String getValue(Sheet sheet, int row, int cell){							
 							
 							try {
-								return sheet.getRow(row).getCell(cell).getStringCellValue();
+								return sheet.getRow(row)
+											.getCell(cell)
+											.getStringCellValue();
 							} catch(Exception e) {			
-								return Integer.toString((int)sheet.getRow(row).getCell(cell).getNumericCellValue());
+								return Integer.toString((int)sheet.getRow(row)
+																  .getCell(cell)
+																  .getNumericCellValue());
 							}							  														
 						}
 	
@@ -91,14 +95,13 @@ public class Service {
 						
 								public void testOutput(){
 									
-									this.openLiderAndPPS();
+									try {
+										this.openLiderAndPPS();
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
 									
-									System.out.println(this.getValue(sheetLid, 5, 0));	
-									System.out.println(this.getValue(sheetLid, 5, 1));
-									System.out.println(this.getValue(sheetLid, 5, 2));
-									System.out.println(this.getValue(sheetLid, 5, 3));
-									System.out.println(this.getValue(sheetLid, 5, 4));
-									System.out.println(this.getValue(sheetLid, 5, 5));
+									
 									
 									System.out.println(this.getValue(sheetPPS, 27, 0));
 									System.out.println(this.trimDateTimePPS(this.getValue(sheetPPS, 27, 1)));

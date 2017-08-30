@@ -33,9 +33,9 @@ public class Service {
 	    		 this.copyRow(i);  //copy rows osmp to osmp
 	   }  
 		
-		fileOp.DeleteFiles();
-
-		fileOp.SaveFile();
+		fileOp.DeleteFiles("terminal_monitoring.xls");
+		fileOp.DeleteFiles("terminal_monitoring (1).xls");
+		fileOp.SaveFile(new FileOperation().getCurientWB_open(), "terminal_monitoring.xls");
 
 		
 	}
