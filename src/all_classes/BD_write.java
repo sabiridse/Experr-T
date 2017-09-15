@@ -16,6 +16,7 @@ import java.util.Properties;
 import javax.swing.JLabel;
 import javax.swing.table.TableModel;
 
+import Warning_lost_terminals.Find_lost_term;
 import javenue.csv.Csv;
 
 
@@ -70,7 +71,7 @@ public class BD_write {
 	        	switch (Experr.DBtriger) {
 	        	
 	        	case 0 :Class.forName("com.mysql.jdbc.Driver");
-				        conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/developer_test", properties );
+				        conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", properties );
 
 				        break;
 	        	case 1 :Class.forName (xml.read()[0]).newInstance ();
@@ -161,6 +162,33 @@ public class BD_write {
 										Experr.model.fireTableDataChanged();
 										Experr.lblNewLabel_3.setText(Integer.toString(rows_count));
 								    }
+									
+//*******************************************************ADD array of numbers terminals in terminals table in DB***********************************************************************									
+									public void addArrayOfNumberTerm_in_terminalsTable (int exceptValue) throws SQLException {
+										Find_lost_term findLT = new Find_lost_term();	
+										findLT.getNumberTermIn_terminalsTable().clear(); 			        
+										Statement stmt;				
+										try {	
+											stmt = conn.createStatement();						
+												ResultSet result;
+												result = stmt.executeQuery("Select id_term from terminals where except_term = " + exceptValue);					
+															
+															while (result.next()) {		
+																
+																findLT.addNumberTermIn_terminalsTable(result.getString("id_term"));	
+																	
+															}
+						
+															result.close();	
+															
+										}	catch (SQLException e){
+												e.printStackTrace();
+											}
+										
+										
+								    }
+									
+									
 //********************����� ���-�� ����� � ������� tbl_terminal_error_history********************************************									
 		public String maxID () throws SQLException { 			        
 			Statement stmt;	
@@ -904,7 +932,22 @@ public class BD_write {
 														this.reqest_in_db_TTmodel_terminals();
 														this.reqest_in_db_TTmodel_except();
 													}
-//****************************************************************************************************************			
+//****************************************************************************************************************	
+													public void insert_new_term_only_for_errors (String numberNewTerm) throws ClassNotFoundException {						
+														Statement stmt;	
+														
+																	try {	
+																		stmt = conn.createStatement();
+																		stmt.execute("INSERT INTO terminals (id_term,name_term,name_distr,spb_lo,spb,lo,regions,other,except_name,except_term,time_except) "
+																				    +"VALUES ("+numberNewTerm+",'NEW','CHECKING',0,0,0,0,'новая установка',NULL,0,NULL)");
+																		Loging log = new Loging();
+																		log.logtext("add new term № "+numberNewTerm);
+																	}	catch (SQLException e)	{Loging log = new Loging();
+																							log.log(e," ERROR add new term № "+numberNewTerm);}
+																	
+													}
+//****************************************************************************************************************														
+													
 			
 			public void uni_reqest_in_db (String query) throws ClassNotFoundException {
 							        
@@ -981,6 +1024,13 @@ public class BD_write {
 												this.close_connect();
 			}
 //*******************************************************************************************************************************			
+		
+			public void contextFindTerminalsInMainTable_terminals(){
+				
+				
+			}
+			
+			
 			
 		public void close_connect(){
 			
@@ -1036,14 +1086,17 @@ public class BD_write {
 		
 				if ( Experr.history == 1) {
 					
+					System.out.println(Experr.date_OT);
+					System.out.println(Experr.date_DO);
+					
 					String query_main_for_table = "select errors_save.id_term, terminals.name_term, errors_save.heart_bit, "
 							                     +"errors_save.pay, errors_save.cash, errors_save.print, errors_save.tach, "
 							                     +"errors_save.others, terminals.name_distr, errors_save.curtime "
 							                     +"from errors_save "
 							                     +"left join terminals on errors_save.id_term = terminals.id_term "
-							                     +"where terminals.except_term = 0 and "
+							                     +"where "
 							                     +"curtime > '" + Experr.date_OT + "' and "
-							                     +"curtime < '" + Experr.date_DO; //+ "' and "
+							                     +"curtime < '" + Experr.date_DO + "'";
 //							                     + Experr.query_distr
 //							                     +"(errors_save.signal < ADDDATE(curtime, INTERVAL -2 hour) or "
 //							                     +"errors_save.pay < ADDDATE(curtime, INTERVAL -2 day) or "

@@ -9,7 +9,7 @@ import all_classes.Gui1;
 
 public class Service {
 	
-	Row rows_in_first_file;
+	Row rows_in_first_file;//10278276
 	Row rows_in_second_file;
 	Sheet sheet;
 	Sheet sheet1;
@@ -35,7 +35,7 @@ public class Service {
 		
 		fileOp.DeleteFiles("terminal_monitoring.xls");
 		fileOp.DeleteFiles("terminal_monitoring (1).xls");
-		fileOp.SaveFile(new FileOperation().getCurientWB_open(), "terminal_monitoring.xls");
+		fileOp.SaveFile(fileOp.getCurientWB_open(), "terminal_monitoring.xls");
 
 		
 	}

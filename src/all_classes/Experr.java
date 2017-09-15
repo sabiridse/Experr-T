@@ -74,6 +74,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import Osmp_Osmp.Service;
+import contextFind.TooManyCriteries;
+import gruopAddExcept.AddDelExceptTerm;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -110,7 +112,7 @@ public class Experr {
 //********************************************************
 	
 	public static String select_checkbox_print = "";
-	
+	private static String [] subArr;
 	public static JLabel lblNewLabel_2, lblNewLabel_1;
 	public List <String> work_list;
 	public static JFrame frmExperrtV;
@@ -166,7 +168,7 @@ public class Experr {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-	private JTextField textField_8;
+	public static JTextField textField_8;
 
 	public static long hours_signal = 7200000, hours_pay = 0;
 
@@ -448,20 +450,27 @@ public class Experr {
 			button_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
-					
-					find_terminal = textField_8.getText();	
+					subArr = new TooManyCriteries().getSplitInputData();
 					
 					String query_find = "select errors33.id_term, terminals.name_term, errors33.heart_bit, errors33.pay, errors33.cash,"// my first hardcode ;)
 							+ " errors33.print, errors33.tach, terminals.other, terminals.name_distr, errors33.curtime"
 							+ " from errors33"
 							+ " left join terminals on errors33.id_term = terminals.id_term "   															
-							+ " where errors33.id_term = '" + find_terminal + "'"
+							+ " where errors33.id_term = '" + subArr[0] + "' or "
+							+       " errors33.id_term = '" + subArr[1] + "' or "
+							+		" errors33.id_term = '" + subArr[2] + "' or "
+							+		" errors33.id_term = '" + subArr[3] + "' or "
+							+		" errors33.id_term = '" + subArr[4] + "'"
 							+ " union "
 							+ " select errors33.id_term, terminals.name_term, errors33.heart_bit, errors33.pay, errors33.cash,"
 							+ " errors33.print, errors33.tach, terminals.other, terminals.name_distr, errors33.curtime"
 							+ " from errors33"
 							+ " left join terminals on errors33.id_term = terminals.id_term "   															
-							+ " where terminals.name_term like '%" + find_terminal + "%'";							
+							+ " where terminals.name_term like '%" + subArr[0] + "%' and "
+							+ 		 "terminals.name_term like '%" + subArr[1] + "%' and "
+							+ 		 "terminals.name_term like '%" + subArr[2] + "%' and "
+							+ 		 "terminals.name_term like '%" + subArr[3] + "%' and "
+							+ 		 "terminals.name_term like '%" + subArr[4] + "%'";							
 					
 					
 					BD_write bdw = new BD_write();
@@ -485,7 +494,9 @@ public class Experr {
 			      textField_8.setToolTipText("\u0432\u0432\u0435\u0434\u0438\u0442\u0435  \u043D\u043E\u043C\u0435\u0440 \u0442\u0435\u0440\u043C\u0438\u043D\u0430\u043B\u0430 \u0438\u043B\u0438 \u0447\u0430\u0441\u0442\u044C \u0430\u0434\u0440\u0435\u0441\u0430 ( \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F)");
 			      textField_8.setBounds(5, 64, 97, 20);
 			      panel_6.add(textField_8);
-			      textField_8.setColumns(10);
+			      textField_8.setColumns(100);
+			      
+			      
 			      
 			      JButton button_3 = new JButton("\u0412\u042B\u0425\u041E\u0414");
 			      button_3.setBounds(5, 10, 97, 30);
@@ -1077,7 +1088,8 @@ public class Experr {
 							      textField_numbexcept = new JTextField();
 							      textField_numbexcept.setToolTipText("\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u043D\u0435\u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0449\u0435\u0433\u043E \u0442\u0435\u0440\u043C\u0438\u043D\u0430\u043B\u0430 - \u0433\u043E\u0440\u044F\u0447\u0435\u0435 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435 \u0441\u043F\u0438\u0441\u043A\u0430");
 							      panel_13.add(textField_numbexcept, "cell 3 0,grow");
-							      textField_numbexcept.setColumns(10);
+							      
+							     
 							      
 							      textField_nameexcept = new JTextField();
 							      panel_13.add(textField_nameexcept, "cell 6 0,grow");
@@ -1117,9 +1129,10 @@ public class Experr {
 							      
   				 				  	delete_except.addActionListener(new ActionListener() {
   				 				  		public void actionPerformed(ActionEvent e) {
-  				 				  			TextFild tf = new TextFild();
+  				 				  			//TextFild tf = new TextFild();
 			        	        		try 	{
-									tf.delete_term_exception(textField_numbexcept.getText());
+									//tf.delete_term_exception(textField_numbexcept.getText());
+			        	        			new AddDelExceptTerm().groupAddDel(0);
 										} catch (Exception e1) {
 										}	
 			        	        		
@@ -1137,10 +1150,13 @@ public class Experr {
   				 				  	
 							     add_except.addActionListener(new ActionListener() {
 			        	        	   public void actionPerformed(ActionEvent e) {
-			        	        		TextFild tf = new TextFild();
+			        	        		   //TextFild tf = new TextFild();
 			        	        		try {
-									tf.insert_term_exception(textField_numbexcept.getText(),textField_nameexcept.getText());
-										} catch (Exception e1) {
+			        	        			//tf.insert_term_exception(new AddDelExceptTerm().getArr(), Experr.textField_nameexcept.getText());	
+									//tf.insert_term_exception(textField_numbexcept.getText(),textField_nameexcept.getText());
+										new AddDelExceptTerm().groupAddDel(1);
+			        	        		
+			        	        		} catch (Exception e1) {
 										}
 			        	        		   
 			        	        	   }
@@ -1874,8 +1890,9 @@ public class Experr {
 				try {
 					bdw.reqest_in_db_TTmodel_workers();
 				} catch (ClassNotFoundException e1) {}
-						
-						
-						
+												
 	}
+
+	
+
 }

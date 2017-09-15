@@ -31,15 +31,16 @@ public class Input_csv {
 					 sheet_poi_inf;
 		
 		public static  BD_write bdw = new BD_write();
+		private String time_lost_term;
 	
 	
-	public void write_array (String number_term) throws Exception {
+	public void insertLostSignal (String number_term) throws Exception {
 	
-		int except_term = bdw.get_except_term(number_term);//***������� ������ ���������� ������
+		//int except_term = bdw.get_except_term(number_term);//***������� ������ ���������� ������
 	
-		if (except_term == 0){
+		//if (except_term == 0){
 		
-				String time_lost_term = bdw.get_MAX_time_lost_term(number_term);//***������� �������� ����� ������� ���������� ������		
+				time_lost_term = bdw.get_MAX_time_lost_term(number_term);//***������� �������� ����� ������� ���������� ������		
 				bdw.inser_table_error33(number_term, 
 						time_lost_term, 
 						time_lost_term, 
@@ -47,7 +48,7 @@ public class Input_csv {
 						"OK", 
 						"OK", 
 						OSMP.curientStringDateTame);	
-		}
+		//}
 	}
 		
 	

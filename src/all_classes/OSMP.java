@@ -2,10 +2,7 @@ package all_classes;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -14,6 +11,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import Warning_lost_terminals.Find_lost_term;
+import Warning_lost_terminals.TrackingNewAndLostTerminals;
 import javenue.csv.Csv;
 
 public  class OSMP  {
@@ -41,9 +40,9 @@ public  class OSMP  {
 	public static Gui1 gui1 = new Gui1();
 	public static OSMP osmp = new OSMP();
 	//public static AddArr_model adm = new AddArr_model();
+
 	
-	
-	public static void Input_Data() throws Exception {
+	public void Input_Data() throws Exception {
 		
 		
 		
@@ -102,7 +101,8 @@ public  class OSMP  {
 			    	
 		 Magic_Osmp mo = new Magic_Osmp();	
 		 BD_write bdw = new BD_write();
-			
+		 
+		 Find_lost_term flt = new Find_lost_term();	
 			
 			bdw.connect();//****************подключаюсь к бд****************
 		 
@@ -132,7 +132,8 @@ public  class OSMP  {
 			
 			Last_incass lastincass = new Last_incass();
 			
-		 
+
+			flt.getNumberTermIn_errors33Table().clear();
 		 
 // ГЛАВНЫЙ ТЯЖЕЛЫЙ ПОТОК - вношу данные в файл экспорта**************************************************************************
 
@@ -224,11 +225,17 @@ public  class OSMP  {
 				    Real_time_payment = mo.result_time_last_payment;//
 				    
 				   
+				    
+				    
+				    flt.addNumberTermIn_errors33Table(Number_terminal);//add array of numbers terminals in errors33 table in DB 
+				    
+				    
+				    
 //************************************************************************************************************************************
 //**********************************************************************************************************************************				    
 //************************************************************************************************************************************
 //**********************************************************************************************************************************	
-				    input_csv.number_term_errors_arr.add(Number_terminal);//пишу массив для сравнения с бонусом
+				   // input_csv.number_term_errors_arr.add(Number_terminal);//пишу массив для сравнения с бонусом
 				    //******************************ПЕРЕДАЮ СТРОКУ ВСТАВЩИКУ В БД
 				    switch (triger){				    
 						    case 0 :  bdw.inser_table_error33(Number_terminal, 
@@ -262,14 +269,14 @@ public  class OSMP  {
 					String file_points_info = dir + "\\Downloads\\points_info.xls";		
 					input_csv.writePir(file_points_info);//***********************************вставщик ПИРа в БД
 													
-					bonus.open_csv_bonus();		//пошел делать массив bonus
+					//bonus.open_csv_bonus();		//пошел делать массив bonus
 								
 					
 					
 					
-					osmp.compari_bonus_and_experr_arrs();// пошел сравнивать массивы errors(создается при создании файла) и bonus
+					//osmp.compari_bonus_and_experr_arrs();// пошел сравнивать массивы errors(создается при создании файла) и bonus
 										
-					osmp.experr_in_bonus();// проверяю есть ли в ошибках терема, которых нет в BONUS и добавляю обнаруженные
+					//osmp.experr_in_bonus();// проверяю есть ли в ошибках терема, которых нет в BONUS и добавляю обнаруженные
 					
 					
 					
@@ -277,11 +284,11 @@ public  class OSMP  {
 					
 					
 					//**********************************закрытие вставщика в CSV**************************************			
-					bonus.number_term_bonus_arr.clear();
+					//bonus.number_term_bonus_arr.clear();
 					
 					
 					
-					input_csv.number_term_errors_arr.clear(); //очистка массивов
+					//input_csv.number_term_errors_arr.clear(); //очистка массивов
 
 
 					
@@ -299,9 +306,15 @@ public  class OSMP  {
 					//Experr.table.revalidate();
 					//Experr.table.repaint();
 					
-					bdw.last_inkass_array();
+					//bdw.last_inkass_array();
 					
-				
+					flt.queryForArray_terminals_table(0);
+					
+					TrackingNewAndLostTerminals tnalt = new TrackingNewAndLostTerminals();
+					tnalt.InsertLostSignalInLostTerm();
+					tnalt.addNewTermInDB();
+					
+					
 					
 					bdw.close_connect();	
 					
@@ -312,50 +325,58 @@ public  class OSMP  {
 					Files_check f_c = new Files_check();
 					f_c.delete_old();
 
-					lastincass.output_inkass();							
+					//lastincass.output_inkass();	
+					
+					
+					
+					
+					
+					
+					
+					
 	}
 
 //*********************************************НАХОЖУ БОНУС ТЕРМИНАЛЫ, КОТОРЫХ НЕТ В ERROR_EXPORT********************************
-	public void compari_bonus_and_experr_arrs() throws Exception{
-		
-					String element_bonus_arr = bonus.number_term_bonus_arr.get(0),
-						   element_errors_arr;
-					
-					int triger = 0,
-						size_bonus_arr = bonus.number_term_bonus_arr.size(),
-						size_err_arr = input_csv.number_term_errors_arr.size();
-					
-					
-						for (int z = 0; z < size_bonus_arr; z++){
-							
-							triger = 0;
-						
-								for (int i = 0; i < size_err_arr; i++){
-									
-										element_bonus_arr = bonus.number_term_bonus_arr.get(z);
-										element_errors_arr = input_csv.number_term_errors_arr.get(i);
-								
-										
-										
-											if (element_bonus_arr.compareTo(element_errors_arr) == 0){
-												
-												triger = 1;//нашел бонус терминал в error_export - продолжать цикл его поиска бессмысленно - выхожу из внутреннего цикла
-												break;
-											}
-						
-								}
-								
-									if (triger == 0){
-										try {
-											input_csv.write_array(element_bonus_arr);
-										} catch (Exception e) {
-		
-											e.printStackTrace();
-										} //отдаю вставщику в errors_export csv найденый терминал
-									}
-						}
-				
-	}
+//	public void compari_bonus_and_experr_arrs() throws Exception{
+//		
+//					String element_bonus_arr = bonus.number_term_bonus_arr.get(0),
+//						   element_errors_arr;
+//					
+//					int triger = 0,
+//						size_bonus_arr = bonus.number_term_bonus_arr.size(),
+//						size_err_arr = input_csv.number_term_errors_arr.size();
+//					
+//					
+//						for (int z = 0; z < size_bonus_arr; z++){
+//							
+//							triger = 0;
+//						
+//								for (int i = 0; i < size_err_arr; i++){
+//									
+//										element_bonus_arr = bonus.number_term_bonus_arr.get(z);
+//										element_errors_arr = input_csv.number_term_errors_arr.get(i);
+//								
+//										
+//										
+//											if (element_bonus_arr.compareTo(element_errors_arr) == 0){
+//												
+//												triger = 1;//нашел бонус терминал в error_export - продолжать цикл его поиска бессмысленно - выхожу из внутреннего цикла
+//												break;
+//											}
+//						
+//								}
+//								
+//									if (triger == 0){
+//										try {
+//											input_csv.write_array(element_bonus_arr);
+//										} catch (Exception e) {
+//		
+//											e.printStackTrace();
+//										} //отдаю вставщику в errors_export csv найденый терминал
+//									}
+//						}
+//				
+//	}
 //*************************************************************************************************************************************	
 	
 //****************************************НАХОЖУ ТЕРМИНАЛЫ КОТОРЫЕ ЕСТЬ В ВЫГРУЗКЕ, НО НЕТ В BONUS**************	

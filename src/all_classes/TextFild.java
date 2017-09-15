@@ -104,23 +104,25 @@ public class TextFild {
 											BD_write bdw = new BD_write();
 						
 											
-							String query = "update terminals set except_name = '" + name_exception + "'"
-										 +" where id_term = " + number_term;
-											
+							String query = "update terminals set except_name = '" + name_exception + "' ,"
+														       +" except_term = 1 ,"
+														       +" time_except = '"+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis())
+														       +"' where id_term = " + number_term;				
 
 											bdw.insert_new_term(query);
 		
-											if (name_exception.compareTo("") != 0) {
-										String query1 = "update terminals set except_term = 1 where id_term = " + number_term;
-										String query2 = "update terminals set time_except = '" 
-												+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis())
-												+ "' where id_term = " + number_term;
-										bdw.insert_new_term(query1);
-										bdw.insert_new_term(query2);
-														}
+//											if (name_exception.compareTo("") != 0) {
+//												String query1 = "update terminals set except_term = 1 where id_term = " + number_term;
+//												String query2 = "update terminals set time_except = '" 
+//														+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis())
+//														+ "' where id_term = " + number_term;
+//												bdw.insert_new_term(query2);
+//												bdw.insert_new_term(query1);
+//											}
 											
 							
 							} catch (NumberFormatException e) {
+								
 											String txt = "<html><center>Недопустимый ввод номера терминала</html>";
 											Gui1 gui1 = new Gui1();
 											gui1.Gui0(txt);
