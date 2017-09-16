@@ -74,6 +74,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import Osmp_Osmp.Service;
+import authorization.AuthForm;
 import contextFind.TooManyCriteries;
 import gruopAddExcept.AddDelExceptTerm;
 
@@ -193,6 +194,14 @@ public class Experr {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 
+				
+				Loging log = new Loging();
+				log.logtext(" Старт программы, авторизация "
+							+"******************************************************************************");
+				
+				
+				
+				
 				Calendar calendar = Calendar.getInstance();
 				day = calendar.get(Calendar.DAY_OF_MONTH);
 				month = calendar.get(Calendar.MONTH) + 1;
@@ -209,30 +218,18 @@ public class Experr {
 																// дропбоксе
 				}
 
-				Loging log = new Loging();
-				log.logtext(" Старт программы "
-							+"******************************************************************************");
 				
 				
-//				Report_to_mail rtm = new Report_to_mail();
-//				rtm.open_socket();
-//				System.out.println("Ioe?ue niaaeiaiea");
+				AuthForm auth = new AuthForm();
+				
+				
+				
 //				try {
-//					rtm.address_repo();
-//				} catch (AddressException e) {
-//					e.printStackTrace();}
-//				
-				
-			
-				
-				
-				
-				try {
-					Experr window = new Experr();
-					window.frmExperrtV.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+//					Experr window = new Experr();
+//					window.frmExperrtV.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
 				
 
 			}
