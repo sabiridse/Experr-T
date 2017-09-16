@@ -73,6 +73,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import Lider_Dps.ServicePPS;
 import Osmp_Osmp.Service;
 
 import java.awt.Component;
@@ -697,6 +698,27 @@ public class Experr {
 //*************************?eoa? ec AA a?aiy iineaaiae ?annueee*****************		    		 
 	    			 
 	    			 label_time_to_last_mail.setText(bdw.get_time_last_mail());
+	    			 
+	    			 
+//***********************************************************************************************************	    			 
+	    			 JButton button_PPS = new JButton("ДПС");
+	    			 button_PPS.setToolTipText("Преобразование ошибок ДПС в нужный формат файла points_info");
+	    			 button_PPS.setForeground(new Color(153, 204, 153));
+	    			 button_PPS.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+	    			 button_PPS.setBackground(new Color(0, 153, 153));
+	    			 button_PPS.setBounds(5, 543, 97, 29);
+	    			 panel_6.add(button_PPS);
+	    			 
+	    			 
+	    			 button_PPS.addActionListener(new ActionListener() {
+				    	  public void actionPerformed(ActionEvent arg0) {
+	    			 
+				    		  ServicePPS service = new ServicePPS();
+				    			service.addPoints_info();
+				    		  
+				    		  
+				    	  }	  
+				     });
 //**********************************************************************************			      
 			      
 			      
