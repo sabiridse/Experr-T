@@ -73,6 +73,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import Lider_Dps.ServicePPS;
 import Osmp_Osmp.Service;
 import authorization.AuthForm;
 import contextFind.TooManyCriteries;
@@ -196,7 +197,7 @@ public class Experr {
 
 				
 				Loging log = new Loging();
-				log.logtext(" Старт программы, авторизация "
+				log.logtext(" Старт программы "
 							+"******************************************************************************");
 				
 				
@@ -210,26 +211,26 @@ public class Experr {
 				directory_res = path + "//res//"; // путь к папке с прогой по
 														// умолчанию
 				
-				try {
-					FileInputStream serv_osmp = new FileInputStream(directory_res + "bonus.csv");
-				} catch (FileNotFoundException e) {
-					directory_res = path + "//ExpoErr//res//";/// путь к папке с
-																// прогой в
-																// дропбоксе
-				}
+//				try {
+//					FileInputStream serv_osmp = new FileInputStream(directory_res + "bonus.csv");
+//				} catch (FileNotFoundException e) {
+//					directory_res = path + "//ExpoErr//res//";/// путь к папке с
+//																// прогой в
+//																// дропбоксе
+//				}
 
 				
 				
-				AuthForm auth = new AuthForm();
+				//AuthForm auth = new AuthForm();
 				
 				
 				
-//				try {
-//					Experr window = new Experr();
-//					window.frmExperrtV.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
+				try {
+					Experr window = new Experr();
+					window.frmExperrtV.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				
 
 			}
@@ -705,6 +706,27 @@ public class Experr {
 //*************************?eoa? ec AA a?aiy iineaaiae ?annueee*****************		    		 
 	    			 
 	    			 label_time_to_last_mail.setText(bdw.get_time_last_mail());
+	    			 
+	    			 
+//***********************************************************************************************************	    			 
+	    			 JButton button_PPS = new JButton("ДПС");
+	    			 button_PPS.setToolTipText("Преобразование ошибок ДПС в нужный формат файла points_info");
+	    			 button_PPS.setForeground(new Color(153, 204, 153));
+	    			 button_PPS.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+	    			 button_PPS.setBackground(new Color(0, 153, 153));
+	    			 button_PPS.setBounds(5, 543, 97, 29);
+	    			 panel_6.add(button_PPS);
+	    			 
+	    			 
+	    			 button_PPS.addActionListener(new ActionListener() {
+				    	  public void actionPerformed(ActionEvent arg0) {
+	    			 
+				    		  ServicePPS service = new ServicePPS();
+				    			service.addPoints_info();
+				    		  
+				    		  
+				    	  }	  
+				     });
 //**********************************************************************************			      
 			      
 			      
@@ -1889,7 +1911,4 @@ public class Experr {
 				} catch (ClassNotFoundException e1) {}
 												
 	}
-
-	
-
 }

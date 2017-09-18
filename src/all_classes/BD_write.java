@@ -826,7 +826,7 @@ public class BD_write {
 																					groups [3] =result.getInt("regions");
 																			}
 																			result.close();							
-														}	catch (SQLException e)	{System.out.println("2 " +e);}
+														}	catch (SQLException e)	{System.out.println("reqest_in_distrs " +e);}
 														this.close_connect();			
 														return groups;
 													}
