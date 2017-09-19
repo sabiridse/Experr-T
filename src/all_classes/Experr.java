@@ -253,7 +253,7 @@ public class Experr {
 		frmExperrtV = new JFrame();
 		
 //**********************VERSION****************************************************
-		frmExperrtV.setTitle("EXperr-t  v.1.0.4");//**********************VERSION**
+		frmExperrtV.setTitle("EXperr-t  v.2.0");//**********************VERSION**
 //*********************************************************************************
 		
 		
