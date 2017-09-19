@@ -97,6 +97,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollBar;
 import javax.swing.JRadioButton;
 import net.miginfocom.swing.MigLayout;
+import workBeforeStart.ServiceWBS;
 
 import javax.mail.internet.AddressException;
 import javax.swing.BoxLayout;
@@ -667,21 +668,21 @@ public class Experr {
 
 			      
 //*******a?oceou eee ia a?oceou eieannaoee aianoa n ioeaeaie ( ieooouny a ioaaeuio? oaaee?eo a AA)*****			      
-			      JCheckBox checkBox_inkass = new JCheckBox("\u0418\u043D\u043A\u0430\u0441\u0441");
-			      checkBox_inkass.setToolTipText("\u0412\u043A\u043B/\u0412\u044B\u043A\u043B \u0430\u0432\u0442\u043E\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0445 \u0437\u0430 \u0442\u0435\u043A\u0443\u0449\u0438\u0439 \u0434\u0435\u043D\u044C  \u0438\u043D\u043A\u0430\u0441\u0441\u0430\u0446\u0438\u0439");
-			      checkBox_inkass.setForeground(new Color(0, 204, 153));
-			      checkBox_inkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
-			      checkBox_inkass.setBackground(new Color(51, 153, 153));
-			      checkBox_inkass.setBounds(5, 157, 96, 25);
-			      panel_6.add(checkBox_inkass);
-			       
-			      checkBox_inkass.addItemListener(new ItemListener() {
-			          public void itemStateChanged(ItemEvent e) {			            
-					        	 if (checkBox_inkass.isSelected()) {					        		 
-					        		 Last_inkass = 1;					        		 
-					        	 } else Last_inkass = 0;			          
-			          }
-			      });
+//			      JCheckBox checkBox_inkass = new JCheckBox("\u0418\u043D\u043A\u0430\u0441\u0441");
+//			      checkBox_inkass.setToolTipText("\u0412\u043A\u043B/\u0412\u044B\u043A\u043B \u0430\u0432\u0442\u043E\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0445 \u0437\u0430 \u0442\u0435\u043A\u0443\u0449\u0438\u0439 \u0434\u0435\u043D\u044C  \u0438\u043D\u043A\u0430\u0441\u0441\u0430\u0446\u0438\u0439");
+//			      checkBox_inkass.setForeground(new Color(0, 204, 153));
+//			      checkBox_inkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+//			      checkBox_inkass.setBackground(new Color(51, 153, 153));
+//			      checkBox_inkass.setBounds(5, 157, 96, 25);
+//			      panel_6.add(checkBox_inkass);
+//			       
+//			      checkBox_inkass.addItemListener(new ItemListener() {
+//			          public void itemStateChanged(ItemEvent e) {			            
+//					        	 if (checkBox_inkass.isSelected()) {					        		 
+//					        		 Last_inkass = 1;					        		 
+//					        	 } else Last_inkass = 0;			          
+//			          }
+//			      });
 //*************************************************************************************************************			        						                            											
 			      
 			      
@@ -709,27 +710,55 @@ public class Experr {
 	    			 
 	    			 
 //***********************************************************************************************************	    			 
-	    			 JButton button_PPS = new JButton("ДПС");
-	    			 button_PPS.setToolTipText("Преобразование ошибок ДПС в нужный формат файла points_info");
-	    			 button_PPS.setForeground(new Color(153, 204, 153));
-	    			 button_PPS.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
-	    			 button_PPS.setBackground(new Color(0, 153, 153));
-	    			 button_PPS.setBounds(5, 543, 97, 29);
-	    			 panel_6.add(button_PPS);
-	    			 
-	    			 
-	    			 button_PPS.addActionListener(new ActionListener() {
-				    	  public void actionPerformed(ActionEvent arg0) {
-	    			 
-				    		  ServicePPS service = new ServicePPS();
-				    			service.addPoints_info();
-				    		  
-				    		  
-				    	  }	  
-				     });
-//**********************************************************************************			      
-			      
-			      
+//	    			 JButton button_PPS = new JButton("ДПС");
+//	    			 button_PPS.setToolTipText("Преобразование ошибок ДПС в нужный формат файла points_info");
+//	    			 button_PPS.setForeground(new Color(153, 204, 153));
+//	    			 button_PPS.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+//	    			 button_PPS.setBackground(new Color(0, 153, 153));
+//	    			 button_PPS.setBounds(5, 543, 97, 29);
+//	    			 panel_6.add(button_PPS);
+//	    			 
+//			    			 button_PPS.addActionListener(new ActionListener() {
+//						    	  public void actionPerformed(ActionEvent arg0) {
+//			    			 
+//						    		  ServicePPS service = new ServicePPS();
+//						    			try {
+//						    				
+//												service.addPoints_info();
+//										
+//						    			} catch (FileNotFoundException e) {
+//											e.printStackTrace();
+//										} catch (IOException e) {
+//											e.printStackTrace();
+//										}
+//						    		  
+//						    		  
+//						    	  }	  
+//						     });
+//	    			 
+//*************************************************************************************************************	    			 
+//	    			 JButton btnOsmp = new JButton("ОСМП");
+//	    			 btnOsmp.setToolTipText("Слияние 2 terminal_monitoring в 1");
+//	    			 btnOsmp.setBackground(new Color(51, 153, 153));
+//	    			 btnOsmp.setForeground(new Color(0, 255, 153));
+//	    			 btnOsmp.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+//	    			 btnOsmp.setBounds(5, 581, 97, 29);
+//	    			 panel_6.add(btnOsmp);
+//	    			 
+//	    			 
+//			    			 btnOsmp.addActionListener(new ActionListener() {
+//			     	        	   public void actionPerformed(ActionEvent e) {
+//			     	        		  
+//			     	        		  Service service = new Service();
+//			     	        			try {
+//											service.two_in_one();
+//										} catch (IOException e1) {
+//											
+//											e1.printStackTrace();
+//										}
+//			     	        		      
+//			     	        	   }
+//					        });
 			      
 //***************************************************ПОЧТА**********************************************				
 			      button.addActionListener(new ActionListener() {
@@ -893,19 +922,18 @@ public class Experr {
 			    			public void actionPerformed(ActionEvent arg0) {
 			    				
 			    				Loging log = new Loging();
-			    				log.logtext(" Собираю данные об ошибках ");
 			    				
-			    				btnNewButton_1.setEnabled(false);
-			    				//button_5.setVisible(true);
-			    				Files_check f_c = new Files_check();
-			    				f_c.checking();                         //"Запуск ЭКСПОРТА"
-			    				
-			    				
-			    				
-			    				
-			    			}
-			    			
-			    			
+				    				log.logtext(" Объединяю файлы и создаю в нужном формате ");			    				
+				    				ServiceWBS swbs = new ServiceWBS();
+				    						   swbs.creatureAllFiles();
+			    							    				
+						    				log.logtext(" Собираю данные об ошибках ");				    				
+						    				btnNewButton_1.setEnabled(false);
+						    				//button_5.setVisible(true);
+						    				Files_check f_c = new Files_check();
+						    				f_c.checking();                         //"Запуск ЭКСПОРТА"
+			    							    							    				
+			    			}			    						    			
 			    		});
 			    		
 			    		
@@ -1664,27 +1692,6 @@ public class Experr {
 			        txtFild_color_mailto2.setColumns(10);
 			        txtFild_color_mailto2.setBounds(470, 388, 86, 20);
 			        panel.add(txtFild_color_mailto2);
-			      
-			        
- //***************************************************************************************			        
-			        
-			        JButton btnNewButton = new JButton("OSMP 2 in 1");
-			        btnNewButton.setBounds(470, 494, 112, 91);
-			        panel.add(btnNewButton);
-			        
-			        btnNewButton.addActionListener(new ActionListener() {
-	     	        	   public void actionPerformed(ActionEvent e) {
-	     	        		  
-	     	        		  Service service = new Service();
-	     	        			try {
-									service.two_in_one();
-								} catch (IOException e1) {
-									
-									e1.printStackTrace();
-								}
-	     	        		      
-	     	        	   }
-			        });
 			        
 			        
 //***************************************************************************************

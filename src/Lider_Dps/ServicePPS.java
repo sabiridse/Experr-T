@@ -28,28 +28,14 @@ public class ServicePPS {
 	private XSSFSheet sheetPPS;
 	private HSSFWorkbook wb_points_info;
 	private HSSFSheet sheet_points_info;
-	
+	private JFileChooser fileopen;
 		
 //*******************************************************************************************************************	
 			@SuppressWarnings("resource")
-			private void openLiderAndPPS() throws FileNotFoundException, IOException{
-				
-//				FileOperation fileOperationLid = new FileOperation();
-//				try {
-//					sheetLid = fileOperationLid.OpenFile("points_info.xls");//not use
-//				} catch (IOException e) {			
-//					e.printStackTrace();
-//				}
-				
-//				FileOperation fileOperationPPS = new FileOperation();
-//				try {
-//					sheetPPS = fileOperationPPS.OpenFile("Терминалы.xls");
-//				} catch (IOException e) {			
-//					e.printStackTrace();
-//				}
-				
+			private XSSFSheet openLiderAndPPS() throws FileNotFoundException, IOException{
+
 				String dir = new FileOperation().getDir();				
-				JFileChooser fileopen = new JFileChooser(dir);
+							 fileopen = new JFileChooser(dir);
 							 fileopen.setFileFilter(new FileNameExtensionFilter("xlsx","xlsx"));
 							 fileopen.showDialog(null, "Выбрать файл");
 				sheetPPS = new XSSFWorkbook(new FileInputStream(dir + fileopen.getSelectedFile().getName()))
@@ -61,7 +47,7 @@ public class ServicePPS {
 		            rows_in_PPS ++;        // эта переменная и будет кол-вом строк после полного цикла
 		        }
 				
-				
+				return sheetPPS;
 			}
 	
 //**********************************************************************************************************************
@@ -155,39 +141,40 @@ public class ServicePPS {
 									return curientStringDateTame;
 								}
 //***********************************************************************************************************************************						
-			private void cretureRowPoints_info( int numberRow){
+			private void cretureRowPoints_info( XSSFSheet sheetPPS, int numberRowSource, int numberRowTarget){
 				
-				Row row = sheet_points_info.createRow(numberRow);					
-				row.createCell(0).setCellValue(this.getValue(sheetPPS, numberRow+2, 0));				
-				row.createCell(1).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRow+2, 1)));					
-				row.createCell(2).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRow+2, 2)));					
-				row.createCell(3).setCellValue(this.getValue(sheetPPS, numberRow+2, 4));//cash and print change column				
-				row.createCell(4).setCellValue(this.getValue(sheetPPS, numberRow+2, 3));//cash and print change column					
+				Row row = sheet_points_info.createRow(numberRowTarget);	
+
+				row.createCell(0).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 0));				
+				row.createCell(1).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRowSource+2, 1)));					
+				row.createCell(2).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRowSource+2, 2)));					
+				row.createCell(3).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 4));//cash and print change column				
+				row.createCell(4).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 3));//cash and print change column					
 				row.createCell(5).setCellValue("OK");			
 						
 						
 			}
 								
 //****************************************************************************************************								
-				public void addPoints_info(){
+				public void addPoints_info() throws FileNotFoundException, IOException{
 					
-					try {
-						
-						this.openLiderAndPPS();
-					
-					} catch (FileNotFoundException e1) {
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
 					this.CreatureFile();
 					
+					XSSFSheet sheet_first_file = this.openLiderAndPPS();
+						for (int q =1; q < rows_in_PPS-1; q++){
+								this.cretureRowPoints_info(sheet_first_file, q, q);
+						}
+						
+							fileopen.getSelectedFile().delete();
+						
+					int firstRowSecondFile = rows_in_PPS-1;
+					XSSFSheet sheet_second_file = this.openLiderAndPPS();
+						for (int i =firstRowSecondFile; i < rows_in_PPS-3; i++){
+								this.cretureRowPoints_info(sheet_second_file, i-firstRowSecondFile+1, i);
+						}
 					
-					for (int q =1; q < rows_in_PPS-1; q++){
-					this.cretureRowPoints_info(q);
-					}
-					
-																				
+							fileopen.getSelectedFile().delete();
+						
 					try {
 											this.SaveFile();
 										} catch (IOException e) {

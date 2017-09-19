@@ -11,9 +11,12 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import Lider_Dps.ServicePPS;
+import Osmp_Osmp.Service;
 import Warning_lost_terminals.Find_lost_term;
 import Warning_lost_terminals.TrackingNewAndLostTerminals;
 import javenue.csv.Csv;
+import export_err.NewThread_one;
 
 public  class OSMP  {
 	
@@ -39,13 +42,10 @@ public  class OSMP  {
 	public static Input_csv input_csv = new Input_csv();
 	public static Gui1 gui1 = new Gui1();
 	public static OSMP osmp = new OSMP();
-	//public static AddArr_model adm = new AddArr_model();
 
 	
 	public void Input_Data() throws Exception {
-		
-		
-		
+				
 		int triger = 0;
 		String  err0 = "OK",
 				err1 = "Стекер заполнен",

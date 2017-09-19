@@ -1,17 +1,13 @@
-package all_classes;
-//import src.OSMP;
-
-
+package export_err;
 public class NewThread_one extends Thread{
 	
 	
 	
-	public void New_Three(){//*****������� ������� ����� ����� ��������� ������*****
+	public void New_Three(){//*****ГЛАВНЫЙ ТЯЖЕЛЫЙ ПОТОК ЦИКЛА ОБРАБОТКИ ДАННЫХ*****
 				
 			new Thread(() -> {
 			        OSMP main_heavy_Thread = new OSMP();
 			        try {
-
 						main_heavy_Thread.Input_Data();
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -20,7 +16,7 @@ public class NewThread_one extends Thread{
 			
 	}
 /*	
-	public void New_fore(){//*****����� ����� ��������� ������  ������ ��������*****
+	public void New_fore(){//*****ПОТОК ЦИКЛА ОБРАБОТКИ ДАННЫХ  строки статусов*****
 		
 		new Thread(() -> {
 		        OSMP status_Thread = new OSMP();
