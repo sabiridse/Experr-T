@@ -107,6 +107,8 @@ public class BD_write {
 									String tach,
 									String time) throws Exception{
 
+		
+		
 
 									try {				       
 									       query1 = "INSERT INTO errors33 VALUES (" + number + ", '" 
@@ -115,13 +117,15 @@ public class BD_write {
 									    		   									+ cash + "', '" 
 									    		   									+ print + "', '" 
 									    		   									+ tach + "', '" 
-									    		   									+ time + "')";      
+									    		   									+ time + "')"; 
 									       st = conn.createStatement();
 									       st.execute(query1);
 		
 									}
 								    catch (Exception ex) {
 								        ex.printStackTrace();
+								        Loging log = new Loging();
+										log.log(ex,query1);
 								    }					
 	}		
 //********************************************************************************************************************************	

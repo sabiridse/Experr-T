@@ -9,16 +9,7 @@ public class Find_lost_term {
 
 	
 	private static ArrayList<String> NumberTermIn_errors33Table = new ArrayList <String>();
-	private static ArrayList<String> NumberTermIn_terminalsTable = new ArrayList <String>();
-
-	
-	
-
-			
-	
-	
-	
-	
+	private static ArrayList<String> NumberTermIn_terminalsTable = new ArrayList <String>();	
      		public ArrayList<String> getNumberTermIn_terminalsTable() {
 				
 				

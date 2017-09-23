@@ -410,7 +410,7 @@ public class Experr {
 			        						                            				progressBar_1.setStringPainted(true);
 			        						                            				progressBar_1.setForeground(new Color(51, 204, 102));
 			        						                            				progressBar_1.setBackground(new Color(153, 153, 153));
-			        						                            				progressBar_1.setMaximum(1650);
+			        						                            				progressBar_1.setMaximum(2000);
 			        						                            				
 			        						                            					
 			        						                            				

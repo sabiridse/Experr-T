@@ -101,8 +101,7 @@ if(index0 != -1){//если есть месяц или месяцев
 			
 	finaly_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(curTime - result_time);//итог обработки
 	
-	
-	
+				
 }
 	
 	public String getTime_to_time(String date_time) {

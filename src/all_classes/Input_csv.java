@@ -10,6 +10,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import Ostatki.Ostatki;
+import Warning_lost_terminals.Find_lost_term;
 import javenue.csv.Csv;
 
 public class Input_csv {
@@ -40,7 +42,13 @@ public class Input_csv {
 	
 		//if (except_term == 0){
 		
-				time_lost_term = bdw.get_MAX_time_lost_term(number_term);//***������� �������� ����� ������� ���������� ������		
+				time_lost_term = bdw.get_MAX_time_lost_term(number_term);//***time sign and time lost pay in histori table	
+				
+						if (time_lost_term == null) {
+							
+							time_lost_term = "2001-01-01 01:01:01"; //if histori is absent
+						}
+				
 				bdw.inser_table_error33(number_term, 
 						time_lost_term, 
 						time_lost_term, 
@@ -65,7 +73,10 @@ public class Input_csv {
 		
 		 OSMP osmp = new OSMP();
 		 Magic_Osmp magic_osmp = new Magic_Osmp();
-		
+		 Find_lost_term flt = new Find_lost_term();
+		 Gui1 gui1 = new Gui1();
+		 Ostatki ostatki = new Ostatki();
+		 
 		FileInputStream points_info = new FileInputStream(file);//��� ������
 		Workbook wb_poi_inf = new HSSFWorkbook(points_info);
 		sheet_poi_inf = wb_poi_inf.getSheetAt(0);
@@ -78,7 +89,7 @@ public class Input_csv {
 		
 
         
-		for (int i = 1; i < rows_in_points_info-1; i++) {
+		for (int i = 1; i < rows_in_points_info; i++) {
 	
 					Row row_imp = sheet_poi_inf.getRow(i);//������ ��� ������		
 					
@@ -124,6 +135,7 @@ public class Input_csv {
 								time_signal = magic_osmp.getTime_to_time(time_signal);
 								time_pay = magic_osmp.getTime_to_time(time_pay);
 								
+								 flt.addNumberTermIn_errors33Table(number_terminal);// add in Array_errors33 points_info terminal
 								
 								
 								bdw.inser_table_error33(number_terminal, 
@@ -132,7 +144,11 @@ public class Input_csv {
 														status_cash, 
 														status_print, 
 														"OK", 
-					    								OSMP.curientStringDateTame);					
+					    								OSMP.curientStringDateTame);	
+								
+								//ostatki.setValue(number_terminal, row.getCell(4).getStringCellValue());// add ARRAY for OSTATKI
+								
+								gui1.runable_progbar(i+1650);
 																		
 		}	
 	

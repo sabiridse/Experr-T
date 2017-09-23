@@ -21,6 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Osmp_Osmp.FileOperation;
+import Ostatki.Ostatki;
 
 public class ServicePPS {
 	private int rows_in_PPS = 0;
@@ -29,6 +30,7 @@ public class ServicePPS {
 	private HSSFWorkbook wb_points_info;
 	private HSSFSheet sheet_points_info;
 	private JFileChooser fileopen;
+	Ostatki ostatki = new Ostatki();
 		
 //*******************************************************************************************************************	
 			@SuppressWarnings("resource")
@@ -46,7 +48,7 @@ public class ServicePPS {
 		        	iterator_PPS.next();
 		            rows_in_PPS ++;        // эта переменная и будет кол-вом строк после полного цикла
 		        }
-				
+				rows_in_PPS --;
 				return sheetPPS;
 			}
 	
@@ -143,7 +145,10 @@ public class ServicePPS {
 //***********************************************************************************************************************************						
 			private void cretureRowPoints_info( XSSFSheet sheetPPS, int numberRowSource, int numberRowTarget){
 				
+				
 				Row row = sheet_points_info.createRow(numberRowTarget);	
+				
+				ostatki.setValue(this.getValue(sheetPPS, numberRowSource+2, 0), this.getValue(sheetPPS, numberRowSource+2, 7));
 
 				row.createCell(0).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 0));				
 				row.createCell(1).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRowSource+2, 1)));					

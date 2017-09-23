@@ -1,16 +1,43 @@
 package test;
 
-import Warning_lost_terminals.Find_lost_term;
+import java.util.ArrayList;
 
 public class LookingArraysSize {
 
-	public void look(){
-		Find_lost_term flt = new Find_lost_term();
-		System.out.println("смотритель видит  terminals размером " + flt.getSizeNumberTermIn_terminalsTable());
-		System.out.println("смотритель видит errors33 размером " + flt.getSizeNumberTermIn_errors33Table());
+	private static ArrayList<String[]> Array1 = new ArrayList <String []>();
+	
+	public void setValue(String numberTerm, String summ){
+
+		Array1.add(new String[]{numberTerm,summ});
 		
 	}
 	
 	
+		public String[] getNumberTermWhithSumm(int index){
+			
+			return Array1.get(index);
+		}
 	
+			public void add(){
+					
+					this.setValue("10273000", "76352");
+					this.setValue("10273001", "211");
+					this.setValue("10273002", "39888");
+					this.setValue("10273003", "555567");
+					this.setValue("10273004", "100288");
+
+				
+			}
+			
+			public void test(){
+				
+				this.add();
+				
+				for (int i=0;i<5;i++){
+					
+					 System.out.println(this.getNumberTermWhithSumm(i)[0]+" "+this.getNumberTermWhithSumm(i)[1]);
+				}
+				
+			}
+			
 }

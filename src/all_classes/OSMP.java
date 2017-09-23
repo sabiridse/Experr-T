@@ -13,6 +13,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 import Lider_Dps.ServicePPS;
 import Osmp_Osmp.Service;
+import Ostatki.Ostatki;
 import Warning_lost_terminals.Find_lost_term;
 import Warning_lost_terminals.TrackingNewAndLostTerminals;
 import javenue.csv.Csv;
@@ -101,7 +102,7 @@ public  class OSMP  {
 			    	
 		 Magic_Osmp mo = new Magic_Osmp();	
 		 BD_write bdw = new BD_write();
-		 
+		 Ostatki ostatki = new Ostatki();
 		 Find_lost_term flt = new Find_lost_term();	
 			
 			bdw.connect();//****************подключаюсь к бд****************
@@ -153,11 +154,8 @@ public  class OSMP  {
 					Number_terminal = string_whis_numberOfterminal.substring(0, 8);    //вырезаю из значения  первые 8 символов - получаю номер терема
 				
 					
-					
-					//************БЕРУ НОМЕР ТЕРЕМА
-					
-					//***НУЖНО УЗНАТЬ ССУММУ
-					
+
+					ostatki.setValue(Number_terminal, row.getCell(4).getStringCellValue());// add ARRAY for OSTATKI
 					
 					
 					
@@ -218,7 +216,7 @@ public  class OSMP  {
 					//*****************************************************************************************				
 										
 					if (string_whis_payment.compareTo("") == 0) {
-						string_whis_payment = "9 дней, 16 часов и58 минут";// поле ПЛАТЕЖ в terminal monitoring пустое то ставлю 9 дней и 16 часов назад (просто так)
+						string_whis_payment = "20 дней, 16 часов и58 минут";// поле ПЛАТЕЖ в terminal monitoring пустое то ставлю 9 дней и 16 часов назад (просто так)
 					}
 					
 					Real_time_signal = mo.result_time_signal;//
@@ -294,14 +292,13 @@ public  class OSMP  {
 					
 					bdw.main_reqest();
 				
-					
+					ostatki.creatureOstatki();
 
 					
 					//input_csv.close_bonus_csv();
 //********************************************************************************		
 		
-					Experr.progressBar_1.setVisible(false);
-					Experr.progressBar_1.setValue(0);
+					
 					
 					//Experr.table.revalidate();
 					//Experr.table.repaint();
@@ -318,17 +315,23 @@ public  class OSMP  {
 					
 					bdw.close_connect();	
 					
+					
+					
+					
 //					String txt = "<html><center>ошибки записаны в БД</html>";
 //						gui1.Gui0(txt);
 						Experr.btnNewButton_1.setEnabled(true);
 
+						gui1.runable_progbar(2000);
+						
 					Files_check f_c = new Files_check();
 					f_c.delete_old();
 
 					//lastincass.output_inkass();	
 					
 					
-					
+					Experr.progressBar_1.setVisible(false);
+					Experr.progressBar_1.setValue(0);
 					
 					
 					
