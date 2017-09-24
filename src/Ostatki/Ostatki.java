@@ -13,7 +13,7 @@ public class Ostatki {
 	
 	private HSSFWorkbook wb_ostatki;
 	private HSSFSheet sheet_ostatki;
-	private static ArrayList<String[]> NumberTermWhithSumm = new ArrayList <String []>();;
+	private static ArrayList<int[]> NumberTermWhithSumm = new ArrayList <int []>();;
 	
 //		public Ostatki() {
 //			
@@ -24,7 +24,8 @@ public class Ostatki {
 	
 			public void setValue(String numberTerm, String summ){
 		
-				NumberTermWhithSumm.add(new String[]{numberTerm,summ});
+			NumberTermWhithSumm.add(new int[]{Integer.parseInt(numberTerm)
+					,(int) Double.parseDouble(summ.replaceAll(",","."))});
 				
 			}
 			
@@ -51,7 +52,7 @@ public class Ostatki {
 			
 			
 			
-				private String[] getNumberTermWhithSumm(int index){
+				private int[] getNumberTermWhithSumm(int index){
 					
 					return NumberTermWhithSumm.get(index);
 				}
@@ -63,7 +64,7 @@ public class Ostatki {
 				
 				private void creatureRowOstatki(int IndexArray){
 				
-					Row row = sheet_ostatki.createRow(IndexArray);	
+					Row row = sheet_ostatki.createRow(IndexArray+1);	
 	
 					row.createCell(0).setCellValue(this.getNumberTermWhithSumm(IndexArray)[0]);				
 					row.createCell(1).setCellValue(this.getNumberTermWhithSumm(IndexArray)[1]);							

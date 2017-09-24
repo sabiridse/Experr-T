@@ -10,9 +10,12 @@ public class RunTestClass {
 			public static void main(String[] args) {
 					
 
-				new LookingArraysSize().test();
+				String summ = "1237,00";
 				
-			}
+				int i = (int) Double.parseDouble(summ.replaceAll(",","."));
+				System.out.println(i);
+				
+				}
 
 	
 	
