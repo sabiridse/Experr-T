@@ -51,7 +51,7 @@ public class Input_csv {
 				
 				bdw.inser_table_error33(number_term, 
 						time_lost_term, 
-						time_lost_term, 
+						"2001-01-01 01:01:01", 
 						"OK", 
 						"OK", 
 						"OK", 

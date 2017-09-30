@@ -25,7 +25,7 @@ public class Ostatki {
 			public void setValue(String numberTerm, String summ){
 		
 			NumberTermWhithSumm.add(new int[]{Integer.parseInt(numberTerm)
-					,(int) Double.parseDouble(summ.replaceAll(",","."))});
+					,(int) Double.parseDouble(summ.replaceAll(",","."))});//parse string 1238,00 in int 1238
 				
 			}
 			

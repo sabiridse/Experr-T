@@ -107,7 +107,7 @@ public class TermTableModel extends AbstractTableModel{
 
 		String [] rows = dataArrayList.get(rowIndex);
 		
-		Experr.table.setToolTipText(rows[columnIndex]);//***����������� ��������� ����������� ������
+		Experr.table.setToolTipText(rows[columnIndex]);
 		
         return rows[columnIndex];
 		

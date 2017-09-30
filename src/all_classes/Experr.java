@@ -449,40 +449,17 @@ public class Experr {
 			button_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
-					subArr = new TooManyCriteries().getSplitInputData();
-					
-					String query_find = "select errors33.id_term, terminals.name_term, errors33.heart_bit, errors33.pay, errors33.cash,"// my first hardcode ;)
-							+ " errors33.print, errors33.tach, terminals.other, terminals.name_distr, errors33.curtime"
-							+ " from errors33"
-							+ " left join terminals on errors33.id_term = terminals.id_term "   															
-							+ " where errors33.id_term = '" + subArr[0] + "' or "
-							+       " errors33.id_term = '" + subArr[1] + "' or "
-							+		" errors33.id_term = '" + subArr[2] + "' or "
-							+		" errors33.id_term = '" + subArr[3] + "' or "
-							+		" errors33.id_term = '" + subArr[4] + "'"
-							+ " union "
-							+ " select errors33.id_term, terminals.name_term, errors33.heart_bit, errors33.pay, errors33.cash,"
-							+ " errors33.print, errors33.tach, terminals.other, terminals.name_distr, errors33.curtime"
-							+ " from errors33"
-							+ " left join terminals on errors33.id_term = terminals.id_term "   															
-							+ " where terminals.name_term like '%" + subArr[0] + "%' and "
-							+ 		 "terminals.name_term like '%" + subArr[1] + "%' and "
-							+ 		 "terminals.name_term like '%" + subArr[2] + "%' and "
-							+ 		 "terminals.name_term like '%" + subArr[3] + "%' and "
-							+ 		 "terminals.name_term like '%" + subArr[4] + "%'";							
-					
-					
+					String query_find = new TooManyCriteries().addQuery();											
 					BD_write bdw = new BD_write();
 					bdw.connect();
 					
-					try {
-						bdw.reqest_in_db(query_find);
-					} catch (Exception e) {
-						
-						System.out.println("333 " +e);
-					}
+						try {
+							bdw.reqest_in_db(query_find);
+						} catch (Exception e) {
+							
+							System.out.println("context serch " +e);
+						}
 					bdw.close_connect();
-					//textField_8.setText("");
 				}                                                       
 				
 			});
@@ -509,7 +486,7 @@ public class Experr {
 			      checkBox_2.setToolTipText("\u043E\u0448\u0438\u0431\u043A\u0430 \"\u043F\u0440\u0438\u043D\u0442\u0435\u0440\"");
 			      checkBox_2.setBounds(6, 187, 96, 25);
 			      panel_6.add(checkBox_2);
-			      checkBox_2.setBackground(new Color(51, 153, 153));
+			      checkBox_2.setBackground(new Color(0, 153, 153));
 			      checkBox_2.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
 			      checkBox_2.setForeground(new Color(0, 204, 153));
 			      
