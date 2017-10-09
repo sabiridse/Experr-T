@@ -13,7 +13,7 @@ import Osmp_Osmp.FileOperation;
 import contextFind.TooManyCriteries;
 import export_err.NewThread_one;
 
-public class RunTestClass {
+public class TestModifikNumberHome {
 	
 	
 	
@@ -21,7 +21,7 @@ public class RunTestClass {
 			public static void main(String[] args) {
 				
 				try {
-					new RunTestClass().run();
+					new TestModifikNumberHome().run();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
