@@ -1,4 +1,7 @@
 package all_classes;
+
+import trmlist_report.Update;
+
 //import src.OSMP;
 
 
@@ -19,6 +22,44 @@ public class NewThread_one extends Thread{
 			}).start();
 			
 	}
+	
+					public void New_Thread(){
+						
+						Update update = new Update();
+						
+						
+						new Thread(() -> {
+						       
+				
+						        try {
+				
+						        	update.insertTo();
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+						}).start();
+					}	
+									
+									public void New_ThreadInsert(int start, int finish){
+										
+										Update update = new Update();
+										
+										
+										new Thread(() -> {
+										       
+							
+										        try {
+							
+										        	update.insertData(start,finish);
+												} catch (Exception e) {
+													e.printStackTrace();
+												}
+										}).start();
+									
+									}
+	
+	
+	
 /*	
 	public void New_fore(){//*****����� ����� ��������� ������  ������ ��������*****
 		

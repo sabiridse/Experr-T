@@ -97,6 +97,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollBar;
 import javax.swing.JRadioButton;
 import net.miginfocom.swing.MigLayout;
+import trmlist_report.Update;
 import workBeforeStart.ServiceWBS;
 
 import javax.mail.internet.AddressException;
@@ -1669,6 +1670,24 @@ public class Experr {
 			        txtFild_color_mailto2.setColumns(10);
 			        txtFild_color_mailto2.setBounds(470, 388, 86, 20);
 			        panel.add(txtFild_color_mailto2);
+//***************************************************************************************			        
+			       
+			        JButton btnTrmlist = new JButton("trmlist");
+			        btnTrmlist.setBounds(470, 504, 89, 23);
+			        panel.add(btnTrmlist);
+			        
+			        btnTrmlist.addActionListener(new ActionListener() {
+	     	        	   public void actionPerformed(ActionEvent e) {
+	     	        		 
+//	     	        		   Update update = new Update();	     	        			
+//	     	        			update.insertTo();
+	     	        		   
+	     	        		   NewThread_one thread = new NewThread_one();
+								thread.New_Thread();
+	     	        		   
+	     	        		      
+	     	        	   }
+				        });
 			        
 			        
 //***************************************************************************************

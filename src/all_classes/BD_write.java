@@ -1034,6 +1034,36 @@ public class BD_write {
 				
 			}
 			
+//***********************************************************************************			
+				public  List<String> getAll_id_termTrmlist_report () {
+					//this.connect();
+					String query = "select id_term from trmlist_report";
+					List <String> id_term = new ArrayList<String>();		        
+					Statement stmt;				
+					try {	
+						stmt = conn.createStatement();						
+							ResultSet result;
+							result = stmt.executeQuery(query);				
+										while (result.next()) {													
+											id_term.add(result.getString("id_term"));	
+										}
+										result.close();							
+					}	catch (SQLException e)	{}
+								
+					return id_term;
+		}
+			
+			
+			public void insertInTo_trmlist_report(int id_term, String city_name, String street_name, int home_number){
+				
+				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,home_number) "
+							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name+"' ,"+home_number+")";
+						try {
+							this.uni_reqest_in_db(query);
+						} catch (ClassNotFoundException e) {
+							e.printStackTrace();
+						}					
+			}
 			
 			
 		public void close_connect(){
