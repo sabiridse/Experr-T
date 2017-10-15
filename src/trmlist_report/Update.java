@@ -31,7 +31,13 @@ public class Update {
 			this.openRepo();
 			if (sheet_repo != null){
 				
+				long curTime1 = System.currentTimeMillis();
+				System.out.println("начал");
 				this.iteration();
+				
+				long curTime2 = System.currentTimeMillis();
+				int result = (int) ((curTime2 - curTime1)/1000);
+				System.out.println("закончил за "+result+ " секунд");
 			}
 			
 				
@@ -63,13 +69,8 @@ public class Update {
 										
 									}
 												private void iteration(){
-													//BD_write bdw = new BD_write();
 													bdw.connect();
 													int i = 0;
-//													int id_term;
-//													String city_name;
-//													String street_name;
-//													String home_number;
 													
 													Iterator<Row> iterator = sheet_repo.iterator();
 											        while (iterator.hasNext()) {
@@ -80,7 +81,12 @@ public class Update {
 											        int rowInPart = (int) Math.floor(i/10);
 											        int bonusRow = i - rowInPart*10;
 											        
-											        this.New_ThreadInsert(1, i-1);
+//											       this.New_ThreadInsert(1, i-1);
+											       
+											        
+											        this.insertData(1,i-1);
+											        
+											        
 //											        this.New_ThreadInsert(rowInPart+1, rowInPart*2);
 //											        this.New_ThreadInsert(rowInPart*2+1, rowInPart*3);
 //											        this.New_ThreadInsert(rowInPart*3+1, rowInPart*4);
@@ -90,26 +96,9 @@ public class Update {
 //											        this.New_ThreadInsert(rowInPart*7+1, rowInPart*8);
 //											        this.New_ThreadInsert(rowInPart*8+1, rowInPart*9);
 //											        this.New_ThreadInsert(rowInPart*9+1, rowInPart*10+bonusRow-1);
-
-											        
-//												        for(int row = 1; row <i; row++){
-//												        	
-//												        	id_term = (int) sheet_repo.getRow(row).getCell(1).getNumericCellValue();
-//												        	city_name =     sheet_repo.getRow(row).getCell(4).getStringCellValue();
-//												        	street_name =   sheet_repo.getRow(row).getCell(5).getStringCellValue();
-//												        	home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();
-//												        	
-//													        	switch (this.checkDouble(Integer.toString(id_term))){															
-//																	case 0: bdw.insertInTo_trmlist_report(id_term, city_name, street_name, this.modificNumberHome(home_number));
-//																			break;																	
-//																	case 1:	break;													
-//													        	}											        	
-//												        }	
-//											        	
-											        
 												
-//											        bdw.close_connect();
-//													this.repoClose();
+											        bdw.close_connect();
+													this.repoClose();
 													
 												}
 	
@@ -135,7 +124,7 @@ public class Update {
 												        	}											        	
 											        }	
 													
-													System.out.println("закончил");
+													
 												}
 												
 												

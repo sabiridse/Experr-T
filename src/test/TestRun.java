@@ -7,9 +7,8 @@ public class TestRun {
 
 	public static void main(String[] args) {
 		
-		Update update = new Update();
-		
-		update.insertTo();
+		Marshruts marsh = new Marshruts();
+		marsh.write();
 		
 	}
 

@@ -1056,8 +1056,8 @@ public class BD_write {
 			
 			public void insertInTo_trmlist_report(int id_term, String city_name, String street_name, int home_number){
 				
-				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,home_number) "
-							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name+"' ,"+home_number+")";
+				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,home_number,agent) "
+							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name+"' ,"+home_number+", 'СК')";
 						try {
 							this.uni_reqest_in_db(query);
 						} catch (ClassNotFoundException e) {
