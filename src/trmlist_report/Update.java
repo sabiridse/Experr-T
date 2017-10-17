@@ -30,14 +30,8 @@ public class Update {
 		
 			this.openRepo();
 			if (sheet_repo != null){
-				
-				long curTime1 = System.currentTimeMillis();
-				System.out.println("начал");
+
 				this.iteration();
-				
-				long curTime2 = System.currentTimeMillis();
-				int result = (int) ((curTime2 - curTime1)/1000);
-				System.out.println("закончил за "+result+ " секунд");
 			}
 			
 				

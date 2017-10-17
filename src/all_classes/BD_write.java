@@ -1065,6 +1065,59 @@ public class BD_write {
 						}					
 			}
 			
+			public List<String> getCityAndStreet (String id_term) throws Exception {	
+				//this.connect();
+				List <String> CityAndStreet = new ArrayList<String>();
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery("select city_name, street_name from trmlist_report where id_term = "+id_term);					
+									while (result.next()) {
+										
+										CityAndStreet.add(result.getString("city_name"));
+										CityAndStreet.add(result.getString("street_name"));										
+									
+									}
+									result.close();							
+					}	catch (SQLException e)	{System.out.println("9954 " +e);}																			
+				//this.close_connect();
+				return CityAndStreet;
+			}
+			public String getDistr_inkass (String city_name, String street_name ) throws Exception {	
+				//this.connect();
+				String distr_inkass = "не определено";
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery("select distr_inkass from trmlist_report where city_name = '"+city_name+"' and street_name = '"+street_name+"' and distr_inkass != '' LIMIT 1");//select distr_inkass from trmlist_report where street_name = '"+street_name+"' and distr_inkass !='' LIMIT 1");					
+									while (result.next()) {										
+										distr_inkass = result.getString("distr_inkass");									
+									}
+									result.close();							
+					}	catch (SQLException e)	{}																			
+				//this.close_connect();
+				return distr_inkass;
+			}
+			
+			public String getDistr_inkassForLo (String city_name) throws Exception {	
+				//this.connect();
+				String distr_inkass = "не определено";
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery("select distr_inkass from city_lo where city_name = '"+city_name+"'");					
+									while (result.next()) {										
+										distr_inkass = result.getString("distr_inkass");									
+									}
+									result.close();							
+					}	catch (SQLException e)	{}																			
+				//this.close_connect();
+				return distr_inkass;
+			}
+			
 			
 		public void close_connect(){
 			

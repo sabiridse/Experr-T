@@ -1,6 +1,8 @@
 package contextFind;
 
+import all_classes.BD_write;
 import all_classes.Experr;
+import trmlist_report.DistrInkass;
 
 public class TooManyCriteries {
 
@@ -29,6 +31,16 @@ public class TooManyCriteries {
 				 String nextRowsWithoutLike = "";
 				 String firstRowLike = " terminals.name_term like '%" + sub[0] + "%'";//1 строка
 				 String nextRowsLike = ""; 
+				
+				 
+				 
+				 
+				 DistrInkass di = new DistrInkass();
+				 BD_write bdw =new BD_write();
+				 bdw.connect();
+				 
+				 
+				 
 				 
 					if (sub.length  > 1)	{ 
 				 
@@ -41,10 +53,20 @@ public class TooManyCriteries {
 					 			
 					 			
 					 			nextRowsLike = nextRowsLike + " and terminals.name_term like '%" + sub[i] + "%'";//2
-								 
+							
+					 			
+					 			
+					 			di.start(sub[i]);
+					 			
+					 			
+					 			
+					 			
+					 			
 							 }
 					}
 				 
+					bdw.close_connect();
+					
 				 String query_find = "select errors33.id_term, terminals.name_term, errors33.heart_bit, errors33.pay, errors33.cash,"
 							+ " errors33.print, errors33.tach, terminals.other, terminals.name_distr, errors33.curtime"
 							+ " from errors33"
