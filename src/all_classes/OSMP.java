@@ -288,12 +288,13 @@ public  class OSMP  {
 					
 					//input_csv.number_term_errors_arr.clear(); //очистка массивов
 
-
+					System.out.println("главный запрос вбазу");
 					
 					bdw.main_reqest();
 				
+					System.out.println("начал делать остатки");
 					ostatki.creatureOstatki();
-
+					System.out.println("закончил делать остатки");
 					
 					//input_csv.close_bonus_csv();
 //********************************************************************************		

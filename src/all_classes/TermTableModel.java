@@ -111,7 +111,7 @@ public class TermTableModel extends AbstractTableModel{
 		
         return rows[columnIndex];
 		
-				
+			
 
 		
 	

@@ -1119,6 +1119,48 @@ public class BD_write {
 			}
 			
 			
+			public void insertOstatki(String id_term, int summ){
+					String query = "INSERT INTO ostatki (id_term,summ) VALUES ('"+id_term+"',"+summ+")";
+					try {
+						this.uni_reqest_in_db(query);
+					} catch (ClassNotFoundException e) {
+						e.printStackTrace();
+					}
+			}
+			
+			public ArrayList<String[]> getDataForInkass () {	
+				ArrayList<String[]> dataForInkass = new ArrayList<>();
+				
+				String query = "SELECT trmlist_report.id_term, terminals.name_term, trmlist_report.city_name, "
+							 + "trmlist_report.street_name, trmlist_report.home_number, "
+							 + "trmlist_report.agent,trmlist_report.distr_inkass, trmlist_report.regim "
+							 + "FROM trmlist_report "
+							 + "right JOIN terminals ON trmlist_report.id_term = terminals.id_term";				
+		        
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery(query);					
+									while (result.next()) {
+											String [] row = {
+													result.getString("id_term"),
+													result.getString("name_term"),
+													result.getString("city_name"),
+													result.getString("street_name"),
+													result.getString("home_number"),
+													result.getString("agent"),
+													result.getString("distr_inkass"),
+													result.getString("regim")
+											};												
+											dataForInkass.add(row);										
+									}
+									result.close();							
+					}	catch (SQLException e)	{System.out.println("делаю массив данных для маршрутов инкассации " +e);}
+				return dataForInkass;
+		  }
+			
+			
 		public void close_connect(){
 			
 

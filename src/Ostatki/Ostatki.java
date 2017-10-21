@@ -9,12 +9,14 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 
+import all_classes.BD_write;
+
 public class Ostatki {
 	
 	private HSSFWorkbook wb_ostatki;
 	private HSSFSheet sheet_ostatki;
 	private static ArrayList<int[]> NumberTermWhithSumm = new ArrayList <int []>();;
-	
+	BD_write bdw = new BD_write();
 //		public Ostatki() {
 //			
 //			NumberTermWhithSumm = new ArrayList <String []>();			
@@ -30,6 +32,12 @@ public class Ostatki {
 			}
 			
 			public void creatureOstatki(){
+				
+				try {
+					bdw.uni_reqest_in_db("DELETE FROM ostatki");
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
 				
 				this.creatureWBOstatki();
 				
@@ -67,7 +75,10 @@ public class Ostatki {
 					Row row = sheet_ostatki.createRow(IndexArray+1);	
 	
 					row.createCell(0).setCellValue(this.getNumberTermWhithSumm(IndexArray)[0]);				
-					row.createCell(1).setCellValue(this.getNumberTermWhithSumm(IndexArray)[1]);							
+					row.createCell(1).setCellValue(this.getNumberTermWhithSumm(IndexArray)[1]);	
+					
+					bdw.insertOstatki(Integer.toString(this.getNumberTermWhithSumm(IndexArray)[0]), this.getNumberTermWhithSumm(IndexArray)[1]);
+					
 				}
 				
 				private void SaveFileOstatki() throws IOException{

@@ -78,6 +78,7 @@ import Osmp_Osmp.Service;
 import authorization.AuthForm;
 import contextFind.TooManyCriteries;
 import gruopAddExcept.AddDelExceptTerm;
+import inkass.DataForInkass;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -1672,10 +1673,20 @@ public class Experr {
 			        panel.add(txtFild_color_mailto2);
 //***************************************************************************************			        
 			       
-			        JButton btnTrmlist = new JButton("trmlist");
-			        btnTrmlist.setBounds(470, 504, 89, 23);
-			        panel.add(btnTrmlist);
+			        JButton btn_Marshruts = new JButton("Маршруты");
+			        btn_Marshruts.setBounds(455, 538, 112, 23);
+			        panel.add(btn_Marshruts);
+			        btn_Marshruts.addActionListener(new ActionListener() {
+	     	        	   public void actionPerformed(ActionEvent e) {
+	     	        		 	     	        		   
+	     	        		 new DataForInkass().addInputData();  
+	     	        	   }
+				        });
 			        
+//***************************************************************************************			        
+			        JButton btnTrmlist = new JButton("trmlist");
+			        btnTrmlist.setBounds(455, 504, 112, 23);
+			        panel.add(btnTrmlist);			        
 			        btnTrmlist.addActionListener(new ActionListener() {
 	     	        	   public void actionPerformed(ActionEvent e) {
 	     	        		 

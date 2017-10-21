@@ -42,7 +42,7 @@ public class DistrInkass {
 											}
 									}
 								
-					System.out.println(id_term +" "+cityAndStreet.get(0)+" "+cityAndStreet.get(1)+" "+distr_inkass);
+					System.out.println(id_term +";"+cityAndStreet.get(0)+";"+cityAndStreet.get(1)+";"+distr_inkass);
 					cityAndStreet.clear();
 				}
 				return distr_inkass;

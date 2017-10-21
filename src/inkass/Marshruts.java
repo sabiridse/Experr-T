@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -35,7 +37,7 @@ public class Marshruts {
 				return System.getProperty("user.home")+"\\Downloads\\";//*********потом поменять на папку ресурсов
 			}
 		
-				private void OpenFile() throws IOException{								
+				private void OpenFileBolvan() throws IOException{								
 					Marshruts = new FileInputStream(this.getDir()+"МАРШРУТЫ_болван.xlsx");
 					curientWB_open = new XSSFWorkbook(Marshruts);
 								   	        
@@ -50,74 +52,48 @@ public class Marshruts {
 					}
 	
 	
-	public void write(){
-		
+	public void OpenFile(){
 		try {
-			this.OpenFile();
+			this.OpenFileBolvan();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-			
-		
-			
-		      
-		    this.setCurientSheet(1);
-		    
-		    //System.out.println("Лист "+curientSheet.getSheetName());
-		      
-			curientSheet.getRow(3).getCell(1).setCellValue("Полушка");
-			curientSheet.getRow(3).getCell(2).setCellValue(10273315);
-			curientSheet.getRow(3).getCell(3).setCellValue("Гражданский пр 73");
-			curientSheet.getRow(3).getCell(5).setCellValue("24ч");
-			curientSheet.getRow(3).getCell(5).setCellStyle(this.lightCK());
-			
-			curientSheet.getRow(4).getCell(1).setCellValue("Продукты");
-			curientSheet.getRow(4).getCell(2).setCellValue(10279229);
-			curientSheet.getRow(4).getCell(3).setCellValue("Ушинского ул 36");
-			curientSheet.getRow(4).getCell(5).setCellValue("10-20");
-			
-
-			this.finisherSheet(1, 2);
-			
-			
-			this.setCurientSheet(2);
-			
-
-			
-			curientSheet.getRow(3).getCell(1).setCellValue("Пятерочка");
-			curientSheet.getRow(3).getCell(2).setCellValue(10275102);
-			curientSheet.getRow(3).getCell(3).setCellValue("Большевиков пр 18");
-			curientSheet.getRow(3).getCell(5).setCellValue("9-22");
-			
-			
-			curientSheet.getRow(4).getCell(1).setCellValue("Лента");
-			curientSheet.getRow(4).getCell(2).setCellValue(10271817);
-			curientSheet.getRow(4).getCell(3).setCellValue("Энергетиков пр 12");
-			curientSheet.getRow(4).getCell(5).setCellValue("10-20");
-			curientSheet.getRow(4).getCell(5).setCellStyle(this.lightCK());
-			
-			curientSheet.getRow(5).getCell(1).setCellValue("SPAR");
-			curientSheet.getRow(5).getCell(2).setCellValue(10365118);
-			curientSheet.getRow(5).getCell(3).setCellValue("Колотнай ул 18");
-			curientSheet.getRow(5).getCell(5).setCellValue("8-21");
-			
-			
-			this.finisherSheet(2, 3);
-			
-			try {
-				this.SaveFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}					
-								
-			try {
-				Marshruts.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			
 	}
+					
+					
+	public void writeSheet(ArrayList <List<String>> inkassDataTerminal, int indexSheet){
+					      
+		    this.setCurientSheet(indexSheet);
+
+			    for (int i = 0; i < inkassDataTerminal.size();i++){
+				      
+						curientSheet.getRow(i+3).getCell(1).setCellValue(inkassDataTerminal.get(i).get(0));
+						curientSheet.getRow(i+3).getCell(2).setCellValue(inkassDataTerminal.get(i).get(1));
+						curientSheet.getRow(i+3).getCell(3).setCellValue(inkassDataTerminal.get(i).get(2));
+						curientSheet.getRow(i+3).getCell(5).setCellValue(inkassDataTerminal.get(i).get(3));
+						
+							if (inkassDataTerminal.get(i).get(4).compareTo("СК") == 0){
+								curientSheet.getRow(i+3).getCell(5).setCellStyle(this.lightCK());
+							}
+			    }
+		this.finisherSheet(indexSheet, inkassDataTerminal.size());			
+	}
+	
+			public void saveAndClose(){		
+				try {
+					this.SaveFile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}					
+									
+				try {
+					Marshruts.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+	
 	
 	private void copyRow(int resourceRow, Row targetRow, int firstCell, int endCell){
 		
