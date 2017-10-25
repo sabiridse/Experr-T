@@ -1,5 +1,6 @@
 package all_classes;
 
+import inkass.DataForInkass;
 import trmlist_report.Update;
 
 //import src.OSMP;
@@ -39,7 +40,22 @@ public class NewThread_one extends Thread{
 								}
 						}).start();
 					}	
-									
+							
+					
+					
+					
+					public void New_ThreadInkass(){						
+						new Thread(() -> {
+						       				
+						        try {
+						        	DataForInkass dfi = new DataForInkass();
+						        	dfi.addInputData();
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+						}).start();
+					}
+					
 									public void New_ThreadInsert(int start, int finish){
 										
 										Update update = new Update();

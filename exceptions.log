@@ -57839,3 +57839,94 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Colu
 	at all_classes.OSMP.Input_Data(OSMP.java:313)
 	at all_classes.NewThread_one.lambda$0(NewThread_one.java:18)
 	at java.lang.Thread.run(Unknown Source)
+2017-10-24T10:19:59.656 :  Старт программы ******************************************************************************
+2017-10-24T10:20:16.900 :  Объединяю файлы и создаю в нужном формате 
+2017-10-24T10:20:23.318 :  Собираю данные об ошибках 
+2017-10-24T10:20:33.286 :  lost term 10369265
+2017-10-24T10:20:33.397 :  lost term 10369268
+2017-10-24T10:20:33.468 :  lost term 10379711
+2017-10-24T10:20:33.538 :  NEW term 10393926
+
+2017-10-24T10:20:33.546:  ERROR add new term № 10393926
+com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Column 'time_except' cannot be null
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:935)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3970)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.insert_new_term_only_for_errors(BD_write.java:945)
+	at Warning_lost_terminals.TrackingNewAndLostTerminals.addNewTermInDB(TrackingNewAndLostTerminals.java:52)
+	at all_classes.OSMP.Input_Data(OSMP.java:313)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:18)
+	at java.lang.Thread.run(Unknown Source)
+2017-10-24T10:20:33.547 :  NEW term 10393925
+
+2017-10-24T10:20:33.548:  ERROR add new term № 10393925
+com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Column 'time_except' cannot be null
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:935)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3970)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.insert_new_term_only_for_errors(BD_write.java:945)
+	at Warning_lost_terminals.TrackingNewAndLostTerminals.addNewTermInDB(TrackingNewAndLostTerminals.java:52)
+	at all_classes.OSMP.Input_Data(OSMP.java:313)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:18)
+	at java.lang.Thread.run(Unknown Source)
+2017-10-24T18:17:18.573 :  Старт программы ******************************************************************************
+2017-10-24T18:30:27.908 :  Старт программы ******************************************************************************
+2017-10-25T11:21:51.554 :  Старт программы ******************************************************************************
+2017-10-25T11:27:07.027 :  Старт программы ******************************************************************************
+2017-10-25T11:28:56.541 :  Старт программы ******************************************************************************
+2017-10-25T11:30:02.955 :  Старт программы ******************************************************************************
+2017-10-25T11:44:26.360 :  Старт программы ******************************************************************************
+2017-10-25T11:55:51.392 :  Старт программы ******************************************************************************
+2017-10-25T11:57:49.034 :  Старт программы ******************************************************************************
+2017-10-25T12:02:40.463 :  Старт программы ******************************************************************************
+2017-10-25T12:10:15.066 :  Старт программы ******************************************************************************
+2017-10-25T12:12:08.755 :  Старт программы ******************************************************************************
+2017-10-25T12:27:53.968 :  Старт программы ******************************************************************************
+2017-10-25T17:34:46.951 :  Старт программы ******************************************************************************
+2017-10-25T17:59:53.395 :  Старт программы ******************************************************************************
+2017-10-25T18:10:30.207 :  Старт программы ******************************************************************************
+2017-10-25T19:11:45.550 :  Старт программы ******************************************************************************
+2017-10-25T19:12:21.606 :  Старт программы ******************************************************************************
+2017-10-25T19:14:35.438 :  Старт программы ******************************************************************************
+2017-10-25T19:49:47.981 :  Старт программы ******************************************************************************
+2017-10-25T19:51:35.328 :  Старт программы ******************************************************************************
+2017-10-25T19:55:18.368 :  Старт программы ******************************************************************************
+2017-10-25T19:57:22.699 :  Старт программы ******************************************************************************
+2017-10-25T19:58:21.918 :  Старт программы ******************************************************************************
+2017-10-25T20:00:07.788 :  Старт программы ******************************************************************************
+2017-10-25T20:02:21.497 :  Старт программы ******************************************************************************
+2017-10-25T20:10:39.102 :  Старт программы ******************************************************************************
+2017-10-25T20:15:23.397 :  Старт программы ******************************************************************************
+2017-10-25T20:19:34.944 :  Старт программы ******************************************************************************
+2017-10-25T20:23:09.367 :  Старт программы ******************************************************************************
+2017-10-25T20:59:34.395 :  Старт программы ******************************************************************************
+2017-10-25T21:02:17.413 :  Старт программы ******************************************************************************
+2017-10-25T21:04:34.651 :  Старт программы ******************************************************************************
+2017-10-25T21:08:03.505 :  Старт программы ******************************************************************************
+2017-10-25T21:10:48.219 :  Старт программы ******************************************************************************
+2017-10-25T21:27:03.882 :  Старт программы ******************************************************************************
+2017-10-25T21:28:49.598 :  Старт программы ******************************************************************************

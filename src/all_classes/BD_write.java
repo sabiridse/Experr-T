@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.table.TableModel;
 
 import Warning_lost_terminals.Find_lost_term;
+import inkass.TTM_inkass;
 import javenue.csv.Csv;
 
 
@@ -130,7 +131,42 @@ public class BD_write {
 	}		
 //********************************************************************************************************************************	
 //***********************************************************************************************************************************				
-//********************************************************ДЛЯ таблицы  ошибок **запрос в базу********************	
+
+									public void  getArrayForInkassTable(String query) throws Exception {
+									
+										rows_count = 0;
+										TTM_inkass ttm = new TTM_inkass();
+										ttm.dataArrayList.clear();  			        
+										Statement stmt;				
+										try {	
+											stmt = conn.createStatement();						
+												ResultSet result;
+												result = stmt.executeQuery(query);	
+												
+															while (result.next()) {
+																ArrayList row = new ArrayList();
+																	row.add(result.getInt("id_term"));
+																	row.add(result.getString("name_term"));
+																	row.add(result.getString("object"));
+																	row.add(result.getString("adress"));
+																	row.add(result.getString("regim"));
+																	row.add(result.getString("agent"));
+																	row.add(result.getString("distr_inkass"));
+																	row.add(result.getInt("summ"));																																				
+																	ttm.addDate(row);
+																	rows_count++;											
+															}
+						
+															result.close();							
+											}	catch (SQLException e)	{Loging log = new Loging();
+																		log.log(e," Запрос для таблицы inkass: ");}
+										Experr.table_5.updateUI();
+										Experr.table_5.revalidate();
+										Experr.table_5.repaint();
+										Experr.model_inkass.fireTableDataChanged();
+								
+								    }
+//********************************************************ДЛЯ таблицы  ошибок **запрос в базу********************										
 									public void reqest_in_db (String query) throws ClassNotFoundException {
 										rows_count = 0;
 										TermTableModel ttm = new TermTableModel();				
@@ -1128,14 +1164,23 @@ public class BD_write {
 					}
 			}
 			
-			public ArrayList<String[]> getDataForInkass () {	
-				ArrayList<String[]> dataForInkass = new ArrayList<>();
+			public ArrayList<String[]> getDataForInkassSPb (int indexMarshrut, int rowLimitCount, int agentIndex) {	
 				
-				String query = "SELECT trmlist_report.id_term, terminals.name_term, trmlist_report.city_name, "
-							 + "trmlist_report.street_name, trmlist_report.home_number, "
-							 + "trmlist_report.agent,trmlist_report.distr_inkass, trmlist_report.regim "
-							 + "FROM trmlist_report "
-							 + "right JOIN terminals ON trmlist_report.id_term = terminals.id_term";				
+				String agent = "(agent = 'ПИР' or agent = 'СК') ";
+				
+				switch (agentIndex){
+				case 1: agent = "agent = 'ПИР' "; break;
+				case 2:	agent = "agent = 'СК' "; break;				
+				}
+				
+				
+				ArrayList<String[]> dataForInkass = new ArrayList<>();				
+				String query = "(SELECT trmlist_report.object, ostatki.id_term, trmlist_report.adress, trmlist_report.regim, "   // querry only for SPb marshruts
+							 + "trmlist_report.street_name, trmlist_report.home_number, trmlist_report.agent "
+							 + "FROM ostatki "
+							 + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
+							 + "where distr_inkass = "+indexMarshrut+" and " + agent									// var distr_inkass  and var agent
+							 + "order by summ DESC limit "+rowLimitCount+") order by street_name, home_number";			// var value of LIMIT
 		        
 				Statement stmt;				
 				try {	
@@ -1144,14 +1189,50 @@ public class BD_write {
 						result = stmt.executeQuery(query);					
 									while (result.next()) {
 											String [] row = {
+													result.getString("object"),
 													result.getString("id_term"),
-													result.getString("name_term"),
-													result.getString("city_name"),
-													result.getString("street_name"),
-													result.getString("home_number"),
+													result.getString("adress"),
+													result.getString("regim"),
+													result.getString("agent")
+											};												
+											dataForInkass.add(row);										
+									}
+									result.close();							
+					}	catch (SQLException e)	{System.out.println("делаю массив данных для маршрутов инкассации " +e);}
+				return dataForInkass;
+		  }
+			
+			
+			public ArrayList<String[]> getDataForInkassLO (String indexMarshrut, int agentIndex) {	
+				
+				String agent = "(agent = 'ПИР' or agent = 'СК') ";
+				
+				switch (agentIndex){
+				case 1: agent = "agent = 'ПИР' "; break;
+				case 2:	agent = "agent = 'СК' "; break;				
+				}
+				
+				
+				ArrayList<String[]> dataForInkass = new ArrayList<>();				
+				String query = "SELECT trmlist_report.object, ostatki.id_term, trmlist_report.adress, trmlist_report.regim, "   // querry only for LO marshruts
+							 + "trmlist_report.city_name, trmlist_report.street_name, trmlist_report.home_number, trmlist_report.agent, trmlist_report.distr_inkass "
+							 + "FROM ostatki "
+							 + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
+							 + "where distr_inkass = '"+indexMarshrut+"' and " + agent									// var distr_inkass  and var agent
+							 + "order by city_name, street_name, home_number";			
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery(query);					
+									while (result.next()) {
+											String [] row = {
+													result.getString("object"),
+													result.getString("id_term"),
+													result.getString("adress"),
+													result.getString("regim"),
 													result.getString("agent"),
-													result.getString("distr_inkass"),
-													result.getString("regim")
+													result.getString("distr_inkass")
 											};												
 											dataForInkass.add(row);										
 									}

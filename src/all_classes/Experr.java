@@ -79,6 +79,7 @@ import authorization.AuthForm;
 import contextFind.TooManyCriteries;
 import gruopAddExcept.AddDelExceptTerm;
 import inkass.DataForInkass;
+import inkass.TTM_inkass;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -129,7 +130,7 @@ public class Experr {
 	public static JTable table_2;
 	public static JTable table_3;
 	public static JTable table_4;
-	
+	public static JTable table_5;
 	public static int history = 0;
 
 	JTextField textField4;
@@ -165,7 +166,9 @@ public class Experr {
 	public static TTM_spb model_spb = new TTM_spb();
 	public static TTM_lo model_lo = new TTM_lo();
 	public static TTM_reg model_reg = new TTM_reg();
-
+	public static TTM_inkass model_inkass = new TTM_inkass();
+	
+	
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
@@ -192,6 +195,7 @@ public class Experr {
 	public static JTextField textField_last_inkass;
 	public static JTextField txtFild_color_mailto1;
 	public static JTextField txtFild_color_mailto2;
+	
 	
 
 	public static void main(String[] args) {
@@ -1672,35 +1676,7 @@ public class Experr {
 			        txtFild_color_mailto2.setBounds(470, 388, 86, 20);
 			        panel.add(txtFild_color_mailto2);
 //***************************************************************************************			        
-			       
-			        JButton btn_Marshruts = new JButton("Маршруты");
-			        btn_Marshruts.setBounds(455, 538, 112, 23);
-			        panel.add(btn_Marshruts);
-			        btn_Marshruts.addActionListener(new ActionListener() {
-	     	        	   public void actionPerformed(ActionEvent e) {
-	     	        		 	     	        		   
-	     	        		 new DataForInkass().addInputData();  
-	     	        	   }
-				        });
-			        
-//***************************************************************************************			        
-			        JButton btnTrmlist = new JButton("trmlist");
-			        btnTrmlist.setBounds(455, 504, 112, 23);
-			        panel.add(btnTrmlist);			        
-			        btnTrmlist.addActionListener(new ActionListener() {
-	     	        	   public void actionPerformed(ActionEvent e) {
-	     	        		 
-//	     	        		   Update update = new Update();	     	        			
-//	     	        			update.insertTo();
-	     	        		   
-	     	        		   NewThread_one thread = new NewThread_one();
-								thread.New_Thread();
-	     	        		   
-	     	        		      
-	     	        	   }
-				        });
-			        
-			        
+			        			        
 //***************************************************************************************
 			        
 			        CheckBox_history.addItemListener(new ItemListener() {
@@ -1838,9 +1814,186 @@ public class Experr {
 			        scrollPane_5.setViewportView(table_4);
 			        tabbedPane.setBackgroundAt(3, new Color(204, 204, 0));
 			        
-	       
+			        JPanel panel_20 = new JPanel();
+			        tabbedPane.addTab("Инкассация", null, panel_20, null);
+			        tabbedPane.setBackgroundAt(4, Color.CYAN);
+			        panel_20.setLayout(new BorderLayout(0, 0));
+			        
+			        JPanel panel_21 = new JPanel();
+			        panel_21.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			        panel_21.setBackground(new Color(51, 153, 153));
+			        panel_20.add(panel_21, BorderLayout.WEST);
+			        panel_21.setLayout(new MigLayout("", "[grow]", "[31.00][][][][][][][][][][][][][][][][][][][][][][][][][][]"));
+			        
+			       
+			        
+			        JLabel label_20 = new JLabel("Выбор маршрутов");
+			        label_20.setHorizontalAlignment(SwingConstants.CENTER);
+			        label_20.setForeground(new Color(51, 102, 0));
+			        label_20.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+			        panel_21.add(label_20, "cell 0 2,alignx center");
+			        
+			        JCheckBox checkBox_4 = new JCheckBox("все маршруты");
+			        checkBox_4.setToolTipText("");
+			        checkBox_4.setForeground(new Color(0, 204, 153));
+			        checkBox_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        checkBox_4.setBackground(new Color(0, 153, 153));
+			        panel_21.add(checkBox_4, "cell 0 3");
+//**************************************************************************************************************************************			        
+			        JComboBox comboBox_3 = new JComboBox();
+			        comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
+			        comboBox_3.setSelectedIndex(0);
+			        comboBox_3.setMaximumRowCount(12);
+			        comboBox_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			        panel_21.add(comboBox_3, "cell 0 4,growx");
+			        
+			        JComboBox comboBox_4 = new JComboBox();
+			        comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
+			        comboBox_4.setSelectedIndex(0);
+			        comboBox_4.setMaximumRowCount(12);
+			        comboBox_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			        panel_21.add(comboBox_4, "cell 0 5,growx");
+			        
+			        JComboBox comboBox_5 = new JComboBox();
+			        comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
+			        comboBox_5.setSelectedIndex(0);
+			        comboBox_5.setMaximumRowCount(12);
+			        comboBox_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			        panel_21.add(comboBox_5, "cell 0 6,growx");
+			        
+			        JComboBox comboBox_6 = new JComboBox();
+			        comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
+			        comboBox_6.setSelectedIndex(0);
+			        comboBox_6.setMaximumRowCount(12);
+			        comboBox_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			        panel_21.add(comboBox_6, "cell 0 7,growx");
+			        
+			        JComboBox comboBox_2 = new JComboBox();
+			        comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
+			        comboBox_2.setSelectedIndex(0);
+			        comboBox_2.setMaximumRowCount(12);
+			        comboBox_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			        panel_21.add(comboBox_2, "cell 0 8,growx");
+//*****************************************************************************************************************************************			        
+			        JLabel label_21 = new JLabel("Выбор агентов");
+			        label_21.setHorizontalAlignment(SwingConstants.CENTER);
+			        label_21.setForeground(new Color(51, 102, 0));
+			        label_21.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+			        panel_21.add(label_21, "cell 0 10,alignx center");
+//*********************************************************************************************************************************************			        
+			        JCheckBox checkBox = new JCheckBox("ПИР");
+			        checkBox.setToolTipText("");
+			        checkBox.setForeground(new Color(0, 204, 153));
+			        checkBox.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        checkBox.setBackground(new Color(0, 153, 153));
+			        panel_21.add(checkBox, "cell 0 11");
+			        
+			        JCheckBox checkBox_1 = new JCheckBox("СК");
+			        checkBox_1.setToolTipText("");
+			        checkBox_1.setForeground(new Color(0, 204, 153));
+			        checkBox_1.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        checkBox_1.setBackground(new Color(0, 153, 153));
+			        panel_21.add(checkBox_1, "cell 0 12");
+			        
+			        JCheckBox checkBox_3 = new JCheckBox("СПС");
+			        checkBox_3.setToolTipText("");
+			        checkBox_3.setForeground(new Color(0, 204, 153));
+			        checkBox_3.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        checkBox_3.setBackground(new Color(0, 153, 153));
+			        panel_21.add(checkBox_3, "cell 0 13");
+//**************************************************************************************************************************************************			        
+			       
+			        
+			        JPanel panel_22 = new JPanel();
+			        panel_22.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			        panel_22.setBackground(new Color(51, 153, 153));
+			        panel_20.add(panel_22, BorderLayout.CENTER);
+			        panel_22.setLayout(new MigLayout("", "[grow]", "[grow]"));
+			        
+			        JScrollPane scrollPane_6 = new JScrollPane();
+			        scrollPane_6.setViewportBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 204)));
+			        panel_22.add(scrollPane_6, "cell 0 0,grow");
+			        
+			        table_5 = new JTable(model_inkass);
+			        table_5.setToolTipText("kkkbjkb");
+			        table_5.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			        table_5.setSelectionBackground(new Color(153, 204, 204));
+			        table_5.setRowHeight(22);
+			        table_5.setGridColor(Color.BLUE);
+			        table_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			        table_5.setCellSelectionEnabled(true);
+			        table_5.setBackground(new Color(255, 255, 204));
+			        scrollPane_6.setViewportView(table_5);
 
-							        button_insert_new_work.addActionListener(new ActionListener() {
+			        
+			        RowSorter<TTM_inkass> sorterInkass = new TableRowSorter<TTM_inkass>(model_inkass);
+			        table_5.setRowSorter(sorterInkass);
+			        JTableHeader headInkass = table_5.getTableHeader();								
+			        headInkass.setBackground(new Color(51, 153, 153));
+			        headInkass.setForeground(new Color(153, 204, 153));
+			        headInkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        
+			        
+	       
+			        JButton button_2 = new JButton("Обновить\r\n справочник");
+			        button_2.setToolTipText("Предварительно скачайте trmlist-report");
+			        button_2.setForeground(new Color(204, 204, 102));
+			        button_2.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+			        button_2.setBackground(new Color(51, 153, 153));
+			        panel_21.add(button_2, "cell 0 0,grow");
+			        
+			        button_2.addActionListener(new ActionListener() {
+	     	        	   public void actionPerformed(ActionEvent e) {
+	     	        		   
+	     	        		   NewThread_one thread = new NewThread_one();
+								thread.New_Thread();
+	     	        		   
+	     	        		      
+	     	        	   }
+				        });
+			        
+						        JButton button_4 = new JButton("МАРШРУТЫ");
+						        button_4.setToolTipText("Сформировать файл МАРШРУТЫ");
+						        button_4.setForeground(new Color(204, 204, 102));
+						        button_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+						        button_4.setBackground(new Color(51, 153, 153));
+						        panel_21.add(button_4, "cell 0 15,growx");			        			        
+						        button_4.addActionListener(new ActionListener() {
+				     	        	   public void actionPerformed(ActionEvent e) {
+				     	        		 	     	        		   
+				     	        		  NewThread_one thread = new NewThread_one();
+											thread.New_ThreadInkass();
+				     	        	   }
+							        });
+						        
+									        JButton button_6 = new JButton("Обновить");
+									        button_6.setToolTipText("Обновить данные по инкассации");
+									        button_6.setForeground(new Color(153, 204, 153));
+									        button_6.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+									        button_6.setBackground(new Color(0, 153, 153));
+									        panel_21.add(button_6, "cell 0 26,alignx center");
+									        button_6.addActionListener(new ActionListener() {
+							     	        	   public void actionPerformed(ActionEvent e) {
+							     	        		 	     	        		   
+							     	        		  BD_write bdw = new BD_write();
+							     	        		  String query = "SELECT ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress, "
+							     	        		  			   + "trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ "
+							     	        		  			   + "FROM ostatki "
+							     	        		  			   + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
+							     	        		  			   + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
+							     	        		  			   + "where terminals.except_term !=1 and "
+							     	        		  			   + "terminals.regions = 0";
+							     	        		  bdw.connect();
+														try {
+															bdw.getArrayForInkassTable(query);
+														} catch (Exception e1) {
+															e1.printStackTrace();
+														}
+														 bdw.close_connect();
+							     	        	   }
+										        });
+							        
+			        button_insert_new_work.addActionListener(new ActionListener() {
 										public void actionPerformed(ActionEvent arg0) {
 										
 											if (textField_work.getText().compareTo("") != 0) {
@@ -1925,4 +2078,14 @@ public class Experr {
 				} catch (ClassNotFoundException e1) {}
 												
 	}
+
+	public static TTM_inkass getModel_inkass() {
+		return model_inkass;
+	}
+
+	public JTable getTable_5() {
+		return table_5;
+	}
+
+
 }

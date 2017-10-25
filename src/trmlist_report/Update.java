@@ -32,6 +32,10 @@ public class Update {
 			if (sheet_repo != null){
 
 				this.iteration();
+				
+				Gui1 gui = new Gui1();
+				String txt = "<html><center>Справочник обновлен</html>";
+				gui.Gui0(txt);
 			}
 			
 				

@@ -62,23 +62,38 @@ public class Marshruts {
 	}
 					
 					
-	public void writeSheet(ArrayList <List<String>> inkassDataTerminal, int indexSheet){
+	public void writeSheet(ArrayList <String[]> inkassDataTerminal, int indexSheet, boolean LO){
 					      
 		    this.setCurientSheet(indexSheet);
+		    String lostSymbolInMarshIndex = "";
 
 			    for (int i = 0; i < inkassDataTerminal.size();i++){
 				      
-						curientSheet.getRow(i+3).getCell(1).setCellValue(inkassDataTerminal.get(i).get(0));
-						curientSheet.getRow(i+3).getCell(2).setCellValue(inkassDataTerminal.get(i).get(1));
-						curientSheet.getRow(i+3).getCell(3).setCellValue(inkassDataTerminal.get(i).get(2));
-						curientSheet.getRow(i+3).getCell(5).setCellValue(inkassDataTerminal.get(i).get(3));
+						curientSheet.getRow(i+3).getCell(1).setCellValue(inkassDataTerminal.get(i)[0]);
+						curientSheet.getRow(i+3).getCell(2).setCellValue(Integer.parseInt(inkassDataTerminal.get(i)[1]));
+						curientSheet.getRow(i+3).getCell(3).setCellValue(inkassDataTerminal.get(i)[2]);
+						curientSheet.getRow(i+3).getCell(5).setCellValue(inkassDataTerminal.get(i)[3]);
 						
-							if (inkassDataTerminal.get(i).get(4).compareTo("СК") == 0){
+							if (inkassDataTerminal.get(i)[4].compareTo("СК") == 0){
 								curientSheet.getRow(i+3).getCell(5).setCellStyle(this.lightCK());
 							}
+								if (LO == true){
+									
+									lostSymbolInMarshIndex = Character.toString(inkassDataTerminal.get(i)[5]
+											  .charAt(inkassDataTerminal.get(i)[5].length()-1));
+										
+										switch (lostSymbolInMarshIndex){
+										
+											case "1":	curientSheet.getRow(i+3).getCell(1).setCellStyle(this.lightLoPart1());break;
+											case "2":	curientSheet.getRow(i+3).getCell(1).setCellStyle(this.lightLoPart2());break;
+									
+										}
+								}
+							
 			    }
 		this.finisherSheet(indexSheet, inkassDataTerminal.size());			
 	}
+		
 	
 			public void saveAndClose(){		
 				try {
@@ -151,18 +166,85 @@ public class Marshruts {
 	
 			//************************************************************************для выделения СК голубым****			
 			Font font1 = curientWB_open.createFont();
-			font1.setFontName("ARIAL");
+			font1.setFontName("Times New Roman");
 			font1.setColor((short) 0);
-			font1.setFontHeightInPoints((short) 14);
+			font1.setFontHeightInPoints((short) 10);
 			
 			CellStyle style1 = curientWB_open.createCellStyle();
 		      style1.setFillForegroundColor(IndexedColors.LIGHT_CORNFLOWER_BLUE.getIndex());
 		      style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 		      style1.setFont(font1);
+		      style1.setWrapText(true);
 		      style1.setAlignment(HorizontalAlignment.CENTER);
 		      style1.setVerticalAlignment(VerticalAlignment.CENTER);
+		      style1.setBorderBottom(CellStyle.BORDER_THIN);
+		      style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+		      style1.setBorderLeft(CellStyle.BORDER_THIN);
+		      style1.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+		      style1.setBorderRight(CellStyle.BORDER_THIN);
+		      style1.setRightBorderColor(IndexedColors.BLACK.getIndex());
+		      style1.setBorderTop(CellStyle.BORDER_THIN);
+		      style1.setTopBorderColor(IndexedColors.BLACK.getIndex());
 		//***************************************************************************************************
 		      
 		    return style1;  
 	}
+	
+	private CellStyle lightLoPart1(){
+		
+		//************************************************************************для выделения СК голубым****			
+		Font font2 = curientWB_open.createFont();
+		font2.setFontName("Times New Roman");
+		font2.setColor((short) 0);
+		font2.setFontHeightInPoints((short) 10);
+		
+		CellStyle style2 = curientWB_open.createCellStyle();
+	      style2.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+	      style2.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+	      style2.setFont(font2);
+	      style2.setWrapText(true);
+	      style2.setAlignment(HorizontalAlignment.LEFT);
+	      style2.setVerticalAlignment(VerticalAlignment.CENTER);
+	      style2.setBorderBottom(CellStyle.BORDER_THIN);
+	      style2.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+	      style2.setBorderLeft(CellStyle.BORDER_THIN);
+	      style2.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+	      style2.setBorderRight(CellStyle.BORDER_THIN);
+	      style2.setRightBorderColor(IndexedColors.BLACK.getIndex());
+	      style2.setBorderTop(CellStyle.BORDER_THIN);
+	      style2.setTopBorderColor(IndexedColors.BLACK.getIndex());
+	//***************************************************************************************************
+	      
+	    return style2;  
+}
+		private CellStyle lightLoPart2(){
+				
+				//************************************************************************для выделения СК голубым****			
+				Font font3 = curientWB_open.createFont();
+				font3.setFontName("Times New Roman");
+				font3.setColor((short) 0);
+				font3.setFontHeightInPoints((short) 10);
+				
+				CellStyle style3 = curientWB_open.createCellStyle();
+			      style3.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
+			      style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+			      style3.setFont(font3);
+			      style3.setWrapText(true);
+			      style3.setAlignment(HorizontalAlignment.LEFT);
+			      style3.setVerticalAlignment(VerticalAlignment.CENTER);
+			      style3.setBorderBottom(CellStyle.BORDER_THIN);
+			      style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+			      style3.setBorderLeft(CellStyle.BORDER_THIN);
+			      style3.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+			      style3.setBorderRight(CellStyle.BORDER_THIN);
+			      style3.setRightBorderColor(IndexedColors.BLACK.getIndex());
+			      style3.setBorderTop(CellStyle.BORDER_THIN);
+			      style3.setTopBorderColor(IndexedColors.BLACK.getIndex());
+			//***************************************************************************************************
+			      
+			    return style3;  
+		}
+	
+	
+	
 }
