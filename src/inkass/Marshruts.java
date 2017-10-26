@@ -21,6 +21,8 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import all_classes.Experr;
+
 public class Marshruts {
 
 	private FileInputStream Marshruts;
@@ -38,7 +40,7 @@ public class Marshruts {
 			}
 		
 				private void OpenFileBolvan() throws IOException{								
-					Marshruts = new FileInputStream(this.getDir()+"МАРШРУТЫ_болван.xlsx");
+					Marshruts = new FileInputStream(Experr.directory_res +"МАРШРУТЫ_болван.xlsx");
 					curientWB_open = new XSSFWorkbook(Marshruts);
 								   	        
 				}
@@ -196,7 +198,7 @@ public class Marshruts {
 		Font font2 = curientWB_open.createFont();
 		font2.setFontName("Times New Roman");
 		font2.setColor((short) 0);
-		font2.setFontHeightInPoints((short) 10);
+		font2.setFontHeightInPoints((short) 12);
 		
 		CellStyle style2 = curientWB_open.createCellStyle();
 	      style2.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
@@ -223,7 +225,7 @@ public class Marshruts {
 				Font font3 = curientWB_open.createFont();
 				font3.setFontName("Times New Roman");
 				font3.setColor((short) 0);
-				font3.setFontHeightInPoints((short) 10);
+				font3.setFontHeightInPoints((short) 12);
 				
 				CellStyle style3 = curientWB_open.createCellStyle();
 			      style3.setFillForegroundColor(IndexedColors.YELLOW.getIndex());

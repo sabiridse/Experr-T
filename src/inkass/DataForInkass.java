@@ -12,7 +12,7 @@ public class DataForInkass {
 	private BD_write bdw = new BD_write();
 	private Marshruts marsh = new 	Marshruts();
 		
-	private void getInputData(int indexMarshrut, int rowLimitCount, int agentIndex) {
+	private void getInputData(String indexMarshrut, int rowLimitCount, int agentIndex) {
 			
 		inputData.clear();
 			  
@@ -36,22 +36,22 @@ public class DataForInkass {
 				bdw.connect();
 				marsh.OpenFile();
 				
-				this.getInputData(11,500,0);
+				this.getInputData("11",500,0);
 				marsh.writeSheet(inputData, 1, false);
 				
-					this.getInputData(12,500,0);
+					this.getInputData("12",500,0);
 					marsh.writeSheet(inputData, 2, false);
 						
-						this.getInputData(51,500,0);
+						this.getInputData("51",500,0);
 						marsh.writeSheet(inputData, 3, false);
 						
-							this.getInputData(52,500,0);
+							this.getInputData("52",500,0);
 							marsh.writeSheet(inputData, 4, false);
 							
-								this.getInputData(61,500,0);
+								this.getInputData("61",500,0);
 								marsh.writeSheet(inputData, 5, false);
 								
-									this.getInputData(62,500,0);
+									this.getInputData("62",500,0);
 									marsh.writeSheet(inputData, 6, false);
 									
 										this.getInputDataLO("41","40","42",0);

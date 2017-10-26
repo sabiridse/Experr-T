@@ -1164,13 +1164,14 @@ public class BD_write {
 					}
 			}
 			
-			public ArrayList<String[]> getDataForInkassSPb (int indexMarshrut, int rowLimitCount, int agentIndex) {	
+			public ArrayList<String[]> getDataForInkassSPb (String indexMarshrut, int rowLimitCount, int agentIndex) {	
 				
-				String agent = "(agent = 'ПИР' or agent = 'СК') ";
+				String agent = "(agent = 'ПИР' or agent = 'СК'or agent = 'СПС') ";
 				
 				switch (agentIndex){
 				case 1: agent = "agent = 'ПИР' "; break;
-				case 2:	agent = "agent = 'СК' "; break;				
+				case 2:	agent = "agent = 'СК' "; break;	
+				case 3:	agent = "agent = 'СПС' "; break;
 				}
 				
 				
@@ -1179,7 +1180,7 @@ public class BD_write {
 							 + "trmlist_report.street_name, trmlist_report.home_number, trmlist_report.agent "
 							 + "FROM ostatki "
 							 + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
-							 + "where distr_inkass = "+indexMarshrut+" and " + agent									// var distr_inkass  and var agent
+							 + "where distr_inkass = '"+indexMarshrut+"' and " + agent									// var distr_inkass  and var agent
 							 + "order by summ DESC limit "+rowLimitCount+") order by street_name, home_number";			// var value of LIMIT
 		        
 				Statement stmt;				
@@ -1205,11 +1206,12 @@ public class BD_write {
 			
 			public ArrayList<String[]> getDataForInkassLO (String indexMarshrut, int agentIndex) {	
 				
-				String agent = "(agent = 'ПИР' or agent = 'СК') ";
+				String agent = "(agent = 'ПИР' or agent = 'СК'or agent = 'СПС') ";
 				
 				switch (agentIndex){
 				case 1: agent = "agent = 'ПИР' "; break;
-				case 2:	agent = "agent = 'СК' "; break;				
+				case 2:	agent = "agent = 'СК' "; break;	
+				case 3:	agent = "agent = 'СПС' "; break;
 				}
 				
 				

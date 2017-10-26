@@ -1874,6 +1874,20 @@ public class Experr {
 			        comboBox_2.setMaximumRowCount(12);
 			        comboBox_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			        panel_21.add(comboBox_2, "cell 0 8,growx");
+			        
+			        String distr_inkass3 =comboBox_3.getSelectedItem().toString();
+			        String distr_inkass4 =comboBox_4.getSelectedItem().toString();
+			        String distr_inkass5 =comboBox_5.getSelectedItem().toString();
+			        String distr_inkass6 =comboBox_6.getSelectedItem().toString();
+			        String distr_inkass2 =comboBox_2.getSelectedItem().toString();
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        
 //*****************************************************************************************************************************************			        
 			        JLabel label_21 = new JLabel("Выбор агентов");
 			        label_21.setHorizontalAlignment(SwingConstants.CENTER);
