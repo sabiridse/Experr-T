@@ -94,13 +94,15 @@ if(index0 != -1){//если есть месяц или месяцев
 			imin = Integer.parseInt(min);
 							
 			result_time = imin*60000 + ihour*60000*60 + iday*60000*60*24 + imounth*60000*60*24*30;
-			if (result_time == 0){result_time =1209600000;}
+			if (result_time == 0){
+				finaly_time = "2001-01-01 00:00:00";}
 			
-			curTime = System.currentTimeMillis();//получаю системное впемя в миллисекундах
 			
-			
-	finaly_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(curTime - result_time);//итог обработки
-	
+			if (result_time != 0){
+				curTime = System.currentTimeMillis();//получаю системное впемя в миллисекундах			
+				finaly_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+							.format(curTime - result_time);//итог обработки
+			}
 				
 }
 	

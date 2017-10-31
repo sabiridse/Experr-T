@@ -1164,6 +1164,30 @@ public class BD_write {
 					}
 			}
 			
+			public ArrayList getPrivateDate (String distr_inkass) {	
+				this.connect();
+				ArrayList privateData = new ArrayList<>();
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery("select * from private_data where distr_inkass = '"+distr_inkass+"'");					
+									while (result.next()) {
+										
+										privateData.add(result.getString("up_part"));	
+										privateData.add(result.getString("center_part"));
+										privateData.add(result.getString("down_part"));	
+										privateData.add(result.getInt("sheet_index"));
+										privateData.add(result.getBoolean("lo"));	
+									
+									}
+									result.close();							
+					}	catch (SQLException e)	{System.out.println("getPrivateDate " +e);}																			
+
+				return privateData;
+			}
+			
+			
 			public ArrayList<String[]> getDataForInkassSPb (String indexMarshrut, int rowLimitCount, int agentIndex) {	
 				
 				String agent = "(agent = 'ПИР' or agent = 'СК'or agent = 'СПС') ";
@@ -1183,7 +1207,8 @@ public class BD_write {
 							 + "where distr_inkass = '"+indexMarshrut+"' and " + agent									// var distr_inkass  and var agent
 							 + "order by summ DESC limit "+rowLimitCount+") order by street_name, home_number";			// var value of LIMIT
 		        
-				Statement stmt;				
+				Statement stmt;	
+				
 				try {	
 					stmt = conn.createStatement();						
 						ResultSet result;
@@ -1223,6 +1248,7 @@ public class BD_write {
 							 + "where distr_inkass = '"+indexMarshrut+"' and " + agent									// var distr_inkass  and var agent
 							 + "order by city_name, street_name, home_number";			
 				Statement stmt;				
+				
 				try {	
 					stmt = conn.createStatement();						
 						ResultSet result;

@@ -3,6 +3,7 @@ package inkass;
 import java.util.ArrayList;
 
 import all_classes.BD_write;
+import all_classes.Experr;
 import all_classes.Gui1;
 import trmlist_report.ObjectName;
 
@@ -10,8 +11,8 @@ public class DataForInkass {
 
 	private ArrayList<String[]> inputData = new ArrayList<>();
 	private BD_write bdw = new BD_write();
-	private Marshruts marsh = new 	Marshruts();
-		
+	private Marshruts marsh = new Marshruts();
+	
 	private void getInputData(String indexMarshrut, int rowLimitCount, int agentIndex) {
 			
 		inputData.clear();
@@ -27,52 +28,52 @@ public class DataForInkass {
 		inputData = bdw.getDataForInkassLO(MarshrutPart1,agentIndex);	
 		inputData.addAll(bdw.getDataForInkassLO(MarshrutPart2,agentIndex));
 		inputData.addAll(bdw.getDataForInkassLO(MarshrutPart3,agentIndex));
-
 			    
 		}
 	
-			public void addInputData(){
+			public void addInputData() throws Exception{
 				
-				bdw.connect();
+				Experr experr = new Experr();
+				
+				//bdw.connect();
 				marsh.OpenFile();
-				
-				this.getInputData("11",500,0);
-				marsh.writeSheet(inputData, 1, false);
-				
-					this.getInputData("12",500,0);
-					marsh.writeSheet(inputData, 2, false);
-						
-						this.getInputData("51",500,0);
-						marsh.writeSheet(inputData, 3, false);
-						
-							this.getInputData("52",500,0);
-							marsh.writeSheet(inputData, 4, false);
-							
-								this.getInputData("61",500,0);
-								marsh.writeSheet(inputData, 5, false);
-								
-									this.getInputData("62",500,0);
-									marsh.writeSheet(inputData, 6, false);
-									
-										this.getInputDataLO("41","40","42",0);
-										marsh.writeSheet(inputData, 7, true);
-										
-											this.getInputDataLO("81","80","82",0);
-											marsh.writeSheet(inputData, 8, true);
-											
-												this.getInputDataLO("91","90","92",0);
-												marsh.writeSheet(inputData, 9, true);
-												
-													this.getInputDataLO("4А1","4А0","4А2",0);
-													marsh.writeSheet(inputData, 10, true);
-													
-														this.getInputDataLO("8А1","8А0","8А2",0);
-														marsh.writeSheet(inputData, 11, true);
-														
-															this.getInputDataLO("9А1","9А0","9А2",0);
-															marsh.writeSheet(inputData, 12, true);
-
-					bdw.close_connect();				
+				try {
+					this.getPrivateDataByMarshrut(experr.getDistr_inkass3(),
+												  experr.agent, 
+												  experr.limit);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+					try {
+						this.getPrivateDataByMarshrut(experr.getDistr_inkass4(),
+													  experr.agent, 
+													  experr.limit);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+						try {
+							this.getPrivateDataByMarshrut(experr.getDistr_inkass5(),
+														  experr.agent, 
+														  experr.limit);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+							try {
+								this.getPrivateDataByMarshrut(experr.getDistr_inkass6(),
+															  experr.agent, 
+															  experr.limit);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+								try {
+									this.getPrivateDataByMarshrut(experr.getDistr_inkass2(),
+																  experr.agent, 
+																  experr.limit);
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+					//bdw.close_connect();
+					marsh.deleteEmptySheets();
 					marsh.saveAndClose();
 			
 					Gui1 gui = new Gui1();
@@ -80,8 +81,32 @@ public class DataForInkass {
 					gui.Gui0(txt);
 					
 			}
-
+		 private void creatureMarsh(String partUp, String partCenter, String partDown, 
+				 					int agentIndex, int limit, int sheetIndex, boolean LO){
+			 
+			switch (String.valueOf(LO))	{	
+			 
+				case "true":	this.getInputDataLO(partUp,partCenter,partDown,agentIndex);
+							marsh.writeSheet(inputData, sheetIndex, LO);break;
+						 
+						 
+				case "false":	 this.getInputData(partCenter,limit, agentIndex);
+							marsh.writeSheet(inputData, sheetIndex, LO);break;
+			} 
 	
+		 }
+		 
+		 private void getPrivateDataByMarshrut(String distr_inkass, int agent, int limit) throws Exception{
+
+			 if (distr_inkass.compareTo("рута") != 0){
+				 ArrayList data = bdw.getPrivateDate(distr_inkass);
+				 			 
+				 this.creatureMarsh((String) data.get(0), (String) data.get(1),  
+						 			(String) data.get(2), agent, limit, 
+						 			(int) data.get(3), (boolean) data.get(4));
+			 }
+			 
+		}
 	
 	
 	

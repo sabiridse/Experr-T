@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -39,21 +40,39 @@ public class Marshruts {
 				return System.getProperty("user.home")+"\\Downloads\\";//*********потом поменять на папку ресурсов
 			}
 		
-				private void OpenFileBolvan() throws IOException{								
+				private void OpenFileBolvan() throws IOException{						
 					Marshruts = new FileInputStream(Experr.directory_res +"МАРШРУТЫ_болван.xlsx");
-					curientWB_open = new XSSFWorkbook(Marshruts);
-								   	        
+					curientWB_open = new XSSFWorkbook(Marshruts);								   	        
 				}
 		
 		
-					private void SaveFile() throws IOException{
+					private void SaveFile() throws Exception{
 						
-						FileOutputStream out = new FileOutputStream(new File(this.getDir()+"МАРШРУТЫ.xlsx"));
+						FileOutputStream out = new FileOutputStream(new File(this.getDir()
+												+this.getFileNameMarshruts()));
 						curientWB_open.write(out);
-						out.close();
+						out.close();												
 					}
 	
 	
+		private String getFileNameMarshruts() throws Exception{
+
+				String agent = "";			
+				Experr experr = new Experr();
+				switch (experr.agent){				
+					case 1: agent = "ПИР_";break;
+					case 2: agent = "СК_";break;
+					case 3: agent = "СПС_";break;				
+				}
+								
+			String first = "МАРШРУТЫ";
+			String lost = ".xlsx";
+			long curTime = System.currentTimeMillis();
+			String date = new SimpleDateFormat("dd-MM-yyyy").format(curTime+1000*60*60*24);
+			
+			return first+"_"+agent+date+lost;
+		}
+					
 	public void OpenFile(){
 		try {
 			this.OpenFileBolvan();
@@ -97,7 +116,7 @@ public class Marshruts {
 	}
 		
 	
-			public void saveAndClose(){		
+			public void saveAndClose() throws Exception{		
 				try {
 					this.SaveFile();
 				} catch (IOException e) {
@@ -128,6 +147,8 @@ public class Marshruts {
 	
 	private void finisherSheet(int indexSheet, int finalRow){
 
+		try {
+		
 				finalRow = finalRow +3;
 				curientSheet.removeRow(curientSheet.getRow(finalRow));
 				curientSheet.removeRow(curientSheet.getRow(finalRow+1));
@@ -161,7 +182,20 @@ public class Marshruts {
 			    	      0, //start row
 			    	      finalRow+4 //end row*********************************************************переменная числа строк в таблице
 			    	      );
-		
+		} catch (Exception q){}
+				
+				
+	}
+	
+	public void deleteEmptySheets (){
+		for (int i = 12; i >0 ; i--){		
+			String check = curientWB_open.getSheetAt(i)
+										 .getRow(3).getCell(1)
+									 	 .getStringCellValue();		
+			if (check.compareTo("") == 0){
+					curientWB_open.removeSheetAt(i);
+			}						
+		}
 	}
 	
 	private CellStyle lightCK(){

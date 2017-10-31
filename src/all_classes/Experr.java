@@ -196,19 +196,21 @@ public class Experr {
 	public static JTextField txtFild_color_mailto1;
 	public static JTextField txtFild_color_mailto2;
 	
-	
+	private static String distr_inkass3 ="рута";
+	public static String distr_inkass4 = "рута";
+	public static String distr_inkass5 = "рута";
+	public static String distr_inkass6 = "рута";
+	public static String distr_inkass2 = "рута";
+	public static int agent = 2;
+	public static int limit = 80;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-
 				
 				Loging log = new Loging();
 				log.logtext(" Старт программы "
 							+"******************************************************************************");
-				
-				
-				
 				
 				Calendar calendar = Calendar.getInstance();
 				day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -218,20 +220,6 @@ public class Experr {
 				directory_res = path + "//res//"; // путь к папке с прогой по
 														// умолчанию
 				
-//				try {
-//					FileInputStream serv_osmp = new FileInputStream(directory_res + "bonus.csv");
-//				} catch (FileNotFoundException e) {
-//					directory_res = path + "//ExpoErr//res//";/// путь к папке с
-//																// прогой в
-//																// дропбоксе
-//				}
-
-				
-				
-				//AuthForm auth = new AuthForm();
-				
-				
-				
 				try {
 					Experr window = new Experr();
 					window.frmExperrtV.setVisible(true);
@@ -239,7 +227,6 @@ public class Experr {
 					e.printStackTrace();
 				}
 				
-
 			}
 		});
 	}
@@ -271,8 +258,6 @@ public class Experr {
 		frmExperrtV.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmExperrtV.getContentPane().setLayout(new BorderLayout(0, 0));
 		frmExperrtV.setMinimumSize(new Dimension(700, 690));
-									
-									//lblNewLabel5.setVisible(true);
 									
 									
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -310,11 +295,6 @@ public class Experr {
 				
 				RowSorter<TermTableModel_1> sorter_1 = new TableRowSorter<TermTableModel_1>(model_1);
 				RowSorter<TermTableMod_workers> sorter_work = new TableRowSorter<TermTableMod_workers>(model_work);
-	
-		        
-		    
-		        
-		       // ButtonGroup group = new ButtonGroup();
 
 		        BD_write bdw = new BD_write();
 				work_list = bdw.reqest_in_workerslist();
@@ -323,32 +303,20 @@ public class Experr {
 				RowSorter<TermTableMod_terminals> sorter_term = new TableRowSorter<TermTableMod_terminals>(model_term);
 				RowSorter<TermTableMod_except> sorter_except = new TableRowSorter<TermTableMod_except>(model_except);
 				
-				//String[] work = {"Aiiaoe", "eoaoa","Oeee", "eaeaa", "?iiai", "iiie", "iaii"};
-
-				
 //*****************комбобокс  работников************************************************************************************				
-				
-				
-				
-				
 				JComboBox combo_1 = new JComboBox(work);
-				combo_1.setMaximumRowCount(20);
-				
+				combo_1.setMaximumRowCount(20);				
 //***************************************************************************************************				
-			//*****************МАССИВ  маршрутов для комбобокса
-		        
+			//*****************МАССИВ  маршрутов для комбобокса		        
 		        List <String> distrs_list = bdw.reqest_in_distrs();
 				String [] distrs = distrs_list.toArray(new String[distrs_list.size()]);
 //********************************************************************************************				
 				JComboBox combo_2 = new JComboBox(distrs);//*/****комбо маршрутов в самой таблице терминалов
-				combo_2.setMaximumRowCount(20);
+				combo_2.setMaximumRowCount(20);								
 								
-								
-								ButtonGroup group = new ButtonGroup();			
-					    										    						
+								ButtonGroup group = new ButtonGroup();								    										    						
 //*************************************************************************
-				
-				
+								
 			    ActionListener listen = new ActionListener() {
 		            @Override
 		            public void actionPerformed(ActionEvent ae) {		            			            	
@@ -357,7 +325,6 @@ public class Experr {
 				                	DBtriger = 1;
 				                    break;
 				                case "Derby" :
-				                	//DBtriger = 0;
 				                	ChooseColor cc=new ChooseColor();
 				                	cc.setColor();
 				                	
@@ -370,17 +337,10 @@ public class Experr {
 								} catch (ClassNotFoundException e1) {}
 
 								bdw.close_connect();
-								
-								
-								
+																							
 								try {
 									bdw.reqest_in_db_TTmodel_except();
 								} catch (ClassNotFoundException e1) {}
-								
-//								try {
-//									bdw.reqest_in_db_TTmodel_terminals();
-//								} catch (ClassNotFoundException e1) {}
-								
 								
 								try {
 									bdw.reqest_in_db_TTmodel_workers();
@@ -398,29 +358,21 @@ public class Experr {
 			        						                            				panel_4.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			        						                            				panel_4.setBackground(new Color(51, 153, 153));
 			        						                            				panel_3.add(panel_4, BorderLayout.SOUTH);
-			        						                            				panel_4.setLayout(new MigLayout("", "[145.00][56.00,left][912.00,grow,fill]", "[16px,bottom]"));
-			        						                            				
-//**************************************************************************************************					    										
-			        						                            				
+			        						                            				panel_4.setLayout(new MigLayout("", "[145.00][56.00,left][912.00,grow,fill]", "[16px,bottom]"));					                            				
+//**************************************************************************************************					    													        						                            				
 			        						                            				JLabel label = new JLabel("\u041A\u043E\u043B-\u0432\u043E \u043E\u0448\u0438\u0431\u043E\u043A :");
 			        						                            				panel_4.add(label, "cell 0 0");//********eie-ai ioeaie
 			        						                            				label.setVerticalAlignment(SwingConstants.TOP);
 			        						                            				label.setForeground(new Color(153, 255, 153));
 			        						                            				label.setFont(new Font("Tahoma", Font.ITALIC, 16));
-			        						                            				
-			        						                            				
-//*****************************************************************************************************************************				
-			        						                            				
+		        						                            							        						                            				
+//*****************************************************************************************************************************							        						                            				
 			        						                            				progressBar_1 = new JProgressBar();
 			        						                            				panel_4.add(progressBar_1, "cell 2 0,grow");
 			        						                            				progressBar_1.setStringPainted(true);
 			        						                            				progressBar_1.setForeground(new Color(51, 204, 102));
 			        						                            				progressBar_1.setBackground(new Color(153, 153, 153));
-			        						                            				progressBar_1.setMaximum(2000);
-			        						                            				
-			        						                            					
-			        						                            				
-			        						                            				
+			        						                            				progressBar_1.setMaximum(2000);			        						                            				
 //***********************счетчик кол-ва ошибок*********
 			        						                            				lblNewLabel_3 = new JLabel();
 			        						                            				lblNewLabel_3.setHorizontalAlignment(SwingConstants.LEFT);
@@ -439,9 +391,6 @@ public class Experr {
 			        						                            				panel_6.setBackground(new Color(51, 153, 153));
 			        						                            				panel_5.add(panel_6, BorderLayout.CENTER);
 			        						                            				panel_6.setLayout(null);
-			        						                            				
-			        						                            				    										
-			        						                            				    										
 			        						                            				    										
 //*****контекстный поиск терминала в таблице ошибок*************************************************					    										
 			JButton button_1 = new JButton("\u041F\u043E\u0438\u0441\u043A");
@@ -469,16 +418,12 @@ public class Experr {
 				}                                                       
 				
 			});
-//************************************************************************************************************			        						                            				
-			        						                            				
-			        						                            				
+//************************************************************************************************************			        						                            							        						                            							        						                            				
 			      textField_8 = new JTextField();
 			      textField_8.setToolTipText("\u0432\u0432\u0435\u0434\u0438\u0442\u0435  \u043D\u043E\u043C\u0435\u0440 \u0442\u0435\u0440\u043C\u0438\u043D\u0430\u043B\u0430 \u0438\u043B\u0438 \u0447\u0430\u0441\u0442\u044C \u0430\u0434\u0440\u0435\u0441\u0430 ( \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F)");
 			      textField_8.setBounds(5, 64, 97, 20);
 			      panel_6.add(textField_8);
 			      textField_8.setColumns(100);
-			      
-			      
 			      
 			      JButton button_3 = new JButton("\u0412\u042B\u0425\u041E\u0414");
 			      button_3.setBounds(5, 10, 97, 30);
@@ -496,12 +441,9 @@ public class Experr {
 			      checkBox_2.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
 			      checkBox_2.setForeground(new Color(0, 204, 153));
 			      
-			      
-
 			      checkBox_2.addItemListener(new ItemListener() {
 			          public void itemStateChanged(ItemEvent e) {
 			            
-
 					        	 if (checkBox_2.isSelected()) {
 					        		 select_checkbox_print = " or print !='OK'";
 					        		 
@@ -516,15 +458,10 @@ public class Experr {
 					    			  
 					    			  System.out.println("cai?in e i?eioa?o " +ex);
 					    		  }
-					    		  bdw.close_connect();
-			          
+					    		  bdw.close_connect();			          
 			          }
 			      });
-			      
-			      
 //************************************************************************************************************			      
-			      
-			      
 			      JLabel label_6 = new JLabel("\u041C\u0430\u0440\u0448\u0440\u0443\u0442\u044B");
 			      label_6.setBounds(0, 239, 102, 20);
 			      panel_6.add(label_6);
@@ -573,7 +510,6 @@ public class Experr {
 			        				label_16.setForeground(new Color(51, 102, 51));
 			        				label_16.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
 			        						                            				
-			        						                            				
 	//*******выбор группы маршрутов в таблице ошибок*********************************************************************************************************************					    										
 			        						                            				
 			  		JComboBox comboBox_1 = new JComboBox();
@@ -583,16 +519,14 @@ public class Experr {
 			  		comboBox_1.setSelectedIndex(0);
 			  		comboBox_1.setMaximumRowCount(12);
 			  		comboBox_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-			  		
-			  					  		
+			  					  					  		
 			  		JButton button = new JButton("Почта");
 			  		button.setToolTipText("\u041D\u0430\u0447\u0430\u0442\u044C \u0440\u0430\u0441\u0441\u044B\u043B\u043A\u0443 \u043E\u0448\u0438\u0431\u043E\u043A");
 			  		button.setBounds(5, 371, 97, 29);
 			  		panel_6.add(button);
 			  		button.setForeground(new Color(153, 204, 153));
 			  		button.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
-			  		button.setBackground(new Color(0, 153, 153));
-			        						                            				
+			  		button.setBackground(new Color(0, 153, 153));			        						                            				
 			        						                            						    										
 //***************************************Ia?aou*******************************************************************************
 			      		JButton button_print = new JButton("\u041F\u0435\u0447\u0430\u0442\u044C");
@@ -604,9 +538,6 @@ public class Experr {
 			      		button_print.setBackground(new Color(0, 153, 153));
 			        						                            				
 //*****************************************************************************************************************************					    
-			        						                            				
-			        						                            				
-			        						                            				
 			        						                            				
 			      	JSeparator separator = new JSeparator();
 			      	separator.setBounds(5, 51, 97, 2);
@@ -650,100 +581,22 @@ public class Experr {
 			      label_time_to_last_mail.setBounds(5, 512, 87, 20);
 			      panel_6.add(label_time_to_last_mail);
 
-			      
-//*******a?oceou eee ia a?oceou eieannaoee aianoa n ioeaeaie ( ieooouny a ioaaeuio? oaaee?eo a AA)*****			      
-//			      JCheckBox checkBox_inkass = new JCheckBox("\u0418\u043D\u043A\u0430\u0441\u0441");
-//			      checkBox_inkass.setToolTipText("\u0412\u043A\u043B/\u0412\u044B\u043A\u043B \u0430\u0432\u0442\u043E\u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0445 \u0437\u0430 \u0442\u0435\u043A\u0443\u0449\u0438\u0439 \u0434\u0435\u043D\u044C  \u0438\u043D\u043A\u0430\u0441\u0441\u0430\u0446\u0438\u0439");
-//			      checkBox_inkass.setForeground(new Color(0, 204, 153));
-//			      checkBox_inkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
-//			      checkBox_inkass.setBackground(new Color(51, 153, 153));
-//			      checkBox_inkass.setBounds(5, 157, 96, 25);
-//			      panel_6.add(checkBox_inkass);
-//			       
-//			      checkBox_inkass.addItemListener(new ItemListener() {
-//			          public void itemStateChanged(ItemEvent e) {			            
-//					        	 if (checkBox_inkass.isSelected()) {					        		 
-//					        		 Last_inkass = 1;					        		 
-//					        	 } else Last_inkass = 0;			          
-//			          }
-//			      });
-//*************************************************************************************************************			        						                            											
-			      
-			      
-			      
 			      button_print.addActionListener(new ActionListener() {
 			    	  public void actionPerformed(ActionEvent arg0) {
 			    		  try {
 			    			  table.print();
-	//JOptionPane.showMessageDialog(frmExperrtV, "Ioeaea aaiaa, iaaa?iue iiia? oa?ieiaea", "EXperr-t", JOptionPane.WARNING_MESSAGE);	  
-			    			  
 			    			 
 			    		  } catch (PrinterException e) {
 			    			  
 			    			  e.printStackTrace();
 			    		  }					
 			    		  
-			    	  }
-			    	  
-			    	  
+			    	  }			    	  			    	  
 			      });			    										
  
-//*************************?eoa? ec AA a?aiy iineaaiae ?annueee*****************		    		 
-	    			 
+//*************************?eoa? ec AA a?aiy iineaaiae ?annueee*****************		    		 	    			 
 	    			 label_time_to_last_mail.setText(bdw.get_time_last_mail());
-	    			 
-	    			 
-//***********************************************************************************************************	    			 
-//	    			 JButton button_PPS = new JButton("ДПС");
-//	    			 button_PPS.setToolTipText("Преобразование ошибок ДПС в нужный формат файла points_info");
-//	    			 button_PPS.setForeground(new Color(153, 204, 153));
-//	    			 button_PPS.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
-//	    			 button_PPS.setBackground(new Color(0, 153, 153));
-//	    			 button_PPS.setBounds(5, 543, 97, 29);
-//	    			 panel_6.add(button_PPS);
-//	    			 
-//			    			 button_PPS.addActionListener(new ActionListener() {
-//						    	  public void actionPerformed(ActionEvent arg0) {
-//			    			 
-//						    		  ServicePPS service = new ServicePPS();
-//						    			try {
-//						    				
-//												service.addPoints_info();
-//										
-//						    			} catch (FileNotFoundException e) {
-//											e.printStackTrace();
-//										} catch (IOException e) {
-//											e.printStackTrace();
-//										}
-//						    		  
-//						    		  
-//						    	  }	  
-//						     });
-//	    			 
-//*************************************************************************************************************	    			 
-//	    			 JButton btnOsmp = new JButton("ОСМП");
-//	    			 btnOsmp.setToolTipText("Слияние 2 terminal_monitoring в 1");
-//	    			 btnOsmp.setBackground(new Color(51, 153, 153));
-//	    			 btnOsmp.setForeground(new Color(0, 255, 153));
-//	    			 btnOsmp.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
-//	    			 btnOsmp.setBounds(5, 581, 97, 29);
-//	    			 panel_6.add(btnOsmp);
-//	    			 
-//	    			 
-//			    			 btnOsmp.addActionListener(new ActionListener() {
-//			     	        	   public void actionPerformed(ActionEvent e) {
-//			     	        		  
-//			     	        		  Service service = new Service();
-//			     	        			try {
-//											service.two_in_one();
-//										} catch (IOException e1) {
-//											
-//											e1.printStackTrace();
-//										}
-//			     	        		      
-//			     	        	   }
-//					        });
-			      
+	    			 	    			 			      
 //***************************************************ПОЧТА**********************************************				
 			      button.addActionListener(new ActionListener() {
 			    	  public void actionPerformed(ActionEvent arg0) {
@@ -756,8 +609,7 @@ public class Experr {
 			    			 String curientStringDateTame = new SimpleDateFormat("HH:mm").format(curTime);
 			    			 bdw.set_time_last_mail(curientStringDateTame);
 			    			 
-	//*****************************************************************		    			 
-			    			 
+	//*****************************************************************		    			 			    			 
 			    			 SendMail sm = new SendMail();	
 			    		  try {
 							sm.data_for_send_mails();
@@ -767,13 +619,9 @@ public class Experr {
 						}	
 			    		  
 			    		  label_time_to_last_mail.setText(bdw.get_time_last_mail());
-			    	  }
-			    	  
+			    	  }			    	  
 			    	  
 			      });
-			      
-			      
-			      
 			      
 			      comboBox_1.addActionListener(new ActionListener() {
 			    	  public void actionPerformed(ActionEvent event) {             //****выбор группы
@@ -793,8 +641,7 @@ public class Experr {
 			    			  case "ЛО" :   query_group   =  " terminals.lo = 1 and "; break;
 			    			  
 			    			  }
-			    		  }
-			    		  	
+			    		  }			    		  	
 			    		  	
 			    		  BD_write bdw = new BD_write();
 			    		  bdw.connect();
@@ -808,8 +655,7 @@ public class Experr {
 			    		  bdw.close_connect();
 			    		  
 			    	  }
-			      });
-			      
+			      });			      
 			      
 			      comboBox.addActionListener(new ActionListener() {
 			    	  public void actionPerformed(ActionEvent event) {           //****выбор маршрута
@@ -830,8 +676,7 @@ public class Experr {
 			    		  bdw.close_connect();
 			    		  
 			    	  }
-			      });
-			      
+			      });			      
 			      
 //**********подсветка  кнопки выход при наведении мышки на нее*************************************																
 			        						                            															
@@ -844,20 +689,17 @@ public class Experr {
 			    			}
 			    			
 			    			@Override
-			    			public void mouseClicked(MouseEvent e) {
-			    				
-			    				
-			    			}
-			    			
-			    			@Override
-			    			public void mousePressed(MouseEvent e) {
-			    				
+			    			public void mouseClicked(MouseEvent e) {			    				
 			    				
 			    			}
 			    			
 			    			@Override
-			    			public void mouseReleased(MouseEvent e) {
+			    			public void mousePressed(MouseEvent e) {			    				
 			    				
+			    			}
+			    			
+			    			@Override
+			    			public void mouseReleased(MouseEvent e) {			    				
 			    				
 			    			}
 			    			
@@ -866,22 +708,17 @@ public class Experr {
 			    				button_3.setBackground(new Color(255, 255, 153));
 			    				button_3.setForeground(new Color(255, 153, 51));
 			    				
-			    			}
-			    			
+			    			}			    			
 			    			
 			    		});
-//********************************************************************************************			    		
-			    		
+//********************************************************************************************			    					    		
 			    		
 			    		button_3.addActionListener(new ActionListener() {
 			    			public void actionPerformed(ActionEvent arg0) {
 			    				
-			    				
 			    				Gui1 gui1 = new Gui1();
 			    				
 			    				gui1.Gui3("СЛУЧАЙНО НАЖАЛ ?"); //"ВЫХОД"
-			    				
-			    				
 			    				
 			    			}
 			    		});
@@ -892,8 +729,7 @@ public class Experr {
 			    		
 			    		JPanel panel_8 = new JPanel();
 			    		panel_8.setBackground(new Color(51, 153, 153));
-			    		panel_7.add(panel_8, BorderLayout.NORTH);
-			    		
+			    		panel_7.add(panel_8, BorderLayout.NORTH);			    		
 			        						                            																												
 //*****************СТАРТ****************************************************									
 			    		btnNewButton_1 = new JButton("\u0421\u0422\u0410\u0420\u0422");
@@ -907,9 +743,9 @@ public class Experr {
 			    				
 			    				Loging log = new Loging();
 			    				
-				    				log.logtext(" Объединяю файлы и создаю в нужном формате ");			    				
-				    				ServiceWBS swbs = new ServiceWBS();
-				    						   swbs.creatureAllFiles();
+//				    				log.logtext(" Объединяю файлы и создаю в нужном формате ");			    				
+//				    				ServiceWBS swbs = new ServiceWBS();
+//				    						   swbs.creatureAllFiles();
 			    							    				
 						    				log.logtext(" Собираю данные об ошибках ");				    				
 						    				btnNewButton_1.setEnabled(false);
@@ -919,8 +755,7 @@ public class Experr {
 			    							    							    				
 			    			}			    						    			
 			    		});
-			    		
-			    		
+			    					    		
 //**********подсветка  кнопки СТАРТ при наведении мышки на нее***************************************																
 						
 			    		btnNewButton_1.addMouseListener(new MouseListener() {
@@ -933,20 +768,17 @@ public class Experr {
 			    			
 			    			@Override
 			    			public void mouseClicked(MouseEvent e) {
-			    				
-			    				
+			    							    				
 			    			}
 			    			
 			    			@Override
 			    			public void mousePressed(MouseEvent e) {
-			    				
-			    				
+			    							    				
 			    			}
 			    			
 			    			@Override
 			    			public void mouseReleased(MouseEvent e) {
-			    				
-			    				
+			    							    				
 			    			}
 			    			
 			    			@Override
@@ -954,24 +786,13 @@ public class Experr {
 			    				btnNewButton_1.setBackground(new Color(0, 102, 255));
 			    				btnNewButton_1.setForeground(new Color(153, 204, 153));
 			    				
-			    			}
-			    			
+			    			}			    			
 			    			
 			    		});
 //********************************************************************************************	
-			    		
-			    		
-			    		
-			    		
 			    		JPanel panel_9 = new JPanel();
 			    		panel_9.setBackground(new Color(51, 153, 153));
 			    		panel_7.add(panel_9, BorderLayout.SOUTH);
-			    		
-			    		
-			    		
-			    		
-			    		
-			    		
 			    		
 			    		JLabel lblNewLabel5 = new JLabel();
 			    		panel_9.add(lblNewLabel5);
@@ -986,10 +807,6 @@ public class Experr {
 			    		panel_10.add(scrollPane);
 			    		scrollPane.setViewportBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 204)));
 			    		//**********************************************************************************************************************								
-			    		
-			    		
-			    		
-			        						                            																																				
 			        						                            																																												
 									table = new JTable(model);																													
 									table.setToolTipText("kkkbjkb");
@@ -1044,8 +861,6 @@ public class Experr {
 									table.getColumnModel().getColumn(9).setResizable(true);
 									table.getColumnModel().getColumn(9).setPreferredWidth(50);
 									
-																	
-									
 									scrollPane.setViewportView(table);
 									progressBar_1.setVisible(false);
 							       							       
@@ -1059,30 +874,23 @@ public class Experr {
 									panel_11.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 									panel_1.add(panel_11, BorderLayout.WEST);
 									panel_11.setLayout(new BorderLayout(0, 0));
-							       							       
-							       							       	        
+							       							       							       							       	        
  //*************************************************************************				        
 							    JScrollPane scrollPane_term = new JScrollPane();
-							    panel_11.add(scrollPane_term);
-							    
+							    panel_11.add(scrollPane_term);							    
 							    
 							    table_term = new JTable(model_term);//********************таблица  терминалы
 							    scrollPane_term.setViewportView(table_term);
 							    table_term.setCellSelectionEnabled(true);
 							    table_term.setRowSorter(sorter_term);	
 							    table_term.setRowHeight(20);
-//							    table_term.getColumnModel().getColumn(0).setPreferredWidth(60);
-//							    table_term.getColumnModel().getColumn(1).setPreferredWidth(420);
-//							    table_term.getColumnModel().getColumn(2).setPreferredWidth(100);
-							    
 							    table_term.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(combo_2));
 							    
 							    JPanel panel_12 = new JPanel();
 							    panel_12.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 							    panel_1.add(panel_12, BorderLayout.CENTER);
 							    panel_12.setLayout(new BorderLayout(0, 0));
-							    //***************************************************************************		        
-							    
+							    //***************************************************************************		        							    
 							    JScrollPane scrollPane_except = new JScrollPane();
 							    panel_12.add(scrollPane_except);
 							    
@@ -1097,8 +905,7 @@ public class Experr {
 							    panel_13.setBackground(new Color(102, 153, 153));
 							    panel_1.add(panel_13, BorderLayout.SOUTH);
 							    panel_13.setLayout(new MigLayout("", "[120.00][171.00][151.00][:120:120,grow,right][78.00,grow][78.00,grow][:180px:180px,grow]", "[][]"));
-							    
-							     
+							    							     
 //********ПОЛЯ для таблицы терминалов***********************************************************************************		         
 							     
 							     textField_numTerm = new JTextField();
@@ -1119,14 +926,10 @@ public class Experr {
 							      textField_numbexcept = new JTextField();
 							      textField_numbexcept.setToolTipText("\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u043D\u0435\u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0449\u0435\u0433\u043E \u0442\u0435\u0440\u043C\u0438\u043D\u0430\u043B\u0430 - \u0433\u043E\u0440\u044F\u0447\u0435\u0435 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435 \u0441\u043F\u0438\u0441\u043A\u0430");
 							      panel_13.add(textField_numbexcept, "cell 3 0,grow");
-							      
-							     
-							      
 							      textField_nameexcept = new JTextField();
 							      panel_13.add(textField_nameexcept, "cell 6 0,grow");
 							      textField_nameexcept.setColumns(10);
-							      //**************************************************************************************************************						        				 										        				 			
-							      
+							      //**************************************************************************************************************						        				 										        				 										      
 							      //****КНОПКА ПОИСК ТЕРИМНАЛА В ТАБЛИЦЕ ТЕРМИНАЛЫ***********************************				        
 							      
 							      JButton button_find_term = new JButton("\u041F\u043E\u0438\u0441\u043A");
@@ -1169,8 +972,7 @@ public class Experr {
 			        	        		
 			        	        		
   				 				  		}
-						           });					
-  //********	*****************************************************************************************										        	        
+						           });														        	        
 //****************************КНОПКА ДОБАВИТЬ ТЕРЕМ К ИСКЛЮЧЕНИЯМ***************							        	        
   				 				  	
   				 				  	JButton add_except = new JButton("\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C");
@@ -1181,10 +983,7 @@ public class Experr {
   				 				  	
 							     add_except.addActionListener(new ActionListener() {
 			        	        	   public void actionPerformed(ActionEvent e) {
-			        	        		   //TextFild tf = new TextFild();
 			        	        		try {
-			        	        			//tf.insert_term_exception(new AddDelExceptTerm().getArr(), Experr.textField_nameexcept.getText());	
-									//tf.insert_term_exception(textField_numbexcept.getText(),textField_nameexcept.getText());
 										new AddDelExceptTerm().groupAddDel(1);
 			        	        		
 			        	        		} catch (Exception e1) {
@@ -1195,8 +994,7 @@ public class Experr {
 //********кнопка поиск в исключениях*************************************************************************************							     
 							     button_find_except.addActionListener(new ActionListener() {
 			        	        	   public void actionPerformed(ActionEvent e) {
-			        	        		   
-			        	        		   
+			        	        		   			        	        		   
 			        	        	   }
 		        	           });
 							     
@@ -1259,12 +1057,6 @@ public class Experr {
 		        label_14.setHorizontalAlignment(SwingConstants.CENTER);
 		        label_14.setForeground(new Color(255, 153, 204));
 		        label_14.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
-		        
-//		        table_except.getColumnModel().getColumn(0).setPreferredWidth(60);
-//		        table_except.getColumnModel().getColumn(1).setPreferredWidth(100);
-//		        table_except.getColumnModel().getColumn(2).setPreferredWidth(100);
-//		        table_except.getColumnModel().getColumn(3).setPreferredWidth(100);
-							       							       //frame.getContentPane().add(tabbedPane);
 							       							       
 		        JPanel panel = new JPanel();
 		        panel.setBackground(new Color(142, 153, 255));
@@ -1275,32 +1067,25 @@ public class Experr {
 		        panel.setLayout(null);
 				        						
 //************IA?AEE??AOAEU AAC*******************************************************************************************								
-			        						
-			        						
+			        									        						
 			        						JRadioButton rdbtnSql = new JRadioButton("SQL");
 			        						rdbtnSql.setBounds(576, 81, 57, 20);
 			        						panel.add(rdbtnSql);
 			        						
-			        						
-			        						
 			        						JRadioButton rdbtnDerby = new JRadioButton("Derby");
 			        						rdbtnDerby.setBounds(576, 104, 57, 20);
 			        						panel.add(rdbtnDerby);
-			        						
-			        						
+			        									        						
 			        						group.add(rdbtnSql);
-			        						group.add(rdbtnDerby);
-			        						
+			        						group.add(rdbtnDerby);			        						
 			        						
 //******ПЕРЕКЛЮЧАТЕЛЬ БАЗ***********//rdbtnDerby.setSelected(true);
 			        						rdbtnSql.setSelected(true);							
 			        						rdbtnSql.addActionListener(listen);
 			        						rdbtnDerby.addActionListener(listen);
 			        						                            
-
 //******************************************************************************************************************************
-			        						                            
-			        						                            
+			        						                            			        						                            
 			JLabel label_7 = new JLabel("\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0441\u044F \u0434\u0440\u0430\u0439\u0432\u0435\u0440 :");
 			label_7.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
 			label_7.setForeground(new Color(0, 0, 204));
@@ -1313,8 +1098,7 @@ public class Experr {
 			textField_1.setBounds(202, 41, 354, 37);
 			panel.add(textField_1);
 			textField_1.setColumns(10);
-			textField_1.setText(xml.read()[0]);
-			
+			textField_1.setText(xml.read()[0]);			
 			
 			JLabel lblDatabase = new JLabel("\u0425\u043E\u0441\u0442 \u0438 DataBase :");
 			lblDatabase.setForeground(new Color(0, 0, 204));
@@ -1341,8 +1125,6 @@ public class Experr {
 			label_5.setForeground(new Color(153, 0, 255));
 			label_5.setHorizontalAlignment(SwingConstants.CENTER);
 			        						                            
-			        						                            
-			        						                            
 //************************************************СИГНАЛ*********************************				
 			JSpinner spinner = new JSpinner();
 			spinner.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -1351,19 +1133,12 @@ public class Experr {
 			spinner.setModel(new SpinnerNumberModel(2, 0, 23, 1));				
 			spinner.addChangeListener(listener);
 			
-			
-			
-			
 			JSpinner spinner_1 = new JSpinner();
 			spinner_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			spinner_1.setBounds(880, 43, 48, 30);                           //****ДНИ
 			panel.add(spinner_1);
 			spinner_1.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 			spinner_1.addChangeListener(listener_1);
-			//**********************************************************************************************************************				
-			
-			
-			
 			//************************************************ПЛАТЕЖ*******************************				
 			JSpinner spinner_2 = new JSpinner();
 			spinner_2.setModel(new SpinnerNumberModel(2, 0, 10, 1));
@@ -1371,22 +1146,15 @@ public class Experr {
 			spinner_2.setBounds(880, 81, 48, 30);                                //****ДНИ
 			panel.add(spinner_2);
 			spinner_2.addChangeListener(listener_2);
-			
-			
-			
+									
 			JSpinner spinner_3 = new JSpinner();                                //****ЧАСЫ
 			spinner_3.setModel(new SpinnerNumberModel(0, 0, 23, 1));
 			spinner_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			spinner_3.setBounds(1031, 75, 48, 30);
 			panel.add(spinner_3);
 			spinner_3.addChangeListener(listener_3);
-			
-			        						                            				
-//****************************************************************************************************************				
-			        						                            				
-			        						                            				
-			        						                            				
-			        						                            				
+						        						                            				
+//****************************************************************************************************************							        						                            				
 			JLabel label_1 = new JLabel("\u0427\u0430\u0441\u043E\u0432");
 			label_1.setBounds(964, 47, 57, 20);
 			panel.add(label_1);
@@ -1406,16 +1174,14 @@ public class Experr {
 			textField_2.setBounds(202, 89, 354, 37);
 			panel.add(textField_2);
 			textField_2.setText(xml.read()[1]);
-			
-			
+						
 			textField_3 = new JTextField();
 			textField_3.setEditable(false);
 			textField_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			textField_3.setColumns(10);
 			textField_3.setBounds(202, 135, 354, 37);
 			panel.add(textField_3);
-			textField_3.setText(xml.read()[2]);
-			
+			textField_3.setText(xml.read()[2]);			
 			
 			textField_4 = new JTextField();
 			textField_4.setEditable(false);
@@ -1430,8 +1196,6 @@ public class Experr {
 			lblDownloads.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
 			lblDownloads.setBounds(28, 231, 166, 37);
 			panel.add(lblDownloads);
-			
-			
 			        						                            				
 			textField_6 = new JTextField();
 			textField_6.setEditable(false);
@@ -1488,9 +1252,7 @@ public class Experr {
 			
 			JScrollPane scrollPane_1 = new JScrollPane();
 			scrollPane_1.setBounds(28, 356, 395, 329);
-			panel.add(scrollPane_1);
-			
-			        						                            				
+			panel.add(scrollPane_1);						        						                            				
 //*****таблица маилто*************************************************				
 			table_1 = new JTable(model_1); 
 			table_1.setRowSelectionAllowed(false);
@@ -1500,8 +1262,7 @@ public class Experr {
 			table_1.setRowHeight(20);
 			
 			table_1.setDefaultRenderer(String.class, new Render_mailto_table());
-			
-			
+						
 			JLabel label_12 = new JLabel("\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430 \u0440\u0430\u0441\u0441\u044B\u043B\u043A\u0438 :");
 			label_12.setForeground(new Color(204, 0, 204));
 			label_12.setFont(new Font("Tahoma", Font.ITALIC, 12));
@@ -1511,16 +1272,13 @@ public class Experr {
 			JScrollPane scrollPane_workers = new JScrollPane();
 			scrollPane_workers.setBounds(740, 282, 339, 403);
 			panel.add(scrollPane_workers);
-			
-			        						                            				
 			        						                            				
 //************************************************************************************		        
 			table_workers = new JTable(model_work);
 			scrollPane_workers.setViewportView(table_workers);
 			table_workers.setCellSelectionEnabled(true);
 			table_workers.setRowSorter(sorter_work);	
-			table_workers.setRowHeight(20);
-			
+			table_workers.setRowHeight(20);			
 			
 			JLabel label_15 = new JLabel("\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u043E\u0432:");
 			label_15.setForeground(new Color(51, 102, 255));
@@ -1540,16 +1298,11 @@ public class Experr {
 			separator_9.setOrientation(SwingConstants.VERTICAL);
 			separator_9.setBounds(633, 26, 2, 744);
 			panel.add(separator_9);
-			// textField_distrterm.add(new DefaultCellEditor(combo_2));
 //*******************************************************************************************************************		          
-			
-			
 				table_1.getColumnModel().getColumn(0).setPreferredWidth(10);
 				table_1.getColumnModel().getColumn(1).setPreferredWidth(10);
 				table_1.getColumnModel().getColumn(2).setPreferredWidth(60);
-				table_1.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(combo_1));
-				
-//*****************************************************************************************************		        
+				table_1.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(combo_1));				        
 //*********добавить нового сотрудника и почту********************************************		        
 			        JButton button_insert_new_work = new JButton("\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C/\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C");
 			        button_insert_new_work.setForeground(Color.BLUE);
@@ -1557,8 +1310,7 @@ public class Experr {
 			        button_insert_new_work.setBackground(new Color(102, 102, 255));
 			        button_insert_new_work.setBounds(740, 727, 339, 25);
 			        panel.add(button_insert_new_work);
-			        
-			        
+			        			        
 			        textField_work = new JTextField();
 			        textField_work.setColumns(10);
 			        textField_work.setBounds(740, 696, 163, 20);
@@ -1676,8 +1428,6 @@ public class Experr {
 			        txtFild_color_mailto2.setColumns(10);
 			        txtFild_color_mailto2.setBounds(470, 388, 86, 20);
 			        panel.add(txtFild_color_mailto2);
-//***************************************************************************************			        
-			        			        
 //***************************************************************************************
 			        
 			        CheckBox_history.addItemListener(new ItemListener() {
@@ -1690,15 +1440,12 @@ public class Experr {
 						        	 }else {history = 0;}
 				          				          
 				          }
-				      });
-			        
-			        
+				      });			        
 //***************************************************************************************			        
 			        JPanel panel_2 = new JPanel();
 			        panel_2.setBackground(new Color(255, 204, 153));
 			        tabbedPane.addTab("\u041E\u0442\u0447\u0451\u0442", null, panel_2, null);
 			        panel_2.setLayout(new BorderLayout(0, 0));
-
 			        
 //****IO??O****************************************************************************************************			        
 			        JPanel panel_15 = new JPanel();
@@ -1717,9 +1464,7 @@ public class Experr {
 					        btn_report.addActionListener(new ActionListener() {
 		     	        	   public void actionPerformed(ActionEvent e) {
 		     	        		   Report repo = new Report();
-		     	        		   repo.query_for_report_spb();
-		     	        		   
-		     	        		   
+		     	        		   repo.query_for_report_spb();		     	        		   		     	        		   
 		     	        		      
 		     	        	   }
 					        });
@@ -1751,9 +1496,6 @@ public class Experr {
 			     	        		      
 			     	        	   }
 					        });
-			        
-			        
-			        
 //******************************************************************************************************			        
 			        JPanel panel_16 = new JPanel();
 			        panel_16.setBackground(new Color(51, 153, 153));
@@ -1767,8 +1509,6 @@ public class Experr {
 			        
 			        JScrollPane scrollPane_3 = new JScrollPane();
 			        panel_17.add(scrollPane_3, BorderLayout.CENTER);
-	
-			        
 			        
 //****таблица отчета спб********************************************************			        
 			        table_2 = new JTable(model_spb);
@@ -1785,9 +1525,6 @@ public class Experr {
 			        
 			        JScrollPane scrollPane_4 = new JScrollPane();
 			        panel_18.add(scrollPane_4, BorderLayout.CENTER);
-
-			        
-			        
 //****табл отч ло******************************************************			        
 			        table_3 = new JTable(model_lo);
 			        table_3.setBackground(new Color(204, 255, 153));
@@ -1804,7 +1541,6 @@ public class Experr {
 			        
 			        JScrollPane scrollPane_5 = new JScrollPane();
 			        panel_19.add(scrollPane_5, BorderLayout.CENTER);
-
 			        
 //***табл отч регионы*********************************************************			        
 			        table_4 = new JTable(model_reg);
@@ -1826,8 +1562,6 @@ public class Experr {
 			        panel_20.add(panel_21, BorderLayout.WEST);
 			        panel_21.setLayout(new MigLayout("", "[grow]", "[31.00][][][][][][][][][][][][][][][][][][][][][][][][][][]"));
 			        
-			       
-			        
 			        JLabel label_20 = new JLabel("Выбор маршрутов");
 			        label_20.setHorizontalAlignment(SwingConstants.CENTER);
 			        label_20.setForeground(new Color(51, 102, 0));
@@ -1847,6 +1581,20 @@ public class Experr {
 			        comboBox_3.setMaximumRowCount(12);
 			        comboBox_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			        panel_21.add(comboBox_3, "cell 0 4,growx");
+			        			        
+			        comboBox_3.addActionListener(new ActionListener() {
+				    	  public void actionPerformed(ActionEvent event) {           								
+				    		 try { 				    		  
+				    		  distr_inkass3 = comboBox_3.getSelectedItem()
+														  .toString()
+				    		 							  .substring(8); 
+				    		 } catch(Exception e4) {
+				    			
+				    			 distr_inkass3 = "0";// combobox value "нет маршрута"
+
+				    		 }
+				    	  }
+				      });
 			        
 			        JComboBox comboBox_4 = new JComboBox();
 			        comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
@@ -1855,12 +1603,36 @@ public class Experr {
 			        comboBox_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			        panel_21.add(comboBox_4, "cell 0 5,growx");
 			        
+			        comboBox_4.addActionListener(new ActionListener() {
+				    	  public void actionPerformed(ActionEvent event) {           								
+				    		 try { 				    		  
+				    		  distr_inkass4 = comboBox_4.getSelectedItem()
+														  .toString()
+				    		 							  .substring(8); 
+				    		 } catch(Exception e4) {				    			
+				    			 distr_inkass4 = "0";// combobox value "нет маршрута"
+				    		 }
+				    	  }
+				      });
+			        
 			        JComboBox comboBox_5 = new JComboBox();
 			        comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
 			        comboBox_5.setSelectedIndex(0);
 			        comboBox_5.setMaximumRowCount(12);
 			        comboBox_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			        panel_21.add(comboBox_5, "cell 0 6,growx");
+			        
+			        comboBox_5.addActionListener(new ActionListener() {
+				    	  public void actionPerformed(ActionEvent event) {           								
+				    		 try { 				    		  
+				    		  distr_inkass5 = comboBox_5.getSelectedItem()
+														  .toString()
+				    		 							  .substring(8); 
+				    		 } catch(Exception e4) {				    			
+				    			 distr_inkass5 = "0";// combobox value "нет маршрута"
+				    		 }
+				    	  }
+				      });
 			        
 			        JComboBox comboBox_6 = new JComboBox();
 			        comboBox_6.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
@@ -1869,25 +1641,36 @@ public class Experr {
 			        comboBox_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			        panel_21.add(comboBox_6, "cell 0 7,growx");
 			        
+			        comboBox_6.addActionListener(new ActionListener() {
+				    	  public void actionPerformed(ActionEvent event) {           								
+				    		 try { 				    		  
+				    		  distr_inkass6 = comboBox_6.getSelectedItem()
+														  .toString()
+				    		 							  .substring(8); 
+				    		 } catch(Exception e4) {				    			
+				    			 distr_inkass6 = "0";// combobox value "нет маршрута"
+				    		 }
+				    	  }
+				      });
+			        
 			        JComboBox comboBox_2 = new JComboBox();
 			        comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
 			        comboBox_2.setSelectedIndex(0);
 			        comboBox_2.setMaximumRowCount(12);
-			        comboBox_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-			        panel_21.add(comboBox_2, "cell 0 8,growx");
+			        comboBox_2.setFont(new Font("Tahoma", Font.PLAIN, 12));			        
+			        panel_21.add(comboBox_2, "cell 0 8,growx");	
 			        
-			        String distr_inkass3 =comboBox_3.getSelectedItem().toString();
-			        String distr_inkass4 =comboBox_4.getSelectedItem().toString();
-			        String distr_inkass5 =comboBox_5.getSelectedItem().toString();
-			        String distr_inkass6 =comboBox_6.getSelectedItem().toString();
-			        String distr_inkass2 =comboBox_2.getSelectedItem().toString();
-			        
-			        
-			        
-			        
-			        
-			        
-			        
+			        comboBox_2.addActionListener(new ActionListener() {
+				    	  public void actionPerformed(ActionEvent event) {           								
+				    		 try { 				    		  
+				    		  distr_inkass2 = comboBox_2.getSelectedItem()
+														  .toString()
+				    		 							  .substring(8); 
+				    		 } catch(Exception e4) {				    			
+				    			 distr_inkass2 = "0";// combobox value "нет маршрута"
+				    		 }
+				    	  }
+				      });
 			        
 //*****************************************************************************************************************************************			        
 			        JLabel label_21 = new JLabel("Выбор агентов");
@@ -1895,30 +1678,67 @@ public class Experr {
 			        label_21.setForeground(new Color(51, 102, 0));
 			        label_21.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 			        panel_21.add(label_21, "cell 0 10,alignx center");
-//*********************************************************************************************************************************************			        
-			        JCheckBox checkBox = new JCheckBox("ПИР");
-			        checkBox.setToolTipText("");
-			        checkBox.setForeground(new Color(0, 204, 153));
-			        checkBox.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
-			        checkBox.setBackground(new Color(0, 153, 153));
-			        panel_21.add(checkBox, "cell 0 11");
+//****************************************************************************************************			        
+			        JRadioButton rdbtnSK = new JRadioButton("Северный кредит");
+			        rdbtnSK.setSelected(true);
+			        rdbtnSK.setForeground(new Color(153, 255, 102));
+			        rdbtnSK.setBackground(new Color(51, 153, 153));
+			        rdbtnSK.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        panel_21.add(rdbtnSK, "cell 0 11");
 			        
-			        JCheckBox checkBox_1 = new JCheckBox("СК");
-			        checkBox_1.setToolTipText("");
-			        checkBox_1.setForeground(new Color(0, 204, 153));
-			        checkBox_1.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
-			        checkBox_1.setBackground(new Color(0, 153, 153));
-			        panel_21.add(checkBox_1, "cell 0 12");
+			        JRadioButton radioButton_Pir = new JRadioButton("Пир банк");
+			        radioButton_Pir.setForeground(new Color(153, 255, 102));
+			        radioButton_Pir.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        radioButton_Pir.setBackground(new Color(51, 153, 153));
+			        panel_21.add(radioButton_Pir, "cell 0 12");
 			        
-			        JCheckBox checkBox_3 = new JCheckBox("СПС");
-			        checkBox_3.setToolTipText("");
-			        checkBox_3.setForeground(new Color(0, 204, 153));
-			        checkBox_3.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
-			        checkBox_3.setBackground(new Color(0, 153, 153));
-			        panel_21.add(checkBox_3, "cell 0 13");
+			        JRadioButton radioButton_Sps = new JRadioButton("Спс");
+			        radioButton_Sps.setForeground(new Color(153, 255, 102));
+			        radioButton_Sps.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        radioButton_Sps.setBackground(new Color(51, 153, 153));
+			        panel_21.add(radioButton_Sps, "cell 0 13");
+			        
+			        JRadioButton radioButton_all = new JRadioButton("Все агенты вместе");
+			        radioButton_all.setForeground(new Color(153, 255, 102));
+			        radioButton_all.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        radioButton_all.setBackground(new Color(51, 153, 153));
+			        panel_21.add(radioButton_all, "cell 0 14");
+					
+			        ButtonGroup groupAgents = new ButtonGroup();
+			        groupAgents.add(radioButton_Sps);
+			        groupAgents.add(rdbtnSK);
+			        groupAgents.add(radioButton_Pir);
+			        groupAgents.add(radioButton_all);
+			        			        
+				        ActionListener listenerAgents = new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								agent = 0;  
+				        		if(radioButton_all.isSelected()){
+				        			agent = 0;
+				        		}
+				        		
+				        		if(radioButton_Sps.isSelected()){
+				        			agent = 3;
+				        		}
+				        		
+				        		if(radioButton_Pir.isSelected()){
+				        			agent = 1;
+				        		}
+				        		
+				        		if(rdbtnSK.isSelected()){
+				        			agent = 2;
+				        		}
+							}
+							
+				        };
+				        				        
+				        radioButton_all.addActionListener(listenerAgents);
+				        radioButton_Sps.addActionListener(listenerAgents);
+				        radioButton_Pir.addActionListener(listenerAgents);
+				        rdbtnSK.addActionListener(listenerAgents);
+				        
 //**************************************************************************************************************************************************			        
-			       
-			        
 			        JPanel panel_22 = new JPanel();
 			        panel_22.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			        panel_22.setBackground(new Color(51, 153, 153));
@@ -1935,11 +1755,10 @@ public class Experr {
 			        table_5.setSelectionBackground(new Color(153, 204, 204));
 			        table_5.setRowHeight(22);
 			        table_5.setGridColor(Color.BLUE);
-			        table_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			        table_5.setFont(new Font("Tahoma", Font.PLAIN, 12));         
 			        table_5.setCellSelectionEnabled(true);
 			        table_5.setBackground(new Color(255, 255, 204));
 			        scrollPane_6.setViewportView(table_5);
-
 			        
 			        RowSorter<TTM_inkass> sorterInkass = new TableRowSorter<TTM_inkass>(model_inkass);
 			        table_5.setRowSorter(sorterInkass);
@@ -1947,8 +1766,6 @@ public class Experr {
 			        headInkass.setBackground(new Color(51, 153, 153));
 			        headInkass.setForeground(new Color(153, 204, 153));
 			        headInkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
-			        
-			        
 	       
 			        JButton button_2 = new JButton("Обновить\r\n справочник");
 			        button_2.setToolTipText("Предварительно скачайте trmlist-report");
@@ -1962,17 +1779,36 @@ public class Experr {
 	     	        		   
 	     	        		   NewThread_one thread = new NewThread_one();
 								thread.New_Thread();
-	     	        		   
-	     	        		      
+	     	        		   	     	        		      
 	     	        	   }
 				        });
 			        
-						        JButton button_4 = new JButton("МАРШРУТЫ");
-						        button_4.setToolTipText("Сформировать файл МАРШРУТЫ");
-						        button_4.setForeground(new Color(204, 204, 102));
-						        button_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
-						        button_4.setBackground(new Color(51, 153, 153));
-						        panel_21.add(button_4, "cell 0 15,growx");			        			        
+			        JLabel label_22 = new JLabel("Кол-во терминалов");
+			        label_22.setHorizontalAlignment(SwingConstants.CENTER);
+			        label_22.setForeground(new Color(51, 102, 0));
+			        label_22.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+			        panel_21.add(label_22, "cell 0 15,growx");
+			        
+			        JSpinner spinner_Limit = new JSpinner();
+			        spinner_Limit.setModel(new SpinnerNumberModel(80, 0, 300, 1));
+			        panel_21.add(spinner_Limit, "cell 0 16,growx");
+					
+			        ChangeListener listenerLimit = new ChangeListener() {
+			            public void stateChanged(ChangeEvent e) {
+			                JSpinner spinner_Limit = (JSpinner) e.getSource();
+			                limit = (int) spinner_Limit.getValue();
+			            }
+			        };
+			        
+			        spinner_Limit.addChangeListener(listenerLimit);
+			        
+			        JButton button_4 = new JButton("МАРШРУТЫ");
+			        button_4.setToolTipText("Сформировать файл МАРШРУТЫ");
+			        button_4.setForeground(new Color(204, 204, 102));
+			        button_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+			        button_4.setBackground(new Color(51, 153, 153));
+			        panel_21.add(button_4, "cell 0 18,growx");	
+			        
 						        button_4.addActionListener(new ActionListener() {
 				     	        	   public void actionPerformed(ActionEvent e) {
 				     	        		 	     	        		   
@@ -2028,8 +1864,7 @@ public class Experr {
 
 													}
 													
-								        		} 
-														
+								        		} 														
 										
 											} 
 											BD_write bdw = new BD_write();
@@ -2050,25 +1885,15 @@ public class Experr {
 
 											bdw.close_connect();
 											
-											
-											
 											try {
 												bdw.reqest_in_db_TTmodel_except();
 											} catch (ClassNotFoundException e1) {}
-											
-//											try {
-//												bdw.reqest_in_db_TTmodel_terminals();
-//											} catch (ClassNotFoundException e1) {}
-											
-											
 											try {
 												bdw.reqest_in_db_TTmodel_workers();
 											} catch (ClassNotFoundException e1) {}
 										}
 									});
 //*********************************************************************************************************			        
-			        
-			        
 			        
 				bdw.connect();
 				try {
@@ -2077,30 +1902,29 @@ public class Experr {
 
 				bdw.close_connect();
 				
-				
-				
 				try {
 					bdw.reqest_in_db_TTmodel_except();
 				} catch (ClassNotFoundException e1) {}
-				
-//				try {
-//					bdw.reqest_in_db_TTmodel_terminals();
-//				} catch (ClassNotFoundException e1) {}
-				
-				
 				try {
 					bdw.reqest_in_db_TTmodel_workers();
 				} catch (ClassNotFoundException e1) {}
 												
 	}
 
-	public static TTM_inkass getModel_inkass() {
-		return model_inkass;
+	public static String getDistr_inkass3() {
+		return distr_inkass3;
 	}
-
-	public JTable getTable_5() {
-		return table_5;
+	public static String getDistr_inkass4() {
+		return distr_inkass4;
 	}
-
-
+	public static String getDistr_inkass5() {
+		return distr_inkass5;
+	}
+	public static String getDistr_inkass6() {
+		return distr_inkass6;
+	}
+	public static String getDistr_inkass2() {
+		return distr_inkass2;
+	}
+	
 }

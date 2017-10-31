@@ -216,7 +216,7 @@ public  class OSMP  {
 					//*****************************************************************************************				
 										
 					if (string_whis_payment.compareTo("") == 0) {
-						string_whis_payment = "20 дней, 16 часов и58 минут";// поле ПЛАТЕЖ в terminal monitoring пустое то ставлю 9 дней и 16 часов назад (просто так)
+						string_whis_payment = "60 дней, 16 часов и58 минут";// поле ПЛАТЕЖ в terminal monitoring пустое то ставлю 9 дней и 16 часов назад (просто так)
 					}
 					
 					Real_time_signal = mo.result_time_signal;//

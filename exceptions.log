@@ -58056,3 +58056,657 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Colu
 2017-10-26T17:45:19.372 :  Старт программы ******************************************************************************
 2017-10-26T20:24:08.182 :  Старт программы ******************************************************************************
 2017-10-26T20:26:04.110 :  Старт программы ******************************************************************************
+2017-10-30T08:04:35.619 :  Старт программы ******************************************************************************
+2017-10-30T14:55:20.725 :  Старт программы ******************************************************************************
+2017-10-30T15:04:55.378 :  ����� �� ��������� 
+2017-10-30T15:05:18.341 :  Старт программы ******************************************************************************
+2017-10-30T15:11:43.212 :  Старт программы ******************************************************************************
+2017-10-30T15:17:56.694 :  Старт программы ******************************************************************************
+2017-10-30T15:27:46.190 :  Старт программы ******************************************************************************
+2017-10-30T15:36:47.848 :  ����� �� ��������� 
+2017-10-30T15:36:57.064 :  Старт программы ******************************************************************************
+2017-10-30T15:41:15.204 :  ����� �� ��������� 
+2017-10-30T15:43:34.580 :  Старт программы ******************************************************************************
+2017-10-30T15:45:50.032 :  ����� �� ��������� 
+2017-10-30T15:45:56.239 :  Старт программы ******************************************************************************
+2017-10-30T15:47:33.350 :  Старт программы ******************************************************************************
+2017-10-30T15:49:55.241 :  Старт программы ******************************************************************************
+2017-10-30T15:52:38.826 :  Старт программы ******************************************************************************
+2017-10-30T16:14:47.777 :  ����� �� ��������� 
+2017-10-30T16:51:28.638 :  Старт программы ******************************************************************************
+2017-10-30T16:52:16.216 :  ����� �� ��������� 
+2017-10-30T16:52:21.436 :  Старт программы ******************************************************************************
+2017-10-30T17:05:00.527 :  Старт программы ******************************************************************************
+2017-10-30T17:05:14.582 :  ����� �� ��������� 
+2017-10-30T17:26:20.873 :  Старт программы ******************************************************************************
+2017-10-30T17:29:34.608 :  Старт программы ******************************************************************************
+2017-10-30T17:31:50.002 :  Старт программы ******************************************************************************
+2017-10-30T17:33:36.390 :  Старт программы ******************************************************************************
+2017-10-30T17:34:58.373 :  ����� �� ��������� 
+2017-10-30T17:35:01.440 :  Старт программы ******************************************************************************
+2017-10-30T17:35:15.877 :  ����� �� ��������� 
+2017-10-30T18:01:06.544 :  Старт программы ******************************************************************************
+2017-10-30T18:06:05.895 :  Старт программы ******************************************************************************
+2017-10-30T18:06:29.100 :  ����� �� ��������� 
+2017-10-30T18:31:23.725 :  Старт программы ******************************************************************************
+2017-10-31T09:45:14.354 :  ����� �� ��������� 
+2017-10-31T10:07:35.024 :  Старт программы ******************************************************************************
+2017-10-31T10:25:02.026 :  Старт программы ******************************************************************************
+2017-10-31T10:30:46.912 :  Старт программы ******************************************************************************
+2017-10-31T13:07:50.136 :  Старт программы ******************************************************************************
+2017-10-31T13:17:17.708 :  Старт программы ******************************************************************************
+2017-10-31T13:21:35.419 :  Старт программы ******************************************************************************
+2017-10-31T13:23:19.648 :  Старт программы ******************************************************************************
+2017-10-31T13:27:48.990 :  Старт программы ******************************************************************************
+2017-10-31T13:29:03.538 :  Старт программы ******************************************************************************
+2017-10-31T13:36:51.017 :  Старт программы ******************************************************************************
+2017-10-31T13:38:13.173 :  Старт программы ******************************************************************************
+2017-10-31T13:50:54.543 :  Старт программы ******************************************************************************
+2017-10-31T14:10:57.625 :  Старт программы ******************************************************************************
+2017-10-31T14:18:43.506 :  Старт программы ******************************************************************************
+2017-10-31T14:33:09.358 :  Старт программы ******************************************************************************
+2017-10-31T15:32:13.714 :  Старт программы ******************************************************************************
+2017-10-31T15:37:23.938 :  Старт программы ******************************************************************************
+2017-10-31T15:44:34.402 :  ����� �� ��������� 
+2017-10-31T15:44:38.496 :  Старт программы ******************************************************************************
+2017-10-31T16:11:35.291 :  Старт программы ******************************************************************************
+2017-10-31T16:12:30.462 :  ����� �� ��������� 
+2017-10-31T16:12:37.022 :  Старт программы ******************************************************************************
+2017-10-31T16:13:33.167 :  ����� �� ��������� 
+2017-10-31T16:13:47.861 :  Старт программы ******************************************************************************
+2017-10-31T16:24:15.459 :  Старт программы ******************************************************************************
+2017-10-31T16:36:28.776 :  Старт программы ******************************************************************************
+2017-10-31T16:39:58.675 :  Объединяю файлы и создаю в нужном формате 
+2017-10-31T16:40:03.906 :  Собираю данные об ошибках 
+2017-10-31T16:42:17.732 :  lost term 10395675
+2017-10-31T16:42:18.229 :  lost term 10395673
+2017-10-31T16:42:18.383 :  lost term 1780236
+2017-10-31T16:42:18.558 :  lost term 10389115
+2017-10-31T16:42:18.867 :  lost term 10390643
+2017-10-31T16:42:18.943 :  lost term 10394079
+2017-10-31T16:42:19 :  lost term 10389120
+2017-10-31T16:42:19.057 :  lost term 10389100
+2017-10-31T16:42:19.107 :  lost term 10389122
+2017-10-31T16:42:19.169 :  lost term 10369268
+2017-10-31T16:42:19.257 :  lost term 10391529
+2017-10-31T16:42:19.315 :  lost term 10393621
+2017-10-31T16:42:19.405 :  lost term 10393627
+2017-10-31T16:42:19.473 :  lost term 10372783
+2017-10-31T16:42:19.558 :  lost term 10385455
+2017-10-31T16:42:19.624 :  lost term 10393939
+2017-10-31T16:42:19.701 :  lost term 10392701
+2017-10-31T16:42:19.790 :  lost term 10392699
+2017-10-31T16:42:19.850 :  lost term 10383765
+2017-10-31T16:42:19.907 :  lost term 10384931
+2017-10-31T16:42:19.959 :  lost term 10389109
+2017-10-31T16:42:20.016 :  lost term 10389130
+2017-10-31T16:42:20.107 :  lost term 10389108
+2017-10-31T16:42:20.273 :  lost term 10393624
+2017-10-31T16:42:20.334 :  lost term 10393945
+2017-10-31T16:42:20.475 :  lost term 10379711
+2017-10-31T16:42:20.577 :  lost term 10368101
+2017-10-31T16:42:20.656 :  lost term 10389123
+2017-10-31T16:42:20.830 :  lost term 10391630
+2017-10-31T16:42:20.921 :  lost term 10393091
+2017-10-31T16:42:20.977 :  lost term 10392342
+2017-10-31T16:42:21.088 :  lost term 10393118
+2017-10-31T16:42:21.163 :  lost term 10394067
+2017-10-31T16:42:21.213 :  lost term 10382407
+2017-10-31T16:42:21.253 :  lost term 10392695
+2017-10-31T16:42:21.296 :  lost term 10393153
+2017-10-31T16:42:21.413 :  lost term 10392690
+2017-10-31T16:42:21.479 :  lost term 10392693
+2017-10-31T16:42:21.546 :  lost term 10368090
+2017-10-31T16:42:21.604 :  lost term 10388454
+2017-10-31T16:42:21.663 :  lost term 10390847
+2017-10-31T16:42:21.738 :  lost term 10393300
+2017-10-31T16:42:21.805 :  lost term 10394064
+2017-10-31T16:42:21.845 :  lost term 10393946
+2017-10-31T16:42:21.896 :  lost term 10393937
+2017-10-31T16:42:21.936 :  lost term 10389111
+2017-10-31T16:42:22.005 :  lost term 10395374
+2017-10-31T16:42:22.059 :  NEW term 10371799
+2017-10-31T16:42:22.122 : add new term № 10371799
+2017-10-31T16:42:22.122 :  NEW term 10392357
+2017-10-31T16:42:22.163 : add new term № 10392357
+2017-10-31T16:42:22.163 :  NEW term 10277918
+2017-10-31T16:42:22.178 : add new term № 10277918
+2017-10-31T16:42:22.179 :  NEW term 1780019
+2017-10-31T16:42:22.206 : add new term № 1780019
+2017-10-31T16:42:22.206 :  NEW term 1780123
+2017-10-31T16:42:22.246 : add new term № 1780123
+2017-10-31T16:42:22.246 :  NEW term 1780167
+2017-10-31T16:42:22.296 : add new term № 1780167
+2017-10-31T16:47:42.903 :  Старт программы ******************************************************************************
+2017-10-31T16:47:57.290 :  Объединяю файлы и создаю в нужном формате 
+2017-10-31T16:48:02.384 :  Собираю данные об ошибках 
+2017-10-31T16:50:35.535 :  lost term 10395675
+2017-10-31T16:50:35.747 :  lost term 10395673
+2017-10-31T16:50:35.806 :  lost term 1780236
+2017-10-31T16:50:35.864 :  lost term 10389115
+2017-10-31T16:50:35.973 :  lost term 10390643
+2017-10-31T16:50:36.124 :  lost term 10394079
+2017-10-31T16:50:36.393 :  lost term 10389120
+2017-10-31T16:50:36.499 :  lost term 10389100
+2017-10-31T16:50:36.586 :  lost term 10389122
+2017-10-31T16:50:36.667 :  lost term 10369268
+2017-10-31T16:50:36.752 :  lost term 10391529
+2017-10-31T16:50:36.830 :  lost term 10393621
+2017-10-31T16:50:36.918 :  lost term 10393627
+2017-10-31T16:50:36.989 :  lost term 10372783
+2017-10-31T16:50:37.061 :  lost term 10385455
+2017-10-31T16:50:37.131 :  lost term 10393939
+2017-10-31T16:50:37.209 :  lost term 10392701
+2017-10-31T16:50:37.326 :  lost term 10392699
+2017-10-31T16:50:37.411 :  lost term 10383765
+2017-10-31T16:50:37.466 :  lost term 10384931
+2017-10-31T16:50:37.533 :  lost term 10389109
+2017-10-31T16:50:37.581 :  lost term 10389130
+2017-10-31T16:50:37.637 :  lost term 10389108
+2017-10-31T16:50:37.698 :  lost term 10393624
+2017-10-31T16:50:37.762 :  lost term 10393945
+2017-10-31T16:50:37.845 :  lost term 10379711
+2017-10-31T16:50:37.897 :  lost term 10368101
+2017-10-31T16:50:38.114 :  lost term 10389123
+2017-10-31T16:50:38.170 :  lost term 10391630
+2017-10-31T16:50:38.239 :  lost term 10393091
+2017-10-31T16:50:38.328 :  lost term 10392342
+2017-10-31T16:50:38.406 :  lost term 10393118
+2017-10-31T16:50:38.461 :  lost term 10394067
+2017-10-31T16:50:38.522 :  lost term 10382407
+2017-10-31T16:50:38.578 :  lost term 10392695
+2017-10-31T16:50:38.631 :  lost term 10393153
+2017-10-31T16:50:38.715 :  lost term 10392690
+2017-10-31T16:50:38.778 :  lost term 10392693
+2017-10-31T16:50:38.833 :  lost term 10368090
+2017-10-31T16:50:38.888 :  lost term 10388454
+2017-10-31T16:50:38.986 :  lost term 10390847
+2017-10-31T16:50:39.069 :  lost term 10393300
+2017-10-31T16:50:39.131 :  lost term 10394064
+2017-10-31T16:50:39.194 :  lost term 10393946
+2017-10-31T16:50:39.278 :  lost term 10393937
+2017-10-31T16:50:39.361 :  lost term 10389111
+2017-10-31T16:50:39.420 :  lost term 10395374
+2017-10-31T16:53:17.735 :  Старт программы ******************************************************************************
+2017-10-31T16:53:21.628 :  Объединяю файлы и создаю в нужном формате 
+2017-10-31T16:53:26.306 :  Собираю данные об ошибках 
+2017-10-31T16:55:39.634 :  lost term 10395675
+2017-10-31T16:55:40.435 :  lost term 10395673
+2017-10-31T16:55:40.609 :  lost term 1780236
+2017-10-31T16:55:40.710 :  lost term 10389115
+2017-10-31T16:55:40.774 :  lost term 10390643
+2017-10-31T16:55:40.947 :  lost term 10394079
+2017-10-31T16:55:41.198 :  lost term 10389120
+2017-10-31T16:55:41.263 :  lost term 10389100
+2017-10-31T16:55:41.312 :  lost term 10389122
+2017-10-31T16:55:41.379 :  lost term 10369268
+2017-10-31T16:55:41.449 :  lost term 10391529
+2017-10-31T16:55:41.532 :  lost term 10393621
+2017-10-31T16:55:41.615 :  lost term 10393627
+2017-10-31T16:55:41.679 :  lost term 10372783
+2017-10-31T16:55:41.751 :  lost term 10385455
+2017-10-31T16:55:41.833 :  lost term 10393939
+2017-10-31T16:55:41.904 :  lost term 10392701
+2017-10-31T16:55:41.960 :  lost term 10392699
+2017-10-31T16:55:42.113 :  lost term 10383765
+2017-10-31T16:55:42.171 :  lost term 10384931
+2017-10-31T16:55:42.231 :  lost term 10389109
+2017-10-31T16:55:42.287 :  lost term 10389130
+2017-10-31T16:55:42.351 :  lost term 10389108
+2017-10-31T16:55:42.417 :  lost term 10393624
+2017-10-31T16:55:42.479 :  lost term 10393945
+2017-10-31T16:55:42.567 :  lost term 10379711
+2017-10-31T16:55:42.622 :  lost term 10368101
+2017-10-31T16:55:42.680 :  lost term 10389123
+2017-10-31T16:55:42.736 :  lost term 10391630
+2017-10-31T16:55:42.787 :  lost term 10393091
+2017-10-31T16:55:42.877 :  lost term 10392342
+2017-10-31T16:55:42.948 :  lost term 10393118
+2017-10-31T16:55:43.132 :  lost term 10394067
+2017-10-31T16:55:43.229 :  lost term 10382407
+2017-10-31T16:55:43.307 :  lost term 10392695
+2017-10-31T16:55:43.381 :  lost term 10393153
+2017-10-31T16:55:43.437 :  lost term 10392690
+2017-10-31T16:55:43.497 :  lost term 10392693
+2017-10-31T16:55:43.562 :  lost term 10368090
+2017-10-31T16:55:43.612 :  lost term 10388454
+2017-10-31T16:55:43.687 :  lost term 10390847
+2017-10-31T16:55:43.763 :  lost term 10393300
+2017-10-31T16:55:43.835 :  lost term 10394064
+2017-10-31T16:55:43.895 :  lost term 10393946
+2017-10-31T16:55:43.945 :  lost term 10393937
+2017-10-31T16:55:44.022 :  lost term 10389111
+2017-10-31T16:55:44.142 :  lost term 10395374
+2017-10-31T16:58:14.053 :  Старт программы ******************************************************************************
+2017-10-31T16:58:22.020 :  Объединяю файлы и создаю в нужном формате 
+2017-10-31T16:58:26.192 :  Собираю данные об ошибках 
+2017-10-31T17:00:53.186 :  lost term 10395675
+2017-10-31T17:00:53.386 :  lost term 10395673
+2017-10-31T17:00:53.453 :  lost term 1780236
+2017-10-31T17:00:53.590 :  lost term 10389115
+2017-10-31T17:00:53.672 :  lost term 10390643
+2017-10-31T17:00:53.935 :  lost term 10394079
+2017-10-31T17:00:54.121 :  lost term 10389120
+2017-10-31T17:00:54.347 :  lost term 10389100
+2017-10-31T17:00:54.479 :  lost term 10389122
+2017-10-31T17:00:54.607 :  lost term 10369268
+2017-10-31T17:00:54.679 :  lost term 10391529
+2017-10-31T17:00:54.755 :  lost term 10393621
+2017-10-31T17:00:54.820 :  lost term 10393627
+2017-10-31T17:00:54.873 :  lost term 10372783
+2017-10-31T17:00:54.956 :  lost term 10385455
+2017-10-31T17:00:55.053 :  lost term 10393939
+2017-10-31T17:00:55.144 :  lost term 10392701
+2017-10-31T17:00:55.206 :  lost term 10392699
+2017-10-31T17:00:55.283 :  lost term 10383765
+2017-10-31T17:00:55.412 :  lost term 10384931
+2017-10-31T17:00:55.498 :  lost term 10389109
+2017-10-31T17:00:55.647 :  lost term 10389130
+2017-10-31T17:00:55.719 :  lost term 10389108
+2017-10-31T17:00:55.813 :  lost term 10393624
+2017-10-31T17:00:55.892 :  lost term 10393945
+2017-10-31T17:00:55.952 :  lost term 10379711
+2017-10-31T17:00:56.006 :  lost term 10368101
+2017-10-31T17:00:56.110 :  lost term 10389123
+2017-10-31T17:00:56.195 :  lost term 10391630
+2017-10-31T17:00:56.270 :  lost term 10393091
+2017-10-31T17:00:56.340 :  lost term 10392342
+2017-10-31T17:00:56.432 :  lost term 10393118
+2017-10-31T17:00:56.565 :  lost term 10394067
+2017-10-31T17:00:56.716 :  lost term 10382407
+2017-10-31T17:00:56.790 :  lost term 10392695
+2017-10-31T17:00:56.878 :  lost term 10393153
+2017-10-31T17:00:56.978 :  lost term 10392690
+2017-10-31T17:00:57.055 :  lost term 10392693
+2017-10-31T17:00:57.146 :  lost term 10368090
+2017-10-31T17:00:57.227 :  lost term 10388454
+2017-10-31T17:00:57.305 :  lost term 10390847
+2017-10-31T17:00:57.383 :  lost term 10393300
+2017-10-31T17:00:57.461 :  lost term 10394064
+2017-10-31T17:00:57.579 :  lost term 10393946
+2017-10-31T17:00:57.820 :  lost term 10393937
+2017-10-31T17:00:57.899 :  lost term 10389111
+2017-10-31T17:00:57.979 :  lost term 10395374
+2017-10-31T17:15:53.019 :  Старт программы ******************************************************************************
+2017-10-31T17:16:01.710 :  Объединяю файлы и создаю в нужном формате 
+2017-10-31T17:16:06.513 :  Собираю данные об ошибках 
+
+2017-10-31T17:16:20.751: INSERT INTO errors33 VALUES (10386193, '2017-10-31 17:00:20', 'не было', 'Стек снят', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:245)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:22.092: INSERT INTO errors33 VALUES (10390458, '2017-10-11 05:08:22', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:22.117: INSERT INTO errors33 VALUES (10390612, '2017-10-15 23:16:22', 'не было', 'OK', 'Принтер не найден', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:252)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:22.124: INSERT INTO errors33 VALUES (10393926, '2017-10-29 21:02:22', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:23.005: INSERT INTO errors33 VALUES (10368032, '2017-10-31 16:58:22', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:24.534: INSERT INTO errors33 VALUES (10393298, '2017-10-31 16:52:24', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:27.545: INSERT INTO errors33 VALUES (10389429, '2017-10-29 15:12:27', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:27.613: INSERT INTO errors33 VALUES (10393925, '2017-10-27 05:16:27', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:46.779: INSERT INTO errors33 VALUES (10389097, '2017-10-29 20:50:46', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:46.810: INSERT INTO errors33 VALUES (10390645, '2017-10-18 19:52:46', 'не было', 'Стек снят', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:245)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:46.814: INSERT INTO errors33 VALUES (10390753, '2017-10-25 02:54:46', 'не было', 'Стек снят', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:245)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:47.800: INSERT INTO errors33 VALUES (10388070, '2017-10-31 16:58:47', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:49.189: INSERT INTO errors33 VALUES (10382741, '2017-10-23 20:48:49', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:49.230: INSERT INTO errors33 VALUES (10389134, '2017-10-31 15:10:49', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:49.257: INSERT INTO errors33 VALUES (10391526, '2017-10-31 15:48:49', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:50.057: INSERT INTO errors33 VALUES (10383030, '2017-10-31 16:56:50', 'не было', 'Стек снят', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:245)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:50.699: INSERT INTO errors33 VALUES (10389102, '2017-10-31 16:56:50', 'не было', 'Критическая ошибка', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:245)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:51.383: INSERT INTO errors33 VALUES (10372790, '2017-10-30 07:30:51', 'не было', 'Стек снят', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:245)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:51.625: INSERT INTO errors33 VALUES (10390571, '2017-10-15 11:32:51', 'не было', 'Стек снят', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:245)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:51.761: INSERT INTO errors33 VALUES (10372815, '2017-10-31 16:44:51', 'не было', 'Стек снят', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:245)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:16:53.271: INSERT INTO errors33 VALUES (10379120, '2017-10-04 03:00:53', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-10-31T17:17:02.587: INSERT INTO errors33 VALUES (10379115, '2017-10-04 04:39:02', 'не было', 'OK', 'OK', 'OK', '2017-10-31 17:16:06')
+com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: 'не было' for column 'pay' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3968)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3906)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2677)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2545)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2503)
+	at com.mysql.jdbc.StatementImpl.executeInternal(StatementImpl.java:839)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:739)
+	at all_classes.BD_write.inser_table_error33(BD_write.java:123)
+	at all_classes.OSMP.Input_Data(OSMP.java:239)
+	at all_classes.NewThread_one.lambda$0(NewThread_one.java:19)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-31T17:18:33.435 :  Старт программы ******************************************************************************
+2017-10-31T17:18:56.504 :  Объединяю файлы и создаю в нужном формате 
+2017-10-31T17:19:01.536 :  Собираю данные об ошибках 
+2017-10-31T17:21:20.800 :  lost term 10395675
+2017-10-31T17:21:20.958 :  lost term 10395673
+2017-10-31T17:21:21.033 :  lost term 1780236
+2017-10-31T17:21:21.121 :  lost term 10389115
+2017-10-31T17:21:21.201 :  lost term 10390643
+2017-10-31T17:21:21.304 :  lost term 10394079
+2017-10-31T17:21:21.414 :  lost term 10389120
+2017-10-31T17:21:21.844 :  lost term 10389100
+2017-10-31T17:21:21.913 :  lost term 10389122
+2017-10-31T17:21:22.052 :  lost term 10369268
+2017-10-31T17:21:22.131 :  lost term 10391529
+2017-10-31T17:21:22.212 :  lost term 10393621
+2017-10-31T17:21:22.395 :  lost term 10393627
+2017-10-31T17:21:22.518 :  lost term 10372783
+2017-10-31T17:21:22.598 :  lost term 10385455
+2017-10-31T17:21:22.689 :  lost term 10393939
+2017-10-31T17:21:22.769 :  lost term 10392701
+2017-10-31T17:21:22.826 :  lost term 10392699
+2017-10-31T17:21:22.888 :  lost term 10383765
+2017-10-31T17:21:22.960 :  lost term 10384931
+2017-10-31T17:21:23.036 :  lost term 10389109
+2017-10-31T17:21:23.101 :  lost term 10389130
+2017-10-31T17:21:23.169 :  lost term 10389108
+2017-10-31T17:21:23.218 :  lost term 10393624
+2017-10-31T17:21:23.285 :  lost term 10393945
+2017-10-31T17:21:23.392 :  lost term 10379711
+2017-10-31T17:21:23.464 :  lost term 10368101
+2017-10-31T17:21:23.558 :  lost term 10389123
+2017-10-31T17:21:23.664 :  lost term 10391630
+2017-10-31T17:21:23.727 :  lost term 10393091
+2017-10-31T17:21:23.793 :  lost term 10392342
+2017-10-31T17:21:23.862 :  lost term 10393118
+2017-10-31T17:21:23.929 :  lost term 10394067
+2017-10-31T17:21:23.990 :  lost term 10382407
+2017-10-31T17:21:24.046 :  lost term 10392695
+2017-10-31T17:21:24.115 :  lost term 10393153
+2017-10-31T17:21:24.182 :  lost term 10392690
+2017-10-31T17:21:24.240 :  lost term 10392693
+2017-10-31T17:21:24.299 :  lost term 10368090
+2017-10-31T17:21:24.398 :  lost term 10388454
+2017-10-31T17:21:24.466 :  lost term 10390847
+2017-10-31T17:21:24.553 :  lost term 10393300
+2017-10-31T17:21:24.628 :  lost term 10394064
+2017-10-31T17:21:24.682 :  lost term 10393946
+2017-10-31T17:21:24.732 :  lost term 10393937
+2017-10-31T17:21:24.790 :  lost term 10389111
+2017-10-31T17:21:24.856 :  lost term 10395374
