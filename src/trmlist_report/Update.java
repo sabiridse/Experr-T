@@ -79,21 +79,7 @@ public class Update {
 											        int rowInPart = (int) Math.floor(i/10);
 											        int bonusRow = i - rowInPart*10;
 											        
-//											       this.New_ThreadInsert(1, i-1);
-											       
-											        
 											        this.insertData(1,i-1);
-											        
-											        
-//											        this.New_ThreadInsert(rowInPart+1, rowInPart*2);
-//											        this.New_ThreadInsert(rowInPart*2+1, rowInPart*3);
-//											        this.New_ThreadInsert(rowInPart*3+1, rowInPart*4);
-//											        this.New_ThreadInsert(rowInPart*4+1, rowInPart*5);
-//											        this.New_ThreadInsert(rowInPart*5+1, rowInPart*6);
-//											        this.New_ThreadInsert(rowInPart*6+1, rowInPart*7);
-//											        this.New_ThreadInsert(rowInPart*7+1, rowInPart*8);
-//											        this.New_ThreadInsert(rowInPart*8+1, rowInPart*9);
-//											        this.New_ThreadInsert(rowInPart*9+1, rowInPart*10+bonusRow-1);
 												
 											        bdw.close_connect();
 													this.repoClose();
@@ -107,7 +93,8 @@ public class Update {
 													String city_name;
 													String street_name;
 													String home_number;
-													
+													DistrInkass distInk = new DistrInkass();
+										        	ObjectName objName = new ObjectName();
 													for(int row = startRow; row <finishRow; row++){
 											        	
 											        	id_term = (int) sheet_repo.getRow(row).getCell(1).getNumericCellValue();
@@ -115,8 +102,20 @@ public class Update {
 											        	street_name =   sheet_repo.getRow(row).getCell(5).getStringCellValue();
 											        	home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();
 											        	
+											        	String adress = street_name + "., д. " + home_number;
+											        	
 												        	switch (this.checkDouble(Integer.toString(id_term))){															
-																case 0: bdw.insertInTo_trmlist_report(id_term, city_name, street_name, this.modificNumberHome(home_number));
+																case 0: bdw.insertInTo_trmlist_reportPartOne(id_term, city_name, street_name, 
+																									  this.modificNumberHome(home_number));
+																		try {
+																			bdw.uni_reqest_in_db("commit");
+																		} catch (ClassNotFoundException e) {
+																			e.printStackTrace();
+																		}
+																		bdw.updateInTo_trmlist_reportPartToo(id_term, 
+																				  distInk.getDistrInkass(Integer.toString(id_term)),
+																				  objName.getObjectName(Integer.toString(id_term)),
+																				  "auto "+adress);
 																		break;																	
 																case 1:	break;													
 												        	}											        	

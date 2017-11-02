@@ -1090,9 +1090,9 @@ public class BD_write {
 		}
 			
 			
-			public void insertInTo_trmlist_report(int id_term, String city_name, String street_name, int home_number){
+			public void insertInTo_trmlist_reportPartOne(int id_term, String city_name, String street_name, int home_number){
 				
-				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,home_number,agent) "
+				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,home_number,agent, distr_inkass, object) "
 							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name+"' ,"+home_number+", 'СК')";
 						try {
 							this.uni_reqest_in_db(query);
@@ -1100,6 +1100,36 @@ public class BD_write {
 							e.printStackTrace();
 						}					
 			}
+			public void updateInTo_trmlist_reportPartToo(int id_term, String distr_inkass, String object, String adress){
+				
+							String query = "update trmlist_report set distr_inkass = '"+ distr_inkass+"',"
+																  + " object = '"+object+"',"
+																  + " adress = '"+adress+"'"
+																  + " where id_term = '"+id_term+"'";
+									try {
+										this.uni_reqest_in_db(query);
+									} catch (ClassNotFoundException e) {
+										e.printStackTrace();
+									}					
+						}
+			
+			public String getName_term (String id_term){				
+				String query = "select name_term from terminals where id_term = '"+id_term+"'";		        
+				String name_term = "не определено";
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery(query);				
+									while (result.next()) {													
+										name_term = result.getString("name_term");	
+									}
+									result.close();							
+				}	catch (SQLException e)	{}
+				
+				return name_term;
+			}
+			
 			
 			public List<String> getCityAndStreet (String id_term) throws Exception {	
 				//this.connect();
@@ -1118,6 +1148,9 @@ public class BD_write {
 									result.close();							
 					}	catch (SQLException e)	{System.out.println("9954 " +e);}																			
 				//this.close_connect();
+				System.out.println(id_term);
+				System.out.println(CityAndStreet.get(0));
+				
 				return CityAndStreet;
 			}
 			public String getDistr_inkass (String city_name, String street_name ) throws Exception {	

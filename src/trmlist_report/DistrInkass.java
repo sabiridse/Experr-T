@@ -7,11 +7,11 @@ import all_classes.BD_write;
 
 public class DistrInkass {
 
-	List <String> cityAndStreet = new ArrayList<String>();
+	private static List <String> cityAndStreet = new ArrayList<String>();
 	String distr_inkass = "не определено";
 			
-			private String getDistrInkass (String id_term){
-				
+			public String getDistrInkass (String id_term){
+				cityAndStreet.clear();
 				BD_write bdw = new BD_write();
 				try {
 					cityAndStreet = bdw.getCityAndStreet(id_term);
@@ -41,10 +41,9 @@ public class DistrInkass {
 												
 											}
 									}
-								
-					System.out.println(id_term +";"+cityAndStreet.get(0)+";"+cityAndStreet.get(1)+";"+distr_inkass);
-					cityAndStreet.clear();
+
 				}
+				
 				return distr_inkass;
 			}
 	
@@ -52,6 +51,11 @@ public class DistrInkass {
 		
 		this.getDistrInkass(id_term);
 		
+	}
+	
+	public String getCity_name(){
+		
+		return cityAndStreet.get(0);
 	}
 	
 }

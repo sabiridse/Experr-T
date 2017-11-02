@@ -1,6 +1,7 @@
 package inkass;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import all_classes.BD_write;
 import all_classes.Experr;
@@ -33,45 +34,46 @@ public class DataForInkass {
 	
 			public void addInputData() throws Exception{
 				
-				Experr experr = new Experr();
+				
 				
 				//bdw.connect();
 				marsh.OpenFile();
-				try {
-					this.getPrivateDataByMarshrut(experr.getDistr_inkass3(),
-												  experr.agent, 
-												  experr.limit);
-				} catch (Exception e) {
-					e.printStackTrace();
+
+				Experr experr = new Experr();
+				
+				switch (experr.getAllMarshrutsStatus()){				
+						case 0: this.fiveMarshruts();break;
+						case 1: this.allMarshruts();break;								
 				}
-					try {
-						this.getPrivateDataByMarshrut(experr.getDistr_inkass4(),
-													  experr.agent, 
-													  experr.limit);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-						try {
-							this.getPrivateDataByMarshrut(experr.getDistr_inkass5(),
-														  experr.agent, 
-														  experr.limit);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-							try {
-								this.getPrivateDataByMarshrut(experr.getDistr_inkass6(),
-															  experr.agent, 
-															  experr.limit);
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-								try {
-									this.getPrivateDataByMarshrut(experr.getDistr_inkass2(),
-																  experr.agent, 
-																  experr.limit);
-								} catch (Exception e) {
-									e.printStackTrace();
-								}
+				
+//				try {
+//						this.getPrivateDataByMarshrut(experr.getDistr_inkass4(),
+//													  experr.agent, 
+//													  experr.limit);
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//						try {
+//							this.getPrivateDataByMarshrut(experr.getDistr_inkass5(),
+//														  experr.agent, 
+//														  experr.limit);
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
+//							try {
+//								this.getPrivateDataByMarshrut(experr.getDistr_inkass6(),
+//															  experr.agent, 
+//															  experr.limit);
+//							} catch (Exception e) {
+//								e.printStackTrace();
+//							}
+//								try {
+//									this.getPrivateDataByMarshrut(experr.getDistr_inkass2(),
+//																  experr.agent, 
+//																  experr.limit);
+//								} catch (Exception e) {
+//									e.printStackTrace();
+//								}
 					//bdw.close_connect();
 					marsh.deleteEmptySheets();
 					marsh.saveAndClose();
@@ -81,6 +83,41 @@ public class DataForInkass {
 					gui.Gui0(txt);
 					
 			}
+			
+			private void fiveMarshruts() throws Exception{
+				
+				Experr experr = new Experr();
+				List <String> distrs = new ArrayList<>();
+				distrs.add(experr.getDistr_inkass3());
+				distrs.add(experr.getDistr_inkass4());
+				distrs.add(experr.getDistr_inkass5());
+				distrs.add(experr.getDistr_inkass6());
+				distrs.add(experr.getDistr_inkass2());
+								
+					for ( String curientDistr:distrs){
+				
+							try {
+								this.getPrivateDataByMarshrut(curientDistr,
+															  experr.agent, 
+															  experr.limit);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}					
+					}
+			}
+			
+			private void allMarshruts(){				
+				String [] allDistrs = {"11","12","51","52","61","62","4","8","9","4А","8А","9А"};				
+				for ( String curientDistr:allDistrs){
+					
+						try {
+							this.getPrivateDataByMarshrut(curientDistr,0,400);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}					
+				}
+			}
+			
 		 private void creatureMarsh(String partUp, String partCenter, String partDown, 
 				 					int agentIndex, int limit, int sheetIndex, boolean LO){
 			 

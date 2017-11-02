@@ -203,6 +203,8 @@ public class Experr {
 	public static String distr_inkass2 = "рута";
 	public static int agent = 2;
 	public static int limit = 80;
+	
+	private static int allMarshruts;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -1567,13 +1569,29 @@ public class Experr {
 			        label_20.setForeground(new Color(51, 102, 0));
 			        label_20.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 			        panel_21.add(label_20, "cell 0 2,alignx center");
-			        
+//*****************************************************************************************************************			        
 			        JCheckBox checkBox_4 = new JCheckBox("все маршруты");
 			        checkBox_4.setToolTipText("");
 			        checkBox_4.setForeground(new Color(0, 204, 153));
 			        checkBox_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
 			        checkBox_4.setBackground(new Color(0, 153, 153));
 			        panel_21.add(checkBox_4, "cell 0 3");
+			        
+			        checkBox_4.addItemListener(new ItemListener() {
+				          public void itemStateChanged(ItemEvent e) {
+				            
+						        	 if (checkBox_4.isSelected()) {
+						        		 
+						        		 allMarshruts = 1;
+						        		 
+						        	 } else allMarshruts = 0;
+				          
+						        	 	          
+				          }
+				      });
+			        
+			        
+			        
 //**************************************************************************************************************************************			        
 			        JComboBox comboBox_3 = new JComboBox();
 			        comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"нет маршрута", "маршрут 11", "маршрут 12", "маршрут 51", "маршрут 52", "маршрут 61", "маршрут 62", "маршрут 41", "маршрут 42", "маршрут 81", "маршрут 82", "маршрут 91", "маршрут 92", "маршрут 4А1", "маршрут 4А2", "маршрут 8А1", "маршрут 8А2", "маршрут 9А1", "маршрут 9А2"}));
@@ -1911,6 +1929,10 @@ public class Experr {
 												
 	}
 
+	public static int getAllMarshrutsStatus(){		
+		return allMarshruts;
+	}
+	
 	public static String getDistr_inkass3() {
 		return distr_inkass3;
 	}
