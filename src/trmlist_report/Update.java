@@ -87,43 +87,38 @@ public class Update {
 												}
 	
 												
-												public void insertData(int startRow, int finishRow){
+				public void insertData(int startRow, int finishRow){
 													
-													int id_term;
-													String city_name;
-													String street_name;
-													String home_number;
-													DistrInkass distInk = new DistrInkass();
-										        	ObjectName objName = new ObjectName();
-													for(int row = startRow; row <finishRow; row++){
-											        	
-											        	id_term = (int) sheet_repo.getRow(row).getCell(1).getNumericCellValue();
-											        	city_name =     sheet_repo.getRow(row).getCell(4).getStringCellValue();
-											        	street_name =   sheet_repo.getRow(row).getCell(5).getStringCellValue();
-											        	home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();
-											        	
-											        	String adress = street_name + "., д. " + home_number;
-											        	
-												        	switch (this.checkDouble(Integer.toString(id_term))){															
-																case 0: bdw.insertInTo_trmlist_reportPartOne(id_term, city_name, street_name, 
-																									  this.modificNumberHome(home_number));
-																		try {
-																			bdw.uni_reqest_in_db("commit");
-																		} catch (ClassNotFoundException e) {
-																			e.printStackTrace();
-																		}
-																		bdw.updateInTo_trmlist_reportPartToo(id_term, 
-																				  distInk.getDistrInkass(Integer.toString(id_term)),
-																				  objName.getObjectName(Integer.toString(id_term)),
-																				  "auto "+adress);
-																		break;																	
-																case 1:	break;													
-												        	}											        	
-											        }	
-													
-													
-												}
+				  int id_term;
+				  String city_name;
+				  String street_name;
+			      String home_number;
+				  DistrInkass distInk = new DistrInkass();
+				  ObjectName objName = new ObjectName();
+					  for(int row = startRow; row <finishRow; row++){
+												        	
+							id_term = (int) sheet_repo.getRow(row).getCell(1).getNumericCellValue();
+							city_name =     sheet_repo.getRow(row).getCell(4).getStringCellValue();
+							street_name =   sheet_repo.getRow(row).getCell(5).getStringCellValue();
+							home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();
+												        	
+							String adress = street_name + "., д. " + home_number;
+												        	
+							switch (this.checkDouble(Integer.toString(id_term))){															
+								case 0: bdw.insertInTo_trmlist_reportPartOne(id_term, city_name, street_name, 
+										this.modificNumberHome(home_number),
+										distInk.getDistrInkass(city_name, street_name),
+										objName.getObjectName(Integer.toString(id_term), city_name),
+										adress);break;
+									
+								case 1:	break;													
+							}											        	
+					  }	
+				  
+				  
+				}
 												
+
 												
 													private int modificNumberHome (String input){
 														String subStr="";

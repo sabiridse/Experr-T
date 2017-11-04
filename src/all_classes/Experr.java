@@ -746,8 +746,8 @@ public class Experr {
 			    				Loging log = new Loging();
 			    				
 //				    				log.logtext(" Объединяю файлы и создаю в нужном формате ");			    				
-//				    				ServiceWBS swbs = new ServiceWBS();
-//				    						   swbs.creatureAllFiles();
+			    				ServiceWBS swbs = new ServiceWBS();
+				    						   swbs.creatureAllFiles();
 			    							    				
 						    				log.logtext(" Собираю данные об ошибках ");				    				
 						    				btnNewButton_1.setEnabled(false);
@@ -1829,9 +1829,16 @@ public class Experr {
 			        
 						        button_4.addActionListener(new ActionListener() {
 				     	        	   public void actionPerformed(ActionEvent e) {
-				     	        		 	     	        		   
-				     	        		  NewThread_one thread = new NewThread_one();
-											thread.New_ThreadInkass();
+				     	        		 
+				     	        		  DataForInkass dfi = new DataForInkass();
+								        	try {
+												dfi.addInputData();
+											} catch (Exception e1) {
+												e1.printStackTrace();
+											}
+				     	        		   
+//				     	        		  NewThread_one thread = new NewThread_one();
+//											thread.New_ThreadInkass();
 				     	        	   }
 							        });
 						        

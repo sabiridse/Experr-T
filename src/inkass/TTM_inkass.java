@@ -85,30 +85,18 @@ public  class TTM_inkass extends AbstractTableModel{
 	public void setValueAt(Object aValue, int row, int column) {
 				
 		BD_write bdw = new BD_write();		
-
-		//String id_term = (String) getValueAt(row, 0);
-
+		String id_term = Integer.toString((int) getValueAt(row, 0));
 		
-		 if ( getValueAt(row, column) != null) {			 
+		ArrayList <String> editable_row = dataArrayList.get(row);
+	 	editable_row.set(editable_row.indexOf(editable_row.get(column)), (String) aValue);
+	 	
+	 	String distr_inkass = editable_row.get(column);
+	 	
 				 try {
-					//bdw.write_others(id_term, others, 2);//*********************update ��������
+					bdw.editDistrInkass(id_term, distr_inkass);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}													
-		 }
-		
-		 if ( getValueAt(row, column) == null) {		 
-				 try {
-
-					//bdw.write_others(id_term, others, 1);//*********************�������� ����� ������ 
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		 }
-		
-		 	ArrayList <String> editable_row = dataArrayList.get(row);
-		 	editable_row.set(editable_row.indexOf(editable_row.get(column)), (String) aValue);
-		 	//editable_row.get(column). = (String) aValue;	
 		 
 	}
 	

@@ -219,7 +219,7 @@ public class Repo_Excel {
 			 	cell65.setCellStyle(style2);
 			 	cell60.setCellValue(rows[0]);
 			 	cell61.setCellValue(rows[1]);
-			 	cell62.setCellValue(rows[2]);
+			 	cell62.setCellValue(this.checkOldTime(rows[2]));
 			 	cell63.setCellValue(rows[3]);
 			 	cell64.setCellValue(rows[4]);
 			 	cell65.setCellValue(rows[5]);
@@ -317,7 +317,7 @@ public class Repo_Excel {
 				 	cellforlo5.setCellStyle(style2);
 				 	cellforlo0.setCellValue(rows_lo[0]);
 				 	cellforlo1.setCellValue(rows_lo[1]);
-				 	cellforlo2.setCellValue(rows_lo[2]);
+				 	cellforlo2.setCellValue(this.checkOldTime(rows_lo[2]));
 				 	cellforlo3.setCellValue(rows_lo[3]);
 				 	cellforlo4.setCellValue(rows_lo[4]);
 				 	cellforlo5.setCellValue(rows_lo[5]);
@@ -396,7 +396,7 @@ public class Repo_Excel {
 					 	cellforreg5.setCellStyle(style2);
 					 	cellforreg0.setCellValue(rows_reg[0]);
 					 	cellforreg1.setCellValue(rows_reg[1]);
-					 	cellforreg2.setCellValue(rows_reg[2]);
+					 	cellforreg2.setCellValue(this.checkOldTime(rows_reg[2]));
 					 	cellforreg3.setCellValue(rows_reg[3]);
 					 	cellforreg4.setCellValue(rows_reg[4]);
 					 	cellforreg5.setCellValue(rows_reg[5]);
@@ -440,4 +440,22 @@ public class Repo_Excel {
 		 BD_write.List_reg.clear();
 	}
 
+	private String checkOldTime(String input){
+		
+		if (input.compareTo("01.01.2001 00:00")==0){
+			input = "не было";
+		}
+		
+		if (input.compareTo("01.01.2001 01:01")==0){
+			input = "не было";
+		}
+		if (input.compareTo("01.01.2017 00:00")==0){
+			input = "не было";
+		}
+		
+		
+		return input;
+	}
+	
+	
 }

@@ -39,42 +39,12 @@ public class DataForInkass {
 				//bdw.connect();
 				marsh.OpenFile();
 
-				Experr experr = new Experr();
+				//Experr experr = new Experr();
 				
-				switch (experr.getAllMarshrutsStatus()){				
+				switch (Experr.getAllMarshrutsStatus()){				
 						case 0: this.fiveMarshruts();break;
 						case 1: this.allMarshruts();break;								
-				}
-				
-//				try {
-//						this.getPrivateDataByMarshrut(experr.getDistr_inkass4(),
-//													  experr.agent, 
-//													  experr.limit);
-//					} catch (Exception e) {
-//						e.printStackTrace();
-//					}
-//						try {
-//							this.getPrivateDataByMarshrut(experr.getDistr_inkass5(),
-//														  experr.agent, 
-//														  experr.limit);
-//						} catch (Exception e) {
-//							e.printStackTrace();
-//						}
-//							try {
-//								this.getPrivateDataByMarshrut(experr.getDistr_inkass6(),
-//															  experr.agent, 
-//															  experr.limit);
-//							} catch (Exception e) {
-//								e.printStackTrace();
-//							}
-//								try {
-//									this.getPrivateDataByMarshrut(experr.getDistr_inkass2(),
-//																  experr.agent, 
-//																  experr.limit);
-//								} catch (Exception e) {
-//									e.printStackTrace();
-//								}
-					//bdw.close_connect();
+				}				
 					marsh.deleteEmptySheets();
 					marsh.saveAndClose();
 			
@@ -86,20 +56,20 @@ public class DataForInkass {
 			
 			private void fiveMarshruts() throws Exception{
 				
-				Experr experr = new Experr();
+				//Experr experr = new Experr();
 				List <String> distrs = new ArrayList<>();
-				distrs.add(experr.getDistr_inkass3());
-				distrs.add(experr.getDistr_inkass4());
-				distrs.add(experr.getDistr_inkass5());
-				distrs.add(experr.getDistr_inkass6());
-				distrs.add(experr.getDistr_inkass2());
+				distrs.add(Experr.getDistr_inkass3());
+				distrs.add(Experr.getDistr_inkass4());
+				distrs.add(Experr.getDistr_inkass5());
+				distrs.add(Experr.getDistr_inkass6());
+				distrs.add(Experr.getDistr_inkass2());
 								
 					for ( String curientDistr:distrs){
 				
 							try {
 								this.getPrivateDataByMarshrut(curientDistr,
-															  experr.agent, 
-															  experr.limit);
+															  Experr.agent, 
+															  Experr.limit);
 							} catch (Exception e) {
 								e.printStackTrace();
 							}					

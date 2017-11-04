@@ -36,8 +36,8 @@ public class TestRun {
 //		
 //		marsh.saveAndClose();
 		
-		ObjectName om = new ObjectName();
-		System.out.println(new ObjectName().getObjectName("Вырица пгт (Ленинградская обл/Гатчинский р-н)"));
+//		ObjectName om = new ObjectName();
+//		System.out.println(new ObjectName().getObjectName("Вырица пгт (Ленинградская обл/Гатчинский р-н)"));
 		
 		
 	}

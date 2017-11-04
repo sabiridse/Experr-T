@@ -6,9 +6,10 @@ public class ObjectName {
 
 	private String objectName;
 			
-			private void cater(String input){	
+			private void cater(String input, String city_name){	
 
-				objectName = "нет данных";				
+				objectName = "нет данных";
+				String city ="";
 						try {
 									Integer.parseInt(input.substring(0, 3));
 									objectName = input.substring(input.indexOf(" ")+1, input.indexOf("("));
@@ -18,18 +19,16 @@ public class ObjectName {
 							  } catch(Exception ex) {}					  							  
 						}
 						
-						DistrInkass distrInkass = new DistrInkass();						
-						String city_name = distrInkass.getCity_name().substring(0, distrInkass.getCity_name().indexOf("(")-1);
 						
-						System.out.println(city_name+" "+objectName);
 						
 						 if (city_name.compareTo("Санкт-Петербург г")!=0){							 
-							 objectName = city_name +"., " + objectName;							 
+							 city = city_name.substring(0, city_name.indexOf("(")-1);
+							 objectName = city +"., " + objectName;							 
 						 }
 			}
 
-		public String getObjectName(String id_term) {
-			this.cater(new BD_write().getName_term(id_term));
+		public String getObjectName(String id_term, String city_name) {
+			this.cater(new BD_write().getName_term(id_term), city_name);
 			return objectName.trim();
 		}	
 	

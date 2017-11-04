@@ -30,7 +30,7 @@ public class ServiceWBS {
 							e1.printStackTrace();
 						}
 //********************************************************************		
-									new NewThread_one().New_Three();// terminal_monitoring + points_info = export_errors.csv  for dermoshka
+									//new NewThread_one().New_Three();// terminal_monitoring + points_info = export_errors.csv  for dermoshka
 //*******************************************************************		
 		
 	}

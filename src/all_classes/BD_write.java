@@ -1090,28 +1090,32 @@ public class BD_write {
 		}
 			
 			
-			public void insertInTo_trmlist_reportPartOne(int id_term, String city_name, String street_name, int home_number){
+			public void insertInTo_trmlist_reportPartOne(int id_term, String city_name, String street_name,
+														 int home_number,String distr_inkass, String object,
+														 String adress){
 				
-				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,home_number,agent, distr_inkass, object) "
-							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name+"' ,"+home_number+", 'СК')";
+				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,"
+							  + "home_number,agent, distr_inkass, object,adress, auto) "
+							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name
+							  +"' ,"+home_number+", 'СК', '"+ distr_inkass+"','"+object+"','"+adress+"', 'auto')";
 						try {
 							this.uni_reqest_in_db(query);
 						} catch (ClassNotFoundException e) {
 							e.printStackTrace();
 						}					
 			}
-			public void updateInTo_trmlist_reportPartToo(int id_term, String distr_inkass, String object, String adress){
-				
-							String query = "update trmlist_report set distr_inkass = '"+ distr_inkass+"',"
-																  + " object = '"+object+"',"
-																  + " adress = '"+adress+"'"
-																  + " where id_term = '"+id_term+"'";
-									try {
-										this.uni_reqest_in_db(query);
-									} catch (ClassNotFoundException e) {
-										e.printStackTrace();
-									}					
-						}
+//			public void updateInTo_trmlist_reportPartToo(int id_term, String distr_inkass, String object, String adress){
+//				
+//							String query = "update trmlist_report set distr_inkass = '"+ distr_inkass+"',"
+//																  + " object = '"+object+"',"
+//																  + " adress = '"+adress+"'"
+//																  + " where id_term = '"+id_term+"'";
+//									try {
+//										this.uni_reqest_in_db(query);
+//									} catch (ClassNotFoundException e) {
+//										e.printStackTrace();
+//									}					
+//						}
 			
 			public String getName_term (String id_term){				
 				String query = "select name_term from terminals where id_term = '"+id_term+"'";		        
@@ -1155,7 +1159,7 @@ public class BD_write {
 			}
 			public String getDistr_inkass (String city_name, String street_name ) throws Exception {	
 				//this.connect();
-				String distr_inkass = "не определено";
+				String distr_inkass = "";
 				Statement stmt;				
 				try {	
 					stmt = conn.createStatement();						
@@ -1167,6 +1171,10 @@ public class BD_write {
 									result.close();							
 					}	catch (SQLException e)	{}																			
 				//this.close_connect();
+				if (distr_inkass.compareTo("")==0 ){
+					distr_inkass = "не определено";
+				}
+				
 				return distr_inkass;
 			}
 			
@@ -1177,10 +1185,11 @@ public class BD_write {
 				try {	
 					stmt = conn.createStatement();						
 						ResultSet result;
-						result = stmt.executeQuery("select distr_inkass from city_lo where city_name = '"+city_name+"'");					
-									while (result.next()) {										
+						result = stmt.executeQuery("select distr_inkass from trmlist_report "
+												 + "where city_name = '"+city_name+"' and distr_inkass != '' LIMIT 1");
+																		
 										distr_inkass = result.getString("distr_inkass");									
-									}
+
 									result.close();							
 					}	catch (SQLException e)	{}																			
 				//this.close_connect();
@@ -1198,7 +1207,7 @@ public class BD_write {
 			}
 			
 			public ArrayList getPrivateDate (String distr_inkass) {	
-				this.connect();
+				//this.connect();
 				ArrayList privateData = new ArrayList<>();
 				Statement stmt;				
 				try {	
@@ -1301,6 +1310,15 @@ public class BD_write {
 					}	catch (SQLException e)	{System.out.println("делаю массив данных для маршрутов инкассации " +e);}
 				return dataForInkass;
 		  }
+			
+			public void editDistrInkass (String id_term, String distr_inkass) throws Exception {
+				String query;
+				BD_write bdw = new BD_write();
+				bdw.connect();
+				query = "UPDATE trmlist_report SET distr_inkass = '" + distr_inkass + "' WHERE id_term = " + id_term;
+				bdw.uni_reqest_in_db(query);				
+				bdw.close_connect();
+			}
 			
 			
 		public void close_connect(){

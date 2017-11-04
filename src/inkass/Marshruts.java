@@ -23,13 +23,14 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import all_classes.Experr;
+import all_classes.Loging;
 
 public class Marshruts {
 
 	private FileInputStream Marshruts;
 	private Workbook curientWB_open;
 	private Sheet curientSheet;
-		
+	private Loging log = new Loging();	
 
 		private void setCurientSheet(int index) {
 			curientSheet = curientWB_open.getSheetAt(index);
@@ -77,6 +78,7 @@ public class Marshruts {
 		try {
 			this.OpenFileBolvan();
 		} catch (IOException e) {
+			log.log(e," Ошибка открытия файла МАРШРУТЫ_болван.xlsx ");	
 			e.printStackTrace();
 		}
 		
@@ -120,12 +122,14 @@ public class Marshruts {
 				try {
 					this.SaveFile();
 				} catch (IOException e) {
+					log.log(e," Ошибка сохранения файла МАРШРУТЫ_болван.xlsx ");
 					e.printStackTrace();
 				}					
 									
 				try {
 					Marshruts.close();
 				} catch (IOException e1) {
+					log.log(e1," Ошибка закрытия FIS ");
 					e1.printStackTrace();
 				}
 			}
@@ -182,7 +186,7 @@ public class Marshruts {
 			    	      0, //start row
 			    	      finalRow+4 //end row*********************************************************переменная числа строк в таблице
 			    	      );
-		} catch (Exception q){}
+		} catch (Exception q){log.log(q," Ошибка finishera ");}
 				
 				
 	}

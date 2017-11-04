@@ -56,7 +56,7 @@ public class TooManyCriteries {
 							
 					 			
 					 			
-					 			di.start(sub[i]);
+					 			//di.start(sub[i]);
 					 			
 					 			
 					 			
