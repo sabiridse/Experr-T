@@ -60064,3 +60064,185 @@ java.lang.NullPointerException
 2017-11-04T17:26:03.305 :  ����� �� ��������� 
 2017-11-04T17:26:06.953 :  Старт программы ******************************************************************************
 2017-11-04T17:39:48.721 :  ����� �� ��������� 
+2017-11-05T10:11:58 :  Старт программы ******************************************************************************
+2017-11-05T10:20:15.446 :  Собираю данные об ошибках 
+2017-11-05T10:20:24.571 :  lost term 10369265
+2017-11-05T10:20:24.683 :  lost term 10379711
+2017-11-05T10:20:24.808 :  lost term 10385944
+2017-11-05T10:20:24.920 :  lost term 10389467
+2017-11-05T10:20:24.991 :  lost term 10390612
+2017-11-05T10:20:25.061 :  lost term 10386919
+2017-11-05T10:20:25.132 :  lost term 10389118
+2017-11-05T10:20:25.203 :  lost term 10389106
+2017-11-05T10:20:25.273 :  lost term 10389103
+2017-11-05T10:20:25.344 :  lost term 10391525
+2017-11-05T10:20:25.415 :  lost term 10393301
+2017-11-05T10:20:25.488 :  lost term 10393155
+2017-11-05T10:20:25.560 :  lost term 10395412
+2017-11-05T10:20:25.633 :  lost term 10396269
+2017-11-05T10:20:25.702 :  lost term 10393892
+2017-11-05T10:31:29.039 :  Старт программы ******************************************************************************
+2017-11-05T10:33:54.301 :  Старт программы ******************************************************************************
+2017-11-05T11:00:04.227 :  Старт программы ******************************************************************************
+2017-11-05T11:09:25.250 :  Собираю данные об ошибках 
+2017-11-05T11:09:34.128 :  lost term 10369265
+2017-11-05T11:09:34.239 :  lost term 10379711
+2017-11-05T11:09:34.309 :  lost term 10385944
+2017-11-05T11:09:34.381 :  lost term 10389467
+2017-11-05T11:09:34.452 :  lost term 10390612
+2017-11-05T11:09:34.521 :  lost term 10386919
+2017-11-05T11:09:34.592 :  lost term 10389118
+2017-11-05T11:09:34.663 :  lost term 10389106
+2017-11-05T11:09:34.733 :  lost term 10389103
+2017-11-05T11:09:34.802 :  lost term 10391525
+2017-11-05T11:09:34.877 :  lost term 10393301
+2017-11-05T11:09:34.981 :  lost term 10393155
+2017-11-05T11:09:35.092 :  lost term 10395412
+2017-11-05T11:09:35.164 :  lost term 10396269
+2017-11-05T11:09:35.237 :  lost term 10393892
+2017-11-05T18:32:45.039 :  Старт программы ******************************************************************************
+2017-11-05T18:34:27.857 :  Старт программы ******************************************************************************
+2017-11-06T09:51:26.981 :  Старт программы ******************************************************************************
+2017-11-06T09:53:40.631 :  Старт программы ******************************************************************************
+2017-11-06T09:55:05.872 :  Старт программы ******************************************************************************
+2017-11-06T09:59:00.973 :  Старт программы ******************************************************************************
+2017-11-06T10:02:20.297 :  Старт программы ******************************************************************************
+2017-11-06T10:07:09.489 :  Старт программы ******************************************************************************
+2017-11-06T10:22:38.021 :  Старт программы ******************************************************************************
+2017-11-06T10:33:31.987 :  Старт программы ******************************************************************************
+2017-11-06T10:34:27.466 :  Старт программы ******************************************************************************
+2017-11-06T10:36:03.832 :  Старт программы ******************************************************************************
+2017-11-06T10:41:34.857 :  Старт программы ******************************************************************************
+2017-11-06T10:44:52.640 :  Старт программы ******************************************************************************
+2017-11-06T10:45:29.600 :  Старт программы ******************************************************************************
+2017-11-06T11:50:31.933 :  Старт программы ******************************************************************************
+2017-11-06T11:52:15.829 :  Старт программы ******************************************************************************
+2017-11-06T12:01:07.218 :  Собираю данные об ошибках 
+2017-11-06T12:01:15.891 :  lost term 10369265
+2017-11-06T12:01:16.003 :  lost term 10379711
+2017-11-06T12:01:16.075 :  lost term 10368058
+2017-11-06T12:01:16.147 :  lost term 10389467
+2017-11-06T12:01:16.218 :  lost term 10390612
+2017-11-06T12:01:16.320 :  lost term 10386919
+2017-11-06T12:01:16.466 :  lost term 10389118
+2017-11-06T12:01:16.538 :  lost term 10389106
+2017-11-06T12:01:16.610 :  lost term 10389103
+2017-11-06T12:01:16.683 :  lost term 10393301
+2017-11-06T12:01:16.756 :  lost term 10393155
+2017-11-06T12:01:16.829 :  lost term 10395412
+2017-11-06T12:01:16.903 :  lost term 10393892
+2017-11-06T12:45:52.571 :  Старт программы ******************************************************************************
+2017-11-06T15:47:41.202 :  Старт программы ******************************************************************************
+2017-11-06T15:51:55.570 :  Старт программы ******************************************************************************
+2017-11-06T15:53:45.369 :  Старт программы ******************************************************************************
+
+2017-11-06T15:54:44.940:  Ошибка сохранения файла МАРШРУТЫ_болван.xlsx 
+java.io.FileNotFoundException: C:\Users\Салман\Downloads\МАРШРУТЫ_07-11-2017.xlsx (Процесс не может получить доступ к файлу, так как этот файл занят другим процессом)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at inkass.Marshruts.SaveFile(Marshruts.java:52)
+	at inkass.Marshruts.saveAndClose(Marshruts.java:123)
+	at inkass.DataForInkass.addInputData(DataForInkass.java:49)
+	at all_classes.Experr$38.actionPerformed(Experr.java:1830)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+2017-11-06T15:56:54.125 :  Старт программы ******************************************************************************
+2017-11-06T15:57:03.974 :  Старт программы ******************************************************************************
+2017-11-06T16:32:27.381 :  Старт программы ******************************************************************************
+2017-11-06T16:37:42.827 :  Старт программы ******************************************************************************
+2017-11-06T16:58:26.843 :  Старт программы ******************************************************************************
+2017-11-06T17:03:41.944 :  Старт программы ******************************************************************************
+2017-11-06T17:12:53.599 :  Старт программы ******************************************************************************
+2017-11-06T17:15:59.213 :  Старт программы ******************************************************************************
+
+2017-11-06T17:16:42.057:  Ошибка сохранения файла МАРШРУТЫ_болван.xlsx 
+java.io.FileNotFoundException: C:\Users\Салман\Downloads\МАРШРУТЫ_07-11-2017.xlsx (Процесс не может получить доступ к файлу, так как этот файл занят другим процессом)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at inkass.Marshruts.SaveFile(Marshruts.java:52)
+	at inkass.Marshruts.saveAndClose(Marshruts.java:123)
+	at inkass.DataForInkass.addInputData(DataForInkass.java:47)
+	at all_classes.Experr$37.actionPerformed(Experr.java:1838)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.AWTEventMulticaster.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+2017-11-06T17:38:36.835 :  Старт программы ******************************************************************************
+2017-11-06T17:46:03.414 :  Старт программы ******************************************************************************
+2017-11-06T17:49:25.314 :  Старт программы ******************************************************************************
+2017-11-06T17:51:21.878 :  Старт программы ******************************************************************************
+2017-11-06T17:54:57.205 :  Старт программы ******************************************************************************
+2017-11-06T18:13:45.594 :  Старт программы ******************************************************************************
+2017-11-06T21:05:29.452 :  ����� �� ��������� 

@@ -73,6 +73,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import GUIbonus.Statistika;
 import Lider_Dps.ServicePPS;
 import Osmp_Osmp.Service;
 import authorization.AuthForm;
@@ -203,8 +204,10 @@ public class Experr {
 	public static String distr_inkass2 = "рута";
 	public static int agent = 2;
 	public static int limit = 80;
+	public static int Summlimit = 70000;
 	
-	private static int allMarshruts;
+	public static int allMarshruts = 0;
+	private JTextField textField_search;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -1562,7 +1565,7 @@ public class Experr {
 			        panel_21.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			        panel_21.setBackground(new Color(51, 153, 153));
 			        panel_20.add(panel_21, BorderLayout.WEST);
-			        panel_21.setLayout(new MigLayout("", "[grow]", "[31.00][][][][][][][][][][][][][][][][][][][][][][][][][][]"));
+			        panel_21.setLayout(new MigLayout("", "[grow]", "[31.00][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]"));
 			        
 			        JLabel label_20 = new JLabel("Выбор маршрутов");
 			        label_20.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1570,25 +1573,20 @@ public class Experr {
 			        label_20.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 			        panel_21.add(label_20, "cell 0 2,alignx center");
 //*****************************************************************************************************************			        
-			        JCheckBox checkBox_4 = new JCheckBox("все маршруты");
-			        checkBox_4.setToolTipText("");
-			        checkBox_4.setForeground(new Color(0, 204, 153));
-			        checkBox_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
-			        checkBox_4.setBackground(new Color(0, 153, 153));
-			        panel_21.add(checkBox_4, "cell 0 3");
 			        
-			        checkBox_4.addItemListener(new ItemListener() {
-				          public void itemStateChanged(ItemEvent e) {
-				            
-						        	 if (checkBox_4.isSelected()) {
-						        		 
-						        		 allMarshruts = 1;
-						        		 
-						        	 } else allMarshruts = 0;
-				          
-						        	 	          
-				          }
-				      });
+			        
+//			        rdbtnAll.addItemListener(new ItemListener() {
+//				          public void itemStateChanged(ItemEvent e) {
+//				            
+//						        	 if (rdbtnAll.isSelected()) {
+//						        		 
+//						        		 allMarshruts = 1;
+//						        		 
+//						        	 } else allMarshruts = 0;
+//				          
+//						        	 	          
+//				          }
+//				      });
 			        
 			        
 			        
@@ -1697,6 +1695,14 @@ public class Experr {
 			        label_21.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 			        panel_21.add(label_21, "cell 0 10,alignx center");
 //****************************************************************************************************			        
+			       
+			        JRadioButton rdbtnAllMurshruts = new JRadioButton("все маршруты");
+			        rdbtnAllMurshruts.setToolTipText("полные данные обо всех маршрутах");
+			        rdbtnAllMurshruts.setForeground(new Color(0, 204, 153));
+			        rdbtnAllMurshruts.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        rdbtnAllMurshruts.setBackground(new Color(0, 153, 153));
+			        panel_21.add(rdbtnAllMurshruts, "cell 0 3");
+			        
 			        JRadioButton rdbtnSK = new JRadioButton("Северный кредит");
 			        rdbtnSK.setSelected(true);
 			        rdbtnSK.setForeground(new Color(153, 255, 102));
@@ -1723,6 +1729,7 @@ public class Experr {
 			        panel_21.add(radioButton_all, "cell 0 14");
 					
 			        ButtonGroup groupAgents = new ButtonGroup();
+			        groupAgents.add(rdbtnAllMurshruts);
 			        groupAgents.add(radioButton_Sps);
 			        groupAgents.add(rdbtnSK);
 			        groupAgents.add(radioButton_Pir);
@@ -1732,20 +1739,24 @@ public class Experr {
 							@Override
 							public void actionPerformed(ActionEvent e) {
 								agent = 0;  
+								if(rdbtnAllMurshruts.isSelected()){
+				        			agent = 0;allMarshruts = 1;
+				        		}
+								
 				        		if(radioButton_all.isSelected()){
-				        			agent = 0;
+				        			agent = 0;allMarshruts = 0;
 				        		}
 				        		
 				        		if(radioButton_Sps.isSelected()){
-				        			agent = 3;
+				        			agent = 3;allMarshruts = 0;
 				        		}
 				        		
 				        		if(radioButton_Pir.isSelected()){
-				        			agent = 1;
+				        			agent = 1;allMarshruts = 0;
 				        		}
 				        		
 				        		if(rdbtnSK.isSelected()){
-				        			agent = 2;
+				        			agent = 2;allMarshruts = 0;
 				        		}
 							}
 							
@@ -1755,35 +1766,9 @@ public class Experr {
 				        radioButton_Sps.addActionListener(listenerAgents);
 				        radioButton_Pir.addActionListener(listenerAgents);
 				        rdbtnSK.addActionListener(listenerAgents);
-				        
-//**************************************************************************************************************************************************			        
-			        JPanel panel_22 = new JPanel();
-			        panel_22.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			        panel_22.setBackground(new Color(51, 153, 153));
-			        panel_20.add(panel_22, BorderLayout.CENTER);
-			        panel_22.setLayout(new MigLayout("", "[grow]", "[grow]"));
+				        rdbtnAllMurshruts.addActionListener(listenerAgents);
 			        
-			        JScrollPane scrollPane_6 = new JScrollPane();
-			        scrollPane_6.setViewportBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 204)));
-			        panel_22.add(scrollPane_6, "cell 0 0,grow");
-			        
-			        table_5 = new JTable(model_inkass);
-			        table_5.setToolTipText("kkkbjkb");
-			        table_5.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-			        table_5.setSelectionBackground(new Color(153, 204, 204));
-			        table_5.setRowHeight(22);
-			        table_5.setGridColor(Color.BLUE);
-			        table_5.setFont(new Font("Tahoma", Font.PLAIN, 12));         
-			        table_5.setCellSelectionEnabled(true);
-			        table_5.setBackground(new Color(255, 255, 204));
-			        scrollPane_6.setViewportView(table_5);
-			        
-			        RowSorter<TTM_inkass> sorterInkass = new TableRowSorter<TTM_inkass>(model_inkass);
-			        table_5.setRowSorter(sorterInkass);
-			        JTableHeader headInkass = table_5.getTableHeader();								
-			        headInkass.setBackground(new Color(51, 153, 153));
-			        headInkass.setForeground(new Color(153, 204, 153));
-			        headInkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			       
 	       
 			        JButton button_2 = new JButton("Обновить\r\n справочник");
 			        button_2.setToolTipText("Предварительно скачайте trmlist-report");
@@ -1819,14 +1804,32 @@ public class Experr {
 			        };
 			        
 			        spinner_Limit.addChangeListener(listenerLimit);
-			        
-			        JButton button_4 = new JButton("МАРШРУТЫ");
-			        button_4.setToolTipText("Сформировать файл МАРШРУТЫ");
-			        button_4.setForeground(new Color(204, 204, 102));
-			        button_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
-			        button_4.setBackground(new Color(51, 153, 153));
-			        panel_21.add(button_4, "cell 0 18,growx");	
-			        
+									        
+									        JLabel label_23 = new JLabel("Сумма лимита ");
+									        label_23.setHorizontalAlignment(SwingConstants.CENTER);
+									        label_23.setForeground(new Color(51, 102, 0));
+									        label_23.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+									        panel_21.add(label_23, "cell 0 17,growx");
+									        
+									        JSpinner spinner_SummLimit = new JSpinner();
+									        spinner_SummLimit.setModel(new SpinnerNumberModel(70000, 0, 150000, 1000));
+									        panel_21.add(spinner_SummLimit, "cell 0 18,growx");
+									        ChangeListener listenerSummLimit = new ChangeListener() {
+									            public void stateChanged(ChangeEvent e) {
+									                JSpinner spinner_SummLimit = (JSpinner) e.getSource();
+									                Summlimit = (int) spinner_SummLimit.getValue();
+									            }
+									        };
+									        spinner_SummLimit.addChangeListener(listenerSummLimit);
+									        
+									        
+									        JButton button_4 = new JButton("МАРШРУТЫ");
+									        button_4.setToolTipText("Сформировать файл МАРШРУТЫ");
+									        button_4.setForeground(new Color(204, 204, 102));
+									        button_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+									        button_4.setBackground(new Color(51, 153, 153));
+									        panel_21.add(button_4, "cell 0 19,growx");	
+									        
 						        button_4.addActionListener(new ActionListener() {
 				     	        	   public void actionPerformed(ActionEvent e) {
 				     	        		 
@@ -1841,13 +1844,42 @@ public class Experr {
 //											thread.New_ThreadInkass();
 				     	        	   }
 							        });
-						        
-									        JButton button_6 = new JButton("Обновить");
+									        
+									        textField_search = new JTextField();
+									        panel_21.add(textField_search, "cell 0 21,growx");
+									        textField_search.setColumns(10);
+									        
+									        JButton button_search = new JButton("Поиск в таблице");
+									        button_search.setToolTipText("контекстный поиск терминалов");
+									        button_search.setForeground(new Color(204, 204, 102));
+									        button_search.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+									        button_search.setBackground(new Color(51, 153, 153));
+									        panel_21.add(button_search, "cell 0 22,growx");
+									        
+									        JButton button_statistik = new JButton("Статистика");
+									        button_statistik.setToolTipText("показать окно статистики");
+									        button_statistik.setForeground(new Color(204, 204, 102));
+									        button_statistik.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+									        button_statistik.setBackground(new Color(51, 153, 153));
+									        panel_21.add(button_statistik, "cell 0 30,growx");
+									        button_statistik.addActionListener(new ActionListener() {
+							     	        	   public void actionPerformed(ActionEvent e) {
+							     	        		 	    	        		   
+							     	        		  Statistika stata = new Statistika();
+														stata.showStat(bdw.getSummInkass());
+							     	        	   }
+										        });
+									        
+									        
+									        
+									        
+									        
+									        JButton button_6 = new JButton("Обновить таблицу");
 									        button_6.setToolTipText("Обновить данные по инкассации");
 									        button_6.setForeground(new Color(153, 204, 153));
 									        button_6.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 									        button_6.setBackground(new Color(0, 153, 153));
-									        panel_21.add(button_6, "cell 0 26,alignx center");
+									        panel_21.add(button_6, "cell 0 31,growx");
 									        button_6.addActionListener(new ActionListener() {
 							     	        	   public void actionPerformed(ActionEvent e) {
 							     	        		 	     	        		   
@@ -1868,6 +1900,39 @@ public class Experr {
 														 bdw.close_connect();
 							     	        	   }
 										        });
+									        
+//**************************************************************************************************************************************************			        
+			        JPanel panel_22 = new JPanel();
+			        panel_22.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			        panel_22.setBackground(new Color(51, 153, 153));
+			        panel_20.add(panel_22, BorderLayout.CENTER);
+			        panel_22.setLayout(new MigLayout("", "[grow]", "[grow]"));
+			        
+			        JScrollPane scrollPane_6 = new JScrollPane();
+			        scrollPane_6.setViewportBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 204)));
+			        panel_22.add(scrollPane_6, "cell 0 0,grow");
+			        
+			        table_5 = new JTable(model_inkass);
+			        table_5.setToolTipText("kkkbjkb");
+			        table_5.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			        table_5.setSelectionBackground(new Color(153, 204, 204));
+			        table_5.setRowHeight(22);
+			        table_5.setGridColor(Color.BLUE);
+			        table_5.setFont(new Font("Tahoma", Font.PLAIN, 12));         
+			        table_5.setCellSelectionEnabled(true);
+			        table_5.setBackground(new Color(255, 255, 204));
+			        scrollPane_6.setViewportView(table_5);
+			        
+			        RowSorter<TTM_inkass> sorterInkass = new TableRowSorter<TTM_inkass>(model_inkass);
+			        JTableHeader headInkass = table_5.getTableHeader();
+			        headInkass.setBackground(new Color(51, 153, 153));
+			        headInkass.setForeground(new Color(153, 204, 153));
+			        headInkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        
+			        table_5.setRowSorter(sorterInkass);		
+			        
+			        
+			        
 							        
 			        button_insert_new_work.addActionListener(new ActionListener() {
 										public void actionPerformed(ActionEvent arg0) {

@@ -18,23 +18,19 @@ public class DistrInkass {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-					
-					if ( distr_inkass.compareTo("не определено") == 0){
-										
-						if (city_name.compareTo("Санкт-Петербург г") !=0){
-							
-							try {
+						if ( distr_inkass.compareTo("не определено") == 0){				
+							if (city_name.compareTo("Санкт-Петербург г") !=0){
 								
-								distr_inkass = bdw.getDistr_inkassForLo(city_name);
-							} catch (Exception e) {
-								e.printStackTrace();
+								try {
+									
+									distr_inkass = bdw.getDistr_inkassForLo(city_name);
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+								
 							}
-							
 						}
-					}
-					
-				
-				
+
 				return distr_inkass;
 			}
 //			public String getDistrInkass (String id_term){

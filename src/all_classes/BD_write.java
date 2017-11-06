@@ -42,7 +42,7 @@ public class BD_write {
 	public TTM_lo ttm_lo = new TTM_lo();
 	public TTM_reg ttm_reg = new TTM_reg();
 	
-	public static Connection conn;
+	public static Connection conn = null;
 	public  static ArrayList<String []> Data_mailto;
 	public  static ArrayList<String []> Last_inkass_Arr;
 	public  String query1;
@@ -55,45 +55,37 @@ public class BD_write {
 	public void connect  () {
 
 		
-		 conn = null;
+		
 		 Xml_read xml = new Xml_read();
 		 String User = xml.read()[2];
 		 String Password = xml.read()[3];
 
-		try {
-	        
-			Properties properties=new Properties();
-			properties.setProperty("user", User);
-			properties.setProperty("password", Password);
-			properties.setProperty("useUnicode","true");
-			properties.setProperty("characterEncoding","UTF8");
-			properties.put("charSet", "UTF8");
-	        
-	        	switch (Experr.DBtriger) {
-	        	
-	        	case 0 :Class.forName("com.mysql.jdbc.Driver");
-				        conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", properties );
-
-				        break;
-	        	case 1 :Class.forName (xml.read()[0]).newInstance ();
-	        			conn = DriverManager.getConnection(xml.read()[1], properties);//,xml.read()[2], xml.read()[3]
-	        			break;
-	        	}
-
-	        //рррогннпExperr.lblNewLabel_2.setVisible(false);
-	        //Experr.lblNewLabel_1.setVisible(true);
-		   
-	        
-	    }
-	    catch (Exception ex) {
-	    	
-	    	Gui1 gui1 = new Gui1();
-	    	String txt = "<html><center>Нет подключения к БД, попробуйте ещё раз</html>";
-			gui1.Gui0(txt);
-	     // Experr.lblNewLabel_1.setVisible(false);
-	      //Experr.lblNewLabel_2.setVisible(true);
-	    }
-		
+		 
+					try {			        
+						Properties properties=new Properties();
+						properties.setProperty("user", User);
+						properties.setProperty("password", Password);
+						properties.setProperty("useUnicode","true");
+						properties.setProperty("characterEncoding","UTF8");
+						properties.put("charSet", "UTF8");
+				        
+				        	switch (Experr.DBtriger) {
+				        	
+				        	case 0 :Class.forName("com.mysql.jdbc.Driver");
+							        conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", properties );
+			
+							        break;
+				        	case 1 :Class.forName (xml.read()[0]).newInstance ();
+				        			conn = DriverManager.getConnection(xml.read()[1], properties);//,xml.read()[2], xml.read()[3]
+				        			break;
+				        	}
+				    }
+				    catch (Exception ex) {
+				    	
+				    	Gui1 gui1 = new Gui1();
+				    	String txt = "<html><center>Нет подключения к БД, попробуйте ещё раз</html>";
+						gui1.Gui0(txt);
+				    }
 		
 	}
 
@@ -1089,7 +1081,24 @@ public class BD_write {
 					return id_term;
 		}
 			
-			
+				public  List<String> getSummInkass () { //*****************PROCEDURE**************
+					this.connect();
+					String query = "CALL getSummInkass";
+					List <String> summ = new ArrayList<String>();		        
+					Statement stmt;				
+					try {	
+						stmt = conn.createStatement();						
+							ResultSet result;
+							result = stmt.executeQuery(query);				
+										while (result.next()) {													
+											summ.add(result.getString("SUM(summ)"));	
+										}
+										result.close();							
+					}	catch (SQLException e)	{}
+								
+					return summ;
+		}
+				
 			public void insertInTo_trmlist_reportPartOne(int id_term, String city_name, String street_name,
 														 int home_number,String distr_inkass, String object,
 														 String adress){
@@ -1186,13 +1195,12 @@ public class BD_write {
 					stmt = conn.createStatement();						
 						ResultSet result;
 						result = stmt.executeQuery("select distr_inkass from trmlist_report "
-												 + "where city_name = '"+city_name+"' and distr_inkass != '' LIMIT 1");
-																		
+												 + "where city_name = '"+city_name+"' and distr_inkass != '' and distr_inkass != 'не определено' LIMIT 1");
+								while (result.next()) {								
 										distr_inkass = result.getString("distr_inkass");									
-
+								}
 									result.close();							
 					}	catch (SQLException e)	{}																			
-				//this.close_connect();
 				return distr_inkass;
 			}
 			
@@ -1207,7 +1215,7 @@ public class BD_write {
 			}
 			
 			public ArrayList getPrivateDate (String distr_inkass) {	
-				//this.connect();
+				this.connect();
 				ArrayList privateData = new ArrayList<>();
 				Statement stmt;				
 				try {	
@@ -1233,20 +1241,27 @@ public class BD_write {
 			public ArrayList<String[]> getDataForInkassSPb (String indexMarshrut, int rowLimitCount, int agentIndex) {	
 				
 				String agent = "(agent = 'ПИР' or agent = 'СК'or agent = 'СПС') ";
-				
+				int summLimit = 0;
 				switch (agentIndex){
 				case 1: agent = "agent = 'ПИР' "; break;
 				case 2:	agent = "agent = 'СК' "; break;	
 				case 3:	agent = "agent = 'СПС' "; break;
 				}
 				
+				if (Experr.allMarshruts == 0){
+					summLimit = Experr.Summlimit;
+				}
 				
 				ArrayList<String[]> dataForInkass = new ArrayList<>();				
 				String query = "(SELECT trmlist_report.object, ostatki.id_term, trmlist_report.adress, trmlist_report.regim, "   // querry only for SPb marshruts
 							 + "trmlist_report.street_name, trmlist_report.home_number, trmlist_report.agent "
 							 + "FROM ostatki "
 							 + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
-							 + "where distr_inkass = '"+indexMarshrut+"' and " + agent									// var distr_inkass  and var agent
+							 + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
+							 + "where terminals.except_term = 0 and "
+							 + "distr_inkass = '"+indexMarshrut+"' and " 
+							 + "ostatki.summ >= " + summLimit + " and "
+							 + agent									// var distr_inkass  and var agent
 							 + "order by summ DESC limit "+rowLimitCount+") order by street_name, home_number";			// var value of LIMIT
 		        
 				Statement stmt;	
@@ -1287,7 +1302,9 @@ public class BD_write {
 							 + "trmlist_report.city_name, trmlist_report.street_name, trmlist_report.home_number, trmlist_report.agent, trmlist_report.distr_inkass "
 							 + "FROM ostatki "
 							 + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
-							 + "where distr_inkass = '"+indexMarshrut+"' and " + agent									// var distr_inkass  and var agent
+							 + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
+							 + "where terminals.except_term = 0 and "
+							 + "distr_inkass = '"+indexMarshrut+"' and " + agent									// var distr_inkass  and var agent
 							 + "order by city_name, street_name, home_number";			
 				Statement stmt;				
 				

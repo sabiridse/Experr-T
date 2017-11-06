@@ -59,8 +59,8 @@ public class Marshruts {
 		private String getFileNameMarshruts() throws Exception{
 
 				String agent = "";			
-				Experr experr = new Experr();
-				switch (experr.agent){				
+				//Experr experr = new Experr();
+				switch (Experr.agent){	
 					case 1: agent = "ПИР_";break;
 					case 2: agent = "СК_";break;
 					case 3: agent = "СПС_";break;				
@@ -192,7 +192,7 @@ public class Marshruts {
 	}
 	
 	public void deleteEmptySheets (){
-		for (int i = 12; i >0 ; i--){		
+		for (int i = 12; i >0 ; i--){	
 			String check = curientWB_open.getSheetAt(i)
 										 .getRow(3).getCell(1)
 									 	 .getStringCellValue();		

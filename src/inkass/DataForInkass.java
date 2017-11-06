@@ -38,8 +38,6 @@ public class DataForInkass {
 				
 				//bdw.connect();
 				marsh.OpenFile();
-
-				//Experr experr = new Experr();
 				
 				switch (Experr.getAllMarshrutsStatus()){				
 						case 0: this.fiveMarshruts();break;
@@ -81,7 +79,7 @@ public class DataForInkass {
 				for ( String curientDistr:allDistrs){
 					
 						try {
-							this.getPrivateDataByMarshrut(curientDistr,0,400);
+							this.getPrivateDataByMarshrut(curientDistr,0,300);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}					
