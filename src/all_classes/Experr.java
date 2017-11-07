@@ -76,6 +76,7 @@ import org.xml.sax.SAXException;
 import GUIbonus.Statistika;
 import Lider_Dps.ServicePPS;
 import Osmp_Osmp.Service;
+import adapter.ExcelAdapter;
 import authorization.AuthForm;
 import contextFind.TooManyCriteries;
 import gruopAddExcept.AddDelExceptTerm;
@@ -109,6 +110,7 @@ import java.awt.FlowLayout;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import javax.swing.SpinnerListModel;
+import javax.swing.JEditorPane;
 
 public class Experr {
 
@@ -868,7 +870,13 @@ public class Experr {
 									
 									scrollPane.setViewportView(table);
 									progressBar_1.setVisible(false);
-							       							       
+							       	
+									
+									
+									ExcelAdapter myAd = new ExcelAdapter(table);
+									
+									
+									
 									JPanel panel_1 = new JPanel();
 									panel_1.setBackground(new Color(102, 153, 153));
 									tabbedPane.addTab("\u0422\u0435\u0440\u043C\u0438\u043D\u0430\u043B\u044B", null, panel_1, null);
@@ -1433,12 +1441,27 @@ public class Experr {
 			        txtFild_color_mailto2.setColumns(10);
 			        txtFild_color_mailto2.setBounds(470, 388, 86, 20);
 			        panel.add(txtFild_color_mailto2);
+			        
+			        JEditorPane editorPane = new JEditorPane();
+			        editorPane.setBounds(433, 419, 190, 187);
+			        panel.add(editorPane);
+			        
+
+			        
+			        
+			        
 //***************************************************************************************
 			        
 			        CheckBox_history.addItemListener(new ItemListener() {
 				          public void itemStateChanged(ItemEvent e) {
 				            
 						        	 if (CheckBox_history.isSelected()) {
+						        		 
+						        		
+						        		 
+						        		 String big = editorPane.getText();
+						        		 
+						        		 System.out.println(editorPane.getText());
 						        		 
 						        		history = 1;
 						        	 
@@ -2020,5 +2043,4 @@ public class Experr {
 	public static String getDistr_inkass2() {
 		return distr_inkass2;
 	}
-	
 }
