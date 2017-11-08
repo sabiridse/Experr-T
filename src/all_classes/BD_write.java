@@ -1099,6 +1099,24 @@ public class BD_write {
 					return summ;
 		}
 				
+				public  List<String> getStatByMarshrut (String distr_inkass, String limit_inkass) { //*****************PROCEDURE**************
+					this.connect();
+					String query = "CALL statByMarshrut ("+distr_inkass+" , "+limit_inkass+")";
+					List <String> stata = new ArrayList<String>();		        
+					Statement stmt;				
+					try {	
+						stmt = conn.createStatement();						
+							ResultSet result;
+							result = stmt.executeQuery(query);				
+										while (result.next()) {													
+											stata.add(result.getString("COUNT(*)"));	
+										}
+										result.close();							
+					}	catch (SQLException e)	{}
+								
+					return stata;
+		}
+				
 			public void insertInTo_trmlist_reportPartOne(int id_term, String city_name, String street_name,
 														 int home_number,String distr_inkass, String object,
 														 String adress){
@@ -1232,7 +1250,7 @@ public class BD_write {
 									
 									}
 									result.close();							
-					}	catch (SQLException e)	{System.out.println("getPrivateDate " +e);}																			
+					}	catch (SQLException e)	{}																			
 
 				return privateData;
 			}
@@ -1260,9 +1278,9 @@ public class BD_write {
 							 + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
 							 + "where terminals.except_term = 0 and "
 							 + "distr_inkass = '"+indexMarshrut+"' and " 
-							 + "ostatki.summ >= " + summLimit + " and "
+							 + "(ostatki.summ + ostatki.bonus) >= " + summLimit + " and "
 							 + agent									// var distr_inkass  and var agent
-							 + "order by summ DESC limit "+rowLimitCount+") order by street_name, home_number";			// var value of LIMIT
+							 + "order by (summ + bonus) DESC limit "+rowLimitCount+") order by street_name, home_number";			// var value of LIMIT
 		        
 				Statement stmt;	
 				
@@ -1281,7 +1299,7 @@ public class BD_write {
 											dataForInkass.add(row);										
 									}
 									result.close();							
-					}	catch (SQLException e)	{System.out.println("делаю массив данных для маршрутов инкассации " +e);}
+					}	catch (SQLException e)	{}
 				return dataForInkass;
 		  }
 			
@@ -1289,11 +1307,15 @@ public class BD_write {
 			public ArrayList<String[]> getDataForInkassLO (String indexMarshrut, int agentIndex) {	
 				
 				String agent = "(agent = 'ПИР' or agent = 'СК'or agent = 'СПС') ";
-				
+				int summLimit = 0;
 				switch (agentIndex){
 				case 1: agent = "agent = 'ПИР' "; break;
 				case 2:	agent = "agent = 'СК' "; break;	
 				case 3:	agent = "agent = 'СПС' "; break;
+				}
+				
+				if (Experr.allMarshruts == 0){
+					summLimit = Experr.SummlimitLO;
 				}
 				
 				
@@ -1304,7 +1326,9 @@ public class BD_write {
 							 + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
 							 + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
 							 + "where terminals.except_term = 0 and "
-							 + "distr_inkass = '"+indexMarshrut+"' and " + agent									// var distr_inkass  and var agent
+							 + "distr_inkass = '"+indexMarshrut+"' and " 
+							 + "(ostatki.summ + ostatki.bonus) >= " + summLimit + " and "
+							 + agent									// var distr_inkass  and var agent
 							 + "order by city_name, street_name, home_number";			
 				Statement stmt;				
 				

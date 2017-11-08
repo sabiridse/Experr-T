@@ -236,7 +236,7 @@ public class Marshruts {
 		Font font2 = curientWB_open.createFont();
 		font2.setFontName("Times New Roman");
 		font2.setColor((short) 0);
-		font2.setFontHeightInPoints((short) 12);
+		font2.setFontHeightInPoints((short) 14);
 		
 		CellStyle style2 = curientWB_open.createCellStyle();
 	      style2.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
@@ -263,7 +263,7 @@ public class Marshruts {
 				Font font3 = curientWB_open.createFont();
 				font3.setFontName("Times New Roman");
 				font3.setColor((short) 0);
-				font3.setFontHeightInPoints((short) 12);
+				font3.setFontHeightInPoints((short) 14);
 				
 				CellStyle style3 = curientWB_open.createCellStyle();
 			      style3.setFillForegroundColor(IndexedColors.YELLOW.getIndex());

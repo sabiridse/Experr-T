@@ -73,6 +73,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import GUIbonus.Dopi;
+import GUIbonus.ShortStataByMarshrut;
 import GUIbonus.Statistika;
 import Lider_Dps.ServicePPS;
 import Osmp_Osmp.Service;
@@ -207,6 +209,7 @@ public class Experr {
 	public static int agent = 2;
 	public static int limit = 80;
 	public static int Summlimit = 70000;
+	public static int SummlimitLO = 50000;
 	
 	public static int allMarshruts = 0;
 	private JTextField textField_search;
@@ -1442,13 +1445,6 @@ public class Experr {
 			        txtFild_color_mailto2.setBounds(470, 388, 86, 20);
 			        panel.add(txtFild_color_mailto2);
 			        
-			        JEditorPane editorPane = new JEditorPane();
-			        editorPane.setBounds(433, 419, 190, 187);
-			        panel.add(editorPane);
-			        
-
-			        
-			        
 			        
 //***************************************************************************************
 			        
@@ -1456,13 +1452,6 @@ public class Experr {
 				          public void itemStateChanged(ItemEvent e) {
 				            
 						        	 if (CheckBox_history.isSelected()) {
-						        		 
-						        		
-						        		 
-						        		 String big = editorPane.getText();
-						        		 
-						        		 System.out.println(editorPane.getText());
-						        		 
 						        		history = 1;
 						        	 
 						        	 }else {history = 0;}
@@ -1828,22 +1817,41 @@ public class Experr {
 			        
 			        spinner_Limit.addChangeListener(listenerLimit);
 									        
-									        JLabel label_23 = new JLabel("Сумма лимита ");
+									        JLabel label_23 = new JLabel("Сумма лимита СПб");
 									        label_23.setHorizontalAlignment(SwingConstants.CENTER);
 									        label_23.setForeground(new Color(51, 102, 0));
 									        label_23.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 									        panel_21.add(label_23, "cell 0 17,growx");
-									        
-									        JSpinner spinner_SummLimit = new JSpinner();
-									        spinner_SummLimit.setModel(new SpinnerNumberModel(70000, 0, 150000, 1000));
-									        panel_21.add(spinner_SummLimit, "cell 0 18,growx");
+									       
 									        ChangeListener listenerSummLimit = new ChangeListener() {
 									            public void stateChanged(ChangeEvent e) {
 									                JSpinner spinner_SummLimit = (JSpinner) e.getSource();
 									                Summlimit = (int) spinner_SummLimit.getValue();
 									            }
 									        };
-									        spinner_SummLimit.addChangeListener(listenerSummLimit);
+									        
+									        JSpinner spinner_SummLimit_1 = new JSpinner();
+									        spinner_SummLimit_1.setModel(new SpinnerNumberModel(70000, 0, 150000, 1000));
+									        panel_21.add(spinner_SummLimit_1, "cell 0 18,growx");
+									        spinner_SummLimit_1.addChangeListener(listenerSummLimit);
+									        
+									        JLabel label_24 = new JLabel("Сумма лимита ЛО ");
+									        label_24.setHorizontalAlignment(SwingConstants.CENTER);
+									        label_24.setForeground(new Color(51, 102, 0));
+									        label_24.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
+									        panel_21.add(label_24, "cell 0 19,growx");
+									        
+									        JSpinner spinner_4 = new JSpinner();
+									        spinner_4.setModel(new SpinnerNumberModel(50000, 0, 150000, 1000));
+									        panel_21.add(spinner_4, "cell 0 20,growx");
+									        
+									        ChangeListener listener_spinner_4 = new ChangeListener() {
+									            public void stateChanged(ChangeEvent e) {
+									                JSpinner spinner_4 = (JSpinner) e.getSource();
+									                SummlimitLO = (int) spinner_4.getValue();
+									            }
+									        };
+									        spinner_4.addChangeListener(listener_spinner_4);
 									        
 									        
 									        JButton button_4 = new JButton("МАРШРУТЫ");
@@ -1851,25 +1859,20 @@ public class Experr {
 									        button_4.setForeground(new Color(204, 204, 102));
 									        button_4.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 									        button_4.setBackground(new Color(51, 153, 153));
-									        panel_21.add(button_4, "cell 0 19,growx");	
+									        panel_21.add(button_4, "cell 0 21,growx");	
 									        
 						        button_4.addActionListener(new ActionListener() {
 				     	        	   public void actionPerformed(ActionEvent e) {
 				     	        		 
-				     	        		  DataForInkass dfi = new DataForInkass();
-								        	try {
-												dfi.addInputData();
-											} catch (Exception e1) {
-												e1.printStackTrace();
-											}
-				     	        		   
+				     	        		  ShortStataByMarshrut ssbm = new ShortStataByMarshrut();
+				     	        		  		ssbm.showStata();									//********
 //				     	        		  NewThread_one thread = new NewThread_one();
 //											thread.New_ThreadInkass();
 				     	        	   }
 							        });
 									        
 									        textField_search = new JTextField();
-									        panel_21.add(textField_search, "cell 0 21,growx");
+									        panel_21.add(textField_search, "cell 0 23,growx");
 									        textField_search.setColumns(10);
 									        
 									        JButton button_search = new JButton("Поиск в таблице");
@@ -1877,7 +1880,7 @@ public class Experr {
 									        button_search.setForeground(new Color(204, 204, 102));
 									        button_search.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 									        button_search.setBackground(new Color(51, 153, 153));
-									        panel_21.add(button_search, "cell 0 22,growx");
+									        panel_21.add(button_search, "cell 0 24,growx");
 									        
 									        JButton button_statistik = new JButton("Статистика");
 									        button_statistik.setToolTipText("показать окно статистики");
