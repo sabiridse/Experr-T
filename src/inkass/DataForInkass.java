@@ -43,7 +43,8 @@ public class DataForInkass {
 						case 0: this.fiveMarshruts();break;
 						case 1: this.allMarshruts();break;								
 				}				
-					marsh.deleteEmptySheets();
+					marsh.deleteEmptySheets();					
+					marsh.dopi(new DopiTerminals().getArrayDopi());
 					marsh.saveAndClose();
 			
 					Gui1 gui = new Gui1();
@@ -88,17 +89,26 @@ public class DataForInkass {
 			
 		 private void creatureMarsh(String partUp, String partCenter, String partDown, 
 				 					int agentIndex, int limit, int sheetIndex, boolean LO){
+			
+					 
+					switch (String.valueOf(LO))	{	
+					 
+						case "true":	this.getInputDataLO(partUp,partCenter,partDown,agentIndex);
+										if (inputData.size() > 0){
+											marsh.writeSheet(inputData, sheetIndex, LO);
+										}
+										break;
+								 
+								 
+						case "false":   this.getInputData(partCenter,limit, agentIndex);
+										if (inputData.size() > 0){
+											marsh.writeSheet(inputData, sheetIndex, LO);
+										}
+										break;
+					} 
 			 
-			switch (String.valueOf(LO))	{	
-			 
-				case "true":	this.getInputDataLO(partUp,partCenter,partDown,agentIndex);
-							marsh.writeSheet(inputData, sheetIndex, LO);break;
-						 
-						 
-				case "false":	 this.getInputData(partCenter,limit, agentIndex);
-							marsh.writeSheet(inputData, sheetIndex, LO);break;
-			} 
-	
+			
+			
 		 }
 		 
 		 private void getPrivateDataByMarshrut(String distr_inkass, int agent, int limit) throws Exception{

@@ -1099,21 +1099,25 @@ public class BD_write {
 					return summ;
 		}
 				
-				public  List<String> getStatByMarshrut (String distr_inkass, String limit_inkass) { //*****************PROCEDURE**************
+				public  List<String> getStatByMarshrut (String distrUp,String distrCenter,String distrDown, String limit_inkass) { //*****************PROCEDURE**************
 					this.connect();
-					String query = "CALL statByMarshrut ("+distr_inkass+" , "+limit_inkass+")";
-					List <String> stata = new ArrayList<String>();		        
+					int i =0;
+					String query = "CALL statByMarshrut ('"+distrUp+"' , '"+distrCenter+"' , '"+distrDown+"' , "+limit_inkass+")";
+					List <String> stata = new ArrayList<String>();	
+					stata.add("0");
+					stata.add("0");
+					stata.add("0");
 					Statement stmt;				
 					try {	
 						stmt = conn.createStatement();						
 							ResultSet result;
 							result = stmt.executeQuery(query);				
-										while (result.next()) {													
-											stata.add(result.getString("COUNT(*)"));	
+										while (result.next()) {		
+											stata.set(i, result.getString("COUNT(*)"));	
+											i++;
 										}
 										result.close();							
 					}	catch (SQLException e)	{}
-								
 					return stata;
 		}
 				
@@ -1224,7 +1228,7 @@ public class BD_write {
 			
 			
 			public void insertOstatki(String id_term, int summ){
-					String query = "INSERT INTO ostatki (id_term,summ) VALUES ('"+id_term+"',"+summ+")";
+					String query = "INSERT INTO ostatki (id_term,summ,bonus) VALUES ('"+id_term+"',"+summ+" , 0)";
 					try {
 						this.uni_reqest_in_db(query);
 					} catch (ClassNotFoundException e) {

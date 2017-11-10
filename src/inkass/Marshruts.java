@@ -186,10 +186,18 @@ public class Marshruts {
 			    	      0, //start row
 			    	      finalRow+4 //end row*********************************************************переменная числа строк в таблице
 			    	      );
-		} catch (Exception q){log.log(q," Ошибка finishera ");}
-				
-				
+		} catch (Exception q){log.log(q," Ошибка finishera ");}								
 	}
+	
+	public void dopi (List<List<String>> data){
+		int i =0;		
+		for (List<String> row:data){
+			curientWB_open.getSheetAt(0).createRow(i).createCell(0).setCellValue(Integer.parseInt(row.get(0)));
+			curientWB_open.getSheetAt(0).getRow(i).createCell(1).setCellValue(row.get(1));
+			i++;
+		}
+	}
+	
 	
 	public void deleteEmptySheets (){
 		for (int i = 12; i >0 ; i--){	

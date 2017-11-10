@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -21,7 +22,7 @@ import javax.swing.JButton;
 
 public class ShortStataByMarshrut extends JFrame{
 	
-	public void showStata() {
+	public void showStata(List <String> dataList) {
 		
 		JFrame frame = new JFrame();     
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Experr.directory_res + "Ex5.png"));
@@ -39,130 +40,130 @@ public class ShortStataByMarshrut extends JFrame{
 		frame.setVisible(true);
 		panel.setVisible(true);
 		
-		JLabel label_1M = new JLabel("9А1");
+		JLabel label_1M = new JLabel(dataList.get(3));
 		label_1M.setFont(new Font("Century Schoolbook", Font.PLAIN, 30));
 		label_1M.setBounds(62, 43, 56, 37);
 		panel.add(label_1M);
 		
-		JLabel label_2M = new JLabel("9А1");
+		JLabel label_2M = new JLabel(dataList.get(7));
 		label_2M.setFont(new Font("Century Schoolbook", Font.PLAIN, 30));
 		label_2M.setBounds(142, 43, 56, 37);
 		panel.add(label_2M);
 		
-		JLabel label_3M = new JLabel("9А1");
+		JLabel label_3M = new JLabel(dataList.get(11));
 		label_3M.setFont(new Font("Century Schoolbook", Font.PLAIN, 30));
 		label_3M.setBounds(221, 43, 56, 37);
 		panel.add(label_3M);
 		
-		JLabel label_4M = new JLabel("9А1");
+		JLabel label_4M = new JLabel(dataList.get(15));
 		label_4M.setFont(new Font("Century Schoolbook", Font.PLAIN, 30));
 		label_4M.setBounds(298, 43, 56, 37);
 		panel.add(label_4M);
 		
-		JLabel label_5M = new JLabel("9А1");
+		JLabel label_5M = new JLabel(dataList.get(19));
 		label_5M.setFont(new Font("Century Schoolbook", Font.PLAIN, 30));
 		label_5M.setBounds(376, 43, 56, 37);
 		panel.add(label_5M);
 								
-			JLabel label_CK1 = new JLabel("23");
+			JLabel label_CK1 = new JLabel(dataList.get(0));
 			label_CK1.setForeground(new Color(0, 102, 255));
 			label_CK1.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			label_CK1.setHorizontalAlignment(SwingConstants.CENTER);
 			label_CK1.setBounds(72, 91, 43, 38);
 			panel.add(label_CK1);
 			
-			JLabel label_CK2 = new JLabel("23");
+			JLabel label_CK2 = new JLabel(dataList.get(4));
 			label_CK2.setHorizontalAlignment(SwingConstants.CENTER);
 			label_CK2.setForeground(new Color(0, 102, 255));
 			label_CK2.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			label_CK2.setBounds(152, 91, 43, 38);
 			panel.add(label_CK2);
 			
-			JLabel label_CK3 = new JLabel("23");
+			JLabel label_CK3 = new JLabel(dataList.get(8));
 			label_CK3.setHorizontalAlignment(SwingConstants.CENTER);
 			label_CK3.setForeground(new Color(0, 102, 255));
 			label_CK3.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			label_CK3.setBounds(231, 91, 43, 38);
 			panel.add(label_CK3);
 			
-			JLabel label_CK4 = new JLabel("23");
+			JLabel label_CK4 = new JLabel(dataList.get(12));
 			label_CK4.setHorizontalAlignment(SwingConstants.CENTER);
 			label_CK4.setForeground(new Color(0, 102, 255));
 			label_CK4.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			label_CK4.setBounds(308, 91, 43, 38);
 			panel.add(label_CK4);
 			
-			JLabel label_CK5 = new JLabel("23");
+			JLabel label_CK5 = new JLabel(dataList.get(16));
 			label_CK5.setHorizontalAlignment(SwingConstants.CENTER);
 			label_CK5.setForeground(new Color(0, 102, 255));
 			label_CK5.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			label_CK5.setBounds(376, 91, 43, 38);
 			panel.add(label_CK5);
 			
-				JLabel label_PIR1 = new JLabel("23");
+				JLabel label_PIR1 = new JLabel(dataList.get(1));
 				label_PIR1.setHorizontalAlignment(SwingConstants.CENTER);
 				label_PIR1.setForeground(new Color(0, 102, 255));
 				label_PIR1.setFont(new Font("Tahoma", Font.PLAIN, 22));
 				label_PIR1.setBounds(75, 154, 43, 38);
 				panel.add(label_PIR1);
 				
-				JLabel label_PIR2 = new JLabel("23");
+				JLabel label_PIR2 = new JLabel(dataList.get(5));
 				label_PIR2.setHorizontalAlignment(SwingConstants.CENTER);
 				label_PIR2.setForeground(new Color(0, 102, 255));
 				label_PIR2.setFont(new Font("Tahoma", Font.PLAIN, 22));
 				label_PIR2.setBounds(155, 154, 43, 38);
 				panel.add(label_PIR2);
 				
-				JLabel label_PIR3 = new JLabel("23");
+				JLabel label_PIR3 = new JLabel(dataList.get(9));
 				label_PIR3.setHorizontalAlignment(SwingConstants.CENTER);
 				label_PIR3.setForeground(new Color(0, 102, 255));
 				label_PIR3.setFont(new Font("Tahoma", Font.PLAIN, 22));
 				label_PIR3.setBounds(234, 154, 43, 38);
 				panel.add(label_PIR3);
 				
-				JLabel label_PIR4 = new JLabel("23");
+				JLabel label_PIR4 = new JLabel(dataList.get(13));
 				label_PIR4.setHorizontalAlignment(SwingConstants.CENTER);
 				label_PIR4.setForeground(new Color(0, 102, 255));
 				label_PIR4.setFont(new Font("Tahoma", Font.PLAIN, 22));
 				label_PIR4.setBounds(311, 154, 43, 38);
 				panel.add(label_PIR4);
 				
-				JLabel label_PIR5 = new JLabel("23");
+				JLabel label_PIR5 = new JLabel(dataList.get(17));
 				label_PIR5.setHorizontalAlignment(SwingConstants.CENTER);
 				label_PIR5.setForeground(new Color(0, 102, 255));
 				label_PIR5.setFont(new Font("Tahoma", Font.PLAIN, 22));
 				label_PIR5.setBounds(376, 154, 43, 38);
 				panel.add(label_PIR5);
 			
-					JLabel label_SPS1 = new JLabel("23");
+					JLabel label_SPS1 = new JLabel(dataList.get(2));
 					label_SPS1.setHorizontalAlignment(SwingConstants.CENTER);
 					label_SPS1.setForeground(new Color(0, 102, 255));
 					label_SPS1.setFont(new Font("Tahoma", Font.PLAIN, 22));
 					label_SPS1.setBounds(72, 215, 43, 38);
 					panel.add(label_SPS1);
 													
-					JLabel label_SPS2 = new JLabel("23");
+					JLabel label_SPS2 = new JLabel(dataList.get(6));
 					label_SPS2.setHorizontalAlignment(SwingConstants.CENTER);
 					label_SPS2.setForeground(new Color(0, 102, 255));
 					label_SPS2.setFont(new Font("Tahoma", Font.PLAIN, 22));
 					label_SPS2.setBounds(152, 215, 43, 38);
 					panel.add(label_SPS2);
 					
-					JLabel label_SPS3 = new JLabel("23");
+					JLabel label_SPS3 = new JLabel(dataList.get(10));
 					label_SPS3.setHorizontalAlignment(SwingConstants.CENTER);
 					label_SPS3.setForeground(new Color(0, 102, 255));
 					label_SPS3.setFont(new Font("Tahoma", Font.PLAIN, 22));
 					label_SPS3.setBounds(234, 215, 43, 38);
 					panel.add(label_SPS3);
 					
-					JLabel label_SPS4 = new JLabel("23");
+					JLabel label_SPS4 = new JLabel(dataList.get(14));
 					label_SPS4.setHorizontalAlignment(SwingConstants.CENTER);
 					label_SPS4.setForeground(new Color(0, 102, 255));
 					label_SPS4.setFont(new Font("Tahoma", Font.PLAIN, 22));
 					label_SPS4.setBounds(311, 215, 43, 38);
 					panel.add(label_SPS4);
 					
-					JLabel label_SPS5 = new JLabel("23");
+					JLabel label_SPS5 = new JLabel(dataList.get(18));
 					label_SPS5.setHorizontalAlignment(SwingConstants.CENTER);
 					label_SPS5.setForeground(new Color(0, 102, 255));
 					label_SPS5.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -180,8 +181,8 @@ public class ShortStataByMarshrut extends JFrame{
 	      	   public void actionPerformed(ActionEvent e) {
 	      		   
 	      		 frame.setVisible(false);
-	     		 panel.setVisible(false);
-	      		   
+	     		 panel.setVisible(false);	      		   
+	     		 
 		     		Dopi dopi = new Dopi();
 	      		    dopi.showDopi();
 	      	   }

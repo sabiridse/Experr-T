@@ -83,6 +83,7 @@ import authorization.AuthForm;
 import contextFind.TooManyCriteries;
 import gruopAddExcept.AddDelExceptTerm;
 import inkass.DataForInkass;
+import inkass.DataForShortStata;
 import inkass.TTM_inkass;
 
 import java.awt.Component;
@@ -1747,39 +1748,9 @@ public class Experr {
 			        groupAgents.add(radioButton_Pir);
 			        groupAgents.add(radioButton_all);
 			        			        
-				        ActionListener listenerAgents = new ActionListener() {
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								agent = 0;  
-								if(rdbtnAllMurshruts.isSelected()){
-				        			agent = 0;allMarshruts = 1;
-				        		}
-								
-				        		if(radioButton_all.isSelected()){
-				        			agent = 0;allMarshruts = 0;
-				        		}
-				        		
-				        		if(radioButton_Sps.isSelected()){
-				        			agent = 3;allMarshruts = 0;
-				        		}
-				        		
-				        		if(radioButton_Pir.isSelected()){
-				        			agent = 1;allMarshruts = 0;
-				        		}
-				        		
-				        		if(rdbtnSK.isSelected()){
-				        			agent = 2;allMarshruts = 0;
-				        		}
-							}
-							
-				        };
+				        
 				        				        
-				        radioButton_all.addActionListener(listenerAgents);
-				        radioButton_Sps.addActionListener(listenerAgents);
-				        radioButton_Pir.addActionListener(listenerAgents);
-				        rdbtnSK.addActionListener(listenerAgents);
-				        rdbtnAllMurshruts.addActionListener(listenerAgents);
-			        
+				        
 			       
 	       
 			        JButton button_2 = new JButton("Обновить\r\n справочник");
@@ -1852,6 +1823,51 @@ public class Experr {
 									            }
 									        };
 									        spinner_4.addChangeListener(listener_spinner_4);
+									      
+									        
+									        ActionListener listenerAgents = new ActionListener() {
+												@Override
+												public void actionPerformed(ActionEvent e) {
+													agent = 0;  
+													if(rdbtnAllMurshruts.isSelected()){
+									        			agent = 0;allMarshruts = 1;
+									        			spinner_Limit.setValue(300);
+									        			spinner_SummLimit_1.setValue(0);
+									        			spinner_4.setValue(0);
+									        		}
+													
+									        		if(radioButton_all.isSelected()){
+									        			agent = 0;allMarshruts = 0;
+									        		}
+									        		
+									        		if(radioButton_Sps.isSelected()){
+									        			agent = 3;allMarshruts = 0;
+									        			spinner_SummLimit_1.setValue(19000);
+									        			spinner_4.setValue(19000);
+									        		}
+									        		
+									        		if(radioButton_Pir.isSelected()){
+									        			agent = 1;allMarshruts = 0;
+									        			spinner_SummLimit_1.setValue(19000);
+									        			spinner_4.setValue(19000);
+									        		}
+									        		
+									        		if(rdbtnSK.isSelected()){
+									        			agent = 2;allMarshruts = 0;
+									        			spinner_SummLimit_1.setValue(70000);
+									        			spinner_4.setValue(50000);
+									        			spinner_Limit.setValue(80);
+									        			
+									        		}
+												}
+												
+									        };
+									        radioButton_all.addActionListener(listenerAgents);
+									        radioButton_Sps.addActionListener(listenerAgents);
+									        radioButton_Pir.addActionListener(listenerAgents);
+									        rdbtnSK.addActionListener(listenerAgents);
+									        rdbtnAllMurshruts.addActionListener(listenerAgents);
+								        
 									        
 									        
 									        JButton button_4 = new JButton("МАРШРУТЫ");
@@ -1864,8 +1880,8 @@ public class Experr {
 						        button_4.addActionListener(new ActionListener() {
 				     	        	   public void actionPerformed(ActionEvent e) {
 				     	        		 
-				     	        		  ShortStataByMarshrut ssbm = new ShortStataByMarshrut();
-				     	        		  		ssbm.showStata();									//********
+				     	        		  DataForShortStata sfss = new DataForShortStata();
+				     	        		  sfss.getData();									//********
 //				     	        		  NewThread_one thread = new NewThread_one();
 //											thread.New_ThreadInkass();
 				     	        	   }
