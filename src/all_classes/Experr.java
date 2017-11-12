@@ -81,6 +81,7 @@ import Osmp_Osmp.Service;
 import adapter.ExcelAdapter;
 import authorization.AuthForm;
 import contextFind.TooManyCriteries;
+import contextFind.TooManyInkassTableSerch;
 import gruopAddExcept.AddDelExceptTerm;
 import inkass.DataForInkass;
 import inkass.DataForShortStata;
@@ -158,6 +159,7 @@ public class Experr {
 	public static JButton btnNewButton_1,
 						  button_5;
 	public static JLabel lblNewLabel_3;
+	private static JLabel lebel_countRowsInTTMinkass;
 
 	public static String find_number_terminal, find_terminal, bonus_number_terminal;
 	// public static int counte = 1800;
@@ -213,7 +215,7 @@ public class Experr {
 	public static int SummlimitLO = 50000;
 	
 	public static int allMarshruts = 0;
-	private JTextField textField_search;
+	public static JTextField textField_search;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -1897,6 +1899,14 @@ public class Experr {
 									        button_search.setFont(new Font("Century Schoolbook", Font.ITALIC, 16));
 									        button_search.setBackground(new Color(51, 153, 153));
 									        panel_21.add(button_search, "cell 0 24,growx");
+									        button_search.addActionListener(new ActionListener() {
+							     	        	   public void actionPerformed(ActionEvent e) {
+							     	        		 	 new TooManyInkassTableSerch().serchRequest();   	        		   							     	        		 
+							     	        	   }
+										        });
+									        
+									        
+									        
 									        
 									        JButton button_statistik = new JButton("Статистика");
 									        button_statistik.setToolTipText("показать окно статистики");
@@ -1927,7 +1937,8 @@ public class Experr {
 							     	        		 	     	        		   
 							     	        		  BD_write bdw = new BD_write();
 							     	        		  String query = "SELECT ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress, "
-							     	        		  			   + "trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ "
+							     	        		  			   + "trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ, "
+							     	        		  			   + "trmlist_report.auto "
 							     	        		  			   + "FROM ostatki "
 							     	        		  			   + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
 							     	        		  			   + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
@@ -1972,6 +1983,22 @@ public class Experr {
 			        headInkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
 			        
 			        table_5.setRowSorter(sorterInkass);		
+			        
+			        JPanel panel_23 = new JPanel();
+			        panel_23.setBackground(new Color(0, 153, 153));
+			        panel_20.add(panel_23, BorderLayout.SOUTH);
+			        panel_23.setLayout(new MigLayout("", "[223.00][114.00][][][][][][][][]", "[][grow]"));
+			        
+			        JLabel lblNewLabel_7 = new JLabel("Кол-во терминалов :");
+			        lblNewLabel_7.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
+			        lblNewLabel_7.setForeground(new Color(0, 255, 153));
+			        panel_23.add(lblNewLabel_7, "cell 1 0");
+			        
+			        lebel_countRowsInTTMinkass = new JLabel("0");
+			        lebel_countRowsInTTMinkass.setHorizontalAlignment(SwingConstants.CENTER);
+			        lebel_countRowsInTTMinkass.setFont(new Font("Tahoma", Font.ITALIC, 14));
+			        lebel_countRowsInTTMinkass.setForeground(new Color(204, 153, 204));
+			        panel_23.add(lebel_countRowsInTTMinkass, "cell 2 0");
 			        
 			        
 			        
@@ -2061,5 +2088,10 @@ public class Experr {
 	}
 	public static String getDistr_inkass2() {
 		return distr_inkass2;
+	}
+
+	public static void setcountRowsInTTMinkass(String countRowsInTtmInkass){
+		
+		lebel_countRowsInTTMinkass.setText(countRowsInTtmInkass);
 	}
 }

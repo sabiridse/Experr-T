@@ -19,6 +19,7 @@ import javax.swing.table.TableModel;
 import Warning_lost_terminals.Find_lost_term;
 import inkass.TTM_inkass;
 import javenue.csv.Csv;
+import services.CurientTime;
 
 
 
@@ -144,9 +145,10 @@ public class BD_write {
 																	row.add(result.getString("regim"));
 																	row.add(result.getString("agent"));
 																	row.add(result.getString("distr_inkass"));
-																	row.add(result.getInt("summ"));																																				
+																	row.add(result.getInt("summ"));	
+																	row.add(result.getString("auto"));	
 																	ttm.addDate(row);
-																	rows_count++;											
+																	rows_count++;	
 															}
 						
 															result.close();							
@@ -156,6 +158,7 @@ public class BD_write {
 										Experr.table_5.revalidate();
 										Experr.table_5.repaint();
 										Experr.model_inkass.fireTableDataChanged();
+										Experr.setcountRowsInTTMinkass(Integer.toString(ttm.getRowCount()));
 								
 								    }
 //********************************************************ДЛЯ таблицы  ошибок **запрос в базу********************										
@@ -1126,9 +1129,9 @@ public class BD_write {
 														 String adress){
 				
 				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,"
-							  + "home_number,agent, distr_inkass, object,adress, auto) "
+							  + "home_number,agent, regim, distr_inkass, object,adress, auto) "
 							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name
-							  +"' ,"+home_number+", 'СК', '"+ distr_inkass+"','"+object+"','"+adress+"', 'auto')";
+							  +"' ,"+home_number+", 'СК', '9-21', '"+ distr_inkass+"','"+object+"','"+adress+"', '"+new CurientTime().get()+"')";
 						try {
 							this.uni_reqest_in_db(query);
 						} catch (ClassNotFoundException e) {
@@ -1356,11 +1359,11 @@ public class BD_write {
 				return dataForInkass;
 		  }
 			
-			public void editDistrInkass (String id_term, String distr_inkass) throws Exception {
+			public void editCellOfTableInkass (String id_term, String column_name, String cell_value) throws Exception {
 				String query;
 				BD_write bdw = new BD_write();
 				bdw.connect();
-				query = "UPDATE trmlist_report SET distr_inkass = '" + distr_inkass + "' WHERE id_term = " + id_term;
+				query = "UPDATE trmlist_report SET "+column_name+"= '" + cell_value + "' WHERE id_term = " + id_term;
 				bdw.uni_reqest_in_db(query);				
 				bdw.close_connect();
 			}
