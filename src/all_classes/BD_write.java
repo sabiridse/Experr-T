@@ -11,15 +11,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.swing.JLabel;
 import javax.swing.table.TableModel;
 
+import GUIbonus.CopyPasteDataInkass;
 import Warning_lost_terminals.Find_lost_term;
 import inkass.TTM_inkass;
+import inkass.TTMcopyPaste;
 import javenue.csv.Csv;
 import services.CurientTime;
+import services.TurnDataTimeInkass;
 
 
 
@@ -126,18 +130,17 @@ public class BD_write {
 //***********************************************************************************************************************************				
 
 									public void  getArrayForInkassTable(String query) throws Exception {
-									
+										
 										rows_count = 0;
 										TTM_inkass ttm = new TTM_inkass();
-										ttm.dataArrayList.clear();  			        
+										ttm.dataArrayList.clear(); 
 										Statement stmt;				
 										try {	
 											stmt = conn.createStatement();						
 												ResultSet result;
-												result = stmt.executeQuery(query);	
-												
+												result = stmt.executeQuery(query);
 															while (result.next()) {
-																ArrayList row = new ArrayList();
+																	ArrayList<Object> row = new ArrayList<>();
 																	row.add(result.getInt("id_term"));
 																	row.add(result.getString("name_term"));
 																	row.add(result.getString("object"));
@@ -145,12 +148,11 @@ public class BD_write {
 																	row.add(result.getString("regim"));
 																	row.add(result.getString("agent"));
 																	row.add(result.getString("distr_inkass"));
-																	row.add(result.getInt("summ"));	
+																	row.add(result.getInt("summ"));
+																	row.add(result.getString("last_inkass_data"));
 																	row.add(result.getString("auto"));	
 																	ttm.addDate(row);
-																	rows_count++;	
 															}
-						
 															result.close();							
 											}	catch (SQLException e)	{Loging log = new Loging();
 																		log.log(e," Запрос для таблицы inkass: ");}
@@ -161,6 +163,32 @@ public class BD_write {
 										Experr.setcountRowsInTTMinkass(Integer.toString(ttm.getRowCount()));
 								
 								    }
+									
+//**********************************************************************************************************************									
+									public void  getArrayForCopyPasteTable(String query) throws Exception {
+										TurnDataTimeInkass tdti = new TurnDataTimeInkass();
+										TTMcopyPaste copyPaste = new TTMcopyPaste();
+										copyPaste.dataArrayList.clear();
+										Statement stmt;				
+										try {	
+											stmt = conn.createStatement();						
+												ResultSet result;
+												result = stmt.executeQuery(query);
+															while (result.next()) {
+																	ArrayList<Object> rowCopyPaste = new ArrayList<>();
+																	rowCopyPaste.add(result.getInt("id_term"));
+																	rowCopyPaste.add(tdti.rEturningString(result.getString("last_inkass_data")));
+																	copyPaste.addDate(rowCopyPaste);
+															}
+															result.close();							
+											}	catch (SQLException e)	{Loging log = new Loging();
+																		log.log(e," Запрос для таблички copyPaste: ");}
+										CopyPasteDataInkass.table_CopyPaste.updateUI();
+										CopyPasteDataInkass.table_CopyPaste.revalidate();
+										CopyPasteDataInkass.table_CopyPaste.repaint();
+										CopyPasteDataInkass.model.fireTableDataChanged();
+										    }
+									
 //********************************************************ДЛЯ таблицы  ошибок **запрос в базу********************										
 									public void reqest_in_db (String query) throws ClassNotFoundException {
 										rows_count = 0;
@@ -1230,8 +1258,8 @@ public class BD_write {
 			}
 			
 			
-			public void insertOstatki(String id_term, int summ){
-					String query = "INSERT INTO ostatki (id_term,summ,bonus) VALUES ('"+id_term+"',"+summ+" , 0)";
+			public void insertOstatki(String id_term, int summ, String last_inkass){
+					String query = "INSERT INTO ostatki (id_term,summ,bonus, last_inkass_data) VALUES ('"+id_term+"',"+summ+" , 0, '"+last_inkass+"')";
 					try {
 						this.uni_reqest_in_db(query);
 					} catch (ClassNotFoundException e) {

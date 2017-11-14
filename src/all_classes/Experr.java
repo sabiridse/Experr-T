@@ -73,6 +73,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import GUIbonus.CopyPasteDataInkass;
 import GUIbonus.Dopi;
 import GUIbonus.ShortStataByMarshrut;
 import GUIbonus.Statistika;
@@ -420,7 +421,6 @@ public class Experr {
 					String query_find = new TooManyCriteries().addQuery();											
 					BD_write bdw = new BD_write();
 					bdw.connect();
-					
 						try {
 							bdw.reqest_in_db(query_find);
 						} catch (Exception e) {
@@ -1901,7 +1901,10 @@ public class Experr {
 									        panel_21.add(button_search, "cell 0 24,growx");
 									        button_search.addActionListener(new ActionListener() {
 							     	        	   public void actionPerformed(ActionEvent e) {
-							     	        		 	 new TooManyInkassTableSerch().serchRequest();   	        		   							     	        		 
+							     	        		  TooManyInkassTableSerch tmits = new TooManyInkassTableSerch();
+							     	        		  	tmits.serchRequest();
+							     	        		  	tmits.creatureCopyPasteTable();							     	        		 	 
+							     	        		 	 new CopyPasteDataInkass().showFrame();
 							     	        	   }
 										        });
 									        
@@ -1937,7 +1940,7 @@ public class Experr {
 							     	        		 	     	        		   
 							     	        		  BD_write bdw = new BD_write();
 							     	        		  String query = "SELECT ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress, "
-							     	        		  			   + "trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ, "
+							     	        		  			   + "trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ, ostatki.last_inkass_data, "
 							     	        		  			   + "trmlist_report.auto "
 							     	        		  			   + "FROM ostatki "
 							     	        		  			   + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
@@ -1995,8 +1998,8 @@ public class Experr {
 			        panel_23.add(lblNewLabel_7, "cell 1 0");
 			        
 			        lebel_countRowsInTTMinkass = new JLabel("0");
-			        lebel_countRowsInTTMinkass.setHorizontalAlignment(SwingConstants.CENTER);
-			        lebel_countRowsInTTMinkass.setFont(new Font("Tahoma", Font.ITALIC, 14));
+			        lebel_countRowsInTTMinkass.setHorizontalAlignment(SwingConstants.LEFT);
+			        lebel_countRowsInTTMinkass.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			        lebel_countRowsInTTMinkass.setForeground(new Color(204, 153, 204));
 			        panel_23.add(lebel_countRowsInTTMinkass, "cell 2 0");
 			        

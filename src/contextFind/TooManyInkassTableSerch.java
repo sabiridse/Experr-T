@@ -6,9 +6,11 @@ import trmlist_report.DistrInkass;
 
 public class TooManyInkassTableSerch {
 
-	private String InputData;
-	private String[] SplitInputData;
+	private static String InputData;
+	private static String[] SplitInputData;
 	private String[] OtputData;
+	BD_write bdw = new BD_write();
+
 	
 		String[] getSplitInputData(){
 			
@@ -16,7 +18,7 @@ public class TooManyInkassTableSerch {
 				InputData = Experr.textField_search.getText();
 			} catch (Exception e) {
 				e.printStackTrace();
-			}				
+			}	
 				SplitInputData = InputData.split(" ");
 			return SplitInputData;
 		}
@@ -37,7 +39,7 @@ public class TooManyInkassTableSerch {
 						 }
 				}
 				 String query_find = "select ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress,"
-							+ " trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ"
+							+ " trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ, ostatki.last_inkass_data, trmlist_report.auto"
 							+ " from ostatki"
 							+ " left JOIN terminals ON ostatki.id_term = terminals.id_term "
 							+ " left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term"
@@ -46,7 +48,7 @@ public class TooManyInkassTableSerch {
 							+ firstRowWithoutLike + nextRowsWithoutLike
 							+ " union "
 							+ "select ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress,"
-							+ " trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ"
+							+ " trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ, ostatki.last_inkass_data, trmlist_report.auto"
 							+ " from ostatki"
 							+ " left JOIN terminals ON ostatki.id_term = terminals.id_term "
 							+ " left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term"
@@ -57,14 +59,40 @@ public class TooManyInkassTableSerch {
 				return query_find; 
 		}	
 		public void serchRequest (){
-			
-			BD_write bdw = new BD_write();
+
 			bdw.connect();
 			try {
 				bdw.getArrayForInkassTable(this.addQuery());
 			} catch (Exception e) {
 				e.printStackTrace();
+			}			
+		}
+		
+		private String addQueryForCopyPaste (){
+			
+			String[] sub = this.getSplitInputData();
+			String query ="";
+			String nextRow = "";
+			String firstRow = "select id_term, last_inkass_data from ostatki where id_term = '" + sub[0] + "'";//1 строка				
+					if (sub.length  > 1)	{ 					 
+				 		for (int i = 1; i < sub.length; i++){				
+				 			nextRow = nextRow + " union select id_term, last_inkass_data from ostatki where id_term = '" + sub[i] + "'";				 			
+				 		}				 			
+					}					
+					query = firstRow + nextRow;	 						
+			return query;
+		}
+		
+		public void creatureCopyPasteTable(){
+			
+			String[] sub = this.getSplitInputData();
+			try {
+				Integer.parseInt(sub[0]);//******check for integer or string in the search
+				bdw.getArrayForCopyPasteTable(this.addQueryForCopyPaste());
+			} catch(Exception e){
 			}
 			
 		}
+		
+		
 }

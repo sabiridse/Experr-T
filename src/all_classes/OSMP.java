@@ -17,6 +17,7 @@ import Ostatki.Ostatki;
 import Warning_lost_terminals.Find_lost_term;
 import Warning_lost_terminals.TrackingNewAndLostTerminals;
 import javenue.csv.Csv;
+import services.TurnDataTimeInkass;
 import export_err.NewThread_one;
 
 public  class OSMP  {
@@ -104,6 +105,7 @@ public  class OSMP  {
 		 BD_write bdw = new BD_write();
 		 Ostatki ostatki = new Ostatki();
 		 Find_lost_term flt = new Find_lost_term();	
+		 TurnDataTimeInkass tdti = new TurnDataTimeInkass();
 			
 			bdw.connect();//****************подключаюсь к бд****************
 		 
@@ -126,13 +128,13 @@ public  class OSMP  {
 			bdw.uni_reqest_in_db(query_copy);
 //*******************************************************************************************************************
 //*********************************очищаю рабочую таблицу************************************************************					
-			String query_clear = "TRUNCATE TABLE errors33";
+			String query_clear = "Delete from errors33";
 			bdw.uni_reqest_in_db(query_clear);
 			bdw.clear_table("curient_last_inkass");//****очищаю таблицу последних инкассаций
 //********************************************************************************************************************
 			
-			Last_incass lastincass = new Last_incass();
-			
+			//Last_incass lastincass = new Last_incass();
+
 
 			flt.getNumberTermIn_errors33Table().clear();
 		 
@@ -142,7 +144,6 @@ public  class OSMP  {
 		
 
 					gui1.runable_progbar(i);//каждый круг добавляю в прогресс бар и магия твориться
-			
 					//получаю данные из терминал мониторинг****************************************************************			
 					
 					row = sheet_osmp_import.getRow(i);  //текущая строка i - от 2 до конца
@@ -153,9 +154,15 @@ public  class OSMP  {
 					string_whis_numberOfterminal = row.getCell(3).getStringCellValue();//значение ячейки D в строке i (текущая в цикле_)
 					Number_terminal = string_whis_numberOfterminal.substring(0, 8);    //вырезаю из значения  первые 8 символов - получаю номер терема
 				
+					//время инкассации получаю для отсеивания стекер снят недавно
+					incass_time = row.getCell(9).getStringCellValue();
+					String incass_timeBonus = row.getCell(9).getStringCellValue();
 					
+					if (incass_time.compareTo("") == 0) {incass_time = "не было"; incass_timeBonus = "01.01.1900 00:00:00";} else {
+						incass_time = tdti.turningString(row.getCell(9).getStringCellValue());
+					}
 
-					ostatki.setValue(Number_terminal, row.getCell(4).getStringCellValue());// add ARRAY for OSTATKI
+					ostatki.setValue(Number_terminal, row.getCell(4).getStringCellValue(),incass_time);// add ARRAY for OSTATKI
 					
 					
 					
@@ -167,23 +174,16 @@ public  class OSMP  {
 	
 
 	/*магия преобразования*/mo.strings_by_magic(string_whis_signal, string_whis_payment);
-				
-					
+										
 					string_info_devices = row.getCell(8).getStringCellValue();
-					incass_time = row.getCell(9).getStringCellValue();//время инкассации получаю для отсеивания стекер снят недавно
-					
-					if (incass_time.compareTo("") == 0) {incass_time = "01.01.2017 12:00:00";}//если строка инкассации постая - считаю дефолтное значение даты
-						
-
-					if ( Experr.Last_inkass ==1){//****если стоит галка инкасс
-						lastincass.creature_array_incass(Number_terminal,incass_time);//***пишу массив с временем инкассаций
-					}
 					
 					
 					
+										
+						//lastincass.creature_array_incass(Number_terminal,incass_time);//***пишу массив с временем инкассаций
 						
 						format1.applyPattern("dd.MM.yyyy HH:mm:ss");
-						time_last_incassation= format1.parse(incass_time);//время инкассации в формате даты					
+						time_last_incassation= format1.parse(incass_timeBonus);//время инкассации в формате даты					
 												
 							if (string_info_devices.compareTo("") != 0) {//если строка статусов не пустая...
 							

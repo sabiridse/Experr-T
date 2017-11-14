@@ -2,6 +2,9 @@ package inkass;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
+
+import org.apache.derby.client.am.DateTime;
+
 import all_classes.BD_write;
 
 public  class TTM_inkass extends AbstractTableModel{
@@ -11,7 +14,7 @@ public  class TTM_inkass extends AbstractTableModel{
 	public static int rer =0;
 	public static String id_term;
 	private static final long serialVersionUID = 5783608448231036221L;
-	private static int columnCount = 9;
+	private static int columnCount = 10;
 	public  static ArrayList<ArrayList> dataArrayList;
 	
 	public TTM_inkass() {
@@ -37,6 +40,7 @@ public  class TTM_inkass extends AbstractTableModel{
 							case 6: return String.class;
 							case 7: return Integer.class;
 							case 8: return String.class;
+							case 9: return String.class;
 							
 					}
 				return String.class;
@@ -64,7 +68,8 @@ public  class TTM_inkass extends AbstractTableModel{
 			case 5: return "Агент";
 			case 6: return "Маршрут";
 			case 7: return "Сумма";
-			case 8: return "Добавлено";
+			case 8: return "Дата Инкассации";
+			case 9: return "Добавлено";
 		}
 		
 			return "";
@@ -121,7 +126,6 @@ public  class TTM_inkass extends AbstractTableModel{
 		ArrayList rowTable = new ArrayList();
 		rowTable = row;
 		dataArrayList.add(rowTable);
-		
 	}
 
 }

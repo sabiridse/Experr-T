@@ -148,7 +148,7 @@ public class ServicePPS {
 				
 				Row row = sheet_points_info.createRow(numberRowTarget);	
 				
-				ostatki.setValue(this.getValue(sheetPPS, numberRowSource+2, 0), this.getValue(sheetPPS, numberRowSource+2, 7));
+				ostatki.setValue(this.getValue(sheetPPS, numberRowSource+2, 0), this.getValue(sheetPPS, numberRowSource+2, 7), "нет данных");//*************инкасс из ДПС
 
 				row.createCell(0).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 0));				
 				row.createCell(1).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRowSource+2, 1)));					

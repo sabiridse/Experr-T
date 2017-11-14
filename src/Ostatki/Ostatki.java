@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -15,7 +16,7 @@ public class Ostatki {
 	
 	private HSSFWorkbook wb_ostatki;
 	private HSSFSheet sheet_ostatki;
-	private static ArrayList<int[]> NumberTermWhithSumm = new ArrayList <int []>();;
+	private static ArrayList<List<Object>> NumberTermWhithSumm = new ArrayList <>();
 	BD_write bdw = new BD_write();
 //		public Ostatki() {
 //			
@@ -24,11 +25,17 @@ public class Ostatki {
 //		}
 	
 	
-			public void setValue(String numberTerm, String summ){
-		
-			NumberTermWhithSumm.add(new int[]{Integer.parseInt(numberTerm)
-					,(int) Double.parseDouble(summ.replaceAll(",","."))});//parse string 1238,00 in int 1238
+			public void setValue(String numberTerm, String summ, String last_inkass_data){
 				
+				List<Object> Row = new ArrayList <>();
+				Row.add(Integer.parseInt(numberTerm));
+				Row.add((int) Double.parseDouble(summ.replaceAll(",",".")));
+				Row.add(last_inkass_data);
+				
+			NumberTermWhithSumm.add(Row);//parse string 1238,00 in int 1238
+			
+			
+			
 			}
 			
 			public void creatureOstatki(){
@@ -60,7 +67,7 @@ public class Ostatki {
 			
 			
 			
-				private int[] getNumberTermWhithSumm(int index){
+				private List<Object> getNumberTermWhithSumm(int index){
 					
 					return NumberTermWhithSumm.get(index);
 				}
@@ -72,12 +79,18 @@ public class Ostatki {
 				
 				private void creatureRowOstatki(int IndexArray){
 				
-					Row row = sheet_ostatki.createRow(IndexArray+1);	
-	
-					row.createCell(0).setCellValue(this.getNumberTermWhithSumm(IndexArray)[0]);				
-					row.createCell(1).setCellValue(this.getNumberTermWhithSumm(IndexArray)[1]);	
+					Row row = sheet_ostatki.createRow(IndexArray+1);
 					
-					bdw.insertOstatki(Integer.toString(this.getNumberTermWhithSumm(IndexArray)[0]), this.getNumberTermWhithSumm(IndexArray)[1]);
+					int id_term = (int) this.getNumberTermWhithSumm(IndexArray).get(0);
+					int summ = (int) this.getNumberTermWhithSumm(IndexArray).get(1);
+					String last_inkass = (String) this.getNumberTermWhithSumm(IndexArray).get(2);
+					
+					row.createCell(0).setCellValue((double) id_term);				
+					row.createCell(1).setCellValue((double) summ);	
+					
+					
+					
+					bdw.insertOstatki(Integer.toString(id_term), summ, last_inkass);
 					
 				}
 				

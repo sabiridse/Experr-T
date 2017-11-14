@@ -26,16 +26,16 @@ public class Last_incass {
 		String time_inkass = time_incass.substring(11, 16);
 		int hourse_inkass = Integer.parseInt(time_incass.substring(11, 13));
 		
-				if (date_inkass.compareTo(curient_date) == 0) {//*****нужны только сегодняшние инкассации
-					
-					if (hourse_inkass > 13){//***нужны инкассации после обеда
+//				if (date_inkass.compareTo(curient_date) == 0) {//*****нужны только сегодняшние инкассации
+//					
+//					if (hourse_inkass > 13){//***нужны инкассации после обеда
 					
 						BD_write bdw = new BD_write();
 						bdw.insert_curient_inkass(term, time_inkass);
 
-					}
-		
-				}
+//					}
+//		
+//				}
 	}
 	
 	public String getInkass(int rowIndex, int columnIndex) {
