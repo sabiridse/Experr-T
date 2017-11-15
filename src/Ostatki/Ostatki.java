@@ -3,6 +3,7 @@ package Ostatki;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class Ostatki {
 				
 				try {
 					bdw.uni_reqest_in_db("DELETE FROM ostatki");
-				} catch (ClassNotFoundException e1) {
+				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 				
@@ -87,9 +88,7 @@ public class Ostatki {
 					
 					row.createCell(0).setCellValue((double) id_term);				
 					row.createCell(1).setCellValue((double) summ);	
-					
-					
-					
+
 					bdw.insertOstatki(Integer.toString(id_term), summ, last_inkass);
 					
 				}

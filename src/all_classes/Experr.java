@@ -1901,10 +1901,11 @@ public class Experr {
 									        panel_21.add(button_search, "cell 0 24,growx");
 									        button_search.addActionListener(new ActionListener() {
 							     	        	   public void actionPerformed(ActionEvent e) {
-							     	        		  TooManyInkassTableSerch tmits = new TooManyInkassTableSerch();
+							     	        		  TooManyInkassTableSerch tmits = new TooManyInkassTableSerch();							     	        		
 							     	        		  	tmits.serchRequest();
-							     	        		  	tmits.creatureCopyPasteTable();							     	        		 	 
-							     	        		 	 new CopyPasteDataInkass().showFrame();
+							     	        		   tmits.creatureCopyPasteTable();							     	        		 	 
+							     	        		  new CopyPasteDataInkass().showFrame(); 
+							     	        		  	
 							     	        	   }
 										        });
 									        

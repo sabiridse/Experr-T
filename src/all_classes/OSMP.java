@@ -161,7 +161,7 @@ public  class OSMP  {
 					if (incass_time.compareTo("") == 0) {incass_time = "не было"; incass_timeBonus = "01.01.1900 00:00:00";} else {
 						incass_time = tdti.turningString(row.getCell(9).getStringCellValue());
 					}
-
+					
 					ostatki.setValue(Number_terminal, row.getCell(4).getStringCellValue(),incass_time);// add ARRAY for OSTATKI
 					
 					

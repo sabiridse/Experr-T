@@ -1,5 +1,8 @@
 package contextFind;
 
+import java.util.ArrayList;
+
+import GUIbonus.CopyPasteDataInkass;
 import all_classes.BD_write;
 import all_classes.Experr;
 import trmlist_report.DistrInkass;
@@ -9,10 +12,11 @@ public class TooManyInkassTableSerch {
 	private static String InputData;
 	private static String[] SplitInputData;
 	private String[] OtputData;
-	BD_write bdw = new BD_write();
+	static BD_write bdw = new BD_write();
+	
 
 	
-		String[] getSplitInputData(){
+		 String[] getSplitInputData(){
 			
 			try {
 				InputData = Experr.textField_search.getText();
@@ -84,15 +88,31 @@ public class TooManyInkassTableSerch {
 		}
 		
 		public void creatureCopyPasteTable(){
-			
+
+			ArrayList<ArrayList<String>> arrayForCopyPaste = new ArrayList<>();
 			String[] sub = this.getSplitInputData();
 			try {
 				Integer.parseInt(sub[0]);//******check for integer or string in the search
-				bdw.getArrayForCopyPasteTable(this.addQueryForCopyPaste());
+				arrayForCopyPaste = bdw.getArrayForCopyPasteTable(this.addQueryForCopyPaste());
+				System.out.println(this.addList(arrayForCopyPaste, sub));
 			} catch(Exception e){
 			}
 			
 		}
 		
+		private ArrayList addList(ArrayList<ArrayList<String>> dataOfDB, String [] dataOfTextFild){
+			ArrayList<ArrayList<String>> CopyPaste = new ArrayList<>();
+			for (String id_term:dataOfTextFild){
+				for (ArrayList<String> rowIn:dataOfDB){
+					ArrayList<String> rowOut = new ArrayList();
+					if (rowIn.get(0).compareTo(id_term)==0){
+						rowOut.add(rowIn.get(0));
+						rowOut.add(rowIn.get(1));
+						CopyPaste.add(rowOut);
+					}				
+				}				
+			}		
+			return CopyPaste;	
+		}
 		
 }

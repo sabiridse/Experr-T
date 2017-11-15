@@ -1,5 +1,6 @@
 package inkass;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class DopiTerminals {
 						query = "UPDATE ostatki SET bonus = 80000 WHERE id_term = '"+ terminal.get(0)+"'";
 						try {
 							bdw.uni_reqest_in_db(query);
-						} catch (ClassNotFoundException e) {
+						} catch (SQLException e) {
 							e.printStackTrace();
 						}				
 				 }

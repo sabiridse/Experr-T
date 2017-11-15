@@ -19,6 +19,8 @@ import javax.swing.table.TableModel;
 
 import GUIbonus.CopyPasteDataInkass;
 import Warning_lost_terminals.Find_lost_term;
+import contextFind.DataCopyPaste;
+import contextFind.TooManyInkassTableSerch;
 import inkass.TTM_inkass;
 import inkass.TTMcopyPaste;
 import javenue.csv.Csv;
@@ -165,28 +167,29 @@ public class BD_write {
 								    }
 									
 //**********************************************************************************************************************									
-									public void  getArrayForCopyPasteTable(String query) throws Exception {
-										TurnDataTimeInkass tdti = new TurnDataTimeInkass();
-										TTMcopyPaste copyPaste = new TTMcopyPaste();
-										copyPaste.dataArrayList.clear();
+									public ArrayList<ArrayList<String>>  getArrayForCopyPasteTable(String query) throws Exception {
+										   ArrayList<ArrayList<String>> arrayForCopyPaste = new ArrayList<>();	
+										   
 										Statement stmt;				
 										try {	
 											stmt = conn.createStatement();						
 												ResultSet result;
 												result = stmt.executeQuery(query);
 															while (result.next()) {
-																	ArrayList<Object> rowCopyPaste = new ArrayList<>();
-																	rowCopyPaste.add(result.getInt("id_term"));
-																	rowCopyPaste.add(tdti.rEturningString(result.getString("last_inkass_data")));
-																	copyPaste.addDate(rowCopyPaste);
+																	ArrayList<String> rowCopyPaste = new ArrayList<>();
+																	rowCopyPaste.add(Integer.toString(result.getInt("id_term")));
+																	rowCopyPaste.add(new TurnDataTimeInkass()
+																			.rEturningString(result.getString("last_inkass_data")));
+																	arrayForCopyPaste.add(rowCopyPaste);
 															}
-															result.close();							
+															result.close();	
 											}	catch (SQLException e)	{Loging log = new Loging();
-																		log.log(e," Запрос для таблички copyPaste: ");}
-										CopyPasteDataInkass.table_CopyPaste.updateUI();
-										CopyPasteDataInkass.table_CopyPaste.revalidate();
-										CopyPasteDataInkass.table_CopyPaste.repaint();
-										CopyPasteDataInkass.model.fireTableDataChanged();
+																		log.log(e," массив из БД для таблички copyPaste: ");}
+//										CopyPasteDataInkass.table_CopyPaste.updateUI();
+//										CopyPasteDataInkass.table_CopyPaste.revalidate();
+//										CopyPasteDataInkass.table_CopyPaste.repaint();
+//										CopyPasteDataInkass.model.fireTableDataChanged();
+										return arrayForCopyPaste;
 										    }
 									
 //********************************************************ДЛЯ таблицы  ошибок **запрос в базу********************										
@@ -1012,7 +1015,7 @@ public class BD_write {
 //****************************************************************************************************************														
 													
 			
-			public void uni_reqest_in_db (String query) throws ClassNotFoundException {
+			public void uni_reqest_in_db (String query) throws SQLException {
 							        
 						Statement stmt;
 						
@@ -1021,7 +1024,7 @@ public class BD_write {
 							stmt = conn.createStatement();
 							stmt.execute(query);
 		
-						}	catch (SQLException e)	{System.out.println(e);}
+						}	catch (SQLException e)	{System.out.println("BDw1024: " + query +" " +e);}
 				
 			}
 			
@@ -1162,7 +1165,7 @@ public class BD_write {
 							  +"' ,"+home_number+", 'СК', '9-21', '"+ distr_inkass+"','"+object+"','"+adress+"', '"+new CurientTime().get()+"')";
 						try {
 							this.uni_reqest_in_db(query);
-						} catch (ClassNotFoundException e) {
+						} catch (SQLException e) {
 							e.printStackTrace();
 						}					
 			}
@@ -1262,8 +1265,9 @@ public class BD_write {
 					String query = "INSERT INTO ostatki (id_term,summ,bonus, last_inkass_data) VALUES ('"+id_term+"',"+summ+" , 0, '"+last_inkass+"')";
 					try {
 						this.uni_reqest_in_db(query);
-					} catch (ClassNotFoundException e) {
+					} catch (SQLException e) {
 						e.printStackTrace();
+						System.out.println("BDW1267: "+query);
 					}
 			}
 			
