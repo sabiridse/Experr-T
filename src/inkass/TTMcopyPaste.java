@@ -80,11 +80,11 @@ public class TTMcopyPaste extends AbstractTableModel {
       return false;
     }
 	
-	public void addDate(ArrayList row) {
+	public void addDate(ArrayList inputData) {
 				
-		ArrayList rowTable = new ArrayList();
-		rowTable = row;
-		dataArrayList.add(rowTable);
+//		ArrayList rowTable = new ArrayList();
+//		rowTable = row;
+		dataArrayList = inputData;
 
 	}
 

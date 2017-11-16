@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import GUIbonus.CopyPasteDataInkass;
 import all_classes.BD_write;
 import all_classes.Experr;
+import inkass.TTMcopyPaste;
 import trmlist_report.DistrInkass;
 
 public class TooManyInkassTableSerch {
@@ -94,7 +95,7 @@ public class TooManyInkassTableSerch {
 			try {
 				Integer.parseInt(sub[0]);//******check for integer or string in the search
 				arrayForCopyPaste = bdw.getArrayForCopyPasteTable(this.addQueryForCopyPaste());
-				System.out.println(this.addList(arrayForCopyPaste, sub));
+				new TTMcopyPaste().addDate(this.addList(arrayForCopyPaste, sub));
 			} catch(Exception e){
 			}
 			

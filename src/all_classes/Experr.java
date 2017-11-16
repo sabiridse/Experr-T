@@ -1987,6 +1987,9 @@ public class Experr {
 			        headInkass.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
 			        
 			        table_5.setRowSorter(sorterInkass);		
+			        ExcelAdapter myAd1 = new ExcelAdapter(table_5);
+			        
+			        
 			        
 			        JPanel panel_23 = new JPanel();
 			        panel_23.setBackground(new Color(0, 153, 153));

@@ -1311,7 +1311,7 @@ public class BD_write {
 				
 				ArrayList<String[]> dataForInkass = new ArrayList<>();				
 				String query = "(SELECT trmlist_report.object, ostatki.id_term, trmlist_report.adress, trmlist_report.regim, "   // querry only for SPb marshruts
-							 + "trmlist_report.street_name, trmlist_report.home_number, trmlist_report.agent "
+							 + "trmlist_report.street_name, trmlist_report.home_number, trmlist_report.agent,trmlist_report.adressForKassa "
 							 + "FROM ostatki "
 							 + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
 							 + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
@@ -1333,7 +1333,8 @@ public class BD_write {
 													result.getString("id_term"),
 													result.getString("adress"),
 													result.getString("regim"),
-													result.getString("agent")
+													result.getString("agent"),
+													result.getString("adressForKassa")
 											};												
 											dataForInkass.add(row);										
 									}
@@ -1360,7 +1361,8 @@ public class BD_write {
 				
 				ArrayList<String[]> dataForInkass = new ArrayList<>();				
 				String query = "SELECT trmlist_report.object, ostatki.id_term, trmlist_report.adress, trmlist_report.regim, "   // querry only for LO marshruts
-							 + "trmlist_report.city_name, trmlist_report.street_name, trmlist_report.home_number, trmlist_report.agent, trmlist_report.distr_inkass "
+							 + "trmlist_report.city_name, trmlist_report.street_name, trmlist_report.home_number, "
+							 + "trmlist_report.agent, trmlist_report.distr_inkass,trmlist_report.adressForKassa "
 							 + "FROM ostatki "
 							 + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
 							 + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
@@ -1382,7 +1384,9 @@ public class BD_write {
 													result.getString("adress"),
 													result.getString("regim"),
 													result.getString("agent"),
+													result.getString("adressForKassa"),
 													result.getString("distr_inkass")
+													
 											};												
 											dataForInkass.add(row);										
 									}

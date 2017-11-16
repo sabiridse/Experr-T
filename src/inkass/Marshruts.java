@@ -94,7 +94,7 @@ public class Marshruts {
 				      
 						curientSheet.getRow(i+3).getCell(1).setCellValue(inkassDataTerminal.get(i)[0]);
 						curientSheet.getRow(i+3).getCell(2).setCellValue(Integer.parseInt(inkassDataTerminal.get(i)[1]));
-						curientSheet.getRow(i+3).getCell(3).setCellValue(inkassDataTerminal.get(i)[2]);
+						curientSheet.getRow(i+3).getCell(3).setCellValue(inkassDataTerminal.get(i)[5]);
 						curientSheet.getRow(i+3).getCell(5).setCellValue(inkassDataTerminal.get(i)[3]);
 						
 							if (inkassDataTerminal.get(i)[4].compareTo("СК") == 0){
@@ -102,8 +102,8 @@ public class Marshruts {
 							}
 								if (LO == true){
 									
-									lostSymbolInMarshIndex = Character.toString(inkassDataTerminal.get(i)[5]
-											  .charAt(inkassDataTerminal.get(i)[5].length()-1));
+									lostSymbolInMarshIndex = Character.toString(inkassDataTerminal.get(i)[6]
+											  .charAt(inkassDataTerminal.get(i)[6].length()-1));
 										
 										switch (lostSymbolInMarshIndex){
 										
