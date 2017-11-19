@@ -43,7 +43,7 @@ public class Marshruts {
 		
 				private void OpenFileBolvan() throws IOException{						
 					Marshruts = new FileInputStream(Experr.directory_res +"МАРШРУТЫ_болван.xlsx");
-					curientWB_open = new XSSFWorkbook(Marshruts);								   	        
+					curientWB_open = new XSSFWorkbook(Marshruts);	
 				}
 		
 		
@@ -92,13 +92,33 @@ public class Marshruts {
 
 			    for (int i = 0; i < inkassDataTerminal.size();i++){
 				      
+			    	
+			    	if (i < (inkassDataTerminal.size()-1)){
+			    		
+			    		Row rowForPaste = curientSheet.createRow(i+4);
+			    		rowForPaste.setHeightInPoints(40);
+			    		this.copyRow(3, rowForPaste, 0, 13);
+			    	}	
+			    		
+			    		curientSheet.getRow(i+3).getCell(6)
+						.setCellFormula(curientSheet.getRow(i+3).getCell(6).getCellFormula().replace("N4", "N"+(i+4)));
+						curientSheet.getRow(i+3).getCell(11)
+						.setCellFormula(curientSheet.getRow(i+3).getCell(11).getCellFormula().replace("C4", "C"+(i+4)));
+						curientSheet.getRow(i+3).getCell(13)
+						.setCellFormula(curientSheet.getRow(i+3).getCell(13).getCellFormula().replace("C4", "C"+(i+4)).replace("L4", "L"+(i+4)));			    	
+			    	
+			    		curientSheet.getRow(i+3).getCell(0).setCellValue(i+1);
 						curientSheet.getRow(i+3).getCell(1).setCellValue(inkassDataTerminal.get(i)[0]);
 						curientSheet.getRow(i+3).getCell(2).setCellValue(Integer.parseInt(inkassDataTerminal.get(i)[1]));
 						curientSheet.getRow(i+3).getCell(3).setCellValue(inkassDataTerminal.get(i)[5]);
 						curientSheet.getRow(i+3).getCell(5).setCellValue(inkassDataTerminal.get(i)[3]);
 						
+						
+						
 							if (inkassDataTerminal.get(i)[4].compareTo("СК") == 0){
 								curientSheet.getRow(i+3).getCell(5).setCellStyle(this.lightCK());
+							} else {
+								curientSheet.getRow(i+3).getCell(5).setCellStyle(this.lightOtherAgents());
 							}
 								if (LO == true){
 									
@@ -141,10 +161,16 @@ public class Marshruts {
 			targetRow.createCell(i);
 			curientSheet.getRow(targetRow.getRowNum()).getCell(i).setCellStyle(curientSheet.getRow(resourceRow).getCell(i).getCellStyle());
 			
+			if (i !=6 & i != 11 & i != 13){
+			
 				try{
 					curientSheet.getRow(targetRow.getRowNum()).getCell(i).setCellValue(curientSheet.getRow(resourceRow).getCell(i).getStringCellValue());
 				} catch(Exception e){
-					curientSheet.getRow(targetRow.getRowNum()).getCell(i).setCellFormula(curientSheet.getRow(resourceRow).getCell(i).getCellFormula());
+					curientSheet.getRow(targetRow.getRowNum()).getCell(i).setCellValue(curientSheet.getRow(resourceRow).getCell(i).getNumericCellValue());					
+				}
+			}	
+				if (i ==6 || i == 11 || i == 13){
+				curientSheet.getRow(targetRow.getRowNum()).getCell(i).setCellFormula(curientSheet.getRow(resourceRow).getCell(i).getCellFormula());
 				}
 		}			
 	}
@@ -153,31 +179,18 @@ public class Marshruts {
 
 		try {
 		
-				finalRow = finalRow +3;
-				curientSheet.removeRow(curientSheet.getRow(finalRow));
-				curientSheet.removeRow(curientSheet.getRow(finalRow+1));
-				curientSheet.removeRow(curientSheet.getRow(finalRow+2));
-				curientSheet.removeRow(curientSheet.getRow(finalRow+3));
-				curientSheet.removeRow(curientSheet.getRow(finalRow+4));
-				
-				
-				
+				finalRow = finalRow +4;
 				Row row14 = curientSheet.createRow(finalRow+1);
 				Row row15 = curientSheet.createRow(finalRow+2);
 				Row row17 = curientSheet.createRow(finalRow+4);
-				
 				this.copyRow(304, row14, 3, 3);
 				this.copyRow(305, row15, 3, 3);
 				this.copyRow(307, row17, 1, 1);
-				this.copyRow(307, row17, 5, 5);	
-				
-				
-				for (int i = finalRow+5 ; i<308; i++){
-					
-					curientSheet.removeRow(curientSheet.getRow(i));	
-					
-				}
-					
+				this.copyRow(307, row17, 6, 6);	
+							
+				curientSheet.removeRow(curientSheet.getRow(304));
+				curientSheet.removeRow(curientSheet.getRow(305));
+				curientSheet.removeRow(curientSheet.getRow(307));
 				
 				curientWB_open.setPrintArea(
 						indexSheet, //sheet index
@@ -216,7 +229,7 @@ public class Marshruts {
 			Font font1 = curientWB_open.createFont();
 			font1.setFontName("Times New Roman");
 			font1.setColor((short) 0);
-			font1.setFontHeightInPoints((short) 10);
+			font1.setFontHeightInPoints((short) 14);
 			
 			CellStyle style1 = curientWB_open.createCellStyle();
 		      style1.setFillForegroundColor(IndexedColors.LIGHT_CORNFLOWER_BLUE.getIndex());
@@ -237,6 +250,33 @@ public class Marshruts {
 		      
 		    return style1;  
 	}
+	private CellStyle lightOtherAgents(){
+		
+		//************************************************************************для  ПИР и СПС- белый****			
+		Font font1 = curientWB_open.createFont();
+		font1.setFontName("Times New Roman");
+		font1.setColor((short) 0);
+		font1.setFontHeightInPoints((short) 14);
+		
+		CellStyle style1 = curientWB_open.createCellStyle();
+	      style1.setFillForegroundColor(IndexedColors.WHITE.getIndex());
+	      style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+	      style1.setFont(font1);
+	      style1.setWrapText(true);
+	      style1.setAlignment(HorizontalAlignment.CENTER);
+	      style1.setVerticalAlignment(VerticalAlignment.CENTER);
+	      style1.setBorderBottom(CellStyle.BORDER_THIN);
+	      style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+	      style1.setBorderLeft(CellStyle.BORDER_THIN);
+	      style1.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+	      style1.setBorderRight(CellStyle.BORDER_THIN);
+	      style1.setRightBorderColor(IndexedColors.BLACK.getIndex());
+	      style1.setBorderTop(CellStyle.BORDER_THIN);
+	      style1.setTopBorderColor(IndexedColors.BLACK.getIndex());
+	//***************************************************************************************************
+	      
+	    return style1;  
+}
 	
 	private CellStyle lightLoPart1(){
 		
