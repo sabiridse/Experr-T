@@ -152,7 +152,10 @@ public class Experr {
 	// public static TableModel model = new DefaultTableModel();
 	// public static AddArr_model adm = new AddArr_model();****************************************************************
 	public static JPanel contentPane;
+	public static JPanel panel_23 = new JPanel();
 	JProgressBar progressBar;
+	public static JProgressBar progressBar_inkass;
+	 
 
 	static JProgressBar progressBar_1;
 	JProgressBar progressBar2;
@@ -1881,7 +1884,6 @@ public class Experr {
 									        
 						        button_4.addActionListener(new ActionListener() {
 				     	        	   public void actionPerformed(ActionEvent e) {
-				     	        		 
 				     	        		  DataForShortStata sfss = new DataForShortStata();
 				     	        		  sfss.getData();									//********
 //				     	        		  NewThread_one thread = new NewThread_one();
@@ -1991,10 +1993,10 @@ public class Experr {
 			        
 			        
 			        
-			        JPanel panel_23 = new JPanel();
+			        //JPanel panel_23 = new JPanel();
 			        panel_23.setBackground(new Color(0, 153, 153));
 			        panel_20.add(panel_23, BorderLayout.SOUTH);
-			        panel_23.setLayout(new MigLayout("", "[223.00][114.00][][][][][][][][]", "[][grow]"));
+			        panel_23.setLayout(new MigLayout("", "[223.00][114.00][][560.00][][][][][][]", "[][grow]"));
 			        
 			        JLabel lblNewLabel_7 = new JLabel("Кол-во терминалов :");
 			        lblNewLabel_7.setFont(new Font("Century Schoolbook", Font.ITALIC, 14));
@@ -2007,7 +2009,13 @@ public class Experr {
 			        lebel_countRowsInTTMinkass.setForeground(new Color(204, 153, 204));
 			        panel_23.add(lebel_countRowsInTTMinkass, "cell 2 0");
 			        
-			        
+			        progressBar_inkass = new JProgressBar();
+			        progressBar_inkass.setStringPainted(true);
+			        progressBar_inkass.setForeground(Color.GREEN);
+			        panel_23.add(progressBar_inkass, "cell 3 0,grow");
+			        progressBar_inkass.setMinimum(0);
+			        progressBar_inkass.setMaximum(100);
+			        progressBar_inkass.setVisible(false);
 			        
 							        
 			        button_insert_new_work.addActionListener(new ActionListener() {
@@ -2076,6 +2084,7 @@ public class Experr {
 				} catch (ClassNotFoundException e1) {}
 												
 	}
+	
 
 	public static int getAllMarshrutsStatus(){		
 		return allMarshruts;

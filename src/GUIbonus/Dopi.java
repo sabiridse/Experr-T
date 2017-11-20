@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import all_classes.Experr;
+import all_classes.NewThread_one;
 import inkass.DataForInkass;
 import inkass.DopiTerminals;
 
@@ -57,14 +58,16 @@ public class Dopi extends JFrame{
       	   public void actionPerformed(ActionEvent e) {
       		   
       		   new DopiTerminals().add();
+      		 
+      		   NewThread_one nth = new NewThread_one();
+      		   nth.New_ThreadInkass();
       		   
-      		   
-      		  DataForInkass dfi = new DataForInkass();
-		        	try {
-						dfi.addInputData();
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+//      		  DataForInkass dfi = new DataForInkass();
+//		        	try {
+//						dfi.addInputData();
+//					} catch (Exception e1) {
+//						e1.printStackTrace();
+//					}
 		        	frame.setVisible(false);
       	   }
 	        });

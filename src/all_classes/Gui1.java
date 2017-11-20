@@ -55,7 +55,11 @@ public class Gui1 extends JFrame {
 		Experr.progressBar_1.setValue(value_progressBar);
 	
 	}
+	public void setValueProgBarInkass(int value_progressBar) {
+		
+		Experr.progressBar_inkass.setValue(value_progressBar);
 	
+	}
 	
 	//*********************************************************************************************************
 	

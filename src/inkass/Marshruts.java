@@ -22,6 +22,7 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import GUIbonus.ProgressBarInkass;
 import all_classes.Experr;
 import all_classes.Loging;
 
@@ -31,7 +32,11 @@ public class Marshruts {
 	private Workbook curientWB_open;
 	private Sheet curientSheet;
 	private Loging log = new Loging();	
-
+	private  int valueProgBar = 0;
+	//DataForInkass dfi= new DataForInkass();
+	
+	
+	
 		private void setCurientSheet(int index) {
 			curientSheet = curientWB_open.getSheetAt(index);
 
@@ -89,9 +94,24 @@ public class Marshruts {
 					      
 		    this.setCurientSheet(indexSheet);
 		    String lostSymbolInMarshIndex = "";
-
+		  //System.out.println("кол-во листов "+DataForInkass.getCountMarshruts()+" кол теремов на листе "+ inkassDataTerminal.size());
+		  
+//		  int step = (int) 100/DataForInkass.getCountMarshruts();
+//		  Experr.progressBar_inkass.setValue(step);
+//		  
+		  //double valueStep = qw/inkassDataTerminal.size();
+		  
+		  
+		  
+		   //System.out.println(qw+"_____ "+valueStep);
 			    for (int i = 0; i < inkassDataTerminal.size();i++){
-				      
+				     
+			    	
+			    	//valueProgBar = valueProgBar + (int) (valueStep/8.4);
+			    	//valueStep = valueStep + (valueStep - (int) valueStep);
+//			    	progBar.setValue(valueProgBar);
+//			    	System.out.println(valueProgBar);
+//			    	Experr.progressBar_inkass.setValue(valueProgBar);
 			    	
 			    	if (i < (inkassDataTerminal.size()-1)){
 			    		
@@ -126,7 +146,7 @@ public class Marshruts {
 											  .charAt(inkassDataTerminal.get(i)[6].length()-1));
 										
 										switch (lostSymbolInMarshIndex){
-										
+											case "0":	curientSheet.getRow(i+3).getCell(1).setCellStyle(this.lightLoPart0());break;
 											case "1":	curientSheet.getRow(i+3).getCell(1).setCellStyle(this.lightLoPart1());break;
 											case "2":	curientSheet.getRow(i+3).getCell(1).setCellStyle(this.lightLoPart2());break;
 									
@@ -304,7 +324,36 @@ public class Marshruts {
 	//***************************************************************************************************
 	      
 	    return style2;  
-}
+	}
+	
+	private CellStyle lightLoPart0(){
+		
+		//************************************************************************для выделения СК голубым****			
+		Font font4 = curientWB_open.createFont();
+		font4.setFontName("Times New Roman");
+		font4.setColor((short) 0);
+		font4.setFontHeightInPoints((short) 14);
+		
+		CellStyle style4 = curientWB_open.createCellStyle();
+	      style4.setFillForegroundColor(IndexedColors.WHITE.getIndex());
+	      style4.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+	      style4.setFont(font4);
+	      style4.setWrapText(true);
+	      style4.setAlignment(HorizontalAlignment.LEFT);
+	      style4.setVerticalAlignment(VerticalAlignment.CENTER);
+	      style4.setBorderBottom(CellStyle.BORDER_THIN);
+	      style4.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+	      style4.setBorderLeft(CellStyle.BORDER_THIN);
+	      style4.setLeftBorderColor(IndexedColors.BLACK.getIndex());
+	      style4.setBorderRight(CellStyle.BORDER_THIN);
+	      style4.setRightBorderColor(IndexedColors.BLACK.getIndex());
+	      style4.setBorderTop(CellStyle.BORDER_THIN);
+	      style4.setTopBorderColor(IndexedColors.BLACK.getIndex());
+	//***************************************************************************************************
+	      
+	    return style4;  
+	}
+	
 		private CellStyle lightLoPart2(){
 				
 				//************************************************************************для выделения СК голубым****			
