@@ -9,7 +9,7 @@ import all_classes.BD_write;
 public class TTMcopyPaste extends AbstractTableModel {
 	private static final long serialVersionUID = 3254069490988388770L;
 	public static String id_term;
-	private static int columnCount = 2;
+	private static int columnCount = 3;
 	public  static ArrayList<ArrayList> dataArrayList;
 	
 	public TTMcopyPaste() {
@@ -27,7 +27,8 @@ public class TTMcopyPaste extends AbstractTableModel {
 					switch (columnIndex){
 					
 							case 0: return String.class;
-							case 1: return String.class;							
+							case 1: return String.class;
+							case 2: return String.class;
 					}
 				return String.class;
 	}
@@ -47,7 +48,8 @@ public class TTMcopyPaste extends AbstractTableModel {
 		
 		switch (columnIndex){
 			case 0: return "Номер";
-			case 1: return "Дата";
+			case 1: return "Маршрут";
+			case 2: return "Дата";
 		}		
 			return "";
 	}

@@ -86,6 +86,7 @@ import contextFind.TooManyInkassTableSerch;
 import gruopAddExcept.AddDelExceptTerm;
 import inkass.DataForInkass;
 import inkass.DataForShortStata;
+import inkass.SearchInTTMinkass;
 import inkass.TTM_inkass;
 
 import java.awt.Component;
@@ -217,6 +218,8 @@ public class Experr {
 	public static int limit = 80;
 	public static int Summlimit = 70000;
 	public static int SummlimitLO = 50000;
+	
+	public static int New = 0;
 	
 	public static int allMarshruts = 0;
 	public static JTextField textField_search;
@@ -967,6 +970,25 @@ public class Experr {
 							      btn_Term.setForeground(new Color(0, 0, 255));
 							      btn_Term.setFont(new Font("Century Schoolbook", Font.ITALIC, 12));
 							      btn_Term.setBackground(new Color(102, 153, 255));
+							      
+							      
+							      //чекбокс добавлять новые терема
+							      JCheckBox chckbxaddNew = new JCheckBox("Добавлять NEW");
+							      chckbxaddNew.setToolTipText("Автоматическое добавление новых терминалов");
+							      chckbxaddNew.setFont(new Font("Century Schoolbook", Font.ITALIC, 12));
+							      chckbxaddNew.setBackground(new Color(102, 153, 153));
+							      chckbxaddNew.setForeground(new Color(0, 0, 255));
+							      panel_13.add(chckbxaddNew, "cell 2 1,alignx right");
+							      
+							      chckbxaddNew.addItemListener(new ItemListener() {
+							          public void itemStateChanged(ItemEvent e) {
+							            
+									        	 if (chckbxaddNew.isSelected()) {									        		
+									        		New = 1; 
+									        	 } else New = 0;							          									        	 	          
+							          }
+							      });
+							      
 							      //*************************************************************************************************************							     
 							      
 							    //******КНОПКА ПОИСК НОМЕРА В ИСКЛЮЧЕНИЯХ*****************************************************************							     
@@ -1905,11 +1927,9 @@ public class Experr {
 							     	        	   public void actionPerformed(ActionEvent e) {
 							     	        		  TooManyInkassTableSerch tmits = new TooManyInkassTableSerch();							     	        		
 							     	        		  	tmits.serchRequest();
-							     	        		   tmits.creatureCopyPasteTable();							     	        		 	 
-							     	        		  new CopyPasteDataInkass().showFrame(); 
-							     	        		  	
-							     	        	   }
-										        });
+							     	        		    tmits.copyPasteTable();
+							     	        	   }  	
+										    });
 									        
 									        
 									        
@@ -1942,7 +1962,7 @@ public class Experr {
 							     	        	   public void actionPerformed(ActionEvent e) {
 							     	        		 	     	        		   
 							     	        		  BD_write bdw = new BD_write();
-							     	        		  String query = "SELECT ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress, "
+							     	        		  String query = "SELECT ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress, trmlist_report.adressForKassa,"
 							     	        		  			   + "trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ, ostatki.last_inkass_data, "
 							     	        		  			   + "trmlist_report.auto "
 							     	        		  			   + "FROM ostatki "
@@ -1952,10 +1972,11 @@ public class Experr {
 							     	        		  			   + "terminals.regions = 0";
 							     	        		  bdw.connect();
 														try {
-															bdw.getArrayForInkassTable(query);
+															bdw.getArrayForInkassTable(query,0);
 														} catch (Exception e1) {
 															e1.printStackTrace();
 														}
+														
 														 bdw.close_connect();
 							     	        	   }
 										        });

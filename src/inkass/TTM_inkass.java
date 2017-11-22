@@ -14,7 +14,7 @@ public  class TTM_inkass extends AbstractTableModel{
 	public static int rer =0;
 	public static String id_term;
 	private static final long serialVersionUID = 5783608448231036221L;
-	private static int columnCount = 10;
+	private static int columnCount = 11;
 	public  static ArrayList<ArrayList> dataArrayList;
 	
 	public TTM_inkass() {
@@ -38,9 +38,10 @@ public  class TTM_inkass extends AbstractTableModel{
 							case 4: return String.class;
 							case 5: return String.class;
 							case 6: return String.class;
-							case 7: return Integer.class;
-							case 8: return String.class;
+							case 7: return String.class;
+							case 8: return Integer.class;
 							case 9: return String.class;
+							case 10: return String.class;
 							
 					}
 				return String.class;
@@ -64,12 +65,13 @@ public  class TTM_inkass extends AbstractTableModel{
 			case 1: return "Терминал";
 			case 2: return "Обьект";
 			case 3: return "Адрес";
-			case 4: return "Режим";
-			case 5: return "Агент";
-			case 6: return "Маршрут";
-			case 7: return "Сумма";
-			case 8: return "Дата Инкассации";
-			case 9: return "Добавлено";
+			case 4: return "Адрес для кассы";
+			case 5: return "Режим";
+			case 6: return "Агент";
+			case 7: return "Маршрут";
+			case 8: return "Сумма";
+			case 9: return "Дата Инкассации";
+			case 10: return "Добавлено";
 		}
 		
 			return "";
@@ -100,8 +102,9 @@ public  class TTM_inkass extends AbstractTableModel{
 	 	switch (column){
 		 	case 2: column_name = "object"; break;
 		 	case 3: column_name = "adress"; break;
-		 	case 4: column_name = "regim"; break;
-		 	case 6:	column_name = "distr_inkass"; break; 	
+		 	case 4: column_name = "adressForKassa"; break;
+		 	case 5: column_name = "regim"; break;
+		 	case 7:	column_name = "distr_inkass"; break; 	
 	 	}	 	
 				 try {
 					bdw.editCellOfTableInkass(id_term, column_name, editable_row.get(column));
@@ -114,12 +117,16 @@ public  class TTM_inkass extends AbstractTableModel{
 	
 	public boolean isCellEditable(int row, int column)
     {
-      if(column == 2 || column == 3 || column == 4 || column == 6)
+      if(column == 2 || column == 3 || column == 4 || column == 5 || column == 7)
       {
         return true;
       }
       return false;
     }
+	public ArrayList getdataArrayList (){
+		
+		return dataArrayList;
+	}
 	
 	public void addDate(ArrayList row) {
 				

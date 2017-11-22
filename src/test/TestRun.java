@@ -17,9 +17,9 @@ import trmlist_report.Update;
 public class TestRun {
 
 	public static void main(String[] args) {
+
 		
-		
-		    System.out.println(new TurnDataTimeInkass().turningString("04.11.2017 09:30:07"));
+		    //System.out.println(new Update().addAdressForKassa("Горбунки д (Ленинградская обл/Ломоносовский р-н)", "", "д.16"));
 		
 		
 	}

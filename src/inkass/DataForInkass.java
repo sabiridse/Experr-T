@@ -40,7 +40,7 @@ public class DataForInkass {
 				
 				//bdw.connect();
 				marsh.OpenFile();
-				Experr.progressBar_inkass.setValue(2);
+				Experr.progressBar_inkass.setValue(1);
 				
 				switch (Experr.getAllMarshrutsStatus()){				
 						case 0: this.fiveMarshruts();break;
@@ -72,10 +72,11 @@ public class DataForInkass {
 				
 				countMarshruts = distrs.size();
 				int step = (int) 100/countMarshruts;
+				int stepB = step;
 					for ( String curientDistr:distrs){
 				
-						Experr.progressBar_inkass.setValue(step);
-						step++;
+						//Experr.progressBar_inkass.setValue(step);
+						step = step + stepB;
 							try {
 								this.getPrivateDataByMarshrut(curientDistr,
 															  Experr.agent, 
@@ -94,8 +95,8 @@ public class DataForInkass {
 				int step = 8;
 				for ( String curientDistr:allDistrs){
 					
-					Experr.progressBar_inkass.setValue(step);
-					step++;
+					//Experr.progressBar_inkass.setValue(step);
+					step = step + 8;
 						try {
 							this.getPrivateDataByMarshrut(curientDistr,0,300);
 						} catch (Exception e) {
@@ -112,14 +113,14 @@ public class DataForInkass {
 					 
 						case "true":	this.getInputDataLO(partUp,partCenter,partDown,agentIndex);
 										if (inputData.size() > 0){
-											marsh.writeSheet(inputData, sheetIndex, LO);
+											marsh.writeSheet(inputData, sheetIndex, LO, countMarshruts);
 										}
 										break;
 								 
 								 
 						case "false":   this.getInputData(partCenter,limit, agentIndex);
 										if (inputData.size() > 0){
-											marsh.writeSheet(inputData, sheetIndex, LO);
+											marsh.writeSheet(inputData, sheetIndex, LO, countMarshruts);
 										}
 										break;
 					} 

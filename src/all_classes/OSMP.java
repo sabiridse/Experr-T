@@ -307,8 +307,10 @@ public  class OSMP  {
 					
 					TrackingNewAndLostTerminals tnalt = new TrackingNewAndLostTerminals();
 					tnalt.InsertLostSignalInLostTerm();
-					tnalt.addNewTermInDB();
 					
+					if (Experr.New == 1){
+						tnalt.addNewTermInDB();//*****only checkBox NEW is selected
+					}
 					
 					
 					bdw.close_connect();	

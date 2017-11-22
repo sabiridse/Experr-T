@@ -102,14 +102,14 @@ public class Update {
 							street_name =   sheet_repo.getRow(row).getCell(5).getStringCellValue();
 							home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();
 												        	
-							String adress = street_name + "., д. " + home_number;
+							String adress = street_name + "., д." + home_number;
 												        	
 							switch (this.checkDouble(Integer.toString(id_term))){															
 								case 0: bdw.insertInTo_trmlist_reportPartOne(id_term, city_name, street_name, 
 										this.modificNumberHome(home_number),
 										distInk.getDistrInkass(city_name, street_name),
 										objName.getObjectName(Integer.toString(id_term), city_name),
-										adress);break;
+										adress, this.addAdressForKassa(city_name, street_name, adress));break;
 									
 								case 1:	break;													
 							}											        	
@@ -118,7 +118,22 @@ public class Update {
 				  
 				}
 												
-
+				private String addAdressForKassa(String city_name, String street_name, String adress){
+					
+					String city = "";
+					String distrLO = "";
+					
+					if (city_name.compareTo("Санкт-Петербург г")!=0){							 
+						 city = city_name.substring(0, city_name.indexOf("(")-1);	
+						 distrLO = city_name.substring(city_name.indexOf("/")+1,city_name.indexOf("р-н")+3)+", ";
+					 } else city = city_name;
+					
+					if ( street_name.compareTo("")==0){
+						adress = adress.substring(adress.indexOf(",")+1);
+					}
+					
+					return distrLO+city+", "+adress;
+				}
 												
 													private int modificNumberHome (String input){
 														String subStr="";

@@ -34,6 +34,7 @@ public class Marshruts {
 	private Loging log = new Loging();	
 	private  int valueProgBar = 0;
 	//DataForInkass dfi= new DataForInkass();
+	private int step = 1;
 	
 	
 	
@@ -90,28 +91,21 @@ public class Marshruts {
 	}
 					
 					
-	public void writeSheet(ArrayList <String[]> inkassDataTerminal, int indexSheet, boolean LO){
+	public void writeSheet(ArrayList <String[]> inkassDataTerminal, int indexSheet, boolean LO, int countMarshruts){
 					      
 		    this.setCurientSheet(indexSheet);
 		    String lostSymbolInMarshIndex = "";
-		  //System.out.println("кол-во листов "+DataForInkass.getCountMarshruts()+" кол теремов на листе "+ inkassDataTerminal.size());
-		  
-//		  int step = (int) 100/DataForInkass.getCountMarshruts();
-//		  Experr.progressBar_inkass.setValue(step);
-//		  
-		  //double valueStep = qw/inkassDataTerminal.size();
-		  
-		  
-		  
-		   //System.out.println(qw+"_____ "+valueStep);
+		  int q = 0;
+		  int w = (int) inkassDataTerminal.size()/countMarshruts;
+
 			    for (int i = 0; i < inkassDataTerminal.size();i++){
 				     
-			    	
-			    	//valueProgBar = valueProgBar + (int) (valueStep/8.4);
-			    	//valueStep = valueStep + (valueStep - (int) valueStep);
-//			    	progBar.setValue(valueProgBar);
-//			    	System.out.println(valueProgBar);
-//			    	Experr.progressBar_inkass.setValue(valueProgBar);
+			    	if ((q-4)>w){
+			    		step++;
+			    		q = 0;
+			    	}
+
+			    	Experr.progressBar_inkass.setValue(step);
 			    	
 			    	if (i < (inkassDataTerminal.size()-1)){
 			    		
@@ -152,6 +146,7 @@ public class Marshruts {
 									
 										}
 								}
+								q++;
 							
 			    }
 		this.finisherSheet(indexSheet, inkassDataTerminal.size());			
@@ -159,6 +154,9 @@ public class Marshruts {
 		
 	
 			public void saveAndClose() throws Exception{		
+				
+				step =0;
+				
 				try {
 					this.SaveFile();
 				} catch (IOException e) {

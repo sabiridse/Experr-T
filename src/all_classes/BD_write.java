@@ -21,6 +21,7 @@ import GUIbonus.CopyPasteDataInkass;
 import Warning_lost_terminals.Find_lost_term;
 import contextFind.DataCopyPaste;
 import contextFind.TooManyInkassTableSerch;
+import inkass.SearchInTTMinkass;
 import inkass.TTM_inkass;
 import inkass.TTMcopyPaste;
 import javenue.csv.Csv;
@@ -131,9 +132,10 @@ public class BD_write {
 //********************************************************************************************************************************	
 //***********************************************************************************************************************************				
 
-									public void  getArrayForInkassTable(String query) throws Exception {
+									public void  getArrayForInkassTable(String query, int search) throws Exception {
 										
 										rows_count = 0;
+										ArrayList<ArrayList> subtable = new ArrayList();
 										TTM_inkass ttm = new TTM_inkass();
 										ttm.dataArrayList.clear(); 
 										Statement stmt;				
@@ -147,6 +149,7 @@ public class BD_write {
 																	row.add(result.getString("name_term"));
 																	row.add(result.getString("object"));
 																	row.add(result.getString("adress"));
+																	row.add(result.getString("adressForKassa"));
 																	row.add(result.getString("regim"));
 																	row.add(result.getString("agent"));
 																	row.add(result.getString("distr_inkass"));
@@ -154,6 +157,9 @@ public class BD_write {
 																	row.add(result.getString("last_inkass_data"));
 																	row.add(result.getString("auto"));	
 																	ttm.addDate(row);
+																	if (search == 0){
+																	subtable.add(row);
+																	}
 															}
 															result.close();							
 											}	catch (SQLException e)	{Loging log = new Loging();
@@ -163,7 +169,9 @@ public class BD_write {
 										Experr.table_5.repaint();
 										Experr.model_inkass.fireTableDataChanged();
 										Experr.setcountRowsInTTMinkass(Integer.toString(ttm.getRowCount()));
-								
+										if (search == 0){
+										new SearchInTTMinkass().insertArrayTTMInDB(subtable);
+										}
 								    }
 									
 //**********************************************************************************************************************									
@@ -178,6 +186,7 @@ public class BD_write {
 															while (result.next()) {
 																	ArrayList<String> rowCopyPaste = new ArrayList<>();
 																	rowCopyPaste.add(Integer.toString(result.getInt("id_term")));
+																	rowCopyPaste.add(result.getString("distr_inkass"));
 																	rowCopyPaste.add(new TurnDataTimeInkass()
 																			.rEturningString(result.getString("last_inkass_data")));
 																	arrayForCopyPaste.add(rowCopyPaste);
@@ -1005,7 +1014,7 @@ public class BD_write {
 																	try {	
 																		stmt = conn.createStatement();
 																		stmt.execute("INSERT INTO terminals (id_term,name_term,name_distr,spb_lo,spb,lo,regions,other,except_name,except_term,time_except) "
-																				    +"VALUES ("+numberNewTerm+",'NEW','CHECKING',0,0,0,0,'новая установка',NULL,0,NULL)");
+																				    +"VALUES ("+numberNewTerm+",'NEW','CHECKING',0,0,0,0,'новая установка',NULL,0,'1999-09-09 09:09:09')");
 																		Loging log = new Loging();
 																		log.logtext("add new term № "+numberNewTerm);
 																	}	catch (SQLException e)	{Loging log = new Loging();
@@ -1157,12 +1166,12 @@ public class BD_write {
 				
 			public void insertInTo_trmlist_reportPartOne(int id_term, String city_name, String street_name,
 														 int home_number,String distr_inkass, String object,
-														 String adress){
+														 String adress, String adressForInkass){
 				
 				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,"
 							  + "home_number,agent, regim, distr_inkass, object,adress, auto) "
 							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name
-							  +"' ,"+home_number+", 'СК', '9-21', '"+ distr_inkass+"','"+object+"','"+adress+"', '"+new CurientTime().get()+"')";
+							  +"' ,"+home_number+", 'СК', '9-21', '"+ distr_inkass+"','"+object+"','"+adress+"', '"+new CurientTime().get()+"', '"+adressForInkass+"')";
 						try {
 							this.uni_reqest_in_db(query);
 						} catch (SQLException e) {
