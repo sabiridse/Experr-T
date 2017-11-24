@@ -79,6 +79,7 @@ import GUIbonus.ShortStataByMarshrut;
 import GUIbonus.Statistika;
 import Lider_Dps.ServicePPS;
 import Osmp_Osmp.Service;
+import Ostatki.DataInkassDPS;
 import adapter.ExcelAdapter;
 import authorization.AuthForm;
 import contextFind.TooManyCriteries;
@@ -220,6 +221,7 @@ public class Experr {
 	public static int SummlimitLO = 50000;
 	
 	public static int New = 0;
+	public static int CheckInkassDPSdata = 0;
 	
 	public static int allMarshruts = 0;
 	public static JTextField textField_search;
@@ -615,6 +617,20 @@ public class Experr {
  
 //*************************?eoa? ec AA a?aiy iineaaiae ?annueee*****************		    		 	    			 
 	    			 label_time_to_last_mail.setText(bdw.get_time_last_mail());
+	    			 
+	    			 JButton btnInkassDPS = new JButton("Инкасс ДПС");
+	    			 btnInkassDPS.setToolTipText("Добавление в базу дат инкассации ДПС (предварительно скачать отчет)");
+	    			 btnInkassDPS.setFont(new Font("Tahoma", Font.PLAIN, 11));
+	    			 btnInkassDPS.setForeground(new Color(102, 204, 102));
+	    			 btnInkassDPS.setBackground(new Color(51, 153, 153));
+	    			 btnInkassDPS.setBounds(5, 535, 97, 30);
+	    			 panel_6.add(btnInkassDPS);
+	    			 
+	    			 btnInkassDPS.addActionListener(new ActionListener() {
+				    	  public void actionPerformed(ActionEvent arg0) {
+				    		  new DataInkassDPS().getLastInkassDpsAndWriteInOstatki();
+				    	  }			    	  			    	  
+				      });		
 	    			 	    			 			      
 //***************************************************ПОЧТА**********************************************				
 			      button.addActionListener(new ActionListener() {
@@ -1960,7 +1976,7 @@ public class Experr {
 									        panel_21.add(button_6, "cell 0 31,growx");
 									        button_6.addActionListener(new ActionListener() {
 							     	        	   public void actionPerformed(ActionEvent e) {
-							     	        		 	     	        		   
+							   	        		   
 							     	        		  BD_write bdw = new BD_write();
 							     	        		  String query = "SELECT ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress, trmlist_report.adressForKassa,"
 							     	        		  			   + "trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ, ostatki.last_inkass_data, "
@@ -1972,6 +1988,7 @@ public class Experr {
 							     	        		  			   + "terminals.regions = 0";
 							     	        		  bdw.connect();
 														try {
+							
 															bdw.getArrayForInkassTable(query,0);
 														} catch (Exception e1) {
 															e1.printStackTrace();

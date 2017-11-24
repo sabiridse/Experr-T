@@ -123,16 +123,17 @@ public  class TTM_inkass extends AbstractTableModel{
       }
       return false;
     }
-	public ArrayList getdataArrayList (){
-		
-		return dataArrayList;
-	}
+//	public ArrayList getdataArrayList (){
+//		
+//		return dataArrayList;
+//	}
 	
 	public void addDate(ArrayList row) {
 				
 		ArrayList rowTable = new ArrayList();
 		rowTable = row;
 		dataArrayList.add(rowTable);
+
 	}
 
 }

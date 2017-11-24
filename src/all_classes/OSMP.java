@@ -95,7 +95,7 @@ public  class OSMP  {
 			            iterator_osmp_import.next();
 			            rows_in_osmp_import++;        // эта переменная и будет кол-вом строк после полного цикла
 			        }
-			    
+			        
 	
 			    	//gui1.creature_prog_bar(rows_in_osmp_import);//показываю ПРОГРЕССбар в главном окне
 			    	Experr.progressBar_1.setVisible(true);  
@@ -140,7 +140,7 @@ public  class OSMP  {
 		 
 // ГЛАВНЫЙ ТЯЖЕЛЫЙ ПОТОК - вношу данные в файл экспорта**************************************************************************
 
-		for ( int i = 1; i < rows_in_osmp_import ; i++) {    
+		for ( int i = 1; i < rows_in_osmp_import+1 ; i++) {    
 		
 
 					gui1.runable_progbar(i);//каждый круг добавляю в прогресс бар и магия твориться
@@ -325,7 +325,7 @@ public  class OSMP  {
 						gui1.runable_progbar(2000);
 						
 					Files_check f_c = new Files_check();
-					f_c.delete_old();
+					f_c.delete_old();//**********************************************************************************отключил для теста***********************
 
 					//lastincass.output_inkass();	
 					

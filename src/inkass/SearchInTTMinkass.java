@@ -37,9 +37,9 @@ public class SearchInTTMinkass {
 				   	 +"VALUES ('"+id_term+"','"+name_term+"','"+object+"','"+adress+"','"
 								 +adressForKassa+"','"+regim+"','"+agent+"','"+distr_inkass+"', '"
 							   	 +summ+"','"+last_inkass_data+"','"+auto+"')";
-		
 		try {
 			bdw.uni_reqest_in_db(query);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

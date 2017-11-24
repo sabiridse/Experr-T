@@ -133,7 +133,7 @@ public class BD_write {
 //***********************************************************************************************************************************				
 
 									public void  getArrayForInkassTable(String query, int search) throws Exception {
-										
+
 										rows_count = 0;
 										ArrayList<ArrayList> subtable = new ArrayList();
 										TTM_inkass ttm = new TTM_inkass();
@@ -144,6 +144,7 @@ public class BD_write {
 												ResultSet result;
 												result = stmt.executeQuery(query);
 															while (result.next()) {
+	
 																	ArrayList<Object> row = new ArrayList<>();
 																	row.add(result.getInt("id_term"));
 																	row.add(result.getString("name_term"));
@@ -164,6 +165,7 @@ public class BD_write {
 															result.close();							
 											}	catch (SQLException e)	{Loging log = new Loging();
 																		log.log(e," Запрос для таблицы inkass: ");}
+
 										Experr.table_5.updateUI();
 										Experr.table_5.revalidate();
 										Experr.table_5.repaint();
@@ -171,6 +173,7 @@ public class BD_write {
 										Experr.setcountRowsInTTMinkass(Integer.toString(ttm.getRowCount()));
 										if (search == 0){
 										new SearchInTTMinkass().insertArrayTTMInDB(subtable);
+
 										}
 								    }
 									
@@ -1033,7 +1036,7 @@ public class BD_write {
 							stmt = conn.createStatement();
 							stmt.execute(query);
 		
-						}	catch (SQLException e)	{System.out.println("BDw1024: " + query +" " +e);}
+						}	catch (SQLException e)	{System.out.println("BDw1040_Uni_reqest_in_db: " + query +" " +e);}
 				
 			}
 			
@@ -1166,12 +1169,13 @@ public class BD_write {
 				
 			public void insertInTo_trmlist_reportPartOne(int id_term, String city_name, String street_name,
 														 int home_number,String distr_inkass, String object,
-														 String adress, String adressForInkass){
+														 String adress, String adressForKassa){
 				
 				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,"
-							  + "home_number,agent, regim, distr_inkass, object,adress, auto) "
+							  + "home_number,agent, regim, distr_inkass, object,adress, auto, adressForKassa) "
 							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name
-							  +"' ,"+home_number+", 'СК', '9-21', '"+ distr_inkass+"','"+object+"','"+adress+"', '"+new CurientTime().get()+"', '"+adressForInkass+"')";
+							  +"' ,"+home_number+", 'СК', '9-21', '"+ distr_inkass+"','"+object+"','"
+							  +adress+"', '"+new CurientTime().get()+"', '"+adressForKassa+"')";
 						try {
 							this.uni_reqest_in_db(query);
 						} catch (SQLException e) {
@@ -1410,6 +1414,9 @@ public class BD_write {
 				bdw.connect();
 				query = "UPDATE trmlist_report SET "+column_name+"= '" + cell_value + "' WHERE id_term = " + id_term;
 				bdw.uni_reqest_in_db(query);				
+				query1 = "UPDATE sutable_inkass SET "+column_name+"= '" + cell_value + "' WHERE id_term = " + id_term;
+				bdw.uni_reqest_in_db(query1);
+				
 				bdw.close_connect();
 			}
 			
