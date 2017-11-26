@@ -2052,7 +2052,7 @@ public class Experr {
 			        progressBar_inkass.setForeground(Color.GREEN);
 			        panel_23.add(progressBar_inkass, "cell 3 0,grow");
 			        progressBar_inkass.setMinimum(0);
-			        progressBar_inkass.setMaximum(100);
+			       // progressBar_inkass.setMaximum(100);
 			        progressBar_inkass.setVisible(false);
 			        
 							        

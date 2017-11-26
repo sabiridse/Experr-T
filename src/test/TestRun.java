@@ -18,6 +18,7 @@ public class TestRun {
 
 	public static void main(String[] args) {
 
+		//System.out.println(new ObjectName().cater("Верный (Волхов г., Державина пр-кт., д.38)", "Волхов г (Ленинградская обл/Волховский р-н)"));
 		
 		    //System.out.println(new Update().addAdressForKassa("Горбунки д (Ленинградская обл/Ломоносовский р-н)", "", "д.16"));
 		

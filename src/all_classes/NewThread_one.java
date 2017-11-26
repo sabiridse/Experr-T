@@ -1,6 +1,7 @@
 package all_classes;
 
 import inkass.DataForInkass;
+import trmlist_report.CheckNOdata;
 import trmlist_report.Update;
 
 //import src.OSMP;
@@ -35,6 +36,7 @@ public class NewThread_one extends Thread{
 						        try {
 				
 						        	update.insertTo();
+						        	new CheckNOdata().checkIn();
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
@@ -56,17 +58,13 @@ public class NewThread_one extends Thread{
 						}).start();
 					}
 					
-									public void New_ThreadInsert(int start, int finish){
-										
-										Update update = new Update();
+									public void New_ThreadNO_data(){																			
 										
 										
-										new Thread(() -> {
-										       
-							
+										new Thread(() -> {										       							
 										        try {
 							
-										        	update.insertData(start,finish);
+										        	
 												} catch (Exception e) {
 													e.printStackTrace();
 												}

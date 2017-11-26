@@ -147,19 +147,42 @@ public class TooManyInkassTableSerch {
 		}
 		
 		private ArrayList addList(ArrayList<ArrayList<String>> dataOfDB, String [] dataOfTextFild){
+			int triger =0;
 			ArrayList<ArrayList<String>> CopyPaste = new ArrayList<>();
 			for (String id_term:dataOfTextFild){
-				for (ArrayList<String> rowIn:dataOfDB){
-					ArrayList<String> rowOut = new ArrayList();
-					if (rowIn.get(0).compareTo(id_term)==0){
-						rowOut.add(rowIn.get(0));
-						rowOut.add(rowIn.get(1));
-						rowOut.add(rowIn.get(2));
-						CopyPaste.add(rowOut);
-					}				
-				}				
+				ArrayList<String> rowOut = new ArrayList();
+				rowOut.add(id_term);
+				triger = 0;
+					for (ArrayList<String> rowIn:dataOfDB){					
+						if (rowIn.get(0).compareTo(id_term)==0){					
+							rowOut.add(rowIn.get(1));
+							rowOut.add(rowIn.get(2));
+							triger = 1;
+						}				
+					}
+					if (triger ==0){
+						rowOut.add("");
+						rowOut.add("");
+					}
+				CopyPaste.add(rowOut);
 			}		
 			return CopyPaste;	
 		}
 		
+//		private ArrayList addList(ArrayList<ArrayList<String>> dataOfDB, String [] dataOfTextFild){
+//			ArrayList<ArrayList<String>> CopyPaste = new ArrayList<>();
+//			for (String id_term:dataOfTextFild){
+//				for (ArrayList<String> rowIn:dataOfDB){
+//					ArrayList<String> rowOut = new ArrayList();
+//					
+//					if (rowIn.get(0).compareTo(id_term)==0){
+//						rowOut.add(rowIn.get(0));
+//						rowOut.add(rowIn.get(1));
+//						rowOut.add(rowIn.get(2));
+//						CopyPaste.add(rowOut);
+//					}				
+//				}				
+//			}		
+//			return CopyPaste;	
+//		}
 }

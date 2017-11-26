@@ -1195,7 +1195,8 @@ public class BD_write {
 //									}					
 //						}
 			
-			public String getName_term (String id_term){				
+			public String getName_term (String id_term){	
+
 				String query = "select name_term from terminals where id_term = '"+id_term+"'";		        
 				String name_term = "не определено";
 				Statement stmt;				
@@ -1203,7 +1204,8 @@ public class BD_write {
 					stmt = conn.createStatement();						
 						ResultSet result;
 						result = stmt.executeQuery(query);				
-									while (result.next()) {													
+									while (result.next()) {	
+
 										name_term = result.getString("name_term");	
 									}
 									result.close();							
@@ -1229,12 +1231,30 @@ public class BD_write {
 									}
 									result.close();							
 					}	catch (SQLException e)	{System.out.println("9954 " +e);}																			
-				//this.close_connect();
-				System.out.println(id_term);
-				System.out.println(CityAndStreet.get(0));
 				
 				return CityAndStreet;
 			}
+			
+			public ArrayList<ArrayList<String>> getTerminalsWhithNOdataInObject() throws Exception {	
+				this.connect();
+				ArrayList<ArrayList <String>> terms = new ArrayList<>();
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery("select id_term, city_name from trmlist_report where object like '%нет данных%'");					
+									while (result.next()) {	
+										ArrayList <String> row = new ArrayList<>();
+										row.add(result.getString("id_term"));
+										row.add(result.getString("city_name"));
+										terms.add(row);
+									}
+									result.close();							
+					}	catch (SQLException e)	{System.out.println("1252 " +e);}																			
+				
+				return terms;
+			}
+			
 			public String getDistr_inkass (String city_name, String street_name ) throws Exception {	
 				//this.connect();
 				String distr_inkass = "";

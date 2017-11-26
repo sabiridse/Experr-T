@@ -6,7 +6,7 @@ public class ObjectName {
 
 	private String objectName;
 			
-			private void cater(String input, String city_name){	
+			public void cater(String input, String city_name){	
 
 				objectName = "нет данных";
 				String city ="";
@@ -21,7 +21,7 @@ public class ObjectName {
 						
 						
 						
-						 if (city_name.compareTo("Санкт-Петербург г")!=0){							 
+						 if (city_name.compareTo("Санкт-Петербург г")!=0 & objectName.compareTo("нет данных")!=0){							 
 							 city = city_name.substring(0, city_name.indexOf("(")-1);
 							 objectName = city +"., " + objectName;							 
 						 }

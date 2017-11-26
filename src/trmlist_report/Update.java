@@ -95,6 +95,8 @@ public class Update {
 			      String home_number;
 				  DistrInkass distInk = new DistrInkass();
 				  ObjectName objName = new ObjectName();
+				  Experr.progressBar_inkass.setMaximum(finishRow);
+				  Experr.progressBar_inkass.setVisible(true);
 					  for(int row = startRow; row <finishRow; row++){
 												        	
 							id_term = (int) sheet_repo.getRow(row).getCell(1).getNumericCellValue();
@@ -103,7 +105,7 @@ public class Update {
 							home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();
 												        	
 							String adress = street_name + "., д." + home_number;
-												        	
+							Experr.progressBar_inkass.setValue(row);				        	
 							switch (this.checkDouble(Integer.toString(id_term))){															
 								case 0: bdw.insertInTo_trmlist_reportPartOne(id_term, city_name, street_name, 
 										this.modificNumberHome(home_number),
@@ -115,7 +117,9 @@ public class Update {
 							}											        	
 					  }	
 				  
-				  
+					  Experr.progressBar_inkass.setVisible(false);
+					  Experr.progressBar_inkass.setMaximum(100);
+					  Experr.progressBar_inkass.setValue(0);
 				}
 												
 				private String addAdressForKassa(String city_name, String street_name, String adress){
