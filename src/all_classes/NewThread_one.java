@@ -1,6 +1,7 @@
 package all_classes;
 
 import inkass.DataForInkass;
+import inkass.UpDateTable;
 import trmlist_report.CheckNOdata;
 import trmlist_report.Update;
 
@@ -72,7 +73,16 @@ public class NewThread_one extends Thread{
 									
 									}
 	
-	
+									public void New_ThreadUpDateTable(){						
+										new Thread(() -> {
+										       				
+										        try {
+										        	new UpDateTable().start();
+												} catch (Exception e) {
+													e.printStackTrace();
+												}
+										}).start();
+									}
 	
 /*	
 	public void New_fore(){//*****����� ����� ��������� ������  ������ ��������*****

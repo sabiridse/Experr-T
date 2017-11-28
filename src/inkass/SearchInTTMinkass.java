@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import all_classes.BD_write;
+import all_classes.Experr;
 
 public class SearchInTTMinkass {
 
 	public void insertArrayTTMInDB(ArrayList<ArrayList> subtable){
-		
+		int prBar = 200;
 		BD_write bdw = new BD_write();
 		
 		try {
@@ -19,7 +20,7 @@ public class SearchInTTMinkass {
 		}
 		
 		for (ArrayList row:subtable){
-			
+			prBar++;
 			String id_term = Integer.toString((int)row.get(0));
 			String name_term = (String) row.get(1);
 			String object = (String) row.get(2);
@@ -43,7 +44,7 @@ public class SearchInTTMinkass {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		Experr.progressBar_inkass.setValue(prBar);
 		}
 	}
 	

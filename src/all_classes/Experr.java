@@ -108,6 +108,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollBar;
 import javax.swing.JRadioButton;
 import net.miginfocom.swing.MigLayout;
+import services.CurientTime;
 import trmlist_report.Update;
 import workBeforeStart.ServiceWBS;
 
@@ -118,6 +119,7 @@ import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import javax.swing.SpinnerListModel;
 import javax.swing.JEditorPane;
+import com.toedter.calendar.JDateChooser;
 
 public class Experr {
 
@@ -191,6 +193,7 @@ public class Experr {
 	private JTextField textField_6;
 	private JTextField textField_7;
 	public static JTextField textField_8;
+	public static JComboBox comboBox;
 
 	public static long hours_signal = 7200000, hours_pay = 0;
 
@@ -209,6 +212,9 @@ public class Experr {
 	public static JTextField textField_last_inkass;
 	public static JTextField txtFild_color_mailto1;
 	public static JTextField txtFild_color_mailto2;
+	
+	public static JDateChooser dateChooser_OT;
+	public static JDateChooser dateChooser_DO;
 	
 	private static String distr_inkass3 ="рута";
 	public static String distr_inkass4 = "рута";
@@ -425,17 +431,25 @@ public class Experr {
 			
 			button_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
-					String query_find = new TooManyCriteries().addQuery();											
 					BD_write bdw = new BD_write();
-					bdw.connect();
-						try {
-							bdw.reqest_in_db(query_find);
-						} catch (Exception e) {
-							
-							System.out.println("context serch " +e);
-						}
-					bdw.close_connect();
+					switch (Experr.history){
+					
+					case 0 : String query_find = new TooManyCriteries().addQuery();											
+								
+								bdw.connect();
+									try {
+										bdw.reqest_in_db(query_find);
+									} catch (Exception e) {
+										
+										System.out.println("context serch " +e);
+									}
+								bdw.close_connect(); break;
+					case 1 :    try {
+									bdw.main_reqest();
+								} catch (Exception e) {
+									e.printStackTrace();
+								}		
+					}
 				}                                                       
 				
 			});
@@ -491,7 +505,7 @@ public class Experr {
 			      label_6.setForeground(new Color(51, 102, 51));
 			      
 			        //******************************ia?o?oou***********************************************************************						                            				
-			        			JComboBox comboBox = new JComboBox();
+			        				comboBox = new JComboBox();
 			        				comboBox.setBounds(5, 259, 97, 23);
 			        				panel_6.add(comboBox);
 			        				comboBox.setMaximumRowCount(12);
@@ -842,7 +856,11 @@ public class Experr {
 			    		panel_10.add(scrollPane);
 			    		scrollPane.setViewportBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 204)));
 			    		//**********************************************************************************************************************								
-			        						                            																																												
+			        	
+			    		
+			   
+			    		
+			    		
 									table = new JTable(model);																													
 									table.setToolTipText("kkkbjkb");
 									table.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -1425,13 +1443,6 @@ public class Experr {
 			               date_OT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(js_OT.getValue());
 			            }
 			        };
-			        
-			        JSpinner spinner_save_OT = new JSpinner();
-			        spinner_save_OT.setModel(new SpinnerDateModel(new Date(1486933200000L), new Date(1483218000000L), null, Calendar.DAY_OF_YEAR));
-			        spinner_save_OT.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			        spinner_save_OT.setBounds(942, 139, 137, 30);
-			        panel.add(spinner_save_OT);
-			        spinner_save_OT.addChangeListener(listener_OT);
 //**********************************************************************************************************************			        
 			        JLabel label_18 = new JLabel("\u0418\u0441\u0442\u043E\u0440\u0438\u044F \u041E\u0422:");
 			        label_18.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1455,13 +1466,6 @@ public class Experr {
 			                
 			            }
 			        };
-			        
-			        JSpinner spinner_save_DO = new JSpinner();
-			        spinner_save_DO.setModel(new SpinnerDateModel(new Date(1486933200000L), new Date(1483304400000L), new Date(1581541200000L), Calendar.DAY_OF_YEAR));
-			        spinner_save_DO.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			        spinner_save_DO.setBounds(942, 180, 137, 30);
-			        panel.add(spinner_save_DO);
-			        spinner_save_DO.addChangeListener(listener_DO);
 			       
 //************вкл выкл выгрузки истории***********************************************			        
 			        JCheckBox CheckBox_history = new JCheckBox("\u043F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C");
@@ -1488,6 +1492,21 @@ public class Experr {
 			        txtFild_color_mailto2.setColumns(10);
 			        txtFild_color_mailto2.setBounds(470, 388, 86, 20);
 			        panel.add(txtFild_color_mailto2);
+//*********************************************************************************************
+			        
+			        dateChooser_OT = new JDateChooser();
+			        dateChooser_OT.setForeground(new Color(0, 0, 0));
+			        dateChooser_OT.setDateFormatString("yyyy-MM-dd");
+			        dateChooser_OT.setBounds(929, 135, 150, 30);
+			        panel.add(dateChooser_OT);
+			        dateChooser_OT.setDate(new Date());
+			        
+			        dateChooser_DO = new JDateChooser();
+			        dateChooser_DO.setDateFormatString("yyyy-MM-dd");
+			        dateChooser_DO.setBounds(929, 179, 150, 30);
+			        panel.add(dateChooser_DO);
+			        dateChooser_DO.setDate(new Date());
+			        
 			        
 			        
 //***************************************************************************************
@@ -1976,25 +1995,9 @@ public class Experr {
 									        panel_21.add(button_6, "cell 0 31,growx");
 									        button_6.addActionListener(new ActionListener() {
 							     	        	   public void actionPerformed(ActionEvent e) {
-							   	        		   
-							     	        		  BD_write bdw = new BD_write();
-							     	        		  String query = "SELECT ostatki.id_term, terminals.name_term, trmlist_report.object, trmlist_report.adress, trmlist_report.adressForKassa,"
-							     	        		  			   + "trmlist_report.regim, trmlist_report.agent,trmlist_report.distr_inkass, ostatki.summ, ostatki.last_inkass_data, "
-							     	        		  			   + "trmlist_report.auto "
-							     	        		  			   + "FROM ostatki "
-							     	        		  			   + "left JOIN terminals ON ostatki.id_term = terminals.id_term "
-							     	        		  			   + "left JOIN trmlist_report ON ostatki.id_term = trmlist_report.id_term "
-							     	        		  			   + "where terminals.except_term !=1 and "
-							     	        		  			   + "terminals.regions = 0";
-							     	        		  bdw.connect();
-														try {
-							
-															bdw.getArrayForInkassTable(query,0);
-														} catch (Exception e1) {
-															e1.printStackTrace();
-														}
-														
-														 bdw.close_connect();
+
+							     	        		 new NewThread_one().New_ThreadUpDateTable();
+															
 							     	        	   }
 										        });
 									        

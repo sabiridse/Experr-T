@@ -15,6 +15,7 @@ import java.util.Locale;
 import java.util.Properties;
 
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 
 import GUIbonus.CopyPasteDataInkass;
@@ -133,8 +134,12 @@ public class BD_write {
 //***********************************************************************************************************************************				
 
 									public void  getArrayForInkassTable(String query, int search) throws Exception {
-
+										Experr.progressBar_inkass.setMaximum(2300);
+										Experr.progressBar_inkass.setValue(20);
+										
+										Experr.progressBar_inkass.setVisible(true);
 										rows_count = 0;
+										int i =0;
 										ArrayList<ArrayList> subtable = new ArrayList();
 										TTM_inkass ttm = new TTM_inkass();
 										ttm.dataArrayList.clear(); 
@@ -144,7 +149,7 @@ public class BD_write {
 												ResultSet result;
 												result = stmt.executeQuery(query);
 															while (result.next()) {
-	
+																rows_count++;
 																	ArrayList<Object> row = new ArrayList<>();
 																	row.add(result.getInt("id_term"));
 																	row.add(result.getString("name_term"));
@@ -161,20 +166,30 @@ public class BD_write {
 																	if (search == 0){
 																	subtable.add(row);
 																	}
+																	if (rows_count == 7){
+																		i++;
+																		Experr.progressBar_inkass.setValue(i);
+																		rows_count = 0;
+																	}
 															}
 															result.close();							
 											}	catch (SQLException e)	{Loging log = new Loging();
 																		log.log(e," Запрос для таблицы inkass: ");}
+										
+										if (search == 0){
+										new SearchInTTMinkass().insertArrayTTMInDB(subtable);
 
+										}
+										Experr.progressBar_inkass.setValue(11);
 										Experr.table_5.updateUI();
 										Experr.table_5.revalidate();
 										Experr.table_5.repaint();
 										Experr.model_inkass.fireTableDataChanged();
 										Experr.setcountRowsInTTMinkass(Integer.toString(ttm.getRowCount()));
-										if (search == 0){
-										new SearchInTTMinkass().insertArrayTTMInDB(subtable);
-
-										}
+										Experr.progressBar_inkass.setValue(2298);
+										Experr.progressBar_inkass.setVisible(false);
+									 	Experr.progressBar_inkass.setMaximum(100);
+										Experr.progressBar_inkass.setValue(0);
 								    }
 									
 //**********************************************************************************************************************									
@@ -207,6 +222,7 @@ public class BD_write {
 //********************************************************ДЛЯ таблицы  ошибок **запрос в базу********************										
 									public void reqest_in_db (String query) throws ClassNotFoundException {
 										rows_count = 0;
+										this.connect();
 										TermTableModel ttm = new TermTableModel();				
 										ttm.dataArrayList.clear();  			        
 										Statement stmt;				
@@ -215,7 +231,7 @@ public class BD_write {
 												ResultSet result;
 												result = stmt.executeQuery(query);					
 															while (result.next()) {
-																	String [] row = {
+																	String [] row = {																			
 																			result.getString("id_term"),
 																			result.getString("name_term"),
 																			(result.getString("heart_bit")).substring(0, 16),
@@ -1175,7 +1191,7 @@ public class BD_write {
 							  + "home_number,agent, regim, distr_inkass, object,adress, auto, adressForKassa) "
 							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name
 							  +"' ,"+home_number+", 'СК', '9-21', '"+ distr_inkass+"','"+object+"','"
-							  +adress+"', '"+new CurientTime().get()+"', '"+adressForKassa+"')";
+							  +adress+"', '"+new CurientTime().getString()+"', '"+adressForKassa+"')";
 						try {
 							this.uni_reqest_in_db(query);
 						} catch (SQLException e) {
@@ -1430,14 +1446,14 @@ public class BD_write {
 			
 			public void editCellOfTableInkass (String id_term, String column_name, String cell_value) throws Exception {
 				String query;
-				BD_write bdw = new BD_write();
-				bdw.connect();
+				//BD_write bdw = new BD_write();
+				this.connect();
 				query = "UPDATE trmlist_report SET "+column_name+"= '" + cell_value + "' WHERE id_term = " + id_term;
-				bdw.uni_reqest_in_db(query);				
+				this.uni_reqest_in_db(query);				
 				query1 = "UPDATE sutable_inkass SET "+column_name+"= '" + cell_value + "' WHERE id_term = " + id_term;
-				bdw.uni_reqest_in_db(query1);
+				this.uni_reqest_in_db(query1);
 				
-				bdw.close_connect();
+				this.close_connect();
 			}
 			
 			
@@ -1460,7 +1476,6 @@ public class BD_write {
 		
 		public void main_reqest () throws Exception{
 			long curTime = System.currentTimeMillis();
-			//String StringDateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(curTime - 60000);
 			String StringDateTime_sign = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(curTime
 																				- (Experr.days_signal*24*60*60000 
 																				 + Experr.hours_signal));
@@ -1468,14 +1483,6 @@ public class BD_write {
 			String StringDateTime_pay = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(curTime
 																				- (Experr.days_pay*24*60*60000 
 																				 + Experr.hours_pay));
-			
-			
-			BD_write bdw = new BD_write();
-			
-//			System.out.println(Experr.history);	
-//			System.out.println(Experr.date_OT);
-//			System.out.println(Experr.date_DO);
-//			System.out.println(Experr.query_distr);
 			
 			if ( Experr.history == 0) {
 			
@@ -1490,29 +1497,28 @@ public class BD_write {
 							 +   Experr.query_distr										
 							 + " terminals.except_term = 0";
 					
-					bdw.reqest_in_db(query_main_for_table);
+					this.reqest_in_db(query_main_for_table);
 				}
 		
 				if ( Experr.history == 1) {
 					
-					System.out.println(Experr.date_OT);
-					System.out.println(Experr.date_DO);
+					String distr = Experr.comboBox.getSelectedItem().toString();
+					String date_OT = ((JTextField)Experr.dateChooser_OT.getDateEditor().getUiComponent()).getText();
+					String date_DO = ((JTextField)Experr.dateChooser_DO.getDateEditor().getUiComponent()).getText();
+					if (distr.compareTo("ВСЕ") == 0){distr = "";};
 					
 					String query_main_for_table = "select errors_save.id_term, terminals.name_term, errors_save.heart_bit, "
 							                     +"errors_save.pay, errors_save.cash, errors_save.print, errors_save.tach, "
-							                     +"errors_save.others, terminals.name_distr, errors_save.curtime "
+							                     +"errors_save.other, terminals.name_distr, errors_save.curtime "
 							                     +"from errors_save "
 							                     +"left join terminals on errors_save.id_term = terminals.id_term "
 							                     +"where "
-							                     +"curtime > '" + Experr.date_OT + "' and "
-							                     +"curtime < '" + Experr.date_DO + "'";
-//							                     + Experr.query_distr
-//							                     +"(errors_save.signal < ADDDATE(curtime, INTERVAL -2 hour) or "
-//							                     +"errors_save.pay < ADDDATE(curtime, INTERVAL -2 day) or "
-//							                     +"errors_save.cash != 'OK' or "
-//							                     +"errors_save.others !='' )";
-					
-						bdw.reqest_in_db(query_main_for_table);
+							                     +"(errors_save.id_term = '"+Experr.textField_8.getText()+"' or "
+							                     +"terminals.name_term like '%"+Experr.textField_8.getText()+"%') and "
+							                     +"terminals.name_distr like '%"+distr+"%' and "
+							                     +"curtime between '" + date_OT + "' and '"
+							                     + date_DO + "'";
+						this.reqest_in_db(query_main_for_table);
 				}
 		
 		

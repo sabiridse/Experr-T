@@ -1,5 +1,7 @@
 package contextFind;
 
+import javax.swing.JTextField;
+
 import all_classes.BD_write;
 import all_classes.Experr;
 import trmlist_report.DistrInkass;
@@ -11,7 +13,7 @@ public class TooManyCriteries {
 	private String[] OtputData;
 	
 			 String[] getSplitInputData(){
-				
+				 
 					try {
 						InputData = Experr.textField_8.getText();
 					} catch (Exception e) {
