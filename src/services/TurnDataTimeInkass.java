@@ -9,6 +9,12 @@ public class TurnDataTimeInkass {
 		String MM = input.substring(3, 5);
 		String dd = input.substring(0, 2);
 		String time = input.substring(11, 16);
+
+		if (time.lastIndexOf(":")==4){
+			time = time.substring(0,4);
+		}
+		
+		
 		String outPut = yyyy + "-" + MM + "-" + dd + " " + time;
 		return outPut;
 	}

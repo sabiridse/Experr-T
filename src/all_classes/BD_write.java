@@ -1518,6 +1518,7 @@ public class BD_write {
 							                     +"terminals.name_distr like '%"+distr+"%' and "
 							                     +"curtime between '" + date_OT + "' and '"
 							                     + date_DO + "'";
+					//System.out.println(query_main_for_table);
 						this.reqest_in_db(query_main_for_table);
 				}
 		

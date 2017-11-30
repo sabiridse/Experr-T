@@ -15,6 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Osmp_Osmp.FileOperation;
 import all_classes.BD_write;
+import services.TurnDataTimeInkass;
 
 public class DataInkassDPS {
 
@@ -43,12 +44,15 @@ public class DataInkassDPS {
 	
 		private ArrayList<ArrayList<String>>  writeData(){
 			
+			TurnDataTimeInkass tdti = new TurnDataTimeInkass();
+			
+			
 			ArrayList<ArrayList<String>> inkassCollection = new ArrayList<>();
 			
 			for (int i = 3; i < rows_in_PPS; i++){
 					ArrayList<String> row = new ArrayList<>();
 					String id_term = Integer.toString((int) sheetPPS.getRow(i).getCell(0).getNumericCellValue());
-					String last_inkass_data = sheetPPS.getRow(i).getCell(1).getStringCellValue();
+					String last_inkass_data = tdti.turningString(sheetPPS.getRow(i).getCell(1).getStringCellValue());
 					row.add(id_term);
 					row.add(last_inkass_data);
 					inkassCollection.add(row);
