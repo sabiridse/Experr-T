@@ -26,7 +26,7 @@ public class ShortStataByMarshrut extends JFrame{
 		
 		JFrame frame = new JFrame();     
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Experr.directory_res + "Ex5.png"));
-		frame.setTitle("Число терминалов в маршрутах при лимите "+Experr.Summlimit+ " руб.");
+		frame.setTitle(Experr.Summlimit+ " р. на СКспб, "+Experr.SummlimitLO+ " р. на СКло, "+Experr.SummlimitPirSps+ " р. на ПИР и СПС. ");
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.setBounds(400, 400, 450, 350);

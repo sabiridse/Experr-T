@@ -52,7 +52,7 @@ public class NewThread_one extends Thread{
 						       				
 						        try {
 						        	DataForInkass dfi = new DataForInkass();
-						        	dfi.addInputData();
+						        	dfi.checkBefore();
 								} catch (Exception e) {
 									e.printStackTrace();
 								}

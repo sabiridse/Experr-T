@@ -15,6 +15,7 @@ public class DataForInkass {
 	private BD_write bdw = new BD_write();
 	private Marshruts marsh = new Marshruts();
 	private static int countMarshruts;
+	private static int trigerForFinishMassage;
 	
 	private void getInputData(String indexMarshrut, int rowLimitCount, int agentIndex) {
 			
@@ -34,33 +35,62 @@ public class DataForInkass {
 			    
 		}
 	
-			public void addInputData() throws Exception{
+	public void checkBefore() throws Exception{
+		
+		trigerForFinishMassage = 0;
+		int agentIndex = Experr.agent;
+		int marshrutIndex = Experr.getAllMarshrutsStatus();
+		if (marshrutIndex ==1){
+			this.addInputData(0);
+		}
+		
+		if (marshrutIndex == 0){
+			
+			switch (agentIndex){
+				case 0: trigerForFinishMassage = 2;
+						this.addInputData(1);
+						this.addInputData(3);
+						trigerForFinishMassage = 1;
+						this.addInputData(2);
+						trigerForFinishMassage = 0;
+						break;
+				case 1: this.addInputData(1);break;
+				case 2: this.addInputData(2);break;
+				case 3: this.addInputData(3);break;			
+			}			
+		}
+	}
+	
+			private void addInputData(int agentIndex) throws Exception{
 
 				Experr.progressBar_inkass.setVisible(true);
 				
 				//bdw.connect();
 				marsh.OpenFile();
 				Experr.progressBar_inkass.setValue(1);
-				
 				switch (Experr.getAllMarshrutsStatus()){				
-						case 0: this.fiveMarshruts();break;
+						case 0: this.fiveMarshruts(agentIndex);break;
 						case 1: this.allMarshruts();break;								
 				}	
 					Experr.progressBar_inkass.setValue(98);
-					marsh.deleteEmptySheets();					
+					marsh.deleteEmptySheets();
 					marsh.dopi(new DopiTerminals().getArrayDopi());
 					Experr.progressBar_inkass.setValue(98);
-					marsh.saveAndClose();
+					marsh.saveAndClose(agentIndex);
 					
 					Experr.progressBar_inkass.setVisible(false);
 					Experr.progressBar_inkass.setValue(0);
+
 					
-					Gui1 gui = new Gui1();
-					String txt = "<html><center>файл МАРШРУТЫ готов</html>";
-					gui.Gui0(txt);					
+					switch (trigerForFinishMassage){					
+						case 0 : new Gui1().Gui0("<html><center>файл МАРШРУТЫ готов</html>"); break;
+						case 1 : new Gui1().Gui0("<html><center>файлы маршрутов готовы</html>"); break;	
+						case 2 : break;
+					}					
+
 			}
 			
-			private void fiveMarshruts() throws Exception{//****main cicle for creature MARSHRUTS by ONLY for 1,2,3,4,5 marshruts
+			private void fiveMarshruts(int agentIndex) throws Exception{//****main cicle for creature MARSHRUTS by ONLY for 1,2,3,4,5 marshruts
 				
 				//Experr experr = new Experr();
 				List <String> distrs = new ArrayList<>();
@@ -79,7 +109,7 @@ public class DataForInkass {
 						step = step + stepB;
 							try {
 								this.getPrivateDataByMarshrut(curientDistr,
-															  Experr.agent, 
+															  agentIndex, 
 															  Experr.limit);
 							} catch (Exception e) {
 								e.printStackTrace();

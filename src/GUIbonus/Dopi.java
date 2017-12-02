@@ -72,7 +72,7 @@ public class Dopi extends JFrame{
       	   }
 	        });
 		
-		JLabel lblNewLabel = new JLabel("Добавить номера терминалов для ДОПов");
+		JLabel lblNewLabel = new JLabel("Добавить  ДОПы");
 		lblNewLabel.setForeground(new Color(153, 204, 204));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Century Schoolbook", Font.PLAIN, 13));

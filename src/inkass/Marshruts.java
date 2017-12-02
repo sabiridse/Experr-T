@@ -40,7 +40,7 @@ public class Marshruts {
 	
 		private void setCurientSheet(int index) {
 			curientSheet = curientWB_open.getSheetAt(index);
-
+			
 		}
 
 			private String getDir() {
@@ -53,20 +53,20 @@ public class Marshruts {
 				}
 		
 		
-					private void SaveFile() throws Exception{
-						
+					private void SaveFile(int agentIndex) throws Exception{
+						curientWB_open.setSheetHidden(0, true);
 						FileOutputStream out = new FileOutputStream(new File(this.getDir()
-												+this.getFileNameMarshruts()));
+												+this.getFileNameMarshruts(agentIndex)));
 						curientWB_open.write(out);
 						out.close();												
 					}
 	
 	
-		private String getFileNameMarshruts() throws Exception{
+		private String getFileNameMarshruts(int agentIndex) throws Exception{
 
 				String agent = "";			
 				//Experr experr = new Experr();
-				switch (Experr.agent){	
+				switch (agentIndex){	
 					case 1: agent = "ПИР_";break;
 					case 2: agent = "СК_";break;
 					case 3: agent = "СПС_";break;				
@@ -153,12 +153,12 @@ public class Marshruts {
 	}
 		
 	
-			public void saveAndClose() throws Exception{		
+			public void saveAndClose(int agentIndex) throws Exception{		
 				
 				step =0;
 				
 				try {
-					this.SaveFile();
+					this.SaveFile(agentIndex);
 				} catch (IOException e) {
 					log.log(e," Ошибка сохранения файла МАРШРУТЫ_болван.xlsx ");
 					e.printStackTrace();

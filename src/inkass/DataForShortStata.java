@@ -49,7 +49,7 @@ public class DataForShortStata {
 				countTerminalsinStata.addAll(bdw.getStatByMarshrut(ListPrivateData.get(0),
 															  ListPrivateData.get(1),
 															  ListPrivateData.get(2),
-															  limit));										
+															  limit, Integer.toString(Experr.SummlimitPirSps)));										
 				countTerminalsinStata.add(distr_inkass);
 			}
 			

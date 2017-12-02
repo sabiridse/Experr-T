@@ -1161,10 +1161,10 @@ public class BD_write {
 					return summ;
 		}
 				
-				public  List<String> getStatByMarshrut (String distrUp,String distrCenter,String distrDown, String limit_inkass) { //*****************PROCEDURE**************
+				public  List<String> getStatByMarshrut (String distrUp,String distrCenter,String distrDown, String limit_inkass, String limit_inkassPirSps) { //*****************PROCEDURE**************
 					this.connect();
 					int i =0;
-					String query = "CALL statByMarshrut ('"+distrUp+"' , '"+distrCenter+"' , '"+distrDown+"' , "+limit_inkass+")";
+					String query = "CALL statByMarshrut ('"+distrUp+"' , '"+distrCenter+"' , '"+distrDown+"' , '"+limit_inkass+"' , '"+limit_inkassPirSps+"')";
 					List <String> stata = new ArrayList<String>();	
 					stata.add("0");
 					stata.add("0");
@@ -1355,8 +1355,14 @@ public class BD_write {
 				}
 				
 				if (Experr.allMarshruts == 0){
-					summLimit = Experr.Summlimit;
+					
+					switch (agentIndex){
+					case 1: summLimit = Experr.SummlimitPirSps; break;
+					case 2:	summLimit = Experr.Summlimit; break;	
+					case 3:	summLimit = Experr.SummlimitPirSps;  break;
+					}
 				}
+				
 				
 				ArrayList<String[]> dataForInkass = new ArrayList<>();				
 				String query = "(SELECT trmlist_report.object, ostatki.id_term, trmlist_report.adress, trmlist_report.regim, "   // querry only for SPb marshruts
@@ -1403,8 +1409,12 @@ public class BD_write {
 				case 3:	agent = "agent = 'СПС' "; break;
 				}
 				
-				if (Experr.allMarshruts == 0){
-					summLimit = Experr.SummlimitLO;
+				if (Experr.allMarshruts == 0){					
+					switch (agentIndex){
+					case 1: summLimit = Experr.SummlimitPirSps; break;
+					case 2:	summLimit = Experr.SummlimitLO; break;	
+					case 3:	summLimit = Experr.SummlimitPirSps;  break;
+					}
 				}
 				
 				
