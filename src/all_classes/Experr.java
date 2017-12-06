@@ -109,6 +109,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JRadioButton;
 import net.miginfocom.swing.MigLayout;
 import services.CurientTime;
+import services.HintTextFieldUI;
 import trmlist_report.Update;
 import workBeforeStart.ServiceWBS;
 
@@ -241,32 +242,48 @@ public class Experr {
 				log.logtext(" Старт программы "
 							+"******************************************************************************");
 				
+				
+			
+				
 				Calendar calendar = Calendar.getInstance();
 				day = calendar.get(Calendar.DAY_OF_MONTH);
 				month = calendar.get(Calendar.MONTH) + 1;
 				year = calendar.get(Calendar.YEAR);
 
 				directory_res = path + "//res//"; // путь к папке с прогой по
-														// умолчанию
 				
-				try {
-					Experr window = new Experr();
-					window.frmExperrtV.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				new AuthForm().ShowAuthForm();
+				
+				// умолчанию
+//				try {
+//					Experr window = new Experr();
+//					window.frmExperrtV.setVisible(true);//*****для дизайн моде разкоментить
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
 				
 			}
 		});
 	}
-
-	public Experr() throws Exception {
+//	public Experr() throws Exception {//*****для дизайн моде разкоментить
+//
+//		initialize();
+//
+//	}
+	
+	public void start() throws Exception {//*****для дизайн моде ЗАкоментить
 
 		initialize();
+		try {
+			Experr window = new Experr();
+			window.frmExperrtV.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private void initialize() throws Exception {
+	private  void initialize() throws Exception {
 		
 		
 		Xml_read xml = new Xml_read();
@@ -275,7 +292,7 @@ public class Experr {
 		frmExperrtV = new JFrame();
 		
 //**********************VERSION****************************************************
-		frmExperrtV.setTitle("EXperr-t  v.2.0");//**********************VERSION**
+		frmExperrtV.setTitle("EXperr-t  v.3.0 Auth");//**********************VERSION**
 //*********************************************************************************
 		
 		
@@ -460,6 +477,7 @@ public class Experr {
 			      textField_8.setBounds(5, 64, 97, 20);
 			      panel_6.add(textField_8);
 			      textField_8.setColumns(100);
+			      textField_8.setUI(new HintTextFieldUI("Поиск", false));
 			      
 			      JButton button_3 = new JButton("\u0412\u042B\u0425\u041E\u0414");
 			      button_3.setBounds(5, 10, 97, 30);
@@ -1968,6 +1986,8 @@ public class Experr {
 									        textField_search = new JTextField();
 									        panel_21.add(textField_search, "cell 0 22,growx");
 									        textField_search.setColumns(10);
+									        
+									        textField_search.setUI(new HintTextFieldUI("Поиск", false));
 									        
 									        JButton button_search = new JButton("Поиск в таблице");
 									        button_search.setToolTipText("контекстный поиск терминалов");

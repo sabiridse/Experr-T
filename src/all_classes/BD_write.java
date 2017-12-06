@@ -1343,6 +1343,51 @@ public class BD_write {
 				return privateData;
 			}
 			
+			public ArrayList getDistrAndOther (String distr_inkass11, String distr_inkass12, String distr_inkass13,
+											   String distr_inkass21, String distr_inkass22, String distr_inkass23) {	
+				this.connect();
+				ArrayList<ArrayList<String>> distrAndOther = new ArrayList<>();
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery("select DISTINCT terminals.name_distr, terminals.other from terminals "
+												 + "left join trmlist_report on terminals.id_term = trmlist_report.id_term "
+												 + "where (trmlist_report.distr_inkass = '"+distr_inkass11+"' or "
+												 		+ "trmlist_report.distr_inkass = '"+distr_inkass12+"' or "
+												 		+ "trmlist_report.distr_inkass = '"+distr_inkass13+"' or "
+												 		+ "trmlist_report.distr_inkass = '"+distr_inkass21+"' or "
+													    + "trmlist_report.distr_inkass = '"+distr_inkass22+"'  or "
+													    + "trmlist_report.distr_inkass = '"+distr_inkass23+"') and "
+													    + "terminals.except_term = 0 and "
+													    + "terminals.lo = 1 order by name_distr");					
+									while (result.next()) {
+										ArrayList<String>  row = new ArrayList<>();
+										row.add(result.getString("name_distr"));	
+										row.add(result.getString("other"));
+										distrAndOther.add(row);									
+									}
+									result.close();							
+					}	catch (SQLException e)	{}																			
+
+				return distrAndOther;
+			}
+			
+			public String getPacvord (String lo91n) {	
+				this.connect();
+				String pacvord = "";
+				Statement stmt;				
+				try {	
+					stmt = conn.createStatement();						
+						ResultSet result;
+						result = stmt.executeQuery("select pacvord from us123ers where lo91n = '"+lo91n+"'");					
+									while (result.next()) {										
+										pacvord = result.getString("pacvord");										
+									}
+									result.close();							
+					}	catch (SQLException e)	{}																			
+				return pacvord;
+			}
 			
 			public ArrayList<String[]> getDataForInkassSPb (String indexMarshrut, int rowLimitCount, int agentIndex) {	
 				

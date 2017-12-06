@@ -44,7 +44,16 @@ public class NewThread_one extends Thread{
 						}).start();
 					}	
 							
-					
+//					public void pauseThread(){						
+//						new Thread(() -> {
+//						       				
+//						        try {
+//
+//								} catch (Exception e) {
+//									e.printStackTrace();
+//								}
+//						}).start();
+//					}
 					
 					
 					public void New_ThreadInkass(){						

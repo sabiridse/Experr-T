@@ -9,6 +9,7 @@ import javax.swing.SwingConstants;
 
 import all_classes.Experr;
 import all_classes.NewThread_one;
+import inkass.AggregatesForLo;
 import inkass.DataForInkass;
 import inkass.DopiTerminals;
 
@@ -71,6 +72,19 @@ public class Dopi extends JFrame{
 		        	frame.setVisible(false);
       	   }
 	        });
+		
+		JButton btnButton_parts = new JButton("Комплектуха");
+		btnButton_parts.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		btnButton_parts.setForeground(new Color(204, 153, 204));
+		btnButton_parts.setBackground(new Color(53, 53, 204));
+		btnButton_parts.setBounds(70, 167, 145, 32);
+		panel.add(btnButton_parts);
+		btnButton_parts.addActionListener(new ActionListener() {
+	      	   public void actionPerformed(ActionEvent e) {
+	      		   new AggregatesForLo().data();	      		   
+	      	   }
+		        });
+		
 		
 		JLabel lblNewLabel = new JLabel("Добавить  ДОПы");
 		lblNewLabel.setForeground(new Color(153, 204, 204));
