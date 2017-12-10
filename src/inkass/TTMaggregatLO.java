@@ -6,7 +6,7 @@ package inkass;
 	public class TTMaggregatLO extends AbstractTableModel {
 		private static final long serialVersionUID = 4767405994139702250L;
 		private static int columnCount = 2;
-		public  static ArrayList<ArrayList> dataArrayList;
+		public  static ArrayList<ArrayList<String>> dataArrayList;
 		
 		public TTMaggregatLO() {
 			dataArrayList = new ArrayList<>();		
@@ -48,8 +48,8 @@ package inkass;
 	      return false;
 	    }
 		
-		public void addDate(ArrayList inputData) {
-			dataArrayList.clear();
+		public void addDate(ArrayList<ArrayList<String>> inputData) {
+			//dataArrayList.clear();
 			dataArrayList.addAll(inputData);
 		}
 }

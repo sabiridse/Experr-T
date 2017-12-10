@@ -52,10 +52,10 @@ public class AggregatesForLo {
 	}
 	
 	public void data(){
-		TTMaggregatLO ttmLo = new TTMaggregatLO();
-		//ttmLo.dataArrayList.clear();
-		ttmLo.addDate(this.removeDoubleDistrs(this.getDistrAndOther()));
 		new AggregateLo().showFrame();
+		TTMaggregatLO ttmLo = new TTMaggregatLO();
+		ttmLo.dataArrayList.clear();
+		ttmLo.addDate(this.removeDoubleDistrs(this.getDistrAndOther()));
 		
 		
 		

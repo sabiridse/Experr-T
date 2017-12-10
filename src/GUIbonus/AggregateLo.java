@@ -29,7 +29,7 @@ import inkass.TTMcopyPaste;
 			frame.setTitle("Маршруты ИТ в инкассации на завтра");
 			frame.setResizable(false);
 			frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-			frame.setBounds(300, 300, 500, 300);
+			frame.setBounds(300, 300, 500, 200);
 			frame.setBackground(new Color(102, 102, 255));
 			
 			JPanel panel = new JPanel();

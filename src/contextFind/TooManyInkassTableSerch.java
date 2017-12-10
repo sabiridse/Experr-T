@@ -111,8 +111,9 @@ public class TooManyInkassTableSerch {
 		public void copyPasteTable(){
 			try{
 			Integer.parseInt(this.getSplitInputData()[0]);
+			new CopyPasteDataInkass().showFrame();
 			this.creatureCopyPasteTable();							     	        		 	 
-   		  	new CopyPasteDataInkass().showFrame();
+   		  	
 			} catch (Exception e){
 				
 			}

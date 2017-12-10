@@ -12,6 +12,7 @@ import all_classes.NewThread_one;
 import inkass.AggregatesForLo;
 import inkass.DataForInkass;
 import inkass.DopiTerminals;
+import services.HintTextFieldUI;
 
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -47,6 +48,7 @@ public class Dopi extends JFrame{
 		textField_NumbersTerminals.setBounds(10, 82, 272, 32);
 		panel.add(textField_NumbersTerminals);
 		textField_NumbersTerminals.setColumns(10);
+		textField_NumbersTerminals.setUI(new HintTextFieldUI("Copy/Paste целиком таблички номера + примечания", false));
 		
 		JButton btnNewButton_Enter = new JButton("Применить");
 		btnNewButton_Enter.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
