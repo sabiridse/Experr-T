@@ -60,6 +60,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.ButtonGroup;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultCellEditor;
@@ -81,6 +82,7 @@ import Lider_Dps.ServicePPS;
 import Osmp_Osmp.Service;
 import Ostatki.DataInkassDPS;
 import adapter.ExcelAdapter;
+import application.Fxrun;
 import authorization.AuthForm;
 import contextFind.TooManyCriteries;
 import contextFind.TooManyInkassTableSerch;
@@ -89,6 +91,8 @@ import inkass.DataForInkass;
 import inkass.DataForShortStata;
 import inkass.SearchInTTMinkass;
 import inkass.TTM_inkass;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -235,7 +239,7 @@ public class Experr {
 	public static JTextField textField_search;
 
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() {//EventQueue
 			public void run() {
 				
 				Loging log = new Loging();
@@ -304,7 +308,19 @@ public class Experr {
 		frmExperrtV.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmExperrtV.getContentPane().setLayout(new BorderLayout(0, 0));
 		frmExperrtV.setMinimumSize(new Dimension(700, 690));
-									
+		
+		final JFXPanel fxPanel = new JFXPanel();
+		frmExperrtV.add(fxPanel);//**************************************************JAVAFX****************
+		
+		
+		Platform.runLater(new Runnable() {
+			@Override
+			 public void run() {
+				new Fxrun().initFX(fxPanel);
+			}
+		});
+	
+		
 									
 		JScrollPane scrollPane_2 = new JScrollPane();
 		frmExperrtV.getContentPane().add(scrollPane_2, BorderLayout.CENTER);		
@@ -449,6 +465,8 @@ public class Experr {
 			
 			button_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					
+
 					BD_write bdw = new BD_write();
 					switch (Experr.history){
 					

@@ -21,8 +21,8 @@ public class ObjectName {
 						
 						
 						
-						 if (city_name.compareTo("Санкт-Петербург г")!=0 & objectName.compareTo("нет данных")!=0){							 
-							 city = city_name.substring(0, city_name.indexOf("(")-1);
+						 if (city_name.contains("Санкт-Петербург")==false & objectName.compareTo("нет данных")!=0){							 
+							 //city = city_name.substring(0, city_name.indexOf("(")-1);
 							 objectName = city +"., " + objectName;							 
 						 }
 			}

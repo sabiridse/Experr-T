@@ -22,13 +22,13 @@ public class ServiceWBS {
 			e.printStackTrace();
 		}
 //*********************************************************************		    	
-						Service serviceOsmp = new Service();
-							try {
-								serviceOsmp.two_in_one();// terminal_monitoring + terminal_monitoring (1) = terminal_monitoring  whith all errors OSMP
-						} catch (IOException e1) {
-							
-							e1.printStackTrace();
-						}
+//						Service serviceOsmp = new Service();
+//							try {
+//								serviceOsmp.two_in_one();// terminal_monitoring + terminal_monitoring (1) = terminal_monitoring  whith all errors OSMP
+//						} catch (IOException e1) {
+//							
+//							e1.printStackTrace();
+//						}
 //********************************************************************		
 									//new NewThread_one().New_Three();// terminal_monitoring + points_info = export_errors.csv  for dermoshka
 //*******************************************************************		

@@ -1196,7 +1196,9 @@ public class BD_write {
 							this.uni_reqest_in_db(query);
 						} catch (SQLException e) {
 							e.printStackTrace();
-						}					
+						}
+						
+						System.out.println(query);
 			}
 //			public void updateInTo_trmlist_reportPartToo(int id_term, String distr_inkass, String object, String adress){
 //				

@@ -51,11 +51,11 @@ public class DataForInkass {
 						this.addInputData(1);
 						this.addInputData(3);
 						trigerForFinishMassage = 1;
-						this.addInputData(2);
+						//this.addInputData(2);//******************on/off  СК************
 						trigerForFinishMassage = 0;
 						break;
 				case 1: this.addInputData(1);break;
-				case 2: this.addInputData(2);break;
+				//case 2: this.addInputData(2);break;//******************on/off  СК************
 				case 3: this.addInputData(3);break;			
 			}			
 		}
