@@ -60,14 +60,17 @@ public class Update {
 								}
 							}
 					
+									@SuppressWarnings("resource")
 									private void openRepo(){
 										
 										String dir = new FileOperation().getDir();				
 										 fileopen = new JFileChooser(dir);
 										 fileopen.setFileFilter(new FileNameExtensionFilter("xls","xls"));
 										 fileopen.showDialog(null, "Выбрать файл");
+										 
 										 try {
-											sheet_repo = new HSSFWorkbook(new FileInputStream(dir + fileopen.getSelectedFile().getName()))
+											 repo = new FileInputStream(dir + fileopen.getSelectedFile().getName());
+											sheet_repo = new HSSFWorkbook(repo)
 											.getSheet("Данные");
 										} catch (FileNotFoundException e1) {
 											String txt = "<html><center>Скачайте файл отчёта по терминалам</html>";
@@ -104,7 +107,8 @@ public class Update {
 											        int rowInPart = (int) Math.floor(i/10);
 											        int bonusRow = i - rowInPart*10;
 											        
-											        this.insertData(3,i-1);
+											        
+											        this.insertData(3,i-3);
 												
 											        bdw.close_connect();
 													this.repoClose();
@@ -130,13 +134,18 @@ public class Update {
 //							home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();//**********6
 							id_term = (int) sheet_repo.getRow(row).getCell(0).getNumericCellValue();//*********0 для дпс
 							city_name =     sheet_repo.getRow(row).getCell(3).getStringCellValue();//**********3
-							street_name =   sheet_repo.getRow(row).getCell(5).getStringCellValue();//**********5
+							
+							try {
+								street_name =   sheet_repo.getRow(row).getCell(5).getStringCellValue();//**********5
+							} catch (Exception e){
+								street_name = "б/н";
+							}
+							
 							try {
 								home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();//**********6
 							} catch (Exception e){
 								home_number = Integer.toString((int)sheet_repo.getRow(row).getCell(6).getNumericCellValue());
 							}
-							System.out.println("update136: "+id_term);
 							
 							String adress = street_name + "., " + home_number;
 							Experr.progressBar_inkass.setValue(row);				        	
@@ -160,34 +169,41 @@ public class Update {
 					
 					String city = "";
 					String distrLO = "";
-					if (city_name.contains("Санкт-Петербург")==false){							 
-						 city = city_name.substring(0, city_name.indexOf("(")-1);	
-						 distrLO = city_name.substring(city_name.indexOf("/")+1,city_name.indexOf("р-н")+3)+", ";
-					 } else city = city_name;
+//					if (city_name.contains("Санкт-Петербург")==false){	
+//						
+//						System.out.println(city_name);
+//						
+//						 city = city_name.substring(0, city_name.indexOf("(")-1);	
+//						 distrLO = city_name.substring(city_name.indexOf("/")+1,city_name.indexOf("р-н")+3)+", ";
+//					 } else city = city_name;
+					
+					city = city_name;
 					
 					if ( street_name.compareTo("")==0){
 						adress = adress.substring(adress.indexOf(",")+1);
 					}
-					
 					return distrLO+city+", "+adress;
 				}
 												
 													private int modificNumberHome (String input){
 														String subStr="";
 														int integer;
-														System.out.println("update173: "+input);
+														int homeNumb=0;
 														char [] numberHome = input.toCharArray ();
 	
-															for (int i =0; i < numberHome.length; i++){						
-																System.out.println("update177: "+numberHome[i]);		
+															for (int i =0; i < numberHome.length; i++){							
 																try {
 																			integer= Integer.parseInt(""+numberHome[i]);								
 																			subStr = subStr + ""+numberHome[i];
 																		} catch (Exception e){}											
 															}	
 															
-															System.out.println("update183: "+subStr);
-														return Integer.parseInt(subStr);
+															try {
+																homeNumb = Integer.parseInt(subStr);
+															} catch (Exception e){
+																homeNumb = 0;
+															}
+														return homeNumb;
 													}	
 												
 															private int checkDouble(String number_term){

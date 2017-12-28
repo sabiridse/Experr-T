@@ -27,7 +27,6 @@ public class Ostatki {
 	
 	
 			public void setValue(String numberTerm, String summ, String last_inkass_data){
-				
 				List<Object> Row = new ArrayList <>();
 				Row.add(Integer.parseInt(numberTerm));
 				Row.add((int) Double.parseDouble(summ.replaceAll(",",".")));
