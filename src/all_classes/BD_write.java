@@ -1190,7 +1190,7 @@ public class BD_write {
 				String query = "INSERT INTO trmlist_report (id_term,city_name,street_name,"
 							  + "home_number,agent, regim, distr_inkass, object,adress, auto, adressForKassa) "
 							  +"VALUES ("+id_term+", '"+city_name+"' , '"+street_name
-							  +"' ,"+home_number+", 'СК', '9-21', '"+ distr_inkass+"','"+object+"','"
+							  +"' ,"+home_number+", 'ПИР', '9-21', '"+ distr_inkass+"','"+object+"','"
 							  +adress+"', '"+new CurientTime().getString()+"', '"+adressForKassa+"')";
 						try {
 							this.uni_reqest_in_db(query);
