@@ -58,12 +58,33 @@ public class ServicePPS {
 	
 //**********************************************************************************************************************
 		private String getValue(Sheet sheet, int row, int cell){							
-							
-			try {
-				return this.checkBYzeroStatus(sheet.getRow(row).getCell(cell).getStringCellValue());
-				} catch(Exception e) {			
-		return this.checkBYzeroTime(Integer.toString((int)sheet.getRow(row).getCell(cell).getNumericCellValue()));
-			}							  														
+			
+			String returnData ="";
+			int trig = 1;
+			if (cell > 2){
+				trig = 0;
+			}
+			switch (trig) {
+				case 0: try {
+							returnData = this.checkBYzeroStatus(sheet.getRow(row).getCell(cell).getStringCellValue());
+					   } catch(Exception e) {			
+						    returnData = this.checkBYzeroStatus(Integer.toString((int)sheet.getRow(row).getCell(cell).getNumericCellValue()));
+				}
+				break;
+				case 1:	try {
+							returnData = this.checkBYzeroTime(sheet.getRow(row).getCell(cell).getStringCellValue());
+						} catch(Exception e) {			
+					   		returnData = this.checkBYzeroTime(Integer.toString((int)sheet.getRow(row).getCell(cell).getNumericCellValue()));
+				break;		
+				}
+			}
+			return returnData;
+			
+//			try {
+//				return this.checkBYzeroStatus(sheet.getRow(row).getCell(cell).getStringCellValue());
+//				} catch(Exception e) {			
+//		return this.checkBYzeroTime(Integer.toString((int)sheet.getRow(row).getCell(cell).getNumericCellValue()));
+//			}							  														
 		}
 	
 //************************************************************************************************************************	
@@ -78,32 +99,36 @@ public class ServicePPS {
 					private String checkBYzeroTime(String valueCell){
 						
 						if (valueCell.compareTo("") == 0){
-							valueCell = "01.01 00:00";
+							valueCell = "01.01.2017 00:00:00";
 						}
 						return valueCell;
 					}
 //**********************************************************************************************************				
 				private String trimDateTimePPS(String date_time){// INPUT 12.08.2017 9:32:11  OUTPUT  12.08 09:32
 							
-							String zero = "0";							
-							char[] char_zero = zero.toCharArray();
-							char[] char_date_time = date_time.toCharArray();
-							
-							switch (char_date_time.length){
-								case 18: char[]subchar_date_time1 = {char_date_time[0],char_date_time[1],char_date_time[2],char_date_time[3],char_date_time[4],
-										char_date_time[10],char_zero[0],char_date_time[11],char_date_time[12],char_date_time[13],char_date_time[14]};            //INPUT 12.08.2017 9:33:21
-
-								return new String(this.checkDateToDay(subchar_date_time1));// before return checking on Today or No, if Today - 09:22 or No - 12.08 09:22
-								
-								
-								case 19: char[]subchar_date_time2 = {char_date_time[0],char_date_time[1],char_date_time[2],char_date_time[3],char_date_time[4],
-										char_date_time[10],char_date_time[11],char_date_time[12],char_date_time[13],char_date_time[14],char_date_time[15]};       //INPUT 12.08.2017 10:33:21
-
-								return new String(this.checkDateToDay(subchar_date_time2));// before return checking on Today or No, if Today - 09:22 or No - 12.08 09:22
-														
-							}
-
-							return new String("01.01 00:00");
+//							String zero = "0";							
+//							char[] char_zero = zero.toCharArray();
+//							char[] char_date_time = date_time.toCharArray();
+//							
+//							switch (char_date_time.length){
+//								case 18: char[]subchar_date_time1 = {char_date_time[0],char_date_time[1],char_date_time[2],char_date_time[3],char_date_time[4],
+//										char_date_time[10],char_zero[0],char_date_time[11],char_date_time[12],char_date_time[13],char_date_time[14]};            //INPUT 12.08.2017 9:33:21
+//
+//								return new String(this.checkDateToDay(subchar_date_time1));// before return checking on Today or No, if Today - 09:22 or No - 12.08 09:22
+//								
+//								
+//								case 19: char[]subchar_date_time2 = {char_date_time[0],char_date_time[1],char_date_time[2],char_date_time[3],char_date_time[4],
+//										char_date_time[10],char_date_time[11],char_date_time[12],char_date_time[13],char_date_time[14],char_date_time[15]};       //INPUT 12.08.2017 10:33:21
+//
+//								return new String(this.checkDateToDay(subchar_date_time2));// before return checking on Today or No, if Today - 09:22 or No - 12.08 09:22
+//														
+//							}
+//
+//							return new String("01.01 00:00");
+					
+					
+					return date_time;
+					
 						}
 						
 //******************************************************************************************************************************						

@@ -27,7 +27,7 @@ public class Files_check {
 			
 			if (t_m == false) {String txt = "<html><center>нет файла ОСМП</html>";triger = 1;Experr.btnNewButton_1.setEnabled(true); gui1.Gui0(txt);}
 			
-			if (p_i == false) {String txt = "<html><center>нет файла Лидера</html>";triger = 1;Experr.btnNewButton_1.setEnabled(true); gui1.Gui0(txt);}
+			if (p_i == false) {String txt = "<html><center>нет файла ДПС</html>";triger = 1;Experr.btnNewButton_1.setEnabled(true); gui1.Gui0(txt);}
 
 			
 			if (triger == 0){

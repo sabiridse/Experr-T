@@ -113,24 +113,34 @@ if(index0 != -1){//если есть месяц или месяцев
 				String dateTime = "2016-11-01 12:00:00";
 				
 				
-				switch (date_time.length()) {
-					
-					case 11: 	time_signal1.insert(11, ":00");			
-								try {
-									Date qqq = format.parse((time_signal1.insert(5, "." + Experr.year)).toString());
-									long aa = qqq.getTime();					
-									dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(aa);
-					
-								} catch (ParseException e) {
-									e.printStackTrace();
-								}
-					break;
-					case 5:  	time_signal1.insert(5, ":00");	
-								dateTime = time_signal1.insert(0, Experr.year + "-" + Experr.month+ "-" + Experr.day + " ").toString();
-					break;		
-								
-								
-				}		
+//				switch (date_time.length()) {
+//					
+//					case 11: 	time_signal1.insert(11, ":00");			
+//								try {
+//									Date qqq = format.parse((time_signal1.insert(5, "." + Experr.year)).toString());
+//									long aa = qqq.getTime();					
+//									dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(aa);
+//					
+//								} catch (ParseException e) {
+//									e.printStackTrace();
+//								}
+//					break;
+//					case 5:  	time_signal1.insert(5, ":00");	
+//								dateTime = time_signal1.insert(0, Experr.year + "-" + Experr.month+ "-" + Experr.day + " ").toString();
+//					break;		
+//								
+//								
+//				}		
+				
+				try {
+					Date qqq = format.parse((time_signal1).toString());
+					long aa = qqq.getTime();					
+					dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(aa);
+	
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
 							return dateTime;
 		
 	}

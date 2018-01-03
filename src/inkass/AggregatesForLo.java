@@ -28,6 +28,7 @@ public class AggregatesForLo {
 		DataForShortStata dfss = new DataForShortStata();
 		distrInkasForAggregates = dfss.getDistrInkasForAggregates();
 		
+		
 		if (distrInkasForAggregates.size()!=0){
 			returnable = distrInkasForAggregates.get(index);
 		}
