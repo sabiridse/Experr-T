@@ -14,6 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import Osmp_Osmp.FileOperation;
@@ -24,7 +25,7 @@ import all_classes.NewThread_one;
 
 public class Update {
 
-	private Sheet sheet_repo;
+	private XSSFSheet sheet_repo;
 	Gui1 gui1 = new Gui1();
 	private FileInputStream repo;
 	private Workbook curientWB_open;
@@ -34,7 +35,15 @@ public class Update {
 	
 	public void insertTo(){
 		
-			this.openRepo();
+			try {
+				this.openRepo();
+			} catch (FileNotFoundException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
 			if (sheet_repo != null){
 
 				this.iteration();
@@ -61,26 +70,28 @@ public class Update {
 							}
 					
 									@SuppressWarnings("resource")
-									private void openRepo(){
+									private void openRepo() throws FileNotFoundException, IOException{
 										
 										String dir = new FileOperation().getDir();				
 										 fileopen = new JFileChooser(dir);
-										 fileopen.setFileFilter(new FileNameExtensionFilter("xls","xls"));
+										 fileopen.setFileFilter(new FileNameExtensionFilter("xlsx","xlsx"));
 										 fileopen.showDialog(null, "Выбрать файл");
+										 sheet_repo = new XSSFWorkbook(new FileInputStream(dir + fileopen.getSelectedFile().getName()))
+										.getSheet("Данные");
 										 
-										 try {
-											 repo = new FileInputStream(dir + fileopen.getSelectedFile().getName());
-											sheet_repo = new HSSFWorkbook(repo)
-											.getSheet("Данные");
-										} catch (FileNotFoundException e1) {
-											String txt = "<html><center>Скачайте файл отчёта по терминалам</html>";
-											gui1.Gui0(txt);
-											e1.printStackTrace();
-										} catch (IOException e1) {
-											String txt = "<html><center></html>";
-											gui1.Gui0(txt);
-											e1.printStackTrace();
-										}
+//										 try {
+//											 repo = new FileInputStream(dir + fileopen.getSelectedFile().getName());
+//											sheet_repo = new HSSFWorkbook(repo)
+//											.getSheet("Данные");
+//										} catch (FileNotFoundException e1) {
+//											String txt = "<html><center>Скачайте файл отчёта по терминалам</html>";
+//											gui1.Gui0(txt);
+//											e1.printStackTrace();
+//										} catch (IOException e1) {
+//											String txt = "<html><center></html>";
+//											gui1.Gui0(txt);
+//											e1.printStackTrace();
+//										}
 										
 										
 //										try {
@@ -107,6 +118,7 @@ public class Update {
 											        int rowInPart = (int) Math.floor(i/10);
 											        int bonusRow = i - rowInPart*10;
 											        
+											        System.out.println(i);
 											        
 											        this.insertData(3,i-3);
 												
