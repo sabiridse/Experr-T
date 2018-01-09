@@ -1,7 +1,10 @@
 package Warning_lost_terminals;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Map.Entry;
 
+import Lider_Dps.ServicePPS;
 import all_classes.BD_write;
 import all_classes.Input_csv;
 import all_classes.Loging;
@@ -10,6 +13,8 @@ public class TrackingNewAndLostTerminals {
 	
 	private static ArrayList<String> LostTerminals;
 	private static ArrayList<String> NewTerminals;
+	private Map <String, String> idAndName;
+	ServicePPS spps = new ServicePPS();
 	
 	
 			public TrackingNewAndLostTerminals(){
@@ -48,8 +53,10 @@ public class TrackingNewAndLostTerminals {
 							for (int i = 0 ; i < getNewTerminals().size();i++){
 									
 									try {
-										log.logtext(" NEW term " + NewTerminals.get(i));
-										bdw.insert_new_term_only_for_errors(NewTerminals.get(i));
+										log.logtext(" NEW term " + NewTerminals.get(i)+ " " + this.getTermName(NewTerminals.get(i)));
+										bdw.insert_new_term_only_for_errors(NewTerminals.get(i), this.getTermName(NewTerminals.get(i)));
+										
+										//System.out.println(NewTerminals.get(i) + " " + this.getTermName(NewTerminals.get(i)));
 										
 									} catch (ClassNotFoundException e) {
 										e.printStackTrace();
@@ -60,6 +67,17 @@ public class TrackingNewAndLostTerminals {
 						
 						}
 				
+						private String getTermName (String id_term){							
+							String nameTerm = "не определено";
+							idAndName = spps.getIdTermAndNameTerm();							
+							for(Entry<String, String> entry: idAndName.entrySet()) {
+								if ((entry.getKey()).compareTo(id_term) ==0){									
+									nameTerm = entry.getValue();
+								}							 
+							}																					
+							return nameTerm;
+						}
+						
 								public void InsertLostSignalInLostTerm(){
 									Loging log = new Loging();
 									Input_csv lostHeartBitLostTerm = new Input_csv();

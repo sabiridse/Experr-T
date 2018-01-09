@@ -6,7 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -31,6 +34,8 @@ public class ServicePPS {
 	private HSSFSheet sheet_points_info;
 	private JFileChooser fileopen;
 	Ostatki ostatki = new Ostatki();
+	//private static ArrayList<ArrayList<String>> idTermAndNameTerm = new ArrayList<>();
+	private static Map<String, String> idTermAndNameTerm = new HashMap<String, String>();
 		
 //*******************************************************************************************************************	
 			@SuppressWarnings("resource")
@@ -60,9 +65,9 @@ public class ServicePPS {
 		private String getValue(Sheet sheet, int row, int cell){							
 			
 			String returnData ="";
-			int trig = 1;
-			if (cell > 2){
-				trig = 0;
+			int trig = 0;
+			if (cell == 0 | cell == 2 | cell == 3){
+				trig = 1;
 			}
 			switch (trig) {
 				case 0: try {
@@ -152,7 +157,7 @@ public class ServicePPS {
 							
 					wb_points_info = new HSSFWorkbook();
 					sheet_points_info = wb_points_info.createSheet("Sheet1");
-									
+					idTermAndNameTerm.clear();				
 				}
 								
 //*****************************************************************************************************								
@@ -177,18 +182,31 @@ public class ServicePPS {
 				
 				Row row = sheet_points_info.createRow(numberRowTarget);	
 				
-				ostatki.setValue(this.getValue(sheetPPS, numberRowSource+2, 0), this.getValue(sheetPPS, numberRowSource+2, 7), "нет данных");//*************инкасс из ДПС
+				ostatki.setValue(this.getValue(sheetPPS, numberRowSource+2, 0), this.getValue(sheetPPS, numberRowSource+2, 8), "нет данных");//*************инкасс из ДПС
 
 				row.createCell(0).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 0));				
-				row.createCell(1).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRowSource+2, 1)));					
-				row.createCell(2).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRowSource+2, 2)));					
-				row.createCell(3).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 4));//cash and print change column				
-				row.createCell(4).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 3));//cash and print change column					
+				row.createCell(1).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRowSource+2, 2)));					
+				row.createCell(2).setCellValue(this.trimDateTimePPS(this.getValue(sheetPPS, numberRowSource+2, 3)));					
+				row.createCell(3).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 5));//cash and print change column				
+				row.createCell(4).setCellValue(this.getValue(sheetPPS, numberRowSource+2, 4));//cash and print change column					
 				row.createCell(5).setCellValue("OK");			
 						
-						
+//				ArrayList<String> rowIdAndName =new ArrayList<String>();
+//				rowIdAndName.add(this.getValue(sheetPPS, numberRowSource+2, 0));
+//				rowIdAndName.add(this.getValue(sheetPPS, numberRowSource+2, 1));
+//				idTermAndNameTerm.add(rowIdAndName);//*****************************add array id_term, name_term by report errors
+				
+				
+				idTermAndNameTerm.put(this.getValue(sheetPPS, numberRowSource+2, 0),
+									  this.getValue(sheetPPS, numberRowSource+2, 1));
+				
 			}
-								
+				
+			public Map<String, String> getIdTermAndNameTerm(){
+				
+				return idTermAndNameTerm;
+			}
+			
 //****************************************************************************************************								
 				public void addPoints_info() throws FileNotFoundException, IOException{
 					

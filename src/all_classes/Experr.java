@@ -310,7 +310,7 @@ public class Experr {
 		frmExperrtV.setMinimumSize(new Dimension(700, 690));
 		
 		final JFXPanel fxPanel = new JFXPanel();
-		frmExperrtV.add(fxPanel);//**************************************************JAVAFX****************
+		frmExperrtV.getContentPane().add(fxPanel);//**************************************************JAVAFX****************
 		
 		
 		Platform.runLater(new Runnable() {
@@ -1045,6 +1045,7 @@ public class Experr {
 							      
 							      //чекбокс добавлять новые терема
 							      JCheckBox chckbxaddNew = new JCheckBox("Добавлять NEW");
+							      chckbxaddNew.setSelected(true);
 							      chckbxaddNew.setToolTipText("Автоматическое добавление новых терминалов");
 							      chckbxaddNew.setFont(new Font("Century Schoolbook", Font.ITALIC, 12));
 							      chckbxaddNew.setBackground(new Color(102, 153, 153));

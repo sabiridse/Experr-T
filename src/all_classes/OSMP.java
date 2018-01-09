@@ -109,8 +109,8 @@ public  class OSMP  {
 			
 			bdw.connect();//****************подключаюсь к бд****************
 		 
-		 
-			
+		 String delDermoshkaTerm = "delete from terminals where name_distr = 'CHECKING'";//*******пока на базе триггер - сам удаляю терема присланные дерьмошкой
+		 bdw.uni_reqest_in_db(delDermoshkaTerm);
 			
 			
 //*********копирую предыдущие ТОЛЬКО ОШИБКИ ( примерно 200-250 шт, а не всё что считалось 2000шт) в таблицу хранилище*************					

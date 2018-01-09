@@ -1027,15 +1027,15 @@ public class BD_write {
 														this.reqest_in_db_TTmodel_except();
 													}
 //****************************************************************************************************************	
-													public void insert_new_term_only_for_errors (String numberNewTerm) throws ClassNotFoundException {						
+													public void insert_new_term_only_for_errors (String numberNewTerm, String nameTerm) throws ClassNotFoundException {						
 														Statement stmt;	
 														
 																	try {	
 																		stmt = conn.createStatement();
 																		stmt.execute("INSERT INTO terminals (id_term,name_term,name_distr,spb_lo,spb,lo,regions,other,except_name,except_term,time_except) "
-																				    +"VALUES ("+numberNewTerm+",'NEW','CHECKING',0,0,0,0,'новая установка',NULL,0,'1999-09-09 09:09:09')");
+																				    +"VALUES ("+numberNewTerm+",'"+nameTerm+"','NO distr',0,0,0,0,'новый терминал',NULL,0,'1999-09-09 09:09:09')");
 																		Loging log = new Loging();
-																		log.logtext("add new term № "+numberNewTerm);
+																		log.logtext("add new term № "+numberNewTerm+" "+nameTerm);
 																	}	catch (SQLException e)	{Loging log = new Loging();
 																							log.log(e," ERROR add new term № "+numberNewTerm);}
 																	
