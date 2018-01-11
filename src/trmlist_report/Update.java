@@ -120,10 +120,10 @@ public class Update {
 											        
 											        System.out.println(i);
 											        
-											        this.insertData(3,i-3);
+											        this.insertData(3,i-4);
 												
 											        bdw.close_connect();
-													this.repoClose();
+													//this.repoClose();
 													
 												}
 	

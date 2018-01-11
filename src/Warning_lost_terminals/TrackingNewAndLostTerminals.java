@@ -33,7 +33,8 @@ public class TrackingNewAndLostTerminals {
 				NewTerminals.removeAll(flt.getNumberTermIn_terminalsTable()); // remove 0 except terms
 				flt.queryForArray_terminals_table(1);						 // add array numbers terminal except 1
 				NewTerminals.removeAll(flt.getNumberTermIn_terminalsTable());//новые терминалы FINISH ARRAY
-								
+				
+					
 			}	
 		
 				

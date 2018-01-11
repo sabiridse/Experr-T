@@ -6,6 +6,7 @@ import java.util.TreeSet;
 import GUIbonus.AggregateLo;
 import all_classes.BD_write;
 import all_classes.Experr;
+import all_classes.Loging;
 
 public class AggregatesForLo {
 	
@@ -19,6 +20,7 @@ public class AggregatesForLo {
 											 this.getDistrInkassLo(3),
 											 this.getDistrInkassLo(4),
 											 this.getDistrInkassLo(5));
+		new Loging().logtext("AgregaForLO_23: "+distrAndOther);
 		return distrAndOther;
 	}
 	
@@ -49,6 +51,7 @@ public class AggregatesForLo {
 		for (int i : indexesForDel.descendingSet()){
 			input.remove(i);
 		}
+		new Loging().logtext("AgregaForLO_54: "+input);
 		return input;
 	}
 	

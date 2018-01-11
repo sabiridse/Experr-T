@@ -232,7 +232,7 @@ public class Experr {
 	public static int SummlimitLO = 50000;
 	public static int SummlimitPirSps = 20000;
 	
-	public static int New = 0;
+	public static int New = 1;
 	public static int CheckInkassDPSdata = 0;
 	
 	public static int allMarshruts = 0;

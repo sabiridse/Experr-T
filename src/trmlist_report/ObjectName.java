@@ -9,7 +9,7 @@ public class ObjectName {
 			public void cater(String input, String city_name){	
 
 				objectName = "нет данных";
-				String city ="";
+				String city =city_name;
 						try {
 									Integer.parseInt(input.substring(0, 3));
 									objectName = input.substring(input.indexOf(" ")+1, input.indexOf("("));

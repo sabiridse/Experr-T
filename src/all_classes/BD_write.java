@@ -1280,7 +1280,11 @@ public class BD_write {
 				try {	
 					stmt = conn.createStatement();						
 						ResultSet result;
-						result = stmt.executeQuery("select distr_inkass from trmlist_report where city_name = '"+city_name+"' and street_name = '"+street_name+"' and distr_inkass != '' LIMIT 1");//select distr_inkass from trmlist_report where street_name = '"+street_name+"' and distr_inkass !='' LIMIT 1");					
+						result = stmt.executeQuery("select distr_inkass from trmlist_report "
+												 + "where city_name like '%"+city_name+"%' and "
+												 + "city_name not like '%("+city_name+"%' and "
+												 + "street_name like '%"+street_name+"%' and "
+												 + "distr_inkass != '' LIMIT 1");//select distr_inkass from trmlist_report where street_name = '"+street_name+"' and distr_inkass !='' LIMIT 1");					
 									while (result.next()) {										
 										distr_inkass = result.getString("distr_inkass");									
 									}
@@ -1302,7 +1306,7 @@ public class BD_write {
 					stmt = conn.createStatement();						
 						ResultSet result;
 						result = stmt.executeQuery("select distr_inkass from trmlist_report "
-												 + "where city_name = '"+city_name+"' and distr_inkass != '' and distr_inkass != 'не определено' LIMIT 1");
+												 + "where city_name like '%"+city_name+"%' and distr_inkass != '' and distr_inkass != 'не определено' LIMIT 1");
 								while (result.next()) {								
 										distr_inkass = result.getString("distr_inkass");									
 								}

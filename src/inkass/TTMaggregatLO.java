@@ -3,6 +3,8 @@ package inkass;
 	import java.util.ArrayList;
 	import javax.swing.table.AbstractTableModel;
 
+import all_classes.Loging;
+
 	public class TTMaggregatLO extends AbstractTableModel {
 		private static final long serialVersionUID = 4767405994139702250L;
 		private static int columnCount = 2;
@@ -50,6 +52,9 @@ package inkass;
 		
 		public void addDate(ArrayList<ArrayList<String>> inputData) {
 			//dataArrayList.clear();
+			new Loging().logtext("TTMagregatLO_55: "+inputData);
+			
+			
 			dataArrayList.addAll(inputData);
 		}
 }

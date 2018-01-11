@@ -14,13 +14,13 @@ public class DistrInkass {
 				BD_write bdw = new BD_write();				
 					try {
 																		
-						distr_inkass = bdw.getDistr_inkass(city_name, street_name);
+						distr_inkass = bdw.getDistr_inkass(city_name, street_name.replace(".", ""));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 						if ( distr_inkass.compareTo("не определено") == 0){				
-							if (city_name.compareTo("Санкт-Петербург г") !=0){
-								
+							//if (city_name.compareTo("Санкт-Петербург") !=0){
+							  if (city_name.contains("Санкт-Петербург")){	
 								try {
 									
 									distr_inkass = bdw.getDistr_inkassForLo(city_name);

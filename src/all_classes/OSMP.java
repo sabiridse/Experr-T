@@ -108,11 +108,13 @@ public  class OSMP  {
 		 TurnDataTimeInkass tdti = new TurnDataTimeInkass();
 			
 			bdw.connect();//****************подключаюсь к бд****************
-		 
+//*******************************************************SERVICE COMMANDS FOR DB******************************************************		 
 		 String delDermoshkaTerm = "delete from terminals where name_distr = 'CHECKING'";//*******пока на базе триггер - сам удаляю терема присланные дерьмошкой
 		 bdw.uni_reqest_in_db(delDermoshkaTerm);
-			
-			
+		
+		 String delNullOther = "update terminals set other = '' where other is null";
+		 bdw.uni_reqest_in_db(delNullOther);
+//*******************************************************************************************************************************			
 //*********копирую предыдущие ТОЛЬКО ОШИБКИ ( примерно 200-250 шт, а не всё что считалось 2000шт) в таблицу хранилище*************					
 			String query_copy = "insert into errors_save "
 					+ "select errors33.id_term, errors33.heart_bit, errors33.pay, errors33.cash, "//my first shiiiiiiiiiitCode ;)
