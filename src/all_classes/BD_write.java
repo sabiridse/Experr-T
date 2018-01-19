@@ -1033,7 +1033,7 @@ public class BD_write {
 																	try {	
 																		stmt = conn.createStatement();
 																		stmt.execute("INSERT INTO terminals (id_term,name_term,name_distr,spb_lo,spb,lo,regions,other,except_name,except_term,time_except) "
-																				    +"VALUES ("+numberNewTerm+",'"+nameTerm+"','NO distr',0,0,0,0,'новый терминал',NULL,0,'1999-09-09 09:09:09')");
+																				    +"VALUES ("+numberNewTerm+",'"+nameTerm+"','NO distr',0,0,0,0,'новый терминал','',0,'1999-09-09 09:09:09')");
 																		Loging log = new Loging();
 																		log.logtext("add new term № "+numberNewTerm+" "+nameTerm);
 																	}	catch (SQLException e)	{Loging log = new Loging();

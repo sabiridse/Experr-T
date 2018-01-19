@@ -198,7 +198,7 @@ public class ServicePPS {
 				
 				
 				idTermAndNameTerm.put(this.getValue(sheetPPS, numberRowSource+2, 0),
-									  this.getValue(sheetPPS, numberRowSource+2, 1));
+									  this.getValue(sheetPPS, numberRowSource+2, 1).replace("для установки ", ""));
 				
 			}
 				

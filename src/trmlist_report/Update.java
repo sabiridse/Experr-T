@@ -146,7 +146,7 @@ public class Update {
 //							street_name =   sheet_repo.getRow(row).getCell(5).getStringCellValue();//**********5
 //							home_number =   sheet_repo.getRow(row).getCell(6).getStringCellValue();//**********6
 							id_term = (int) sheet_repo.getRow(row).getCell(0).getNumericCellValue();//*********0 для дпс
-							term_name =     sheet_repo.getRow(row).getCell(1).getStringCellValue();//**********1
+							term_name =     sheet_repo.getRow(row).getCell(1).getStringCellValue().replace("для установки ", "");//**********1
 							city_name =     sheet_repo.getRow(row).getCell(3).getStringCellValue();//**********3
 							
 							try {
