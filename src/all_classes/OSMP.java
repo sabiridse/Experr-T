@@ -17,6 +17,7 @@ import Ostatki.Ostatki;
 import Warning_lost_terminals.Find_lost_term;
 import Warning_lost_terminals.TrackingNewAndLostTerminals;
 import javenue.csv.Csv;
+import services.CreateTM;
 import services.TurnDataTimeInkass;
 import export_err.NewThread_one;
 
@@ -81,7 +82,8 @@ public  class OSMP  {
 				//******************открываю поток для файла terminal_monitoring в даунлодах********************************
 				
 				String dir = System.getProperty("user.home");//узнаю текущую попку даунлоадов*****************************
-								
+				
+				
 				
 				FileInputStream Osmp_import = new FileInputStream(dir + "\\Downloads\\terminal_monitoring.xls");
 				Workbook wb_osmp_import = new HSSFWorkbook(Osmp_import);
@@ -266,6 +268,10 @@ public  class OSMP  {
 
 					Osmp_import.close();//закрываю поток файла terminall_monitoring из ОСМП
 			
+//***************************************************************************************************					
+					//***************************************************************************************************					
+					//***************************************************************************************************					
+					//***************************************************************************************************					
 					String file_points_info = dir + "\\Downloads\\points_info.xls";		
 					input_csv.writePir(file_points_info);//***********************************вставщик ПИРа в БД
 													

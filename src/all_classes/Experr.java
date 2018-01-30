@@ -164,7 +164,7 @@ public class Experr {
 	public static JPanel panel_23 = new JPanel();
 	JProgressBar progressBar;
 	public static JProgressBar progressBar_inkass;
-	 
+	public static int osmp = 0; 
 
 	static JProgressBar progressBar_1;
 	JProgressBar progressBar2;
@@ -285,6 +285,7 @@ public class Experr {
 			e.printStackTrace();
 		}
 	}
+	
 
 	@SuppressWarnings("unchecked")
 	private  void initialize() throws Exception {
@@ -676,6 +677,26 @@ public class Experr {
 	    			 btnInkassDPS.setBackground(new Color(51, 153, 153));
 	    			 btnInkassDPS.setBounds(5, 535, 97, 30);
 	    			 panel_6.add(btnInkassDPS);
+//*****************************************************************************************************************	    			 
+	    			 JCheckBox checkBox_OSMP = new JCheckBox("Без ОСМП");
+	    			 checkBox_OSMP.setSelected(true);
+	    			 checkBox_OSMP.setToolTipText("ВКЛ/ВЫКЛ импорт terminal_monitoring.xls");
+	    			 checkBox_OSMP.setForeground(new Color(0, 204, 153));
+	    			 checkBox_OSMP.setFont(new Font("Century Schoolbook", Font.ITALIC, 12));
+	    			 checkBox_OSMP.setBackground(new Color(0, 153, 153));
+	    			 checkBox_OSMP.setBounds(6, 144, 96, 25);
+	    			 panel_6.add(checkBox_OSMP);
+	    			 
+	    			 checkBox_OSMP.addItemListener(new ItemListener() {
+				          public void itemStateChanged(ItemEvent e) {
+				            
+						        	 if (checkBox_OSMP.isSelected()) {
+						        		 osmp = 0;
+						        		 
+						        	 } else osmp = 1;
+				          }
+				      });
+//*****************************************************************************************************************	
 	    			 
 	    			 btnInkassDPS.addActionListener(new ActionListener() {
 				    	  public void actionPerformed(ActionEvent arg0) {

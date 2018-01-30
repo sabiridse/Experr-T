@@ -1,9 +1,13 @@
 package all_classes;
 import java.io.File;
 
+import services.CreateTM;
+
 
 
 public class Files_check {
+	
+	
 	
 	String dir = System.getProperty("user.home");//����� ������� ����� ����������*****************************				
 	File export_errors = new File(dir + "\\Downloads\\export_errors.csv");
@@ -12,6 +16,11 @@ public class Files_check {
 	
 	
 	public void checking() {
+		
+		if (Experr.osmp == 0){
+			new CreateTM().creature();
+		}
+		
 	
 			Gui1 gui1 = new Gui1();
 			
