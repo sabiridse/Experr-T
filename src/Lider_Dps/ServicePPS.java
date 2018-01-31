@@ -30,11 +30,13 @@ public class ServicePPS {
 	private int rows_in_PPS = 0;
 	private Sheet sheetLid;
 	private XSSFSheet sheetPPS;
+	private XSSFWorkbook workbookPPS;
 	private HSSFWorkbook wb_points_info;
 	private HSSFSheet sheet_points_info;
 	private JFileChooser fileopen;
+	private  FileInputStream inputStream;
 	Ostatki ostatki = new Ostatki();
-	//private static ArrayList<ArrayList<String>> idTermAndNameTerm = new ArrayList<>();
+	private static ArrayList<ArrayList<String>> ErrorsForDerm = new ArrayList<>();
 	private static Map<String, String> idTermAndNameTerm = new HashMap<String, String>();
 		
 //*******************************************************************************************************************	
@@ -45,8 +47,9 @@ public class ServicePPS {
 							 fileopen = new JFileChooser(dir);
 							 fileopen.setFileFilter(new FileNameExtensionFilter("xlsx","xlsx"));
 							 fileopen.showDialog(null, "Выбрать файл");
-				sheetPPS = new XSSFWorkbook(new FileInputStream(dir + fileopen.getSelectedFile().getName()))
-							.getSheet("Данные");
+						 inputStream = new FileInputStream(dir + fileopen.getSelectedFile().getName());
+						 workbookPPS = new XSSFWorkbook(inputStream);
+						 sheetPPS = workbookPPS.getSheet("Данные");
 				
 				Iterator<Row> iterator_PPS = sheetPPS.iterator();
 		        while (iterator_PPS.hasNext()) {
@@ -212,28 +215,81 @@ public class ServicePPS {
 					
 					this.CreatureFile();
 					
+					
 					XSSFSheet sheet_first_file = this.openLiderAndPPS();
+					ErrorsForDerm.clear();
 						for (int q =1; q < rows_in_PPS-1; q++){
 								this.cretureRowPoints_info(sheet_first_file, q, q);
+								this.addDermoshkaStyle(sheet_first_file, q);	//add array for file by dermoshka							
 						}
-						
-							fileopen.getSelectedFile().delete();
+						inputStream.close();
+													
+						fileopen.getSelectedFile().delete();//************************************************
 						
 					int firstRowSecondFile = rows_in_PPS-1;
 					XSSFSheet sheet_second_file = this.openLiderAndPPS();
 						for (int i =firstRowSecondFile; i < rows_in_PPS-3; i++){
 								this.cretureRowPoints_info(sheet_second_file, i-firstRowSecondFile+1, i);
+								this.addDermoshkaStyle(sheet_second_file, i-firstRowSecondFile+1);	//add array for file by dermoshka	
 						}
-					
-							fileopen.getSelectedFile().delete();
+						inputStream.close();
+							fileopen.getSelectedFile().delete();//*************************************************
 						
 					try {
 											this.SaveFile();
 										} catch (IOException e) {
 											e.printStackTrace();
-										}
-									
+										}	
+					try {
+						this.creatureFileForDerm();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
-
+	private void addDermoshkaStyle (XSSFSheet sheet, int row) {
+		ArrayList<String> rowErrorsForDerm = new ArrayList<>();
+		row=row+2;
+		
+		rowErrorsForDerm.add(String.valueOf((int) sheet.getRow(row).getCell(0).getNumericCellValue()));
+		rowErrorsForDerm.add(sheet.getRow(row).getCell(2).getStringCellValue());
+		rowErrorsForDerm.add(sheet.getRow(row).getCell(3).getStringCellValue());
+		rowErrorsForDerm.add(sheet.getRow(row).getCell(4).getStringCellValue());
+		rowErrorsForDerm.add(sheet.getRow(row).getCell(5).getStringCellValue());
+		
+		ErrorsForDerm.add(rowErrorsForDerm);
+		
+	}
+	
+	private void creatureFileForDerm() throws Exception{
+		XSSFWorkbook wb_derm = new XSSFWorkbook();
+		XSSFSheet sheet_derm = wb_derm.createSheet("Sheet1");
+		int row = 3;
+		
+		Row header = sheet_derm.createRow(2);
+		header.createCell(0).setCellValue("Номер терминала");
+		header.createCell(1).setCellValue("Отклик");
+		header.createCell(2).setCellValue("Платеж");
+		header.createCell(3).setCellValue("Принтер: Описание ошибки");
+		header.createCell(4).setCellValue("Купюроприемник: Описание ошибки");
+		
+		
+		for (ArrayList<String> rowErr:ErrorsForDerm){
+			
+			Row rowFile = sheet_derm.createRow(row);
+			row++;
+			
+			rowFile.createCell(0).setCellValue(rowErr.get(0));
+			rowFile.createCell(1).setCellValue(rowErr.get(1));
+			rowFile.createCell(2).setCellValue(rowErr.get(2));
+			rowFile.createCell(3).setCellValue(rowErr.get(3));
+			rowFile.createCell(4).setCellValue(rowErr.get(4));
+			
+		}
+		
+		FileOutputStream out33 = new FileOutputStream(new File(System.getProperty("user.home") + "\\Downloads\\"+"dermoshka.xlsx"));
+		wb_derm.write(out33);
+		out33.close();
+		
+	}
 
 }
